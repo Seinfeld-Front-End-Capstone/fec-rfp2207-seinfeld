@@ -10,5 +10,6 @@ class RatingsReviews extends React.Component {
     return <h1>Section for Ratings and Reviews</h1>
   }
 
-
 }
+
+export default RatingsReviews;
