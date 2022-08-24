@@ -1,4 +1,4 @@
-import react from 'react';
+import React from 'react';
 
 class RatingsReviews extends React.Component {
   constructor(props) {
