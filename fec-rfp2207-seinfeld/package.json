@@ -1,18 +1,18 @@
 {
   "name": "fec-rfp2207-seinfeld",
   "version": "1.0.0",
-  "description": "fec",
-  "main": "index.js",
+  "description": "",
+  "main": "client/src/index.js",
   "scripts": {
-    "dev": "webpack server",
+    "dev": "webpack serve",
     "build": "webpack",
-    "test": "test"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Seinfeld-Front-End-Capstone/fec-rfp2207-seinfeld.git"
   },
-  "author": "Seinfeld Team",
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Seinfeld-Front-End-Capstone/fec-rfp2207-seinfeld/issues"
@@ -20,7 +20,6 @@
   "homepage": "https://github.com/Seinfeld-Front-End-Capstone/fec-rfp2207-seinfeld#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dev": "^0.0.1",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
