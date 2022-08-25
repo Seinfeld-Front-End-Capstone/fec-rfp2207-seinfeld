@@ -1,7 +1,7 @@
 import React from 'react';
 
 var RelatedList = () => {
-  render(
+  return (
     <div>
       <h5>This will be the list of related items!</h5>
       <ul>
