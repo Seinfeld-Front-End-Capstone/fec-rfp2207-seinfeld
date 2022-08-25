@@ -12,9 +12,17 @@ class RatingsReviews extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="RR-ratings-reviews-ctn">
         <h1>Section for Ratings and Reviews</h1>
-        <ReviewList reviews={this.state.reviewsOnDisplay}/>
+        <div id="RR-breakdown-ctn">
+          Ratings breakdown
+        </div>
+        <div id="RR-reviews-ctn">
+          <div id="RR-header-sort">
+            Header and sort
+          </div>
+          <ReviewList reviews={this.state.reviewsOnDisplay}/>
+        </div>
       </div>
     )
   }
