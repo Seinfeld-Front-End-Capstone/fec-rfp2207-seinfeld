@@ -7,12 +7,13 @@ class RatingsReviews extends React.Component {
     super(props);
     this.state = {
       reviewsOnDisplay: [],
-      listOfReviews: []
+      listOfReviews: [],
+      maxResults: 2
     };
   }
   componentDidMount() {
     this.setState({
-      reviewsOnDisplay: ExampleReviews.slice(0, 2),
+      reviewsOnDisplay: ExampleReviews.slice(0, this.state.maxResults),
       listOfReviews: ExampleReviews
     })
   }
@@ -30,7 +31,14 @@ class RatingsReviews extends React.Component {
           </div>
           <ReviewList reviews={this.state.reviewsOnDisplay}/>
           <div id="more-menu">
-            {this.state.listOfReviews.length > 2 && <button>MORE REVIEWS</button>}
+            {this.state.listOfReviews.length > 2 && this.state.maxResults < this.state.listOfReviews.length && <button onClick={() => {
+              let newMax = this.state.maxResults + 2;
+              this.setState({
+                maxResults: newMax,
+                reviewsOnDisplay: ExampleReviews.slice(0, newMax)
+              })
+            }
+            }>MORE REVIEWS</button>}
             <button>ADD A REVIEW +</button>
 
           </div>
