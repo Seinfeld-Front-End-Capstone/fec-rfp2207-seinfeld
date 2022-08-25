@@ -1,6 +1,6 @@
 import React, {useState , useEffect} from 'react';
-import Image from './image.jsx'
-import {get} from '../.././request.js'
+// import Image from './image.jsx'
+import please from '../.././request.js'
 
 export default ({productId}) => {
 
@@ -10,10 +10,10 @@ export default ({productId}) => {
   const [curStyle, setCurStyle] = useState(null);
 
   useEffect(() => {
-    get(`/products/${productId}`)
+    please.getProductInfo(productId)
     .then((data) => setProduct(data.data))
     .catch((err) => console.log(err))
-    get(`/products/${productId}/styles`)
+    please.getStyles(productId)
     .then((data) => {
       let styles = data.data.results
       setStyles(styles)
@@ -30,7 +30,7 @@ export default ({productId}) => {
     product?
     <div>
       <div>
-        <Image images={images} curStyle={curStyle}/>
+        {/* <Image images={images} curStyle={curStyle}/> */}
         <div>
           <span>stars </span>
           <span>read all reviews</span>

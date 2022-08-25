@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Overview from './overview/Overview.jsx';
-import {get, post, put} from '.././request.js'
+import please from '.././request.js'
 
 
 export default () => {
@@ -8,7 +8,7 @@ export default () => {
   const [product, setProduct] = useState(null)
 
   useEffect(() => {
-    get('/products')
+    please.getProducts()
     .then((data) => setProduct(data.data[0]))
     .catch((err) => console.log(err))
   },[])
