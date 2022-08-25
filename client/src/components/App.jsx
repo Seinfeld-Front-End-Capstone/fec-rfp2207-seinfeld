@@ -25,18 +25,13 @@ export default () => {
     <div>
       <h1>buymorethings</h1>
       <Overview productId={product.id}/>
+      <ItemLists />
+      <QuestionsList/>
+      <RatingsReviews/>
     </div>
     :
     <div>
       <h1>loading...</h1>
-      <h1>Hello World</h1>
-      <Overview/>
-
-      <ItemLists />
-
-      <RatingsReviews/>
-      <QuestionsList/>
-
     </div>
   )
 }
