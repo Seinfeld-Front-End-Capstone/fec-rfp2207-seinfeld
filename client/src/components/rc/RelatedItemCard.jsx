@@ -2,8 +2,11 @@ import React from 'react';
 import request from '../../request.js';
 //takes in the item id and populates each element of the card with relevent info.
 
-const RelatedItemCard = ({ pId }) => {
-  console.log('product info:', request.getProductInfo(pId));
+const RelatedItemCard = ({ pID }) => {
+  request.getProductInfo(pID)
+    .then((data) => {
+      console.log('data:', data)
+    })
   return (
     <aside>
       <img />

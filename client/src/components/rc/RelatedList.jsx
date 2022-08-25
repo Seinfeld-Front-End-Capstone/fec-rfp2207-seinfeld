@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import RelatedItemCard from './RelatedItemCard.jsx';
 import request from '../../request.js';
 
@@ -11,14 +11,27 @@ import request from '../../request.js';
 //This should be stateful?
 
 const RelatedList = ({ id }) => {
-  const related = request.getRelated(id);
-  console.log('related:', related);
+  const [list, setList] = useState([]);
+
+
+  useEffect(() => {
+    request.getRelated(id)
+      .then((data) => {
+        setList(data.data)
+      })
+  }, [])
+
+  console.log('State:', list);
+
+  var iterate = list.map((productID) => {
+    return <RelatedItemCard pID={productID} />
+  });
+
   return (
     <div>
       <h6>Related Items</h6>
-      <ul>{related.map((itemId) => {
-       <RelatedItemCard pId={itemId}/>
-      })}
+      <ul>
+       {iterate}
       </ul>
     </div>
   )
