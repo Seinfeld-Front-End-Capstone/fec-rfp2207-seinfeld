@@ -6,8 +6,13 @@ class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewsOnDisplay: ExampleReviews
+      reviewsOnDisplay: []
     };
+  }
+  componentDidMount() {
+    this.setState({
+      reviewsOnDisplay: ExampleReviews
+    })
   }
 
   render() {
