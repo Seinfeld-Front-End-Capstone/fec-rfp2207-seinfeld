@@ -31,7 +31,7 @@ class RatingsReviews extends React.Component {
           </div>
           <ReviewList reviews={this.state.reviewsOnDisplay}/>
           <div id="more-menu">
-            {this.state.listOfReviews.length > 2 && this.state.maxResults < this.state.listOfReviews.length && <button onClick={() => {
+            {this.state.maxResults < this.state.listOfReviews.length && <button onClick={() => {
               let newMax = this.state.maxResults + 2;
               this.setState({
                 maxResults: newMax,
