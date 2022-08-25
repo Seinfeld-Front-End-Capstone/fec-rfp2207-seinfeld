@@ -6,12 +6,14 @@ class RatingsReviews extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      reviewsOnDisplay: []
+      reviewsOnDisplay: [],
+      listOfReviews: []
     };
   }
   componentDidMount() {
     this.setState({
-      reviewsOnDisplay: ExampleReviews
+      reviewsOnDisplay: ExampleReviews.slice(0, 2),
+      listOfReviews: ExampleReviews
     })
   }
 
@@ -27,6 +29,11 @@ class RatingsReviews extends React.Component {
             Header and sort
           </div>
           <ReviewList reviews={this.state.reviewsOnDisplay}/>
+          <div id="more-menu">
+            {this.state.listOfReviews.length > 2 && <button>MORE REVIEWS</button>}
+            <button>ADD A REVIEW +</button>
+
+          </div>
         </div>
       </div>
     )
