@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import Overview from './overview/Overview.jsx';
+
+import ItemLists from './rc/ItemLists.jsx';
+
 import please from '.././request.js'
 
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsList from './questionsAnswers/QuestionsList.jsx'
+
 
 export default () => {
 
@@ -27,8 +31,12 @@ export default () => {
       <h1>loading...</h1>
       <h1>Hello World</h1>
       <Overview/>
+
+      <ItemLists />
+
       <RatingsReviews/>
       <QuestionsList/>
+
     </div>
   )
 }
