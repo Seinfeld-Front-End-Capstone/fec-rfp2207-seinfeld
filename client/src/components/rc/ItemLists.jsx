@@ -2,11 +2,13 @@ import React from 'react';
 import RelatedList from './RelatedList.jsx';
 import OutfitList from './OutfitList.jsx';
 
-export default () => {
+const ItemLists = ({ productId }) => {
   return(
     <div>
-      <RelatedList />
+      <RelatedList id={productId}/>
       <OutfitList />
     </div>
   )
 }
+
+export default ItemLists;

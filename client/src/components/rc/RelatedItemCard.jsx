@@ -1,9 +1,20 @@
 import React from 'react';
+import request from '../../request.js';
+//takes in the item id and populates each element of the card with relevent info.
 
-export default () => {
+const RelatedItemCard = ({ pId }) => {
+  console.log('product info:', request.getProductInfo(pId));
   return (
     <aside>
-      Item Card Here!
+      <img />
+      <img />
+      <h6>category</h6>
+      <h5>product name</h5>
+      <p>a description of the product probably</p>
+      <p><small>price</small></p>
+      <img />
     </aside>
   )
 }
+
+export default RelatedItemCard;
