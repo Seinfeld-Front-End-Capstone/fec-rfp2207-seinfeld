@@ -1,7 +1,7 @@
 import React from 'react';
 import OutfitCard from './OutfitCard.jsx';
 
-var OutfitList = () => {
+export default () => {
   return (
     <div>
       <h5>This will be the list of outfit items!</h5>
@@ -13,4 +13,4 @@ var OutfitList = () => {
   )
 }
 
-export default OutfitList;
+

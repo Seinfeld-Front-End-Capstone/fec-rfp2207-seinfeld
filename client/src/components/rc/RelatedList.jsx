@@ -1,7 +1,7 @@
 import React from 'react';
 import RelatedItemCard from './RelatedItemCard.jsx';
 
-var RelatedList = () => {
+export default () => {
   return (
     <div>
       <h5>This will be the list of related items!</h5>
@@ -13,4 +13,4 @@ var RelatedList = () => {
   )
 }
 
-export default RelatedList;
+
