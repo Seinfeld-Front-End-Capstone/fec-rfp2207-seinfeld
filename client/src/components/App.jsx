@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Overview from './overview/Overview.jsx';
 import ItemLists from './rc/ItemLists.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
-import QuestionsList from './questionsAnswers/QuestionsList.jsx'
+import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
 import please from '.././request.js'
 
 
@@ -17,14 +17,15 @@ const App = () => {
     .catch((err) => console.log(err))
   },[])
 
-  console.log(product)
+  // console.log(product)
+
   return (
     product ?
     <div>
       <h1>buymorethings</h1>
       <Overview productId={product.id}/>
       <ItemLists productId={product.id}/>
-      <QuestionsList/>
+      <QuestionsMaster/>
       <RatingsReviews />
     </div>
     :
