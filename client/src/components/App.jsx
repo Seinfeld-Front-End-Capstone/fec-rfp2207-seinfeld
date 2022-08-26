@@ -19,14 +19,15 @@ export default () => {
     .catch((err) => console.log(err))
   },[])
 
-  console.log(product)
+  // console.log(product)
+
   return (
     product ?
     <div>
       <h1>buymorethings</h1>
       <Overview productId={product.id}/>
       <ItemLists />
-      <QuestionsList/>
+      <QuestionsMaster/>
       <RatingsReviews/>
     </div>
     :
