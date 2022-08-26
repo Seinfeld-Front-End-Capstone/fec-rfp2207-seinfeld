@@ -23,9 +23,9 @@ const App = () => {
     <div>
       <h1>buymorethings</h1>
       <Overview productId={product.id}/>
-      <ItemLists />
+      <ItemLists productId={product.id}/>
       <QuestionsList/>
-      <RatingsReviews/>
+      <RatingsReviews />
     </div>
     :
     <div>
