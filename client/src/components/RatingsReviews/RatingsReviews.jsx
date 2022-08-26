@@ -18,6 +18,14 @@ class RatingsReviews extends React.Component {
     })
   }
 
+  showMoreReview() {
+    let newMax = this.state.maxResults + 2;
+    this.setState({
+      maxResults: newMax,
+      reviewsOnDisplay: ExampleReviews.slice(0, newMax)
+    })
+  }
+
   render() {
     return (
       <div id="RR-ratings-reviews-ctn">
@@ -31,14 +39,7 @@ class RatingsReviews extends React.Component {
           </div>
           <ReviewList reviews={this.state.reviewsOnDisplay}/>
           <div id="more-menu">
-            {this.state.listOfReviews.length > 2 && this.state.maxResults < this.state.listOfReviews.length && <button onClick={() => {
-              let newMax = this.state.maxResults + 2;
-              this.setState({
-                maxResults: newMax,
-                reviewsOnDisplay: ExampleReviews.slice(0, newMax)
-              })
-            }
-            }>MORE REVIEWS</button>}
+            {this.state.maxResults < this.state.listOfReviews.length && <button onClick={this.showMoreReview.bind(this)}>MORE REVIEWS</button>}
             <button>ADD A REVIEW +</button>
 
           </div>

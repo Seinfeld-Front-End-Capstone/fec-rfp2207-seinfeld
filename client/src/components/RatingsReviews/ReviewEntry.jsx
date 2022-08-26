@@ -1,5 +1,6 @@
 import React from 'react';
-// destructure arguments so it's more readable
+import Stars from '../helpers/Stars.jsx'
+
 const ReviewEntry = ({ review }) => {
   let { body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
 
@@ -15,7 +16,7 @@ const emphasize = {
   return (
     <div className="review-ctn" style={divStyle}>
       <div className="review-header">
-        <div>Star rating: {rating}</div>
+        <div>Star rating: {rating} <Stars rating={rating}/></div>
         <div>
           <span>{reviewer_name}</span>
           <span>{date}</span>
