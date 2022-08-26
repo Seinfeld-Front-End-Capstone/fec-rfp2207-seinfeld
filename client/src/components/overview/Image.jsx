@@ -1,29 +1,24 @@
 import React, {useState , useEffect}  from 'react';
+import Thumbnail from './Thumbnail.jsx'
 
 const Images = ({images}) => {
 
   const [indexDisplay, setIndexDisplay] = useState(0)
 
-  const onClick = (e) => {
-    setIndexDisplay(e.target.dataset.key)
-  }
 
   return (
-    <div>
-      <h2> images </h2>
-      <img id='imagedisplay' src={images[indexDisplay].url}/>
-      {images.map((image, index) => {
-        return <img className='thumbnail' onClick={onClick} src={image.thumbnail_url} data-key={index} key={index}/>
-      })}
+    <div id='OVimage'>
+      <div id='OVimageDisplayBox'>
+        <img id='OVimagedisplay' src={images[indexDisplay].url}/>
+      </div>
+      <div id='OVThumbnailSelection'>
+        {images.map((image, index) => {
+          return <Thumbnail thumbnail={image.thumbnail_url} key={index} index={index} setIndexDisplay={setIndexDisplay}/>
+        })}
+      </div>
     </div>
   )
 }
 
 export default Images
 
-/*
-to get images
-https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${product_id}/styles
-
-headers.
-*/
