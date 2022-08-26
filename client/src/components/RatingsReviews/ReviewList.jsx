@@ -3,7 +3,9 @@ import ReviewEntry from './ReviewEntry.jsx';
 
 const ReviewList = (props) => {
   return (
-    props.reviews.map(review => <ReviewEntry review={review}/>)
+    <div id="RR-reviews-ctn">
+      {props.reviews.map(review => <ReviewEntry key={review.review_id} review={review}/>)}
+    </div>
   )
 }
 

@@ -29,7 +29,7 @@ module.exports = {
       url: `/products/${product_id}/styles`,
       method: 'get',
       baseURL: basePath,
-      headers:{Authorization: token},
+      headers:{Authorization: token}
     })
   },
   getCart: () => {
@@ -49,15 +49,6 @@ module.exports = {
       params:{sku_id}
     })
   },
-  // getPhotos: (product_id) => {
-  //   return axios({
-  //     url: `/products/styles`,
-  //     method: 'get',
-  //     baseURL: basePath,
-  //     headers:{Authorization: token},
-  //     params:{product_id}
-  //   })
-  // },
 
   //Related
   getRelated: (product_id) => {

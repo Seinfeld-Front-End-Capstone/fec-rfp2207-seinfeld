@@ -1,44 +1,39 @@
 import React, {useState , useEffect} from 'react';
-// import Image from './image.jsx'
+import Image from './image.jsx'
+import Style from './styles.jsx'
 import please from '../.././request.js'
 
-export default ({productId}) => {
+const Overview = ({productId}) => {
 
   const [product, setProduct] = useState(null);
   const [styles, setStyles] = useState(null);
-  const [images, setImages] = useState(null);
-  const [curStyle, setCurStyle] = useState(null);
+  const [curStyle, setCurStyles] = useState(0);
+
 
   useEffect(() => {
     please.getProductInfo(productId)
     .then((data) => setProduct(data.data))
     .catch((err) => console.log(err))
     please.getStyles(productId)
-    .then((data) => {
-      let styles = data.data.results
-      setStyles(styles)
-      let images = new Map()
-      styles.forEach((style) => {
-        images[style.style_id] = style.photos
-      })
-      setImages(images)
-    })
+    .then((data) => setStyles(data.data.results))
     .catch((err) => console.log(err))
   },[])
 
+
+
   return (
-    product?
+    styles?
     <div>
       <div>
-        {/* <Image images={images} curStyle={curStyle}/> */}
+        <Image images={styles[curStyle].photos}/>
         <div>
-          <span>stars </span>
+          <span>* * * * * </span>
           <span>read all reviews</span>
           <p>{product.category}</p>
           <h2>{product.name}</h2>
-          <p>{product.default_price}</p>
-          {/* <Style/>
-          <Size/>
+          <p>{styles[curStyle].original_price}</p>
+          <Style styles={styles} setCurStyles={setCurStyles}/>
+          {/* <Size/>
           <Quanity/>
           <AddToBag/>
         <Favorite/> */}
@@ -55,3 +50,5 @@ export default ({productId}) => {
   </div>
   )
 }
+
+export default Overview
