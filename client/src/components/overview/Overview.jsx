@@ -1,5 +1,6 @@
 import React, {useState , useEffect} from 'react';
 import Image from './image.jsx'
+import Style from './styles.jsx'
 import please from '../.././request.js'
 
 const Overview = ({productId}) => {
@@ -31,8 +32,8 @@ const Overview = ({productId}) => {
           <p>{product.category}</p>
           <h2>{product.name}</h2>
           <p>{styles[curStyle].original_price}</p>
-          {/* <Style/>
-          <Size/>
+          <Style styles={styles} setCurStyles={setCurStyles}/>
+          {/* <Size/>
           <Quanity/>
           <AddToBag/>
         <Favorite/> */}
