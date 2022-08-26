@@ -1,15 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import Overview from './overview/Overview.jsx';
-
 import ItemLists from './rc/ItemLists.jsx';
-
-import please from '.././request.js'
-
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsList from './questionsAnswers/QuestionsList.jsx'
+import please from '.././request.js'
 
 
-export default () => {
+
+const App = () => {
 
   const [product, setProduct] = useState(null)
 
@@ -27,7 +25,7 @@ export default () => {
       <Overview productId={product.id}/>
       <ItemLists productId={product.id}/>
       <QuestionsList/>
-      <RatingsReviews/>
+      <RatingsReviews />
     </div>
     :
     <div>
@@ -35,3 +33,6 @@ export default () => {
     </div>
   )
 }
+
+
+export default App
