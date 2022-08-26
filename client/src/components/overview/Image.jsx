@@ -21,9 +21,3 @@ const Images = ({images}) => {
 
 export default Images
 
-/*
-to get images
-https://app-hrsei-api.herokuapp.com/api/fec2/rfp/products/${product_id}/styles
-
-headers.
-*/
