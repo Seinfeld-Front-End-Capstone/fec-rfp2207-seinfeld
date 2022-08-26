@@ -1,5 +1,5 @@
 import React from 'react';
-// import star from '/Users/thachdo/Documents/RFP2207/fec-rfp2207-seinfeld/client/src/assets/stars/fullStar.png';
+import Stars from '../helpers/Stars.jsx'
 
 const ReviewEntry = ({ review }) => {
   let { body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
@@ -16,8 +16,7 @@ const emphasize = {
   return (
     <div className="review-ctn" style={divStyle}>
       <div className="review-header">
-      <img width="20" height="20"/>
-        <div>Star rating: {rating}</div>
+        <div>Star rating: {rating} <Stars rating={rating}/></div>
         <div>
           <span>{reviewer_name}</span>
           <span>{date}</span>
