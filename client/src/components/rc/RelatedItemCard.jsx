@@ -13,7 +13,6 @@ const RelatedItemCard = ({ pID }) => {
       <img />
       <h6>category</h6>
       <h5>product name</h5>
-      <p>a description of the product probably</p>
       <p><small>price</small></p>
       <img />
     </aside>
