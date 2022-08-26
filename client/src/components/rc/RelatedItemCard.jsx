@@ -13,16 +13,22 @@ const RelatedItemCard = ({ pID }) => {
     request.getStyles(pID)
       .then((data) => {
         setStyleData(data.data.results[0].photos[0].url)
-        console.log('results:', data.data.results);
+        // console.log('results:', data.data.results);
         if (data.data.results[0].sale_price) {
           setPrice(data.data.results[0].sale_price)
         } else {
           setPrice(data.data.results[0].original_price)
         }
+      })
+      .catch((err) => {
+        alert('This is a RelatedItemCard error:', err);
       });
     request.getProductInfo(pID)
       .then((data) => {
         setProductData(data.data);
+      })
+      .catch((err) => {
+        alert('This is a RelatedItemCard error:', err);
       });
   }, []);
     // need rating stars -- Thach put these somewhere
@@ -31,7 +37,7 @@ const RelatedItemCard = ({ pID }) => {
   return (
     <aside>
       <img src={styleData} height="175"/>
-      <i class="fa-solid fa-star"></i>
+      <i className="fa-solid fa-star"></i>
       <h6>{productData.category}</h6>
       <h5>{productData.name}</h5>
       <p><small>{price}</small></p>
