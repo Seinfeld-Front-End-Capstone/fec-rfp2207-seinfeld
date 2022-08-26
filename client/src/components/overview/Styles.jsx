@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 
 const Styles = ({styles, setCurStyles}) => {
-  console.log('in style', styles)
+
   const onClick = (e) => {
     setCurStyles(e.target.dataset.key)
   }
