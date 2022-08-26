@@ -5,7 +5,7 @@
   "main": "client/src/index.js",
   "scripts": {
     "dev": "webpack server",
-    "build": "webpack && cp -R client/src/assets",
+    "build": "npx webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
