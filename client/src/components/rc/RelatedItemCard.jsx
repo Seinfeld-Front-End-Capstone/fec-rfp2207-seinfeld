@@ -7,11 +7,13 @@ const RelatedItemCard = ({ pID }) => {
   const [styleData, setStyleData] = useState([]);
   const [price, setPrice] = useState([]);
 
+  // ****** what to do if item has no photos??? Bright Future Shades ****** \\
+
   useEffect(() => {
     request.getStyles(pID)
       .then((data) => {
         setStyleData(data.data.results[0].photos[0].url)
-        console.log(data.data.results);
+        console.log('results:', data.data.results);
         if (data.data.results[0].sale_price) {
           setPrice(data.data.results[0].sale_price)
         } else {
@@ -29,7 +31,7 @@ const RelatedItemCard = ({ pID }) => {
   return (
     <aside>
       <img src={styleData} height="175"/>
-      <img />
+      <i class="fa-solid fa-star"></i>
       <h6>{productData.category}</h6>
       <h5>{productData.name}</h5>
       <p><small>{price}</small></p>
