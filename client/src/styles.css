@@ -1,4 +1,22 @@
+/* GLOBAL VARIABLES */
+/* PREFIX YOUR CLASSES AND ID WITH YOUR COMPONENT ABBR. */
+/* EX: RR-review-ctn */
+/* Don't define your own colors, use the variables */
+/* styling should be okay with your own preferences as long as it's within your own container */
+
+/* OVERVIEW */
+
+/* RELATED PRODUCTS */
+
+/* QUESTIONS AND ANSWERS */
+
+/* RATINGS AND REVIEWS */
+
 body {
+  background-color: pink
+}
+
+div {
   color: grey;
   background-color: pink;
 }
@@ -63,5 +81,4 @@ body {
 /* #OVdesc {
 
 } */
-
 

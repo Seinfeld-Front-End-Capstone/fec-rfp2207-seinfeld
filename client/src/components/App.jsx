@@ -24,7 +24,7 @@ const App = () => {
       <Overview productId={product.id}/>
       <ItemLists productId={product.id}/>
       <QuestionsMaster productId={'65635'}/>
-      <RatingsReviews />
+      <RatingsReviews productId={product.id}/>
     </div>
     :
     <div>
