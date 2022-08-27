@@ -40,13 +40,13 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
-  AddToCart: (sku_id) => {
+  AddToCart: (body) => {
     return axios({
       url: `/cart`,
       method: 'post',
       baseURL: basePath,
       headers:{Authorization: token},
-      params:{sku_id}
+      data:body
     })
   },
 
