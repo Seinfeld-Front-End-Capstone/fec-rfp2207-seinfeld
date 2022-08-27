@@ -1,15 +1,28 @@
-import React, {useState , useEffect}  from 'react';
+import React from 'react';
 import Thumbnail from './Thumbnail.jsx'
+import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
 
-const Images = ({images}) => {
+const Images = ({images, indexDisplay, setIndexDisplay}) => {
 
-  const [indexDisplay, setIndexDisplay] = useState(0)
+  const toPrevious = () => {
+    let previous = indexDisplay === 0 ? images.length -1 : indexDisplay --;
+    setIndexDisplay(previous);
+  }
 
+  const toNext = () => {
+    let next = indexDisplay === images.length - 1 ? 0 : indexDisplay ++;
+    setIndexDisplay(next);
+  }
+
+  console.log(images[indexDisplay].url)
+  const currImageStyle = {backgroundImage: `url(${images[indexDisplay].url})`}
 
   return (
     <div id='OVimage'>
       <div id='OVimageDisplayBox'>
-        <img id='OVimagedisplay' src={images[indexDisplay].url}/>
+        <IoIosArrowBack className='leftArrow' onClick={toPrevious}/>
+        <IoIosArrowForward className='rightArrow' onClick={toNext} />
+        <div id='OVimagedisplay' style={currImageStyle}></div>
       </div>
       <div id='OVThumbnailSelection'>
         {images.map((image, index) => {
