@@ -15,8 +15,6 @@ const AvgStarRating = ( ratingsMeta, callback ) => {
 
   average = stars / count;
 
-   // *** round down 2 decimal to .25, .50, or .75 -- actually, it looks like Thach's Stars func does it for me. Ask him about it tomorrow! *** \\
-
   return callback(average);
 }
 

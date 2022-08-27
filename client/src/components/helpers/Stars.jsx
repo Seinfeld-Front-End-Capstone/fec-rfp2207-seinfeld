@@ -6,6 +6,7 @@ import quarterStar from '../../../src/assets/stars/quarterStar.png';
 import noStar from '../../../src/assets/stars/noStar.png';
 
 const Stars = ({ rating }) => {
+  console.log(rating);
   const maxStars = 5;
   let starsArray = [];
   let fullStarCount = Math.floor(rating);

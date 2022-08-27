@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import request from '../../request.js';
 import AvgStarRating from '../helpers/AvgStarRating.jsx';
+import Stars from '../helpers/Stars.jsx';
 //takes in the item id and populates each element of the card with relevent info.
 
 const RelatedItemCard = ({ pID }) => {
@@ -41,6 +42,7 @@ const RelatedItemCard = ({ pID }) => {
         console.log('This is a RelatedItemCard error:', err);
       });
   }, []);
+
     // need rating stars -- Thach put these somewhere
     // need little star button -- Might have to grab from font awesome or something similar
       //on click, the star button opens a pop-up window that shows a comparison between the item on the current overview and the item on the related list.
@@ -56,7 +58,7 @@ const RelatedItemCard = ({ pID }) => {
       <h6>{productData.category}</h6>
       <h5>{productData.name}</h5>
       <p><small>{price}</small></p>
-      <img />
+      <Stars key={starRating} rating={starRating} />
     </aside>
   )
 }
