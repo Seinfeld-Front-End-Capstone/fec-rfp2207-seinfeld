@@ -22,7 +22,7 @@ const RatingsReviews = ({ productId }) => {
 
   const showMoreReview = () => {
     setMaxResults(maxResults + 2);
-    setReviewsOnDisplay(reviews.slice(0, maxResults));
+    setReviewsOnDisplay(reviews.slice(0, maxResults + 2));
   }
 
   return (
