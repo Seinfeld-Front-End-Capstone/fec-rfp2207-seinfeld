@@ -1,9 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 
-const Styles = ({styles, setCurStyles}) => {
+const Styles = ({styles, setStyleIndex}) => {
 
   const onClick = (e) => {
-    setCurStyles(e.target.dataset.key)
+    setStyleIndex(e.target.dataset.key)
   }
 
   return (
