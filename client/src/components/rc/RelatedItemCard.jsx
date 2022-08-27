@@ -15,7 +15,6 @@ const RelatedItemCard = ({ pID }) => {
     request.getStyles(pID)
       .then((data) => {
         setPhotoData(data.data.results[0].photos[0].url)
-        // console.log('results:', data.data.results);
         if (data.data.results[0].sale_price) {
           setPrice(data.data.results[0].sale_price)
         } else {
@@ -37,7 +36,6 @@ const RelatedItemCard = ({ pID }) => {
         AvgStarRating(data.data.ratings, (avg) => {
           return setStarRating(avg);
         })
-        console.log('star rating:', starRating)
       })
       .catch((err) => {
         console.log('This is a RelatedItemCard error:', err);
