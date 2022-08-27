@@ -16,27 +16,32 @@ const AvgStarRating = ( ratingsMeta, callback ) => {
   var four = 0;
   var five = 0;
 
-  for (let key in ratingsMeta) {
+  for (var key in ratingsMeta) {
     var star = ratingsMeta[key];
+    console.log('key:', key,'stars:', star);
     if (key === 1) {
-      one += star * 1;
+      one += (star * 1);
       count += star;
     } else if (key === 2) {
-      two += star * 2;
+      two += (star * 2);
       count += star;
     } else if (key === 3) {
-      three += star * 3;
+      three += (star * 3);
       count += star;
     } else if (key === 4) {
-      four += star * 4;
+      four += (star * 4);
       count += star;
     } else if (key === 5) {
-      five += star * 5;
+      five += (star * 5);
+      console.log('FIVE:', five);
       count += star;
     }
   };
 
   average = one + two + three + four + five / count;
+  console.log("ratingsMeta:", ratingsMeta);
+  console.log('1:', one, '2:', two, '3:', three, '4:', four, '5:', five);
+  console.log('average:', average);
 
   return callback(average);
 }
