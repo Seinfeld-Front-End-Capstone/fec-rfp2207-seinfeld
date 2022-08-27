@@ -5,7 +5,7 @@ import request from '../../request.js';
 const RelatedItemCard = ({ pID }) => {
   request.getProductInfo(pID)
     .then((data) => {
-      console.log('data:', data)
+      // console.log('data:', data)
     })
   return (
     <aside>

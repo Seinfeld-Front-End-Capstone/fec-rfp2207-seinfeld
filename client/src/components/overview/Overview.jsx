@@ -21,7 +21,7 @@ const Overview = ({productId}) => {
   },[])
 
 
-  console.log(styles)
+  // console.log(styles)
   return (
     styles?
     <div id='OVcontainer'>

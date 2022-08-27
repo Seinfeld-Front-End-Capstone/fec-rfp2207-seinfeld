@@ -1,30 +1,16 @@
 import React from 'react';
+import Answer from './Answer.jsx';
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-    // console.log('QUESTION OBJ : ',this.props);
+const Question = ({q}) => {
 
+  // console.log('questions props : ', q.question_body)
 
-  }
-
-  render() {
-    let keys = Object.keys(this.props.q.answers)[0]
-    let answer = this.props.q.answers[keys]
-    let date = this.props.q.answers[keys].date.slice(0, 10)
-    return (
-      <div className='qa-question-card'>
-        <div>Q: {this.props.q.question_body} Helpful? Yes {this.props.q.question_helpfulness}  |  Add Answer</div>
-        <div>
-          A: {answer.body}
-          <span>by {answer['answerer_name']}, {date}  | Helpful? Yes {answer.helpfulness} Report
-            {answer.photos.map((img, i) => (<img src={img} key={i} alt="picture"/>))}
-          </span>
-        </div>
-      </div>
-    )
-  }
+  return (
+    <div className='qa-question-card'>
+      <div>Q: {q.question_body} Helpful? Yes {q.question_helpfulness}  |  Add Answer</div>
+      <Answer q={q}/>
+    </div>
+   )
 }
 
 export default Question;
