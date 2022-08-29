@@ -19,7 +19,7 @@ const formattedDate = moment(date).format('ll');
   return (
     <div className="review-ctn" style={divStyle}>
       <div className="review-header">
-        <div>Star rating: {rating} <Stars rating={rating}/></div>
+        <div><Stars rating={rating}/></div>
         <div>
           <span>{reviewer_name}</span>
           <span>{formattedDate}</span>
