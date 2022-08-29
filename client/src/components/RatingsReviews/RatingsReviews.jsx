@@ -44,7 +44,8 @@ const RatingsReviews = ({ productId }) => {
     return sortedReviews;
   }
 
-  const handleSort = (param) => {
+  const handleSort = (e) => {
+    let param = e.target.value;
     let sortedReviews = sortReviews(reviews, param);
     setReviews(sortedReviews);
     setMaxResults(2);
@@ -63,7 +64,7 @@ const RatingsReviews = ({ productId }) => {
       <div id="RR-reviews-ctn">
         <div id="RR-header-sort">
           <h3>{reviews.length} views, sorted by
-            <select id="RR-sort-param" onChange={(e) => handleSort(e.target.value)}>
+            <select id="RR-sort-param" onChange={handleSort}>
               <option value="relevant">Relevant</option>ß
               <option value="helpful">Helpful</option>
               <option value="newest">Newest</option>
