@@ -4,7 +4,7 @@ import Style from './styles.jsx'
 import Size from './size.jsx'
 import Quantity from './Quantity.jsx'
 import please from '../.././request.js'
-import styledata from './stylesdata.js'
+
 
 const Overview = ({productId}) => {
 
