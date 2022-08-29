@@ -22,18 +22,21 @@ const RatingsReviews = ({ productId }) => {
 
   const showMoreReview = () => {
     setMaxResults(maxResults + 2);
-    setReviewsOnDisplay(reviews.slice(0, maxResults));
+    setReviewsOnDisplay(reviews.slice(0, maxResults + 2));
   }
 
   return (
     <div id="RR-ratings-reviews-ctn">
-      <h1>Section for Ratings and Reviews</h1>
       <div id="RR-breakdown-ctn">
-        Ratings breakdown
+        <h1>Section for Ratings and Reviews</h1>
+        <div>Rating and Stars</div>
+        <p>Percentage of recommends</p>
+        <div>Bar graph of reviews</div>
+        <div>breakdown factors</div>
       </div>
       <div id="RR-reviews-ctn">
         <div id="RR-header-sort">
-          Header and sort
+          <h3>{reviews.length} views, sorted by SORT OPTION</h3>
         </div>
         <ReviewList reviews={reviewsOnDisplay}/>
         <div id="more-menu">

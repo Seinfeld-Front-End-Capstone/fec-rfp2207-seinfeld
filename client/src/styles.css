@@ -4,13 +4,8 @@
 /* Don't define your own colors, use the variables */
 /* styling should be okay with your own preferences as long as it's within your own container */
 
+
 /* OVERVIEW */
-
-/* RELATED PRODUCTS */
-
-/* QUESTIONS AND ANSWERS */
-
-/* RATINGS AND REVIEWS */
 
 body {
   background-color: pink
@@ -116,3 +111,41 @@ div {
 }
 
 
+
+/* RELATED PRODUCTS */
+
+/* QUESTIONS AND ANSWERS */
+
+/* RATINGS AND REVIEWS */
+
+#RR-ratings-reviews-ctn {
+  display: flex;
+  /* temp */
+  border-style: solid;
+}
+
+#RR-breakdown-ctn {
+  padding-left: 20px;
+}
+
+#RR-header-sort {
+  padding-left: 20px;
+}
+#RR-reviews-ctn {
+  padding: 0 20px;
+}
+.review-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#more-menu {
+  display: flex;
+  margin: 20px;
+}
+
+#more-menu button {
+  height: 40px;
+  border-radius: 2px 2px;
+  margin-right: 20px;
+}
