@@ -12,9 +12,10 @@ const RatingsReviews = ({ productId }) => {
   useEffect(() => {
     please.getReviews(productId)
     .then((data) => {
-      console.log(`got review data from server ${data.data.results}`)
-      setReviews(data.data.results);
-      setReviewsOnDisplay(data.data.results.slice(0, maxResults));
+      let reviews = data.data.results;
+      reviews = sortReviews(reviews, 'relevant');
+      setReviews(reviews);
+      setReviewsOnDisplay(reviews.slice(0, maxResults));
     })
     .catch((err) => console.log(err))
   }, [productId],
@@ -25,24 +26,26 @@ const RatingsReviews = ({ productId }) => {
     setReviewsOnDisplay(reviews.slice(0, maxResults + 2));
   }
 
-  const sortReviewBy = (param) => {
+  const sortReviews = (reviews, param) => {
     let sortedReviews = reviews.slice();
     if (param === 'newest') {
-      console.log('sorting by newest')
-      sortedReviews.sort((a, b) =>
-      {return new Date(b.date) - new Date(a.date);
-        // a.date > b.date ? -1 : a.date < b.date ? 1 : 0
-      })
-    } else if (param = 'helpful') {
-      //only counting yes's for now until I find the count for nos
-      console.log('sorting by helpfulness')
-      sortedReviews.sort((a, b) => b.helpfulness - a.helpfulness)
-
+      sortedReviews.sort((a, b) => new Date(b.date) - new Date(a.date));
+    } else if (param === 'helpful') {
+      sortedReviews.sort((a, b) => b.helpfulness - a.helpfulness);
     } else {
-      //relevant by default
+      sortedReviews.sort((a, b) => {
+        //time penalty is 1 pt per month, could be fine-tuned with statistical study of data
+        const timePenalty = (date) => Math.round((new Date() - new Date(date)) / 1000 / 60 / 60 / 24 / 30);
+        let aRelevance = a.helpfulness - timePenalty(a.date);
+        let bRelevance = b.helpfulness - timePenalty(b.date);
+        return bRelevance - aRelevance;
+      })
     }
-    console.log(sortedReviews);
-    // debugger;
+    return sortedReviews;
+  }
+
+  const handleSort = (param) => {
+    let sortedReviews = sortReviews(reviews, param);
     setReviews(sortedReviews);
     setMaxResults(2);
     setReviewsOnDisplay(sortedReviews.slice(0, 2))
@@ -60,7 +63,7 @@ const RatingsReviews = ({ productId }) => {
       <div id="RR-reviews-ctn">
         <div id="RR-header-sort">
           <h3>{reviews.length} views, sorted by
-            <select id="RR-sort-param" onChange={(e) => sortReviewBy(e.target.value)}>
+            <select id="RR-sort-param" onChange={(e) => handleSort(e.target.value)}>
               <option value="relevant">Relevant</option>ß
               <option value="helpful">Helpful</option>
               <option value="newest">Newest</option>
