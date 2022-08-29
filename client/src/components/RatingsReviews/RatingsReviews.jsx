@@ -25,6 +25,29 @@ const RatingsReviews = ({ productId }) => {
     setReviewsOnDisplay(reviews.slice(0, maxResults + 2));
   }
 
+  const sortReviewBy = (param) => {
+    let sortedReviews = reviews.slice();
+    if (param === 'newest') {
+      console.log('sorting by newest')
+      sortedReviews.sort((a, b) =>
+      {return new Date(b.date) - new Date(a.date);
+        // a.date > b.date ? -1 : a.date < b.date ? 1 : 0
+      })
+    } else if (param = 'helpful') {
+      //only counting yes's for now until I find the count for nos
+      console.log('sorting by helpfulness')
+      sortedReviews.sort((a, b) => b.helpfulness - a.helpfulness)
+
+    } else {
+      //relevant by default
+    }
+    console.log(sortedReviews);
+    // debugger;
+    setReviews(sortedReviews);
+    setMaxResults(2);
+    setReviewsOnDisplay(sortedReviews.slice(0, 2))
+  }
+
   return (
     <div id="RR-ratings-reviews-ctn">
       <div id="RR-breakdown-ctn">
@@ -36,7 +59,13 @@ const RatingsReviews = ({ productId }) => {
       </div>
       <div id="RR-reviews-ctn">
         <div id="RR-header-sort">
-          <h3>{reviews.length} views, sorted by SORT OPTION</h3>
+          <h3>{reviews.length} views, sorted by
+            <select id="RR-sort-param" onChange={(e) => sortReviewBy(e.target.value)}>
+              <option value="relevant">Relevant</option>ß
+              <option value="helpful">Helpful</option>
+              <option value="newest">Newest</option>
+            </select>
+          </h3>
         </div>
         <ReviewList reviews={reviewsOnDisplay}/>
         <div id="more-menu">
