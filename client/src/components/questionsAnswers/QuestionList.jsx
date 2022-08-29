@@ -3,13 +3,13 @@ import Question from './Question.jsx';
 
 var QuestionList = (props) => {
 
-  let sliced = props.questions.slice(0, props.length);
+  let sliceQuestions = props.questions.slice(0, props.length);
   // console.log('SLICED : ', sliced);
-  let array = sliced.map((question, i) => {
+  let mappedQuestions = sliceQuestions.map((question, i) => {
     return <Question q={question} key={i}/>
   })
 
-  return <div className='qa-question-list'>{array}</div>
+  return <div className='qa-question-list'>{mappedQuestions}</div>
 }
 
 export default QuestionList;

@@ -1,16 +1,18 @@
-import React from 'react';
-import Answer from './Answer.jsx';
+import React, {useState} from 'react';
+import AnswerList from './AnswerList.jsx';
+// import Answer from './Answer.jsx';
 
 const Question = ({q}) => {
+  const [helpfulness, setHelpfulness] = useState(q.question_helpfulness)
 
-  // console.log('questions props : ', q.question_body)
+  // console.log('QUESTIONS : ', q)
 
   return (
-    <div className='qa-question-card'>
-      <div>Q: {q.question_body} Helpful? Yes {q.question_helpfulness}  |  Add Answer</div>
-      <Answer q={q}/>
+    <div className='qa-question-container'>
+      <div>Q: {q.question_body} Helpful? <span onClick={() => setHelpfulness((prevCount) => prevCount + 1)}>Yes</span> ({helpfulness})  |  Add Answer</div><AnswerList q={q}/>
+
     </div>
-   )
+  )
 }
 
 export default Question;
