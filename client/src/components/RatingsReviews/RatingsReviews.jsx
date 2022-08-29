@@ -24,12 +24,14 @@ const RatingsReviews = ({ productId }) => {
     setReviewsOnDisplay(reviews.slice(0, maxResults + 2));
   }
 
+  const addReviewButton = <button>ADD A REVIEW +</button>;
+
   return (
     <div>
       {reviews.length === 0 ?
       <div>
         <p>Be the first to review this product!</p>
-        <button>ADD A REVIEW +</button>
+        {addReviewButton}
       </div>
       :
       <div id="RR-ratings-reviews-ctn">
@@ -47,7 +49,7 @@ const RatingsReviews = ({ productId }) => {
           <ReviewList reviews={reviewsOnDisplay}/>
           <div id="more-menu">
             {maxResults < reviews.length && <button onClick={showMoreReview}>MORE REVIEWS</button>}
-            <button>ADD A REVIEW +</button>
+            {addReviewButton}
           </div>
         </div>
       </div>
