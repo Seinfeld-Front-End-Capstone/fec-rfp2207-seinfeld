@@ -1,5 +1,6 @@
 import React from 'react';
-import Stars from '../helpers/Stars.jsx'
+import Stars from '../helpers/Stars.jsx';
+import moment from 'moment';
 
 const ReviewEntry = ({ review }) => {
   let { body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
@@ -13,13 +14,15 @@ const emphasize = {
   fontWeight: 'bold'
 }
 
+const formattedDate = moment(date).format('ll');
+
   return (
     <div className="review-ctn" style={divStyle}>
       <div className="review-header">
         <div><Stars rating={rating}/></div>
         <div>
-          <span>{reviewer_name}  </span>
-          <span>{date}</span>
+          <span>{reviewer_name}</span>
+          <span>{formattedDate}</span>
         </div>
       </div>
       <h2>{summary}</h2>
