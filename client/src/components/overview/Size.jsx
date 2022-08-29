@@ -11,7 +11,7 @@ const Size = ({skus, setSkuIndex, skuIndex}) => {
   return (
     <div>
       <select value={skuIndex} onChange={onSelect}>
-      <option value='-1' hidden>Select Qty</option>
+      <option value='-1' hidden>Select Size</option>
         {values.map((value,index) => <option value={index} key={index}>{value.size}</option>)}
       </select>
     </div>

@@ -6,7 +6,6 @@ const Thumbnail = ({thumbnail, setIndexDisplay, index}) => {
     setIndexDisplay(e.target.dataset.key)
   }
 
-
   return (
     <div id='OVthumbnailBox'>
       <img className='OVthumbnail' onClick={onClick} src={thumbnail} data-key={index}/>

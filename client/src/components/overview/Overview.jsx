@@ -4,6 +4,7 @@ import Style from './styles.jsx'
 import Size from './size.jsx'
 import Quantity from './Quantity.jsx'
 import please from '../.././request.js'
+import styledata from './stylesdata.js'
 
 const Overview = ({productId}) => {
 
@@ -12,7 +13,7 @@ const Overview = ({productId}) => {
   const [styleIndex, setStyleIndex] = useState(0);
   const [skuIndex, setSkuIndex] = useState(-1);
   const [indexDisplay, setIndexDisplay] = useState(0);
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
 
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const Overview = ({productId}) => {
     .catch((err) => console.log(err))
   },[])
 
-  console.log({skuIndex, quantity, curStyle: styleIndex})
+  console.log({styledata})
 
 
   return (
