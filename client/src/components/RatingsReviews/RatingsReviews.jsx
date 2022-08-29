@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
 import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
+import Form from './Form.jsx';
 
-const RatingsReviews = ({ productId }) => {
+const RatingsReviews = ({ productId, productName }) => {
 
   const [reviews, setReviews] = useState([]);
   const [reviewsOnDisplay, setReviewsOnDisplay] = useState([]);
@@ -54,6 +55,7 @@ const RatingsReviews = ({ productId }) => {
         </div>
       </div>
       }
+      <Form productName={productName} />
     </div>
   )
 
