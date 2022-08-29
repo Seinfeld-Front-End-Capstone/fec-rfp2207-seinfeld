@@ -13,7 +13,7 @@ const Overview = ({productId}) => {
   const [styleIndex, setStyleIndex] = useState(0);
   const [skuIndex, setSkuIndex] = useState(-1);
   const [indexDisplay, setIndexDisplay] = useState(0);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
 
 
   useEffect(() => {
@@ -25,7 +25,6 @@ const Overview = ({productId}) => {
     .catch((err) => console.log(err))
   },[])
 
-  console.log({styledata})
 
 
   return (
@@ -41,8 +40,12 @@ const Overview = ({productId}) => {
           <h2>{product.name}</h2>
           <p>{styles[styleIndex].original_price}</p>
           <Style styles={styles} setStyleIndex={setStyleIndex}/>
-          <Size setSkuIndex={setSkuIndex} skus={styles[styleIndex].skus} skuIndex={skuIndex}/>
-          <Quantity skus={styles[styleIndex].skus} skuIndex={skuIndex}setQuantity={setQuantity} quantity={quantity}/>
+          <div>
+            <Size setSkuIndex={setSkuIndex} skus={styles[styleIndex].skus} skuIndex={skuIndex}/>
+            <span>
+              <Quantity skus={styles[styleIndex].skus} skuIndex={skuIndex}setQuantity={setQuantity} quantity={quantity}/>
+            </span>
+          </div>
           {/* <AddToBag/>
         <Favorite/> */}
         </div>

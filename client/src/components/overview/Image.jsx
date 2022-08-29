@@ -14,7 +14,6 @@ const Images = ({images, indexDisplay, setIndexDisplay}) => {
     setIndexDisplay(next);
   }
 
-  console.log(images[indexDisplay].url)
   const currImageStyle = {backgroundImage: `url(${images[indexDisplay].url})`}
 
   return (
