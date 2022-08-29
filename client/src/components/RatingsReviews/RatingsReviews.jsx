@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
-import ExampleReviews from './ExampleReviews.js';
+import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
 
 const RatingsReviews = ({ productId }) => {
@@ -12,7 +12,6 @@ const RatingsReviews = ({ productId }) => {
   useEffect(() => {
     please.getReviews(productId)
     .then((data) => {
-      console.log(`got review data from server ${data.data.results}`)
       setReviews(data.data.results);
       setReviewsOnDisplay(data.data.results.slice(0, maxResults));
     })
@@ -26,25 +25,33 @@ const RatingsReviews = ({ productId }) => {
   }
 
   return (
-    <div id="RR-ratings-reviews-ctn">
-      <div id="RR-breakdown-ctn">
-        <h1>Section for Ratings and Reviews</h1>
-        <div>Rating and Stars</div>
-        <p>Percentage of recommends</p>
-        <div>Bar graph of reviews</div>
-        <div>breakdown factors</div>
+    <div>
+      {reviews.length === 0 ?
+      <div>
+        <p>Be the first to review this product!</p>
+        <button>ADD A REVIEW +</button>
       </div>
-      <div id="RR-reviews-ctn">
-        <div id="RR-header-sort">
-          <h3>{reviews.length} views, sorted by SORT OPTION</h3>
+      :
+      <div id="RR-ratings-reviews-ctn">
+        <div id="RR-breakdown-ctn">
+          <h1>Section for Ratings and Reviews</h1>
+          <div>Rating and Stars</div>
+          <p>Percentage of recommends</p>
+          <div>Bar graph of reviews</div>
+          <div>breakdown factors</div>
         </div>
-        <ReviewList reviews={reviewsOnDisplay}/>
-        <div id="more-menu">
-          {maxResults < reviews.length && <button onClick={showMoreReview}>MORE REVIEWS</button>}
-          <button>ADD A REVIEW +</button>
-
+        <div id="RR-reviews-ctn">
+          <div id="RR-header-sort">
+            <h3>{reviews.length} views, sorted by SORT OPTION</h3>
+          </div>
+          <ReviewList reviews={reviewsOnDisplay}/>
+          <div id="more-menu">
+            {maxResults < reviews.length && <button onClick={showMoreReview}>MORE REVIEWS</button>}
+            <button>ADD A REVIEW +</button>
+          </div>
         </div>
       </div>
+      }
     </div>
   )
 
