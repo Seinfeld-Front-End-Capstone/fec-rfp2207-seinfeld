@@ -6,7 +6,7 @@ const someReviews = [
       "recommend": false,
       "response": "Your account is going to be deleted",
       "body": "DON'T IT!!! REPORTED REVIEWS CANT BE SEEN!! OH NOOOOO!",
-      "date": "2022-05-25T00:00:00.000Z",
+      "date": "2022-07-25T00:00:00.000Z",
       "reviewer_name": "Dinthebeen",
       "helpfulness": 35,
       "photos": []
@@ -20,7 +20,7 @@ const someReviews = [
       "body": "Wow this camo onesie looks great on both me & my son! Would definitely recommend if you're the same size as your child!\n",
       "date": "2022-04-14T00:00:00.000Z",
       "reviewer_name": "Cooldude123",
-      "helpfulness": 11,
+      "helpfulness": 36,
       "photos": [
           {
               "id": 2259510,
