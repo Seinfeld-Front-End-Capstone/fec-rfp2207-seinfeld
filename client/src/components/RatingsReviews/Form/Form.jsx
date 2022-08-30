@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import noStar from '../../assets/stars/noStar.png';
-import fullStar from '../../assets/stars/fullStar.png';
+import noStar from '../../../assets/stars/noStar.png';
+import fullStar from '../../../assets/stars/fullStar.png';
 import UploadedPhotos from './UploadedPhotos.jsx';
+import ProdChars from './ProdChars.jsx'
 
 
-const Form = ({ productName }) => {
+const Form = ({ productName, productId }) => {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);
   const [bodyCharCount, setBodyCharCount] = useState(0);
@@ -66,11 +67,13 @@ const Form = ({ productName }) => {
         <label for="no">no</label>
       </div>
 
+      {/* WORKING ON THIS NOW */}
+      <ProdChars productId={productId}/>
+
       <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60"></input><br/>
       <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" onChange={countChar} required></textarea><br/>
       <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
-      {/* WORKING ON THIS*/}
       <label for="upload-photos">Upload photos: </label>
       {photos.length < 5 && <input type="file" id="upload-photos" name="upload-photos" accept="image/*" onChange={handleImageUpload}/>}
       <br/>
