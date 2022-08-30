@@ -235,6 +235,12 @@ div {
   height: auto;
 }
 
+/* crop these into same size thumbnails */
+.RR-uploaded-photos {
+  max-width: 100px;
+  max-height: 100px;
+}
+
 /* RR - Add a review form */
 #RR-overall-rating input {
   width: 0;
