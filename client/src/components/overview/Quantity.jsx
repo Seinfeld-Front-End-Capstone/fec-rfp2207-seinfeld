@@ -2,15 +2,12 @@ import React from 'react';
 
 const Quantity = ({skus, skuIndex, quantity, setQuantity}) => {
 
-
   let count = skuIndex !== -1 ? Object.values(skus)[skuIndex].quantity : 0
   count = count > 15 ? 15 : count;
   const arr = [];
   for (let i = 1; i <= count; i++){
     arr.push(i)
   };
-
-
 
   quantity > count? setQuantity(0) : null
 

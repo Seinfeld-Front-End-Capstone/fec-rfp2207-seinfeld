@@ -34,7 +34,7 @@ const Overview = ({productId}) => {
   },[])
 
   return (
-    styles && product && starsObj?
+    styles && product ?
     <div id='OVcontainer'>
     <div id='Overview'>
       <div id='OVImageNInfo'>
