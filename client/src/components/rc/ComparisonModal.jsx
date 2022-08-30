@@ -22,12 +22,12 @@ const ComparisonModal = ({ toggle, overviewItem, relatedItem, relatedPrice, ovPr
         <table className="RC_modal_table">
           <thead>
             <tr>
-              <th className="RC_modal_td" colSpan="3">Comparing</th>
+              <th className="RC_modal_th" colSpan="3">Comparing</th>
             </tr>
             <tr>
-              <th className="RC_modal_td">{overviewItem.name}</th>
-              <th className="RC_modal_td"></th>
-              <th className="RC_modal_td">{relatedItem.name}</th>
+              <th className="RC_modal_th">{overviewItem.name}</th>
+              <th className="RC_modal_th"></th>
+              <th className="RC_modal_th">{relatedItem.name}</th>
             </tr>
           </thead>
           <tbody>
