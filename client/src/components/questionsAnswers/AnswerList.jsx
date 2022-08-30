@@ -5,30 +5,35 @@ import please from '../.././request.js';
 const AnswerList = ({q}) => {
   const [answers, setAnswers] = useState([])
   const [length, setLength] = useState(2)
-  // console.log('answers : ', answers);
-
   // console.log('question : ', q);
   useEffect(() => {
     please.getAnswers(q.question_id)
     .then((data) => {
       // console.log('data : ', data.data.results);
-      let sorted = data.data.results
-      sorted.sort((a, b) => {
+      let sortedAnswers = data.data.results
+      sortedAnswers.sort((a, b) => {
         return b.helpfulness - a.helpfulness
       })
       // console.log('sorted answers : ', sorted)
-      setAnswers(sorted);
+      setAnswers(sortedAnswers);
     })
   }, [])
 
   // console.log('answers : ', answers)
 
-  let sliced = answers.slice(0, length);
+  let slicedAnswers = answers.slice(0, length);
 
-  let mappedAnswers = sliced.map((answer, i) => {
+  let mappedAnswers = slicedAnswers.map((answer, i) => {
     return <Answer answer={answer} key={i}/>
   })
 
+  // console.log('answers : ', answers);
+
+  if (answers.length <= 2) {
+    return(
+      <div className='qa-answer-container'>{mappedAnswers}</div>
+    )
+  }
   // console.log('answer Length : ', length);
   return (
     <div>
