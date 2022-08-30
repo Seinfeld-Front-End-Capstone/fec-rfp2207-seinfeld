@@ -5,8 +5,12 @@ import OutfitList from './OutfitList.jsx';
 const ItemLists = ({ productId }) => {
   return(
     <div>
-      <RelatedList id={productId}/>
-      <OutfitList />
+      <div className="RC_card_container">
+        <RelatedList id={productId}/>
+      </div>
+      <div className="RC_outfit_container">
+        <OutfitList />
+      </div>
     </div>
   )
 }
