@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Thumbnail = ({thumbnail, setIndexDisplay, index}) => {
+const Thumbnail = ({thumbnail, setDisplayIndex, index}) => {
 
   const onClick = (e) => {
-    setIndexDisplay(e.target.dataset.key)
+    setDisplayIndex(e.target.dataset.key)
   }
 
   return (

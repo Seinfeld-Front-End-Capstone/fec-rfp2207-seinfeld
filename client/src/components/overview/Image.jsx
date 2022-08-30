@@ -2,30 +2,30 @@ import React from 'react';
 import Thumbnail from './Thumbnail.jsx'
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
 
-const Images = ({images, indexDisplay, setIndexDisplay}) => {
+const Images = ({images, displayIndex, setDisplayIndex}) => {
 
   const toPrevious = () => {
-    let previous = indexDisplay === 0 ? images.length -1 : indexDisplay --;
-    setIndexDisplay(previous);
+    let previous = displayIndex === 0 ? images.length -1 : displayIndex --;
+    setDisplayIndex(previous);
   }
 
   const toNext = () => {
-    let next = indexDisplay === images.length - 1 ? 0 : indexDisplay ++;
-    setIndexDisplay(next);
+    let next = displayIndex === images.length - 1 ? 0 : displayIndex ++;
+    setDisplayIndex(next);
   }
 
-  const currImageStyle = {backgroundImage: `url(${images[indexDisplay].url})`}
+  const currImageStyle = {backgroundImage: `url(${images[displayIndex].url})`}
 
   return (
     <div id='OVimage'>
       <div id='OVimageDisplayBox'>
-        <IoIosArrowBack className='leftArrow' onClick={toPrevious}/>
-        <IoIosArrowForward className='rightArrow' onClick={toNext} />
+        <IoIosArrowBack className='OVleftArrow' onClick={toPrevious}/>
+        <IoIosArrowForward className='OVrightArrow' onClick={toNext} />
         <div id='OVimagedisplay' style={currImageStyle}></div>
       </div>
       <div id='OVThumbnailSelection'>
         {images.map((image, index) => {
-          return <Thumbnail thumbnail={image.thumbnail_url} key={index} index={index} setIndexDisplay={setIndexDisplay}/>
+          return <Thumbnail thumbnail={image.thumbnail_url} key={index} index={index} setDisplayIndex={setDisplayIndex}/>
         })}
       </div>
     </div>

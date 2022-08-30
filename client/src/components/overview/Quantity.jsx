@@ -20,7 +20,7 @@ const Quantity = ({skus, skuIndex, quantity, setQuantity}) => {
 
   return (
     <div>
-      <select value={quantity} onChange={onSelect}>
+      <select className='OVselect' value={quantity} onChange={onSelect}>
         <option value='0' hidden > - </option>
         {arr.map((num, index) => <option value={num} key={index}>{num}</option>)}
       </select>
