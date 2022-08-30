@@ -4,7 +4,7 @@ import moment from 'moment';
 import Photos from './Photos.jsx';
 
 const ReviewEntry = ({ review }) => {
-  let { body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
+  let { review_id, body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
 
 //for dev and testing purposes only, will migrate into css file
 const divStyle = {
@@ -20,7 +20,7 @@ const formattedDate = moment(date).format('ll');
   return (
     <div className="review-ctn" style={divStyle}>
       <div className="review-header">
-        <div><Stars rating={rating}/></div>
+        <div><Stars key={review_id} rating={rating}/></div>
         <div>
           <span>{reviewer_name}  </span>
           <span>{formattedDate}</span>
@@ -32,7 +32,7 @@ const formattedDate = moment(date).format('ll');
       {response ? <p style={emphasize}>Response from seller: {response}</p> : null}
       <p>Helpful? <span>Yes</span> ({helpfulness}) <span>No</span> (# missing)</p>
       <div className="RR-photos">
-        {photos && photos.map(photo => <Photos photo={photo}/>)}
+        {photos && photos.map(photo => <Photos key={photo.id} photo={photo}/>)}
       </div>
     </div>
   )

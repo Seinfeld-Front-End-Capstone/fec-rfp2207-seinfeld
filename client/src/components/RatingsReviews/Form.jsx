@@ -13,25 +13,29 @@ const Form = ({ productName }) => {
   const tempRating = (rating) => {
     rated ? null : setRating(rating);
   }
+
+  let ratings = [null, 'Poor', 'Fair', 'Average', 'Good', 'Great'];
+  let starRatings = ratings.map((element, index) => {
+    if (element) {
+      return(
+        <span key={index}>
+          <input type="radio" id={index} name="rating" value={index} required onClick={changeRating} />
+          <label for={index}><img src={rating >= index ? fullStar : noStar} onMouseOver={() => tempRating(index)}/></label>
+        </span>
+      )
+    }
+  })
+
   return (
     <form>
       <h3>Write your review</h3>
       <p>About the {productName}</p>
-      {/* there's a lot of redundant logic here, this could be refactored later, maybe generate it with a for loop */}
       <div id="RR-overall-rating">
-        <p>Overall Rating:</p><span aria-label="required">* </span><br/>
-        {[null, 'Poor', 'Fair', 'Average', 'Good', 'Great'].map((element, index) => {
-          if (element) {
-            return(
-              <div>
-                <input type="radio" id={index} name="rating" value={index} required onClick={changeRating} />
-                <label for={index}><img src={rating >= index ? fullStar : noStar} onMouseOver={() => tempRating(index)}/></label><span>{element}</span>
-              </div>
-            )
-          }
-        })}
+        <p>Overall Rating:<span aria-label="required">*</span></p>
+        <br/>
+        {starRatings}{rated && <span>{ratings[rating]}</span>}
       </div>
-      <div id="RR-form-recommend">Do you recommend this product?<span aria-label="required">* </span><br/>
+      <div id="RR-form-recommend">Do you recommend this product?<span aria-label="required">*</span><br/>
         <input type="radio" id="yes" name="recommend" value="yes" checked required />
         <label for="yes">yes</label>
         <input type="radio" id="no" name="recommend" value="no" />
