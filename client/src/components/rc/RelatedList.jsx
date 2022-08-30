@@ -23,7 +23,7 @@ const RelatedList = ({ id }) => {
 
 
   var iterate = list.map((productID) => {
-    return <RelatedItemCard key={productID} pID={productID} />
+    return <RelatedItemCard key={productID} pID={productID} ogID={id} />
   });
 
   return (
