@@ -7,8 +7,6 @@ const Styles = ({styles, setStyleIndex, setDisplayIndex}) => {
     setDisplayIndex(0)
   }
 
-  console.log({styles})
-
   return (
     <div id='OVStyleBox'>
       {styles.map((style, index) => {
