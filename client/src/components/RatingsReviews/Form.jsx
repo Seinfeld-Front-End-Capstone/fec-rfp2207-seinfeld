@@ -6,6 +6,8 @@ import fullStar from '../../assets/stars/fullStar.png';
 const Form = ({ productName }) => {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);
+  const [bodyCharCount, setBodyCharCount] = useState(0);
+
   const changeRating = (e) => {
     setRating(e.target.value);
     setRated(true);
@@ -14,8 +16,8 @@ const Form = ({ productName }) => {
     rated ? null : setRating(rating);
   }
 
-  let ratings = [null, 'Poor', 'Fair', 'Average', 'Good', 'Great'];
-  let starRatings = ratings.map((element, index) => {
+  const ratings = [null, 'Poor', 'Fair', 'Average', 'Good', 'Great'];
+  const starRatings = ratings.map((element, index) => {
     if (element) {
       return(
         <span key={index}>
@@ -25,6 +27,11 @@ const Form = ({ productName }) => {
       )
     }
   })
+
+  const countChar = () => {
+    let charCount = document.getElementById('RR-body') ? document.getElementById('RR-body').value.length : 0;
+    setBodyCharCount(charCount);
+  }
 
   return (
     <form>
@@ -41,8 +48,10 @@ const Form = ({ productName }) => {
         <input type="radio" id="no" name="recommend" value="no" />
         <label for="no">no</label>
       </div>
-      <input type="submit"  value="submit" />
-
+      <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60"></input><br/>
+      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" onChange={countChar} required></textarea><br/>
+      <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
+      <input type="submit" value="submit" />
     </form>
   )
 }
