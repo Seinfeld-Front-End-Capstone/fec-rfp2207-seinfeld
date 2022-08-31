@@ -272,8 +272,8 @@ div {
   align-self: flex-end;
   font-weight: bold;
   text-align: center;
-  padding-bottom: 8px;
 }
+
 .RR-rating-ctn {
   width: auto;
   display: flex;
@@ -281,18 +281,23 @@ div {
 }
 
 .RR-rating-scores {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.RR-rating-scores {
   width: 120px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  margin: 2px 0;
   text-align: center;
+  height: 120px;
+}
+
+.RR-rating-scores p {
+  height: 36px;
+}
+.RR-rating-scores input {
+  height: 18px;
+}
+
+.RR-rating-scores label {
+  margin: 2px 0;
 }
 
 /* Uploaded photos */
