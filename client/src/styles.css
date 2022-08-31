@@ -254,18 +254,15 @@ div {
 /* RR - Product Characteristics Breakdown */
 .RR-prod-char-rating {
   display: flex;
-  width: 400px;
+  width: 600px;
 }
 
 .RR-prod-char-title {
   width: 100px;
+  align-items: center;
 }
 .RR-rating-ctn {
   width: 100%;
-}
-
-.RR-rating-deets,
-.RR-select-rating {
   display: flex;
   justify-content: space-between;
 }
@@ -274,7 +271,10 @@ div {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
+.RR-rating-scores p, input, label {
+  width: 50px;
+}
 
