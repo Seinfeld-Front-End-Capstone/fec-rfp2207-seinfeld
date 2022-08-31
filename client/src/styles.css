@@ -268,3 +268,24 @@ div {
   border-radius: 2px 2px;
   margin-right: 20px;
 }
+
+.RR-review-photos {
+  width: 100px;
+  height: auto;
+}
+
+/* crop these into same size thumbnails */
+.RR-uploaded-photos {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+/* RR - Add a review form */
+#RR-overall-rating input {
+  width: 0;
+}
+
+#RR-overall-rating img {
+  height: 20px;
+  width: 20px;
+}

@@ -1,4 +1,4 @@
-const ExampleReviews = [
+const someReviews = [
   {
       "review_id": 1274546,
       "rating": 2.8,
@@ -76,4 +76,6 @@ const ExampleReviews = [
   }
 ]
 
-export default ExampleReviews;
+const noReviews = [];
+
+module.exports = { someReviews, noReviews }
