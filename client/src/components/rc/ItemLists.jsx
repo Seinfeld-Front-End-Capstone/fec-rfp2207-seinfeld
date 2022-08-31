@@ -9,7 +9,7 @@ const ItemLists = ({ productId }) => {
         <RelatedList id={productId}/>
       </div>
       <div className="RC_outfit_container">
-        <OutfitList />
+        <OutfitList id={productId}/>
       </div>
     </div>
   )
