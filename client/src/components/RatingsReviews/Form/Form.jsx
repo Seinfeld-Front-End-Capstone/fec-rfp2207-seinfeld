@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import noStar from '../../../assets/stars/noStar.png';
 import fullStar from '../../../assets/stars/fullStar.png';
 import UploadedPhotos from './UploadedPhotos.jsx';
-import ProdChars from './ProdChars.jsx'
+import ProdChars from './ProdChars.jsx';
+import validateForm from './validateForm.js';
 
 
 const Form = ({ productName, productId }) => {
@@ -10,6 +11,21 @@ const Form = ({ productName, productId }) => {
   const [rated, setRated] = useState(false);
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
+  const [form, setForm] = useState({})
+
+  // store form value as state here and call a validate form method
+
+  const handleChange = (e) => {
+    let field = e.target.name;
+    form[field] = e.target.value;
+    console.log(`field changed: ${field}, value: ${e.target.value}`)
+  }
+
+  const handleSubmit = () => {
+    //validate form
+    //send post request
+    //confirm message for user
+  }
 
   const requiredTag = <span aria-label="required">*</span>;
 
@@ -33,8 +49,9 @@ const Form = ({ productName, productId }) => {
     }
   })
 
-  const countChar = () => {
-    let charCount = document.getElementById('RR-body') ? document.getElementById('RR-body').value.length : 0;
+  const countChar = (e) => {
+    let charCount = e.target.value ? e.target.value.length : 0;
+    console.log(charCount);
     setBodyCharCount(charCount);
   }
 
@@ -62,9 +79,9 @@ const Form = ({ productName, productId }) => {
       </div>
 
       <div id="RR-form-recommend">Do you recommend this product? {requiredTag}<br/>
-        <input type="radio" id="yes" name="recommend" value="yes" checked required />
+        <input type="radio" id="yes" name="recommend" value="yes" checked required onChange={handleChange}/>
         <label for="yes">yes</label>
-        <input type="radio" id="no" name="recommend" value="no" />
+        <input type="radio" id="no" name="recommend" value="no" onChange={handleChange}/>
         <label for="no">no</label>
       </div>
 
@@ -72,9 +89,19 @@ const Form = ({ productName, productId }) => {
       <ProdChars productId={productId}/>
 
       <p>Summary:</p>
-      <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50"></input><br/>
+      <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" onChange={handleChange}></input><br/>
+
       <p>Review:</p>
-      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" onChange={countChar} rows="10" cols="44" required></textarea><br/>
+      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body"
+      // onChange={() => {
+      //   countChar.call(this);
+      //   handleChange.call(this);
+      // }}
+      // onChange={handleChange, countChar}
+      onChange={countChar}
+
+
+      rows="10" cols="44" required></textarea><br/>
       <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
       <label for="upload-photos">Upload photos: </label>
@@ -90,7 +117,7 @@ const Form = ({ productName, productId }) => {
       <span><input placeholder="Example: jackson11@email.com" maxLength="60"/></span>
       <p>For authentication reasons, you will not be emailed</p>
 
-      <input type="submit" value="submit" />
+      <input type="submit" value="submit" onClick={handleSubmit}/>
     </form>
   )
 }

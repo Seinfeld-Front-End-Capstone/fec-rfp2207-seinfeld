@@ -322,6 +322,7 @@ div {
   align-self: flex-end;
   font-weight: bold;
   text-align: center;
+  padding-bottom: 12px;
 }
 
 .RR-rating-ctn {
