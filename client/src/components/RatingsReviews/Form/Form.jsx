@@ -25,10 +25,10 @@ const Form = ({ productName, productId }) => {
   const starRatings = ratings.map((element, index) => {
     if (element) {
       return(
-        <span key={index}>
+        <React.Fragment key={index}>
           <input type="radio" id={index} name="rating" value={index} required onClick={changeRating} />
           <label for={index}><img src={rating >= index ? fullStar : noStar} onMouseOver={() => tempRating(index)}/></label>
-        </span>
+        </React.Fragment>
       )
     }
   })
@@ -56,8 +56,9 @@ const Form = ({ productName, productId }) => {
 
       <div id="RR-overall-rating">
         <p>Overall Rating: {requiredTag}</p>
-        <br/>
-        {starRatings}{rated && <span>{ratings[rating]}</span>}
+        <div className="RR-rate-star">
+          {starRatings}{rated && <span>{ratings[rating]}</span>}
+        </div>
       </div>
 
       <div id="RR-form-recommend">Do you recommend this product? {requiredTag}<br/>
@@ -71,9 +72,9 @@ const Form = ({ productName, productId }) => {
       <ProdChars productId={productId}/>
 
       <p>Summary:</p>
-      <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60"></input><br/>
+      <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50"></input><br/>
       <p>Review:</p>
-      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" onChange={countChar} rows="10" cols="50" required></textarea><br/>
+      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" onChange={countChar} rows="10" cols="44" required></textarea><br/>
       <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
       <label for="upload-photos">Upload photos: </label>

@@ -235,13 +235,13 @@ div {
   height: auto;
 }
 
-/* crop these into same size thumbnails */
-.RR-uploaded-photos {
-  max-width: 100px;
-  max-height: 100px;
-}
 
 /* RR - Add a review form */
+
+/* crop these into same size thumbnails */
+#RR-overall-rating {
+  width: 700px;
+}
 #RR-overall-rating input {
   width: 0;
 }
@@ -251,7 +251,16 @@ div {
   width: 20px;
 }
 
+#RR-rate-star {
+  display: flex;
+}
+
 /* RR - Product Characteristics Breakdown */
+
+#RR-summary {
+  width: 365px;
+  text-align: left;
+}
 .RR-prod-char-rating {
   display: flex;
   width: 700px;
@@ -278,7 +287,7 @@ div {
   justify-content: flex-end;
 }
 
-.RR-rating-scores p, input, label {
+.RR-rating-scores {
   width: 120px;
   display: flex;
   justify-content: center;
@@ -286,3 +295,9 @@ div {
   text-align: center;
 }
 
+/* Uploaded photos */
+
+.RR-uploaded-photos {
+  max-width: 100px;
+  max-height: 100px;
+}
