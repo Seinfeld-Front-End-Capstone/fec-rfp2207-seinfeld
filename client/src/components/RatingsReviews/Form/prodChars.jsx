@@ -43,15 +43,22 @@ const ProdChars = ({ productId }) => {
   return (
     <div>
       {chars.map(char => {
-        return <div>
-          <p>rating for {char}</p>
-          <span>{charRatings[char][1]}</span><span>{charRatings[char][5]}</span>
-          {[1, 2, 3, 4, 5].map(rating => {
-            return <div className="RR-select-rating">
-                <input type="radio" value={rating} id={rating} name={char}/>
-                <label for={rating}>{rating}</label>
-              </div>
-          })}
+        return <div className="RR-prod-char-rating">
+          <p className="RR-prod-char-title">{char}: </p>
+          <div className="RR-rating-ctn">
+            <div className="RR-rating-deets">
+              <p>{charRatings[char][1]}</p>
+              <p>{charRatings[char][5]}</p>
+            </div>
+            <div className="RR-select-rating">
+              {[1, 2, 3, 4, 5].map(rating => {
+                return <div className="RR-rating-scores">
+                    <input type="radio" value={rating} id={rating} name={char}/>
+                    <label for={rating}>{rating}</label>
+                  </div>
+              })}
+            </div>
+          </div>
 
         </div>
       })}
