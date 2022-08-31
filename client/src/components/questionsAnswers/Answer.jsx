@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 const Answer = ({answer}) => {
   // console.log('answers props : ', answer)
   const [answerCount, setAnswerCount] = useState(answer.helpfulness)
+  const [isReported, setReported] = useState('Report')
 
   // let q = props.q;
   // let keys = Object.keys(q.answers)[0];
@@ -12,13 +13,26 @@ const Answer = ({answer}) => {
   // }
   let date = answer.date.slice(0, 10);
 
+  // console.log('answer : ', answer);
+  const handleCount = () => {
+    if (answer.helpfulness === answerCount) {
+      setAnswerCount((count) => count + 1)
+    }
+  }
+
+  const handleClick = () => {
+    if (isReported === 'Report') {
+      setReported('Reported')
+    }
+  }
+
   return (
     <div className='qa-answer-container'>
       A: {answer.body}
       <span>by {answer['answerer_name']}, {date}  | Helpful?
-        <span onClick={() => setAnswerCount((prevCount) => prevCount + 1)}>Yes </span>
-          ({answerCount}) Report
-          {answer.photos.map((img, i) => (<img src={img} key={i} alt="picture"/>))}
+        <span onClick={handleCount}>Yes </span>
+          ({answerCount}) | <span onClick={handleClick}>{isReported}</span>
+          {answer.photos.map((img, i) => (<img src={img.url} key={i} alt="picture"/>))}
       </span>
     </div>
   )
