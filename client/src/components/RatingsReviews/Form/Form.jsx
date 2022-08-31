@@ -11,15 +11,6 @@ const Form = ({ productName, productId }) => {
   const [rated, setRated] = useState(false);
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
-  const [form, setForm] = useState({})
-
-  // store form value as state here and call a validate form method
-
-  const handleChange = (e) => {
-    let field = e.target.name;
-    form[field] = e.target.value;
-    console.log(`field changed: ${field}, value: ${e.target.value}`)
-  }
 
   const handleSubmit = () => {
     //validate form
@@ -79,9 +70,9 @@ const Form = ({ productName, productId }) => {
       </div>
 
       <div id="RR-form-recommend">Do you recommend this product? {requiredTag}<br/>
-        <input type="radio" id="yes" name="recommend" value="yes" checked required onChange={handleChange}/>
+        <input type="radio" id="yes" name="recommend" value="yes" checked required />
         <label for="yes">yes</label>
-        <input type="radio" id="no" name="recommend" value="no" onChange={handleChange}/>
+        <input type="radio" id="no" name="recommend" value="no" />
         <label for="no">no</label>
       </div>
 
@@ -89,18 +80,10 @@ const Form = ({ productName, productId }) => {
       <ProdChars productId={productId}/>
 
       <p>Summary:</p>
-      <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" onChange={handleChange}></input><br/>
+      <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
 
       <p>Review:</p>
-      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body"
-      // onChange={() => {
-      //   countChar.call(this);
-      //   handleChange.call(this);
-      // }}
-      // onChange={handleChange, countChar}
-      onChange={countChar}
-
-
+      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body" onChange={countChar}
       rows="10" cols="44" required></textarea><br/>
       <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
@@ -117,7 +100,7 @@ const Form = ({ productName, productId }) => {
       <span><input placeholder="Example: jackson11@email.com" maxLength="60"/></span>
       <p>For authentication reasons, you will not be emailed</p>
 
-      <input type="submit" value="submit" onClick={handleSubmit}/>
+      <input type="submit" value="submit" onClick={()=>{}}/>
     </form>
   )
 }
