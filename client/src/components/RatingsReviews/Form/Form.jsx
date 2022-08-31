@@ -70,8 +70,10 @@ const Form = ({ productName, productId }) => {
       {/* WORKING ON THIS NOW */}
       <ProdChars productId={productId}/>
 
+      <p>Summary:</p>
       <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60"></input><br/>
-      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" onChange={countChar} required></textarea><br/>
+      <p>Review:</p>
+      <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" onChange={countChar} rows="10" cols="50" required></textarea><br/>
       <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
       <label for="upload-photos">Upload photos: </label>
