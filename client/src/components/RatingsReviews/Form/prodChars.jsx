@@ -40,6 +40,8 @@ const ProdChars = ({ productId }) => {
     .catch(err => console.log(err));
   }, [productId]);
 
+  let randomstuff;
+
   return (
     <div>
       {chars.map(char => {
