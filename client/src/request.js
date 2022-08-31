@@ -32,7 +32,7 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
-  getCart: () => {
+  getBag: () => {
     return axios({
       url: `/cart`,
       method: 'get',
@@ -40,7 +40,7 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
-  AddToCart: (body) => {
+  AddToBag: (body) => {
     return axios({
       url: `/cart`,
       method: 'post',

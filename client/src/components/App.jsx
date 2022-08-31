@@ -17,8 +17,6 @@ const App = () => {
     .catch((err) => console.log(err))
   },[])
 
-  // console.log(product)
-
   return (
     product ?
     <div>
