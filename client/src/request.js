@@ -32,7 +32,7 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
-  getCart: () => {
+  getBag: () => {
     return axios({
       url: `/cart`,
       method: 'get',
@@ -40,7 +40,7 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
-  AddToCart: (body) => {
+  AddToBag: (body) => {
     return axios({
       url: `/cart`,
       method: 'post',
@@ -108,13 +108,14 @@ module.exports = {
   //Q&A
   getQuestions: (product_id, page=1, count=5) => {
     return axios({
-      url:`/qa/questions`,
+      url:`/qa/questions/`,
       method: 'get',
       baseURL: basePath,
       headers:{Authorization: token},
       params:{product_id, page, count}
     })
   },
+
   getAnswers: (question_id, page=1, count=5) => {
     return axios({
       url:`/qa/questions/${question_id}/answers`,

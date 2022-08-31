@@ -5,8 +5,6 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
 import please from '.././request.js'
 
-
-
 const App = () => {
 
   const [product, setProduct] = useState(null)
@@ -17,8 +15,6 @@ const App = () => {
     .catch((err) => console.log(err))
   },[])
 
-  // console.log(product)
-
   return (
     product ?
     <div>
@@ -26,7 +22,7 @@ const App = () => {
       <Overview productId={product.id}/>
       <ItemLists productId={product.id}/>
       <QuestionsMaster/>
-      <RatingsReviews productId={product.id}/>
+      <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
     :
     <div>
