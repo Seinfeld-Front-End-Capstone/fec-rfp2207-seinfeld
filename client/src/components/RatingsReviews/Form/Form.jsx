@@ -3,7 +3,7 @@ import noStar from '../../../assets/stars/noStar.png';
 import fullStar from '../../../assets/stars/fullStar.png';
 import UploadedPhotos from './UploadedPhotos.jsx';
 import ProdChars from './ProdChars.jsx';
-import validateForm from './validateForm.js';
+// import validateForm from './validateForm.js';
 
 
 const Form = ({ productName, productId }) => {
@@ -12,10 +12,9 @@ const Form = ({ productName, productId }) => {
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
 
-  const handleSubmit = () => {
-    //validate form
-    //send post request
-    //confirm message for user
+  const handleSubmit = (e) => {
+    const formData = new FormData(e);
+    console.log(formData);
   }
 
   const requiredTag = <span aria-label="required">*</span>;
@@ -42,7 +41,6 @@ const Form = ({ productName, productId }) => {
 
   const countChar = (e) => {
     let charCount = e.target.value ? e.target.value.length : 0;
-    console.log(charCount);
     setBodyCharCount(charCount);
   }
 
@@ -100,7 +98,7 @@ const Form = ({ productName, productId }) => {
       <span><input placeholder="Example: jackson11@email.com" maxLength="60"/></span>
       <p>For authentication reasons, you will not be emailed</p>
 
-      <input type="submit" value="submit" onClick={()=>{}}/>
+      <input type="submit" value="submit" onSubmit={handleSubmit}/>
     </form>
   )
 }

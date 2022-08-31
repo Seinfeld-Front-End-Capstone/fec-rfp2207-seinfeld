@@ -1,5 +1,3 @@
-
-
 const handleSubmit = (productId) => {
   let form = {
     product_id: null,       //integer
