@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
-import ExampleReviews from './ExampleReviews.js';
+import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
+import Form from './Form.jsx';
 
-const RatingsReviews = ({ productId }) => {
+const RatingsReviews = ({ productId, productName }) => {
 
   const [reviews, setReviews] = useState([]);
   const [reviewsOnDisplay, setReviewsOnDisplay] = useState([]);
@@ -26,6 +27,8 @@ const RatingsReviews = ({ productId }) => {
     setReviewsOnDisplay(reviews.slice(0, maxResults + 2));
   }
 
+  const addReviewButton = <button>ADD A REVIEW +</button>;
+
   const sortReviews = (reviews, param) => {
     let sortedReviews = reviews.slice();
     if (param === 'newest') {
@@ -44,7 +47,8 @@ const RatingsReviews = ({ productId }) => {
     return sortedReviews;
   }
 
-  const handleSort = (param) => {
+  const handleSort = (e) => {
+    let param = e.target.value;
     let sortedReviews = sortReviews(reviews, param);
     setReviews(sortedReviews);
     setMaxResults(2);
@@ -52,31 +56,44 @@ const RatingsReviews = ({ productId }) => {
   }
 
   return (
-    <div id="RR-ratings-reviews-ctn">
-      <div id="RR-breakdown-ctn">
-        <h1>Section for Ratings and Reviews</h1>
-        <div>Rating and Stars</div>
-        <p>Percentage of recommends</p>
-        <div>Bar graph of reviews</div>
-        <div>breakdown factors</div>
+    <div>
+      {reviews.length === 0 ?
+      <div>
+        <p>Be the first to review this product!</p>
+        {addReviewButton}
       </div>
-      <div id="RR-reviews-ctn">
-        <div id="RR-header-sort">
-          <h3>{reviews.length} views, sorted by
-            <select id="RR-sort-param" onChange={(e) => handleSort(e.target.value)}>
-              <option value="relevant">Relevant</option>ß
-              <option value="helpful">Helpful</option>
-              <option value="newest">Newest</option>
-            </select>
-          </h3>
+      :
+      <div id="RR-ratings-reviews-ctn">
+        <div id="RR-breakdown-ctn">
+          <h1>Section for Ratings and Reviews</h1>
+          <div>Rating and Stars</div>
+          <p>Percentage of recommends</p>
+          <div>Bar graph of reviews</div>
+          <div>breakdown factors</div>
         </div>
-        <ReviewList reviews={reviewsOnDisplay}/>
-        <div id="more-menu">
-          {maxResults < reviews.length && <button onClick={showMoreReview}>MORE REVIEWS</button>}
-          <button>ADD A REVIEW +</button>
-
+        <div id="RR-reviews-ctn">
+          <div id="RR-header-sort">
+            <h3>{reviews.length} views, sorted by
+              <select id="RR-sort-param" onChange={handleSort}>
+                <option value="relevant">Relevant</option>ß
+                <option value="helpful">Helpful</option>
+                <option value="newest">Newest</option>
+              </select>
+            </h3>
+          </div>
+          <div id="RR-reviews-ctn">
+            <div id="RR-header-sort">
+              <h3>{reviews.length} views, sorted by SORT OPTION</h3>
+            </div>
+            <ReviewList reviews={reviewsOnDisplay}/>
+            <div id="more-menu">
+              {maxResults < reviews.length && <button onClick={showMoreReview}>MORE REVIEWS</button>}
+              {addReviewButton}
+            </div>
+          </div>
         </div>
-      </div>
+      </div>}
+      <Form productName={productName} />
     </div>
   )
 

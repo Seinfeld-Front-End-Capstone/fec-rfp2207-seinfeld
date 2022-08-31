@@ -1,30 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
+import AnswerList from './AnswerList.jsx';
+// import Answer from './Answer.jsx';
 
-class Question extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-    // console.log('QUESTION OBJ : ',this.props);
+const Question = ({q}) => {
+  // console.log('question : ', q);
+  const [helpfulness, setHelpfulness] = useState(q.question_helpfulness)
 
-
+  const handleClick = () => {
+    if (q.question_helpfulness === helpfulness) {
+      setHelpfulness((prevCount) => prevCount + 1)
+    }
   }
 
-  render() {
-    let keys = Object.keys(this.props.q.answers)[0]
-    let answer = this.props.q.answers[keys]
-    let date = this.props.q.answers[keys].date.slice(0, 10)
-    return (
-      <div className='qa-question-card'>
-        <div>Q: {this.props.q.question_body} Helpful? Yes {this.props.q.question_helpfulness}  |  Add Answer</div>
-        <div>
-          A: {answer.body}
-          <span>by {answer['answerer_name']}, {date}  | Helpful? Yes {answer.helpfulness} Report
-            {answer.photos.map((img, i) => (<img src={img} key={i} alt="picture"/>))}
-          </span>
-        </div>
-      </div>
-    )
-  }
+  return (
+    <div className='qa-question-container'>
+      <div>Q: {q.question_body} Helpful? <span onClick={handleClick}>Yes</span> ({helpfulness})  |  Add Answer</div><AnswerList q={q}/>
+    </div>
+  )
 }
 
 export default Question;
