@@ -5,7 +5,6 @@
 /* styling should be okay with your own preferences as long as it's within your own container */
 
 
-/* OVERVIEW */
 
 body {
   background-color: pink
@@ -16,6 +15,7 @@ div {
   background-color: pink;
 }
 
+/* OVERVIEW */
 
 #OVcontainer {
   display: flex;
@@ -40,6 +40,45 @@ div {
 
 #OVInfo {
   height: 100%;
+}
+
+#OVStyleBox {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  padding: 10px;
+}
+
+.OVstyles {
+  border-radius: 50%;
+  background-color: white;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 3px solid black;
+}
+
+#OVsizeNQty {
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 5px;
+  height: 40px;
+}
+
+.OVselect {
+  height: 100%;
+  width: 100%;
+  font-size: larger;
+}
+
+#OVAddToBag {
+  padding: 10px;
+  width: 300px;
+  margin: 10px 0px;
 }
 
 #OVimage {
@@ -86,9 +125,11 @@ div {
 #OVdesc {
   display: grid;
   grid-template-columns: 4fr 1fr;
+  grid-column-gap: 5px;
 }
 
-.leftArrow {
+.OVleftArrow {
+  height: 100%;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
@@ -99,7 +140,8 @@ div {
   cursor: pointer;
 }
 
-.rightArrow {
+.OVrightArrow {
+  height: 100%;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
@@ -150,33 +192,30 @@ div {
   margin-bottom: 2px;
 } */
 
-.RC_modal {
-  width: 100px;
-  height: 50px;
-  position:fixed;
-  top: calc(50% - 50px);
-  left: calc(50% - 50px);
-  background-color: rgba(0,0,0,0.25);
+.RC_list_item {
+  list-style-type: none;
 }
 
-.RC_show {
-  visibility: visible;
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
-  display: flexbox;
-}
+
 
 .RC_modal_content {
   background-color: white;
-  position: absolute;
-  top: 20%;
-  left: 30%;
-  width: 40%;
+  position: fixed;
+  width: 60%;
+  top: calc(25% - 50px);
+  left: calc(25% - 50px);
   padding: 20px;
   border-radius: 5px;
-  border: 2px solid black;
+  display: flexbox;
+  box-shadow: 0 4px 8px 0 rgba(99, 29, 29, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .RC_modal_table {
+  border: 1px solid #333;
+}
+
+.RC_modal_th {
+  text-align: center;
   border: 1px solid #333;
 }
 
@@ -228,4 +267,25 @@ div {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
+}
+
+.RR-review-photos {
+  width: 100px;
+  height: auto;
+}
+
+/* crop these into same size thumbnails */
+.RR-uploaded-photos {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+/* RR - Add a review form */
+#RR-overall-rating input {
+  width: 0;
+}
+
+#RR-overall-rating img {
+  height: 20px;
+  width: 20px;
 }

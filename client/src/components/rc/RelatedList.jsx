@@ -34,7 +34,7 @@ const RelatedList = ({ id }) => {
   return (
     <div>
       <h6>Related Items</h6>
-      <ul>
+      <ul className="RC_related_list">
        {iterate}
       </ul>
     </div>

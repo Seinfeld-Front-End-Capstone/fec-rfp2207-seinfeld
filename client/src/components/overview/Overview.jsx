@@ -2,8 +2,13 @@ import React, {useState , useEffect} from 'react';
 import Image from './image.jsx'
 import Style from './styles.jsx'
 import Size from './size.jsx'
-import Quantity from './Quantity.jsx'
+import Quantity from './quantity.jsx'
+import Price from './price.jsx'
+import AddToBag from './AddToBag.jsx'
+import Stars from '.././helpers/Stars.jsx'
+import AvgStarRating from '.././helpers/AvgStarRating.jsx'
 import please from '../.././request.js'
+
 
 const Overview = ({productId}) => {
 
@@ -11,8 +16,9 @@ const Overview = ({productId}) => {
   const [styles, setStyles] = useState(null);
   const [styleIndex, setStyleIndex] = useState(0);
   const [skuIndex, setSkuIndex] = useState(-1);
-  const [indexDisplay, setIndexDisplay] = useState(0);
+  const [displayIndex, setDisplayIndex] = useState(0);
   const [quantity, setQuantity] = useState(0);
+  const [starsObj, setStarsObj] = useState(0)
 
 
   useEffect(() => {
@@ -22,25 +28,31 @@ const Overview = ({productId}) => {
     please.getStyles(productId)
     .then((data) => setStyles(data.data.results))
     .catch((err) => console.log(err))
+    please.getReviewMeta(productId)
+    .then((data) => setStarsObj(data.data.ratings))
+    .catch((err) => console.log(err))
   },[])
 
   return (
-    styles && product?
+    styles && product && starsObj?
     <div id='OVcontainer'>
     <div id='Overview'>
       <div id='OVImageNInfo'>
-        <Image images={styles[styleIndex].photos} indexDisplay={indexDisplay} setIndexDisplay={setIndexDisplay} />
+        <Image images={styles[styleIndex].photos} displayIndex={displayIndex} setDisplayIndex={setDisplayIndex} />
         <div id='OVInfo'>
-          <span>* * * * * </span>
+          {AvgStarRating(starsObj, (avg) => <Stars rating={avg}/>)}
           <span>read all reviews</span>
           <p>{product.category}</p>
           <h2>{product.name}</h2>
-          <p>{styles[styleIndex].original_price}</p>
-          <Style styles={styles} setStyleIndex={setStyleIndex}/>
-          <Size setSkuIndex={setSkuIndex} skus={styles[styleIndex].skus} skuIndex={skuIndex}/>
-          <Quantity skus={styles[styleIndex].skus} skuIndex={skuIndex}setQuantity={setQuantity} quantity={quantity}/>
-          {/* <AddToBag/>
-        <Favorite/> */}
+          <Price curStyle={styles[styleIndex]} />
+          <p>selected style : {styles[styleIndex].name}</p>
+          <Style styles={styles} setStyleIndex={setStyleIndex} setDisplayIndex={setDisplayIndex}/>
+          <div id='OVsizeNQty'>
+            <Size setSkuIndex={setSkuIndex} skus={styles[styleIndex].skus} skuIndex={skuIndex}/>
+            <Quantity skus={styles[styleIndex].skus} skuIndex={skuIndex}setQuantity={setQuantity} quantity={quantity}/>
+          </div>
+          <AddToBag styles={styles} styleIndex={styleIndex} skuIndex={skuIndex} quantity={quantity}/>
+        {/* <Favorite/> */}
         </div>
       </div>
       <div id='OVdesc'>
