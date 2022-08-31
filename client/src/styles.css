@@ -192,11 +192,22 @@ div {
   margin-bottom: 2px;
 } */
 
+.RC_outfit_card_container {
+  list-style-type: none;
+}
+
 .RC_list_item {
   list-style-type: none;
 }
 
-
+.RC_outfit_card_container {
+  box-sizing: border-box;
+  flex-direction: row;
+  width: 25%;
+  background-color: white;
+  display: flexbox;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
 
 .RC_modal_content {
   background-color: white;
