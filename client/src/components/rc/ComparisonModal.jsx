@@ -22,19 +22,34 @@ const ComparisonModal = ({ toggle, overviewItem, relatedItem, relatedPrice, ovPr
         <table className="RC_modal_table">
           <thead>
             <tr>
-              <th className="RC_modal_td" colSpan="3">Item Comparison</th>
+              <th className="RC_modal_th" colSpan="3">Comparing</th>
             </tr>
             <tr>
-              <th className="RC_modal_td">{overviewItem.name}</th>
-              <th className="RC_modal_td"></th>
-              <th className="RC_modal_td">{relatedItem.name}</th>
+              <th className="RC_modal_th">{overviewItem.name}</th>
+              <th className="RC_modal_th"></th>
+              <th className="RC_modal_th">{relatedItem.name}</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td className="RC_modal_td">{overviewItem.category}</td>
+              <td className="RC_modal_td">Category</td>
+              <td className="RC_modal_td">{relatedItem.category}</td>
+            </tr>
+            <tr>
               <td className="RC_modal_td">${ovPrice}</td>
               <td className="RC_modal_td">Price</td>
               <td className="RC_modal_td">${relatedPrice}</td>
+            </tr>
+            <tr>
+              <td className="RC_modal_td">{overviewItem.slogan}</td>
+              <td className="RC_modal_td">Slogan</td>
+              <td className="RC_modal_td">{relatedItem.slogan}</td>
+            </tr>
+            <tr>
+              <td className="RC_modal_td">{overviewItem.description}</td>
+              <td className="RC_modal_td">Description</td>
+              <td className="RC_modal_td">{relatedItem.description}</td>
             </tr>
               {overviewItem.features.map((feat, index) => {
                 return (

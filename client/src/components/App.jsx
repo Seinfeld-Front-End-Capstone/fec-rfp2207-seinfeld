@@ -15,16 +15,14 @@ const App = () => {
     .catch((err) => console.log(err))
   },[])
 
-  // console.log(product)
-
   return (
     product ?
     <div>
       <h1>buymorethings</h1>
       <Overview productId={product.id}/>
       <ItemLists productId={product.id}/>
-      <QuestionsMaster productId={65635}/>
-      <RatingsReviews productId={product.id}/>
+      <QuestionsMaster/>
+      <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
     :
     <div>

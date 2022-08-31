@@ -82,11 +82,8 @@ const RelatedItemCard = ({ pID, ogID }) => {
     setPop(true);
   }
 
-  // console.log('pop:', pop);
-
-
   return (
-    <div>
+    <li className="RC_list_item">
       <aside className="RC_card">
         <img className="RC_card_photo" src={photoData} height="225" />
         <i className="fa-solid fa-star" onClick={handlePopToggle}></i>
@@ -98,7 +95,7 @@ const RelatedItemCard = ({ pID, ogID }) => {
         <Stars rating={starRating} />
       </aside>
       {pop ? <ComparisonModal toggle={setPop} overviewItem={ovItem} relatedItem={productData} relatedPrice={price} ovPrice={ovItemPrice}/> : null}
-    </div>
+    </li>
 
   );
 };

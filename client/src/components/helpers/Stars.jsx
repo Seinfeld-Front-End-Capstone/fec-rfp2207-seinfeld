@@ -18,13 +18,13 @@ const Stars = ({ rating }) => {
   }
 
   for (let i = 0; i < fullStarCount; i++) {
-    starsArray.push(<img src={fullStar} width="20" height="20"/>)
+    starsArray.push(<img key={starsArray.length} src={fullStar} width="20" height="20"/>)
   }
   if(partialCount !== '0.00') {
-    starsArray.push(<img src={partialStars[partialCount]} width="20" height="20"/>)
+    starsArray.push(<img key={starsArray.length} src={partialStars[partialCount]} width="20" height="20"/>)
   }
   while (starsArray.length < maxStars) {
-    starsArray.push(<img src={noStar} width="20" height="20"/>)
+    starsArray.push(<img key={starsArray.length} src={noStar} width="20" height="20"/>)
   }
 
   return (

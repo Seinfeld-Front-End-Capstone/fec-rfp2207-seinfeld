@@ -1,15 +1,16 @@
 import React from 'react';
 
-const Styles = ({styles, setStyleIndex}) => {
+const Styles = ({styles, setStyleIndex, setDisplayIndex}) => {
 
   const onClick = (e) => {
     setStyleIndex(e.target.dataset.key)
+    setDisplayIndex(0)
   }
 
   return (
-    <div>
+    <div id='OVStyleBox'>
       {styles.map((style, index) => {
-        return <button className='styles' onClick={onClick} data-key={index} key={index}>{style.name}</button>
+        return <div className='OVstyles' title={style.name} onClick={onClick} data-key={index} key={index}>{index}</div>
       })}
     </div>
   )
