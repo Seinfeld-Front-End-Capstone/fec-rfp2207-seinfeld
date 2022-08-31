@@ -1,37 +1,79 @@
-import React from 'react';
-import QuestionList from './QuestionList.jsx'
-import data from './exampleData.js';
-// import QuestionsList from './QuestionsList.jsx'
+import React, {useState, useEffect} from 'react';
+import QuestionList from './QuestionList.jsx';
+import please from '../.././request.js';
 
-class QuestionsMaster extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = { data: data}
+const QuestionsMaster = ({productId}) => {
+  const [question, setQuestion] = useState([]);
+  const [initial, setInitial] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  const [input, setInput] = useState('');
+  const [length, setLength] = useState(2);
+
+  useEffect(() => {
+    please.getQuestions(productId)
+    .then((data) => {
+      // console.log('data use effect : ', data.data)
+      let sortedQuestions = data.data.results
+      sortedQuestions.sort((a, b) => {
+        return b.question_helpfulness - a.question_helpfulness
+      })
+      setQuestion(sortedQuestions)
+      setInitial(sortedQuestions)
+      // console.log('sorted : ', sorted)
+    })
+  }, [])
+
+  // console.log('initial : ', initial);
+
+  const doSearch = (word) => {
+    // console.log('initial questions : ', initial);
+    let questions = initial;
+    // console.log(questions);
+    let filtered = [];
+    questions.forEach((q) => {
+      // console.log('input : ', input)
+      if (word.length >= 3 && q.question_body.toLowerCase().includes(word.toLowerCase())) {
+        filtered.push(q)
+      }
+    })
+    filtered.sort((a, b) => {
+      return b.question_helpfulness - a.question_helpfulness
+    })
+    // console.log('ARRAY : ', filtered)
+    word.length < 3 ? setQuestion(initial) : setQuestion(filtered)
   }
 
-  render() {
-    return (
-      <div className='qa-qa-container'>
-        <h4>Questions & Answers</h4>
-        <form>
-            {/* onChange, state will update as user types in query
-            onSubmit, when user clicks search button, calls a function that finds data that matches query and renders */}
-          <div className='search-bar'>
-            <input type='text' placeholder='Have a question? Search for answers...'/>
+  const onSubmit = (e) => {
+    e.preventDefault()
+    doSearch(input)
+  }
+
+  return (
+    <div className='qa-qa-master'>
+      <h2>Questions & Answers</h2>
+      {initial.length ? (
+        <div className='qa-search-bar'>
+          <form onSubmit={onSubmit}>
+            <input type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
+              setInput(e.target.value)
+              doSearch(e.target.value)
+              }}/>
             <button type='submit'>Search Icon</button>
-          </div>
-          <QuestionList questions={this.state.data}/>
-
-          {/* Question List goes here
-          conditional rendering: displays first four questions if there are multiple reviews to display
-          questions are ordered by helpfulness
-          two or less only displays two reviews */}
-
-        </form>
-        {/* conditionally render "more answered questions" button if there are two or more reviews */}
-      </div>
-    )
-  }
+          </form>
+          <QuestionList questions={question} length={length}/>
+          { length < question.length ?
+             <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
+            :
+             <button onClick={() => setLength(2)}>Collapse Questions</button>
+          }
+          <button>Add A Question</button>
+        </div>
+       ) : (
+        <button>Add A Question</button>
+       )
+      }
+    </div>
+  )
 }
 
 export default QuestionsMaster;

@@ -5,8 +5,6 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
 import please from '.././request.js'
 
-
-
 const App = () => {
 
   const [product, setProduct] = useState(null)
