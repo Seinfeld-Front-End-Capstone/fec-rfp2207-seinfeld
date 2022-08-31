@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-const OutfitCard = () => {
+const OutfitCard = ({ productID }) => {
   return (
     <aside>
       Outfit Card Here!
