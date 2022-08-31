@@ -8,9 +8,14 @@ const OutfitList = ({ id }) => {
   const [outfit, setOutfit] = useState([]);
   const [cardCount, setCardCount] = useState(0);
 
+
+  useEffect(() => {
+    deleteCard();
+  },[])
+
   /* adds a new card to the list */
   const addOutfit = outfit.map((item) => {
-    return <li key={item}  className="RC_outfit_card_container"><OutfitCard productID={id} /></li>
+    return <li key={item}  className="RC_outfit_card_container"><OutfitCard productID={id} deleteCard={deleteCard}/></li>
   });
 
   /* handles the + button being clicked */
@@ -22,11 +27,14 @@ const OutfitList = ({ id }) => {
     setOutfit(prevOutfit => [...prevOutfit, cardCount]);
   }
 
-  console.log("counter:", cardCount);
+  console.log('cardCounter:', cardCount);
   console.log('outfit:', outfit);
 
-
   //add a function that deletes a card when X button is clicked -- delete from state
+  const deleteCard = () => {
+    setOutfit([...outfit.splice(cardCount - 1, 1)]);
+  }
+
 
 
   return (

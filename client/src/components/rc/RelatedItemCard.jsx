@@ -82,8 +82,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     setPop(true);
   }
 
-  console.log('pop:', pop);
-
   return (
     <li className="RC_list_item">
       <aside className="RC_card">
