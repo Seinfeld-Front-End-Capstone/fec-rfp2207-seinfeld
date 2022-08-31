@@ -5,8 +5,6 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
 import please from '.././request.js'
 
-
-
 const App = () => {
 
   const [product, setProduct] = useState(null)
@@ -16,8 +14,6 @@ const App = () => {
     .then((data) => setProduct(data.data[0]))
     .catch((err) => console.log(err))
   },[])
-
-  // console.log(product)
 
   return (
     product ?

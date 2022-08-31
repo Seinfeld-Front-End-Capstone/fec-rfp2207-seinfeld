@@ -22,6 +22,11 @@ const RelatedList = ({ id }) => {
   }, [])
 
 
+
+
+  // console.log('State:', list);
+
+
   var iterate = list.map((productID) => {
     return <RelatedItemCard key={productID} pID={productID} ogID={id} />
   });
@@ -29,7 +34,7 @@ const RelatedList = ({ id }) => {
   return (
     <div>
       <h6>Related Items</h6>
-      <ul>
+      <ul className="RC_related_list">
        {iterate}
       </ul>
     </div>
