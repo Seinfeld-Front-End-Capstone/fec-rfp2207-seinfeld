@@ -13,8 +13,23 @@ const Form = ({ productName, productId }) => {
   const [photos, setPhotos] = useState([]);
 
   const handleSubmit = (e) => {
-    const formData = new FormData(e);
-    console.log(formData);
+    console.log('trying to submit form')
+    let formData = {
+      product_id: productId,
+      characteristics: {}
+    };
+    let form = document.getElementById('RR-form');
+    const userSubmission = new FormData(form);
+    let characteristics = ['Size', 'Width', 'Comfort', 'Quality', 'Length', 'Fit'];
+    for (const [key, value] of userSubmission) {
+      if (characteristics.includes(key)) {
+        formData.characteristics[[key]] = value;
+      } else {
+        formData[[key]] = value;
+      }
+    }
+    formData.photos = photos;
+    console.log(formData)
   }
 
   const requiredTag = <span aria-label="required">*</span>;
@@ -56,7 +71,7 @@ const Form = ({ productName, productId }) => {
   }
 
   return (
-    <form>
+    <form id="RR-form">
       <h3>Write your review</h3>
       <p>About the {productName}</p>
 
@@ -86,19 +101,19 @@ const Form = ({ productName, productId }) => {
       <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
       <label for="upload-photos">Upload photos: </label>
-      {photos.length < 5 && <input type="file" id="upload-photos" name="upload-photos" accept="image/*" onChange={handleImageUpload}/>}
+      {photos.length < 5 && <input type="file" id="upload-photos" name="photos" accept="image/*" onChange={handleImageUpload}/>}
       <br/>
       {photos.map(photo => <UploadedPhotos photo={photo}/>)}
 
       <p>What is your nickname:  {requiredTag}</p>
-      <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" required />
+      <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
       <p>For privacy reasons, do not use your full name or email address</p>
 
       <p>Your Email: {requiredTag}</p>
-      <span><input placeholder="Example: jackson11@email.com" maxLength="60"/></span>
+      <span><input placeholder="Example: jackson11@email.com" maxLength="60" name="email"/></span>
       <p>For authentication reasons, you will not be emailed</p>
 
-      <input type="submit" value="submit" onSubmit={handleSubmit}/>
+      <input type="button" value="submit" onClick={handleSubmit}/>
     </form>
   )
 }
