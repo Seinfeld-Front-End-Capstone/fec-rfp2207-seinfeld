@@ -17,14 +17,12 @@ const Form = ({ productName, productId }) => {
   useEffect(() => {
     please.getReviewMeta(productId)
     .then(data => {
-      // console.log('chars is', data.data.characteristics)
       setChars(Object.keys(data.data.characteristics));
     })
     .catch(err => console.log(err));
   }, [productId]);
 
   const handleSubmit = (e) => {
-    // console.log('trying to submit form')
     let formData = {
       product_id: productId,
       characteristics: {}

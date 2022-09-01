@@ -9,6 +9,7 @@ const RatingsReviews = ({ productId, productName }) => {
   const [reviews, setReviews] = useState([]);
   const [reviewsOnDisplay, setReviewsOnDisplay] = useState([]);
   const [maxResults, setMaxResults] = useState(2);
+  const [formMode, setFormMode] = useState(false);
 
   useEffect(() => {
     please.getReviews(productId)
@@ -27,7 +28,13 @@ const RatingsReviews = ({ productId, productName }) => {
     setReviewsOnDisplay(reviews.slice(0, maxResults + 2));
   }
 
-  const addReviewButton = <button>ADD A REVIEW +</button>;
+  const toggleForm = () => {
+    console.log('open form')
+    setFormMode(!formMode);
+  }
+
+  const addReviewButton = <button onClick={toggleForm}>ADD A REVIEW +</button>;
+
 
   const sortReviews = (reviews, param) => {
     let sortedReviews = reviews.slice();
@@ -93,7 +100,7 @@ const RatingsReviews = ({ productId, productName }) => {
           </div>
         </div>
       </div>}
-      <Form productName={productName} productId={productId} />
+      {formMode && <Form productName={productName} productId={productId} />}
     </div>
   )
 
