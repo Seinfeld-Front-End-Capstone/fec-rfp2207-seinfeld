@@ -54,16 +54,36 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
 
 
   return (
-    <aside key={itemNo} className="RC_outfit_card_container">
-      <img className="RC_outfit_photo" src={photoData} height="225" />
-      <i className="fa-solid fa-circle-xmark" onClick={handleDelete}></i>
-      <h6 className="RC_product_category">{productData.category}</h6>
-      <h5 className="RC_product_name">{productData.name}</h5>
-      <p>
-        <small className="RC_product_price">{price}</small>
-      </p>
-      <Stars rating={starRating} />
-    </aside>
+    <div
+    key={itemNo}
+    className="RC_outfit_card_container">
+      <aside>
+        <img
+        className="RC_outfit_photo" src={photoData} height="225"
+        />
+        <i
+        className="fa-solid fa-circle-xmark"
+        onClick={handleDelete}>
+        </i>
+        <h6
+        className="RC_product_category">
+          {productData.category}
+        </h6>
+        <h5
+        className="RC_product_name">
+          {productData.name}
+        </h5>
+        <p>
+          <small
+          className="RC_product_price">
+            {price}
+          </small>
+        </p>
+        <Stars
+        rating={starRating}
+        />
+      </aside>
+    </div>
   )
 }
 

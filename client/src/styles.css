@@ -199,7 +199,7 @@ input {
   position: relative;
 }
 
-.fa-solid {
+.compare_star {
   position: absolute;
   top: 4px;
   right: 4px;
@@ -216,17 +216,24 @@ input {
 
 /* ** Outfit ** */
 
-.RC_outfit_card_container {
-  list-style-type: none;
-}
+
 
 .RC_outfit_card_container {
+  list-style-type: none;
+  position: relative;
   box-sizing: border-box;
   flex-direction: row;
   width: 25%;
   background-color: white;
   display: flexbox;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.plus {
+  size-adjust: 400%;
+  position: absolute;
+  top: 50px;
+  right: 30px;
 }
 
 /* Related List Modal */

@@ -86,7 +86,7 @@ const RelatedItemCard = ({ pID, ogID }) => {
             height="225"
           />
           <i
-            className="fa-solid fa-star"
+            className="fa-solid fa-star compare_star"
             onClick={handlePopToggle}>
           </i>
         </div>
