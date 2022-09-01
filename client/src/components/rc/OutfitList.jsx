@@ -12,19 +12,20 @@ const OutfitList = ({ id }) => {
 
   /* adds a new card to the list */
   const addOutfit = outfit.map((item) => {
-    return <OutfitCard key={item} itemNo={item} productID={id}  />
+    return <OutfitCard key={item} itemNo={item} productID={id} deleteCard={setOutfit} curOutfit={outfit} />
   });
 
   /* handles the + button being clicked */
   const handleAddToOutfit = (e) => {
     e.preventDefault();
-    setOutfit(prevOutfit => [...prevOutfit, [cardCount, true]]);
+    setOutfit(prevOutfit => [...prevOutfit, cardCount]);
     setCardCount(prevCount => prevCount + 1);
   }
 
-  handleDeleteCard = (e) => {
-    //splice the
-  }
+  // const deleteCard = useCallback((itemID) => {
+  //   return setOutfit(outfit.filter((item) => item !== itemID));
+
+  // }, [outfit]);
 
   console.log('cardCounter:', cardCount);
   console.log('outfit:', outfit);
