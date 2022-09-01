@@ -7,7 +7,7 @@ import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
 
 
-const Form = ({ productName, productId, toggleForm }) => {
+const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);
   const [bodyCharCount, setBodyCharCount] = useState(0);
@@ -47,6 +47,10 @@ const Form = ({ productName, productId, toggleForm }) => {
       formData = formatForm(formData, chars);
       console.log('formatted form', formData)
       please.addReview(formData)
+      .then(() => {
+        refreshReviews();
+        return;
+      })
       .then(() => {
         console.log('exiting form')
         toggleForm();
