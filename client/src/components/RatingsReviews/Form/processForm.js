@@ -24,7 +24,6 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
     isValid = false;
     errorMessages.push('Missing name')
   }
-  debugger;
   if(email === undefined || email.length === 0) {
     isValid = false;
     errorMessages.push('Missing email address')
@@ -41,12 +40,23 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
       errorMessages.push(`Missing a rating for ${char}`)
     }
   }
-
   return { isValid, errorMessages };
+}
+
+const formatForm = (form) => {
+  form.rating = parseInt(form.rating);
+  form.recommend = form.recommend === 'yes' ? true : false;
+  for (const char in form.characteristics) {
+    console.log(char, form.characteristics.char)
+    form.characteristics[char] = parseInt(form.characteristics[char]);
+  }
+  //format photos
+
+  return form;
 
 }
 
-export default validateForm;
+export { validateForm , formatForm }
 
 //also need to convert some data types because form collects everything as strings, could rename this function as process form
 

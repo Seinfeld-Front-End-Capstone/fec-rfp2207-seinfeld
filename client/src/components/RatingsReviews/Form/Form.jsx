@@ -4,7 +4,7 @@ import fullStar from '../../../assets/stars/fullStar.png';
 import UploadedPhotos from './UploadedPhotos.jsx';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
-import validateForm from './validateForm.js';
+import { validateForm, formatForm } from './processForm.js';
 
 
 const Form = ({ productName, productId }) => {
@@ -42,6 +42,9 @@ const Form = ({ productName, productId }) => {
     console.log(results);
     if (!results.isValid) {
       alert(results.errorMessages)
+    } else {
+      formData = formatForm(formData);
+      console.log(formData);
     }
   }
 
