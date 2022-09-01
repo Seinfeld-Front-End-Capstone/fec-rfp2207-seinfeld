@@ -12,7 +12,7 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
     isValid = false;
     errorMessages.push('Missing overall rating')
   }
-  if (!body || body < 50) {
+  if (!body || body.length < 50) {
     isValid = false;
     errorMessages.push('Review should be at least 50 characters')
   }
