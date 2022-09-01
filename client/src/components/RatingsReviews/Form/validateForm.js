@@ -1,4 +1,5 @@
-var { validate } = require('email-validator');
+// var { validate } = require('email-validator');
+import { validate } from 'email-validator';
 
 const validateForm = ({ product_id, rating, body, recommend, name, email, characteristics }) => {
   let isValid = true;
@@ -40,8 +41,6 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
       errorMessages.push(`Missing a rating for ${char}`)
     }
   }
-
-  console.log('invalid form')
 
   return { isValid, errorMessages };
 
