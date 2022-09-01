@@ -1,3 +1,5 @@
+var validator = require('email-validator');
+
 const validateForm = ({ product_id, rating, body, recommend, name, email, characteristics }) => {
   let isValid = true;
   let errorMessages = []
@@ -21,10 +23,14 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
     isValid = false;
     errorMessages.push('Missing name')
   }
+  debugger;
   if(email === undefined || email.length === 0) {
     isValid = false;
     errorMessages.push('Missing email address')
     //need additional logic to validate email format
+  } else if (!validator.validate(email)) {
+    isValid = false;
+    errorMessages.push('Incorrect email format')
   }
   //need additional logic to validate photos format
   for (let char in characteristics) {
