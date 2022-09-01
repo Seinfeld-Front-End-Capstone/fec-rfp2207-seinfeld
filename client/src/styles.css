@@ -287,6 +287,11 @@ div {
 
 
 /* RR - Add a review form */
+#RR-form-ctn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #RR-form-bg {
   top: 0;
@@ -300,14 +305,14 @@ div {
   justify-content: center;
 }
 #RR-form {
-  background: white;
-  opacity: 1;
-  height: auto;
   position: fixed;
   z-index: 3;
-  margin: 20% 20%;
-  top: 0;
+  background: white;
+  opacity: 1;
+  height: 60%;
+  width: 60%;
   border-radius: 5px 5px;
+  overflow: scroll;
 }
 
 /* crop photo uploads into same size thumbnails */

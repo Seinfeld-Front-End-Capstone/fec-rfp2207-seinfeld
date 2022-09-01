@@ -84,7 +84,7 @@ const Form = ({ productName, productId }) => {
   }
 
   return (
-    <div>
+    <div id="RR-form-ctn">
       <div id="RR-form-bg"></div>
       <form id="RR-form">
         <h3>Write your review</h3>
