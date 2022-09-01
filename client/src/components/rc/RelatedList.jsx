@@ -21,12 +21,6 @@ const RelatedList = ({ id }) => {
       })
   }, [])
 
-
-
-
-  // console.log('State:', list);
-
-
   var iterate = list.map((productID) => {
     return <RelatedItemCard key={productID} pID={productID} ogID={id} />
   });
