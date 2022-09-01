@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import QuestionList from './QuestionList.jsx';
+import QuestionModal from './QuestionModal.jsx';
 import please from '../.././request.js';
 
 const QuestionsMaster = ({productId}) => {
@@ -8,6 +9,7 @@ const QuestionsMaster = ({productId}) => {
   const [answers, setAnswers] = useState([]);
   const [input, setInput] = useState('');
   const [length, setLength] = useState(2);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     please.getQuestions(productId)
@@ -66,7 +68,8 @@ const QuestionsMaster = ({productId}) => {
             :
              <button onClick={() => setLength(2)}>Collapse Questions</button>
           }
-          <button>Add A Question</button>
+          <button onClick={() => setModal(true)}>Add A Question</button>
+          <QuestionModal modal={modal} onClose={() => setModal(false)}/>
         </div>
        ) : (
         <button>Add A Question</button>
