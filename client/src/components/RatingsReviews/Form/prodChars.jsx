@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import please from '../../../request.js';
+import React from 'react';
 
-const ProdChars = ({ productId }) => {
-  const [chars, setChars] = useState([])
+const ProdChars = ({ chars }) => {
 
   const charRatings = {
     Size: {
@@ -48,15 +46,6 @@ const ProdChars = ({ productId }) => {
       5: 'Runs long'
     }
   }
-
-  useEffect(() => {
-    please.getReviewMeta(productId)
-    .then(data => {
-      console.log('received review meta data');
-      setChars(Object.keys(data.data.characteristics));
-    })
-    .catch(err => console.log(err));
-  }, [productId]);
 
   return (
     <div>

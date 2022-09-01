@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import noStar from '../../../assets/stars/noStar.png';
 import fullStar from '../../../assets/stars/fullStar.png';
 import UploadedPhotos from './UploadedPhotos.jsx';
 import ProdChars from './ProdChars.jsx';
-// import validateForm from './validateForm.js';
+import please from '../../../request.js';
+import validateForm from './validateForm.js';
 
 
 const Form = ({ productName, productId }) => {
@@ -11,25 +12,39 @@ const Form = ({ productName, productId }) => {
   const [rated, setRated] = useState(false);
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
+  const [chars, setChars] = useState([]);
+
+  useEffect(() => {
+    please.getReviewMeta(productId)
+    .then(data => {
+      // console.log('chars is', data.data.characteristics)
+      setChars(Object.keys(data.data.characteristics));
+    })
+    .catch(err => console.log(err));
+  }, [productId]);
 
   const handleSubmit = (e) => {
-    console.log('trying to submit form')
+    // console.log('trying to submit form')
     let formData = {
       product_id: productId,
       characteristics: {}
     };
+    chars.forEach(char => formData.characteristics[[char]] = null)
     let form = document.getElementById('RR-form');
     const userSubmission = new FormData(form);
-    let characteristics = ['Size', 'Width', 'Comfort', 'Quality', 'Length', 'Fit'];
     for (const [key, value] of userSubmission) {
-      if (characteristics.includes(key)) {
+      if (chars.includes(key)) {
         formData.characteristics[[key]] = value;
       } else {
         formData[[key]] = value;
       }
     }
     formData.photos = photos;
-    console.log(formData)
+    let results = validateForm(formData);
+    console.log(results);
+    if (!results.isValid) {
+      alert(results.errorMessages)
+    }
   }
 
   const requiredTag = <span aria-label="required">*</span>;
@@ -89,8 +104,8 @@ const Form = ({ productName, productId }) => {
         <label for="no">no</label>
       </div>
 
-      {/* WORKING ON THIS NOW */}
-      <ProdChars productId={productId}/>
+      {chars ? <ProdChars chars={chars}/> : null}
+      {/* {chars && <ProdChars chars={chars}/>} */}
 
       <p>Summary:</p>
       <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>

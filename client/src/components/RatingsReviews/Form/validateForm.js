@@ -1,46 +1,49 @@
-const validateForm = (form) => {
-  let formIsValid = true;
+const validateForm = ({ product_id, rating, body, recommend, name, email, characteristics }) => {
+  let isValid = true;
   let errorMessages = []
-  if (!form.product_id) {
-    formIsValid = false;
+  if (!product_id) {
+    isValid = false;
     errorMessages.push('Missing product ID')
   }
-  if (!form.rating || form.rating < 1 || form.rating > 5) {
-    formIsValid = false;
+  if (!rating || rating < 1 || rating > 5) {
+    isValid = false;
     errorMessages.push('Missing overall rating')
   }
   if (!body || body < 50) {
-    formIsValid = false;
+    isValid = false;
     errorMessages.push('Review should be at least 50 characters')
   }
   if(recommend === null || recommend === undefined) {
-    formIsValid = false;
+    isValid = false;
     errorMessages.push('Indicate whether you recommend this product')
   }
   if(name === undefined || name.length === 0) {
-    formIsValid = false;
+    isValid = false;
     errorMessages.push('Missing name')
   }
   if(email === undefined || email.length === 0) {
-    formIsValid = false;
+    isValid = false;
     errorMessages.push('Missing email address')
     //need additional logic to validate email format
   }
   //need additional logic to validate photos format
-  for (let char in form.characteristics) {
-    if (!form.characteristics[char]) {
-      formIsValid = false;
+  for (let char in characteristics) {
+    if (!characteristics[char]) {
+      isValid = false;
       //this might not actually catch this error
       errorMessages.push(`Missing a rating for ${char}`)
     }
   }
 
+  console.log('invalid form')
 
-  return formIsValid;
+  return { isValid, errorMessages };
 
 }
 
 export default validateForm;
+
+//also need to convert some data types because form collects everything as strings, could rename this function as process form
 
 //   form requirements = {
   //   product_id: null,       //integer req
