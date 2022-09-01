@@ -290,7 +290,6 @@ div {
 #RR-form-ctn {
   display: flex;
   justify-content: center;
-  align-items: center;
 }
 
 #RR-form-bg {
@@ -307,10 +306,11 @@ div {
 #RR-form {
   position: fixed;
   z-index: 3;
+  top: 200px;
   background: white;
   opacity: 1;
   height: 60%;
-  width: 60%;
+  width: auto;
   border-radius: 5px 5px;
   overflow: scroll;
 }
