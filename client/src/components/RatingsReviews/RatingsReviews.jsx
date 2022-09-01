@@ -100,7 +100,7 @@ const RatingsReviews = ({ productId, productName }) => {
           </div>
         </div>
       </div>}
-      {formMode && <Form productName={productName} productId={productId} />}
+      {formMode && <Form productName={productName} toggleForm={toggleForm} productId={productId} />}
     </div>
   )
 

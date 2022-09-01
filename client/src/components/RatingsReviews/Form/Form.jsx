@@ -7,7 +7,7 @@ import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
 
 
-const Form = ({ productName, productId }) => {
+const Form = ({ productName, productId, toggleForm }) => {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);
   const [bodyCharCount, setBodyCharCount] = useState(0);
@@ -17,7 +17,7 @@ const Form = ({ productName, productId }) => {
   useEffect(() => {
     please.getReviewMeta(productId)
     .then(data => {
-      setChars(Object.keys(data.data.characteristics));
+      setChars(data.data.characteristics);
     })
     .catch(err => console.log(err));
   }, [productId]);
@@ -27,24 +27,31 @@ const Form = ({ productName, productId }) => {
       product_id: productId,
       characteristics: {}
     };
-    chars.forEach(char => formData.characteristics[[char]] = null)
+    let charsTitles = Object.keys(chars);
+    charsTitles.forEach(char => formData.characteristics[[char]] = null)
     let form = document.getElementById('RR-form');
     const userSubmission = new FormData(form);
     for (const [key, value] of userSubmission) {
-      if (chars.includes(key)) {
+      if (charsTitles.includes(key)) {
         formData.characteristics[[key]] = value;
       } else {
         formData[[key]] = value;
       }
     }
-    formData.photos = photos;
+    // formData.photos = photos;
+    formData.photos = []; //until I learn how to send image files
     let results = validateForm(formData);
-    console.log(results);
     if (!results.isValid) {
       alert(results.errorMessages)
     } else {
-      formData = formatForm(formData);
-      console.log(formData);
+      formData = formatForm(formData, chars);
+      console.log('formatted form', formData)
+      please.addReview(formData)
+      .then(() => {
+        console.log('exiting form')
+        toggleForm();
+      })
+      .catch(err => console.log(err));
     }
   }
 
@@ -107,7 +114,7 @@ const Form = ({ productName, productId }) => {
           <label for="no">no</label>
         </div>
 
-        {chars ? <ProdChars chars={chars}/> : null}
+        {chars ? <ProdChars chars={Object.keys(chars)}/> : null}
         {/* {chars && <ProdChars chars={chars}/>} */}
 
         <p>Summary:</p>

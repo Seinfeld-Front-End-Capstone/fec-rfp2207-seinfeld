@@ -1,4 +1,4 @@
-// var { validate } = require('email-validator');
+//this needs to take in meta data for characteristics and reformat the keys from string title -> id
 import { validate } from 'email-validator';
 
 const validateForm = ({ product_id, rating, body, recommend, name, email, characteristics }) => {
@@ -43,12 +43,13 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
   return { isValid, errorMessages };
 }
 
-const formatForm = (form) => {
+const formatForm = (form, chars) => {
   form.rating = parseInt(form.rating);
   form.recommend = form.recommend === 'yes' ? true : false;
   for (const char in form.characteristics) {
-    console.log(char, form.characteristics.char)
-    form.characteristics[char] = parseInt(form.characteristics[char]);
+    let charId = chars[char].id;
+    form.characteristics[charId] = parseInt(form.characteristics[char]);
+    delete form.characteristics[char];
   }
   //format photos
 

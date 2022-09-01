@@ -61,7 +61,8 @@ module.exports = {
   },
 
   //Reviews
-  getReviews: (product_id, page=1, count=5, sort='newest') => {
+  //why did this use to only get 5?
+  getReviews: (product_id, page=1, count=100, sort='newest') => {
     return axios({
       url:`/reviews`,
       method: 'get',
