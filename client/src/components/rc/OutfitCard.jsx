@@ -5,7 +5,7 @@ import Stars from "../helpers/Stars.jsx";
 
 //Okay this is going to be basically the same as the related item card but slightly different.
 
-const OutfitCard = ({ itemNo, productID, deleteCard, curState }) => {
+const OutfitCard = ({ itemNo, productID }) => {
   const [productData, setProductData] = useState([]);
   const [photoData, setPhotoData] = useState([]);
   const [price, setPrice] = useState([]);
@@ -47,16 +47,13 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curState }) => {
       });
   }, []);
 
-  const handleDeleteClick = useCallback((event) => {
-    deleteCard(curState.filter((item) => {
-     itemNo !== item
-    }))
-  }, [deleteCard])
+  console.log('itemNo:', itemNo);
+
 
   return (
     <aside key={itemNo} className="RC_outfit_card_container">
       <img className="RC_outfit_photo" src={photoData} height="225" />
-      <i className="fa-solid fa-circle-xmark" onClick={handleDeleteClick}></i>
+      <i className="fa-solid fa-circle-xmark" onClick={null}></i>
       <h6 className="RC_product_category">{productData.category}</h6>
       <h5 className="RC_product_name">{productData.name}</h5>
       <p>
