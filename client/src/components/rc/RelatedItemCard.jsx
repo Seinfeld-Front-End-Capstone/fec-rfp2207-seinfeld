@@ -19,7 +19,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     request
       .getStyles(pID)
       .then((data) => {
-        // console.log('styles data:', data.data);
         setPhotoData(data.data.results[0].photos[0].url);
         if (data.data.results[0].sale_price) {
           setPrice(data.data.results[0].sale_price);
@@ -33,7 +32,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     request
       .getProductInfo(pID)
       .then((data) => {
-        // console.log('prod info:', data.data);
         setProductData(data.data);
       })
       .catch((err) => {
@@ -52,7 +50,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     request
       .getProductInfo(ogID)
       .then((data) => {
-        // console.log('prod info:', data.data);
         setOVItem(data.data);
       })
       .catch((err) => {
@@ -61,7 +58,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     request
       .getStyles(ogID)
       .then((data) => {
-        // console.log('styles data:', data.data);
         if (data.data.results[0].sale_price) {
           setOVItemPrice(data.data.results[0].sale_price);
         } else {
@@ -73,26 +69,45 @@ const RelatedItemCard = ({ pID, ogID }) => {
       });
   }, []);
 
-  // need little star button -- Might have to grab from font awesome or something similar -- done
-  //on click, the star button opens a pop-up window that shows a comparison between the item on the current overview and the item on the related list.
-
   const handlePopToggle = (e) => {
-    //do stuff. make popup window.
     e.preventDefault();
     setPop(true);
   }
 
   return (
-    <li className="RC_list_item">
-      <aside className="RC_card">
-        <img className="RC_card_photo" src={photoData} height="225" />
-        <i className="fa-solid fa-star" onClick={handlePopToggle}></i>
-        <h6 className="RC_product_category">{productData.category}</h6>
-        <h5 className="RC_product_name">{productData.name}</h5>
-        <p>
-          <small className="RC_product_price">{price}</small>
+    <li
+      className="RC_related_card_list_item">
+      <aside
+        className="RC_card">
+        <div className="RC_card_photo_container">
+          <img
+            className="RC_card_photo"
+            src={photoData}
+            height="225"
+          />
+          <i
+            className="fa-solid fa-star"
+            onClick={handlePopToggle}>
+          </i>
+        </div>
+        <p
+          className="RC_product_category RC_text">
+          <small>
+            <em>{productData.category}</em>
+          </small>
         </p>
-        <Stars rating={starRating} />
+        <h5
+          className="RC_product_name RC_text">
+          {productData.name}
+        </h5>
+        <p>
+          <small
+            className="RC_product_price RC_text">
+              {price}
+          </small>
+        </p>
+        <Stars
+          rating={starRating} />
       </aside>
       {pop ? <ComparisonModal toggle={setPop} overviewItem={ovItem} relatedItem={productData} relatedPrice={price} ovPrice={ovItemPrice}/> : null}
     </li>
