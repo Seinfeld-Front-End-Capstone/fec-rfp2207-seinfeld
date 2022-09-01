@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import OutfitCard from './OutfitCard.jsx';
 
 //use state to keep track of items in the outfit list,
@@ -9,32 +9,25 @@ const OutfitList = ({ id }) => {
   const [cardCount, setCardCount] = useState(0);
 
 
-  // useEffect(() => {
-
-  // },[])
 
   /* adds a new card to the list */
   const addOutfit = outfit.map((item) => {
-    return <OutfitCard itemNo={item} productID={id} deleteCard={setOutfit} curState={outfit}/>
+    return <OutfitCard key={item} itemNo={item} productID={id}  />
   });
 
   /* handles the + button being clicked */
   const handleAddToOutfit = (e) => {
     e.preventDefault();
+    setOutfit(prevOutfit => [...prevOutfit, [cardCount, true]]);
     setCardCount(prevCount => prevCount + 1);
-    setOutfit(prevOutfit => [...prevOutfit, cardCount]);
+  }
+
+  handleDeleteCard = (e) => {
+    //splice the
   }
 
   console.log('cardCounter:', cardCount);
   console.log('outfit:', outfit);
-
-  //add a function that deletes a card when X button is clicked -- delete from state
-  // const deleteCard = () => {
-  //   let itemKey =
-  //   setOutfit(outfit.filter(item => item.itemKey !== itemKey));
-  // }
-
-
 
   return (
     <div>
