@@ -5,7 +5,7 @@
 /* styling should be okay with your own preferences as long as it's within your own container */
 
 
-
+/* GLOBAL STYLES */
 body {
   background-color: white
 }
@@ -13,6 +13,11 @@ body {
 div {
   color: grey;
   background-color: white;
+}
+
+input {
+  /* styling button colors */
+  accent-color: #333;
 }
 
 /* OVERVIEW */
@@ -352,6 +357,7 @@ div {
   padding-bottom: 12px;
 }
 
+
 .RR-rating-ctn {
   width: auto;
   display: flex;
@@ -372,6 +378,7 @@ div {
 }
 .RR-rating-scores input {
   height: 18px;
+  background-color: #333;
 }
 
 .RR-rating-scores label {
