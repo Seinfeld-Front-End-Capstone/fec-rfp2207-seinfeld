@@ -18,11 +18,12 @@ const App = () => {
   return (
     product ?
     <div>
+      {/* REMEMBER TO MOVE THIS BACK DOWN*/}
+      <RatingsReviews productId={product.id} productName={product.name}/>
       <h1>buymorethings</h1>
       <Overview productId={product.id}/>
       <ItemLists productId={product.id}/>
       <QuestionsMaster/>
-      <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
     :
     <div>

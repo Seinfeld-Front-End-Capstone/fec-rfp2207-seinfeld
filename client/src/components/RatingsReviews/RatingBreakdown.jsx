@@ -1,5 +1,6 @@
 import React from 'react';
-import Stars from '../helpers/Stars.jsx'
+import Stars from '../helpers/Stars.jsx';
+import AvgStarRating from '../helpers/AvgStarRating.jsx';
 
 //info needed
 //average rating from reviews/meta use Quinn's logic
@@ -23,15 +24,19 @@ const charBreakdowns = [
   </div>
 ]
 
-const RatingBreakdown = () => {
+const RatingBreakdown = ({ metaData }) => {
+  let average;
   return (
     <div id="RR-rating-breakdown-ctn">
       <div id="RR-rating-summary-ctn">
         <div id="RR-avg-rating">
-          AVERAGE RATING NUMBER
+          {AvgStarRating(metaData.ratings, (avg) => {
+            average = avg;
+            return <h3>{avg.toFixed(1)}</h3>
+          })}
         </div>
         <div id="RR-star-views-ctn">
-          <p>stars</p>
+          <Stars rating={average} />
           <p># of reviews</p>
         </div>
         <div id="RR-factors-breakdown-ctn">
