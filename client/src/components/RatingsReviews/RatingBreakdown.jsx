@@ -2,6 +2,7 @@ import React from 'react';
 import Stars from '../helpers/Stars.jsx';
 import AvgStarRating from '../helpers/AvgStarRating.jsx';
 import _ from 'underscore';
+import { BsTriangleFill } from 'react-icons/bs';
 
 //info needed
 //average rating from reviews/meta use Quinn's logic
@@ -48,8 +49,7 @@ const prodCharBreakdown = (metaData) => {
       <div className="RR-prod-char-breakdown-ctn">
         <p>{char}</p>
         <div className="RR-prod-char-bar">
-          <div className="RR-prod-char-marker">\/
-          </div>
+          <div className="RR-prod-char-marker"><BsTriangleFill /></div>
         </div>
         <div className="RR-prod-char-titles">
           <p>Too small</p>

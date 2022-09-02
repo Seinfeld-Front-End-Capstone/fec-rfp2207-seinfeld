@@ -307,11 +307,17 @@ div {
 .RR-prod-char-bar {
   display: flex;
   background-color: var(--light);
+  height: 12px;
+  width: 80%;
+  margin: 0 10%;
 }
 
 .RR-prod-char-marker {
   /* make this a percentage */
   margin-left: 30px;
+  background-color: transparent;
+  transform: rotate(180deg);
+  color: var(--dark-green);
 }
 
 .RR-prod-char-titles {
