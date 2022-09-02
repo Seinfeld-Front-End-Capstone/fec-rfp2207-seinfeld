@@ -1,14 +1,12 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import OutfitCard from './OutfitCard.jsx';
 
-//use state to keep track of items in the outfit list,
-  //render each one to the list as a card.
+
+ /* *** Renders a list of items in the Your Outfit component *** */
 
 const OutfitList = ({ id }) => {
   const [outfit, setOutfit] = useState([]);
   const [cardCount, setCardCount] = useState(0);
-
-
 
   /* adds a new card to the list */
   const addOutfit = outfit.map((item) => {
@@ -21,14 +19,6 @@ const OutfitList = ({ id }) => {
     setOutfit(prevOutfit => [...prevOutfit, cardCount]);
     setCardCount(prevCount => prevCount + 1);
   }
-
-  // const deleteCard = useCallback((itemID) => {
-  //   return setOutfit(outfit.filter((item) => item !== itemID));
-
-  // }, [outfit]);
-
-  console.log('cardCounter:', cardCount);
-  console.log('outfit:', outfit);
 
   return (
     <div>

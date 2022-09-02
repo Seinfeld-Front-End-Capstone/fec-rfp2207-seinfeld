@@ -3,7 +3,8 @@ import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 import ComparisonModal from './ComparisonModal.jsx';
-//takes in the item id and populates each element of the card with relevent info.
+
+/* *** Cards for each item in the list of related products *** */
 
 const RelatedItemCard = ({ pID, ogID }) => {
   const [productData, setProductData] = useState([]);

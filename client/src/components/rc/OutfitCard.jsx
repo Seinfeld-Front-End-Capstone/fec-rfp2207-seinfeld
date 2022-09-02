@@ -15,7 +15,6 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
     request
       .getStyles(productID)
       .then((data) => {
-        // console.log('styles data:', data.data);
         setPhotoData(data.data.results[0].photos[0].url);
         if (data.data.results[0].sale_price) {
           setPrice(data.data.results[0].sale_price);
@@ -29,7 +28,6 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
     request
       .getProductInfo(productID)
       .then((data) => {
-        // console.log('prod info:', data.data);
         setProductData(data.data);
       })
       .catch((err) => {
@@ -47,6 +45,7 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
       });
   }, []);
 
+  /* handles delete button onClick event */
   const handleDelete = useCallback(() => {
     deleteCard(curOutfit.filter((item) => item !== itemNo));
   }, [deleteCard, curOutfit]);

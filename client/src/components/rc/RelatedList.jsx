@@ -2,13 +2,7 @@ import React, {useState, useEffect} from 'react';
 import RelatedItemCard from './RelatedItemCard.jsx';
 import request from '../../request.js';
 
-//for each item in the related items, populate the list with an item card.
-
-//the overview item's product id needs to be sent down as props
-
-//the related item card needs to be sent the product id for the related item, not the original product's id.
-
-//This should be stateful?
+ /* *** Renders a list of products in the related items list *** */
 
 const RelatedList = ({ id }) => {
   const [list, setList] = useState([]);
@@ -21,7 +15,8 @@ const RelatedList = ({ id }) => {
       })
   }, [])
 
-  var iterate = list.map((productID) => {
+  /* Creates a related item card for each element in the list of related items */
+  var createCard = list.map((productID) => {
     return <RelatedItemCard key={productID} pID={productID} ogID={id} />
   });
 
@@ -29,7 +24,7 @@ const RelatedList = ({ id }) => {
     <div className="RC_related_list">
       <h6>Related Items</h6>
       <ul>
-       {iterate}
+       {createCard}
       </ul>
     </div>
   )

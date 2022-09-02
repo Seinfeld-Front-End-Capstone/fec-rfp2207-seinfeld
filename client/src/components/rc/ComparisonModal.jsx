@@ -5,7 +5,6 @@ const ComparisonModal = ({ toggle, overviewItem, relatedItem, relatedPrice, ovPr
 
   //this is a pop-up window that compares the currently viewed item with the related item
 
-
   const handleClick = () => {
     toggle(false);
   }
