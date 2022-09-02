@@ -28,15 +28,6 @@ const reviewsByStars = (metaData) => {
   })
 }
 
-const charBreakdowns = [
-//iterate, get average and generate
-  <div className="RR-prod-char-breakdown-ctn">
-    <p>size</p>
-    <p>scale</p>
-    <p>prod-char titles</p>
-  </div>
-]
-
 const sumReviews = (metaData) => {
   let total = 0;
   for (const rating in metaData.ratings) {
@@ -50,11 +41,29 @@ const percentRecommend = (metaData) => {
   return Math.round(percent * 100);
 }
 
+const prodCharBreakdown = (metaData) => {
+  let results = [];
+  for (const char in metaData.characteristics) {
+    results.push(
+      <div className="RR-prod-char-breakdown-ctn">
+        <p>{char}</p>
+        <div className="RR-prod-char-bar">
+          <div className="RR-prod-char-marker">\/
+          </div>
+        </div>
+        <div className="RR-prod-char-titles">
+          <p>Too small</p>
+          <p>Too large</p>
+        </div>
+      </div>
+    )
+  }
+  return results;
+}
+
 const RatingBreakdown = ({ metaData }) => {
   let average;
   return (
-    metaData
-    ?
     <div id="RR-rating-breakdown-ctn">
       <div id="RR-rating-summary-ctn">
         <div id="RR-avg-rating">
@@ -73,10 +82,8 @@ const RatingBreakdown = ({ metaData }) => {
         <p>{percentRecommend(metaData)}% recommend</p>
         {/* iterate through prod-chars and generate */}
       </div>
-      {charBreakdowns}
+      {prodCharBreakdown(metaData)}
     </div>
-    :
-    null
   )
 }
 

@@ -299,6 +299,26 @@ div {
   width: 40px;
 }
 
+/* Prod characteristics breakdown */
+.RR-prod-char-breakdown-ctn {
+  /* display: flex; */
+}
+
+.RR-prod-char-bar {
+  display: flex;
+  background-color: var(--light);
+}
+
+.RR-prod-char-marker {
+  /* make this a percentage */
+  margin-left: 30px;
+}
+
+.RR-prod-char-titles {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 /* Reviews list */
 #RR-ratings-reviews-ctn {
