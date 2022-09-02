@@ -53,11 +53,11 @@ const ProdChars = ({ chars }) => {
         return <div className="RR-prod-char-rating">
           <p className="RR-prod-char-title">{char}: </p>
           <div className="RR-rating-ctn">
-            {[1, 2, 3, 4, 5].map(rating => {
+            {[1, 2, 3, 4, 5].map(number => {
               return <div className="RR-rating-scores">
-                  <p>{charRatings[char][rating]}</p>
-                  <input type="radio" value={rating} id={rating} name={char}/>
-                  <label for={rating}>{rating}</label>
+                  <p>{charRatings[char][number]}</p>
+                  <input type="radio" value={number} id={number} name={char}/>
+                  <label for={number}>{number}</label>
                 </div>
             })}
           </div>
