@@ -249,11 +249,11 @@ div {
 
 .qa-question-modal {
   position: fixed;
-  left: 10vw;
-  top: 10vh;
+  left: 25vw;
+  top: 25vh;
   background: white;
-  width: 80vw;
-  height: 80vh;
+  width: 50vw;
+  height: 50vh;
   display: flex;
   flex-direction: column;
 }

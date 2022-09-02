@@ -26,7 +26,7 @@ const QuestionsMaster = ({productId}) => {
   }, [])
 
 
-  console.log('question : ', question)
+  // console.log('question : ', question)
   // console.log('initial : ', initial);
 
   const doSearch = (word) => {
