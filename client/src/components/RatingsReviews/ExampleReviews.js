@@ -1,7 +1,7 @@
 const someReviews = [
   {
       "review_id": 1274546,
-      "rating": 2.8,
+      "rating": 2.9,
       "summary": "PLEASE DON'T REPORT ME",
       "recommend": false,
       "response": "Your account is going to be deleted",
@@ -13,7 +13,7 @@ const someReviews = [
   },
   {
       "review_id": 1176362,
-      "rating": 0.05,
+      "rating": 1.01,
       "summary": "Looks radical dude!",
       "recommend": true,
       "response": null,
