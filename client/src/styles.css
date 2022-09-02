@@ -313,8 +313,7 @@ div {
 }
 
 .RR-prod-char-marker {
-  /* make this a percentage */
-  margin-left: 30px;
+  /* make this a percentage,offset by -5% */
   background-color: transparent;
   transform: rotate(180deg);
   color: var(--dark-green);

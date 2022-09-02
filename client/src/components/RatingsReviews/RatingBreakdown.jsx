@@ -45,11 +45,14 @@ const percentRecommend = (metaData) => {
 const prodCharBreakdown = (metaData) => {
   let results = [];
   for (const char in metaData.characteristics) {
+    let value = parseFloat(metaData.characteristics[char].value);
+    //formula to position marker using css
+    let percentage = ((value - 1) / 4) * 100 - 5;
     results.push(
       <div className="RR-prod-char-breakdown-ctn">
         <p>{char}</p>
         <div className="RR-prod-char-bar">
-          <div className="RR-prod-char-marker"><BsTriangleFill /></div>
+          <div className="RR-prod-char-marker" style={{marginLeft: `${percentage}%`}}><BsTriangleFill /></div>
         </div>
         <div className="RR-prod-char-titles">
           <p>Too small</p>
