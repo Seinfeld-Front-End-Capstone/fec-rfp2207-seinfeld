@@ -7,24 +7,17 @@ const QuestionModal = ({modal, onClose, productId, setInitial, setQuestion}) => 
   const [email, setEmail] = useState('');
   const asterisk = <span id='qa-asterisk'>*</span>
 
-  // send post request to add to api?
-  // send get request to grab new list of questions
   const handleSubmit = (e) => {
     e.preventDefault()
     let splitEmail = email.split('@')
     if (splitEmail.length !== 2 && !splitEmail[1].includes('.')) {
-      alert('warning message')
+      alert('invalid input')
       return;
     }
 
     please.addQuestion({body: userQuestion, name: name, email: email, product_id: productId})
     .then(() => {
-      return please.getQuestions(productId)
-    })
-    .then((data) => {
-      console.log('data please: ', data);
-      // sort data first
-      // set initial and question states to new get request
+      onClose(false);
     })
   }
 
