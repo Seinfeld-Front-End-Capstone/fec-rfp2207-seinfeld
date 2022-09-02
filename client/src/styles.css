@@ -247,7 +247,9 @@ div {
 /* QUESTIONS AND ANSWERS */
 
 /* RATINGS AND REVIEWS */
-
+#RR-rating-breakdown-ctn {
+  width: 200px;
+}
 #RR-ratings-reviews-ctn {
   display: flex;
   /* temp */

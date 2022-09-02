@@ -14,7 +14,7 @@ const RatingsReviews = ({ productId, productName }) => {
   const [reviews, setReviews] = useState([]);
   const [sortParam, setSortParam] = useState('relevant')
   const [maxResults, setMaxResults] = useState(2);
-  const [metaData, setMetaData] = useState([])
+  const [metaData, setMetaData] = useState(null)
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -23,6 +23,7 @@ const RatingsReviews = ({ productId, productName }) => {
       setReviews(reviews);
     })
     .catch((err) => console.log(err));
+
     please.getReviewMeta(productId)
     .then(data => setMetaData(data.data))
     .catch(err => console.log(err));

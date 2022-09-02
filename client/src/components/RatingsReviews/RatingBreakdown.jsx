@@ -1,19 +1,24 @@
 import React from 'react';
 import Stars from '../helpers/Stars.jsx';
 import AvgStarRating from '../helpers/AvgStarRating.jsx';
+import _ from 'underscore';
 
 //info needed
 //average rating from reviews/meta use Quinn's logic
 //all the reviews for this product
 //review meta data (for prod-chars) from reviews/meta
 
-const reviewsByStars =
-//iterate, filter and generate
-    [<div className="RR-reviews-by-star-ctn">
-      <div>5 stars</div>
+const reviewsByStars = (metaData) => {
+  return [5, 4, 3, 2, 1].map(rating => {
+    return (
+    <div className="RR-reviews-by-star-ctn">
+      <div>{rating} stars</div>
       <div>bar graph</div>
-      <div># reviews</div>
-    </div>];
+      <div>{metaData.ratings[rating]}</div>
+    </div>
+    )
+  })
+}
 
 const charBreakdowns = [
 //iterate, get average and generate
@@ -24,9 +29,19 @@ const charBreakdowns = [
   </div>
 ]
 
+const sumReviews = (metaData) => {
+  let total = 0;
+  for (const rating in metaData.ratings) {
+    total += parseInt(metaData.ratings[rating]);
+  }
+  return total;
+}
+
 const RatingBreakdown = ({ metaData }) => {
   let average;
   return (
+    metaData
+    ?
     <div id="RR-rating-breakdown-ctn">
       <div id="RR-rating-summary-ctn">
         <div id="RR-avg-rating">
@@ -37,17 +52,18 @@ const RatingBreakdown = ({ metaData }) => {
         </div>
         <div id="RR-star-views-ctn">
           <Stars rating={average} />
-          <p># of reviews</p>
+          <p>{sumReviews(metaData)} reviews</p>
         </div>
         <div id="RR-factors-breakdown-ctn">
-          {reviewsByStars}
+          {metaData ? reviewsByStars(metaData): null}
           <p>some % recommend</p>
           {/* iterate through prod-chars and generate */}
         </div>
         {charBreakdowns}
       </div>
-
     </div>
+    :
+    null
   )
 }
 
