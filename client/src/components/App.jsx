@@ -23,7 +23,12 @@ const App = () => {
       <h1>buymorethings</h1>
       <Overview productId={product.id}/>
       <ItemLists productId={product.id}/>
+<<<<<<< HEAD
       <QuestionsMaster/>
+=======
+      <QuestionsMaster productId={65635}/>
+      <RatingsReviews productId={product.id} productName={product.name}/>
+>>>>>>> main
     </div>
     :
     <div>
