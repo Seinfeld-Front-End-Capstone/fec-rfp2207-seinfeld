@@ -18,7 +18,7 @@ const Question = ({q}) => {
     <div className='qa-question-container'>
       <div>Q: {q.question_body} Helpful? <span onClick={handleClick}>Yes</span>
        ({helpfulness})  |  <span onClick={() => setModal(true)}>Add Answer</span></div><AnswerList q={q}/>
-      <AnswerModal modal={modal} onClose={() => setModal(false)} />
+      <AnswerModal modal={modal} q={q} onClose={() => setModal(false)} />
     </div>
   )
 }
