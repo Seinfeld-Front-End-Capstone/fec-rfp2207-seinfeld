@@ -3,6 +3,9 @@ import ReviewList from './ReviewList.jsx';
 import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
 import Form from './Form.jsx';
+import RatingBreakdown from './RatingBreakdown.jsx'
+
+//lift axios request for reviews/meta out of Form and into this component
 
 const RatingsReviews = ({ productId, productName }) => {
 
@@ -64,13 +67,7 @@ const RatingsReviews = ({ productId, productName }) => {
       </div>
       :
       <div id="RR-ratings-reviews-ctn">
-        <div id="RR-breakdown-ctn">
-          <h1>Section for Ratings and Reviews</h1>
-          <div>Rating and Stars</div>
-          <p>Percentage of recommends</p>
-          <div>Bar graph of reviews</div>
-          <div>breakdown factors</div>
-        </div>
+        <RatingBreakdown />
         <div id="RR-reviews-ctn">
           <div id="RR-header-sort">
             <h3>{reviews.length} views, sorted by
