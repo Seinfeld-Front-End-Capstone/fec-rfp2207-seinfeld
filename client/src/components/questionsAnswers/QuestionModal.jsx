@@ -17,7 +17,7 @@ const QuestionModal = ({modal, onClose, productId, setInitial, setQuestion}) => 
 
     please.addQuestion({body: userQuestion, name: name, email: email, product_id: productId})
     .then(() => {
-      onClose(false);
+      onClose(false)
     })
   }
 
