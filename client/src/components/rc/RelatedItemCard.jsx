@@ -77,9 +77,8 @@ const RelatedItemCard = ({ pID, ogID }) => {
 
   return (
     <li
-      className="RC_related_card_list_item">
-      <aside
-        className="RC_card">
+      className="RC_related_card_container">
+      <div className="RC_related_card">
         <div className="RC_card_photo_container">
           <img
             className="RC_card_photo"
@@ -91,25 +90,25 @@ const RelatedItemCard = ({ pID, ogID }) => {
             onClick={handlePopToggle}>
           </i>
         </div>
-        <p
-          className="RC_product_category RC_text">
-          <small>
-            <em>{productData.category}</em>
-          </small>
-        </p>
-        <h5
-          className="RC_product_name RC_text">
-          {productData.name}
-        </h5>
-        <p>
-          <small
+        <div className="RC_related_text_container">
+          <h6
+            className="RC_product_category RC_text">
+              <em>{productData.category}</em>
+          </h6>
+          <h5
+            className="RC_product_name RC_text">
+            {productData.name}
+          </h5>
+          <h6
             className="RC_product_price RC_text">
               {price}
-          </small>
-        </p>
-        <Stars
-          rating={starRating} />
-      </aside>
+          </h6>
+        </div>
+        <div className="RC_star_rating">
+          <Stars
+            rating={starRating} />
+        </div>
+      </div>
       {pop ? <ComparisonModal toggle={setPop} overviewItem={ovItem} relatedItem={productData} relatedPrice={price} ovPrice={ovItemPrice}/> : null}
     </li>
 
