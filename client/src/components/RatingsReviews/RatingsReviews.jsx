@@ -3,6 +3,9 @@ import ReviewList from './ReviewList.jsx';
 // import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
 import Form from './Form.jsx';
+import RatingBreakdown from './RatingBreakdown.jsx'
+
+//lift axios request for reviews/meta out of Form and into this component
 
 //lift axios request for reviews/meta out of Form and into this component
 
@@ -11,6 +14,7 @@ const RatingsReviews = ({ productId, productName }) => {
   const [reviews, setReviews] = useState([]);
   const [sortParam, setSortParam] = useState('relevant')
   const [maxResults, setMaxResults] = useState(2);
+  const [metaData, metaData] = useState([])
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -41,6 +45,7 @@ const RatingsReviews = ({ productId, productName }) => {
       </div>
       :
       <div id="RR-ratings-reviews-ctn">
+        <RatingBreakdown />
         <div id="RR-reviews-ctn">
           <div id="RR-reviews-ctn">
             <h3 id="RR-header-sort"> {reviews.length} views, sorted by
