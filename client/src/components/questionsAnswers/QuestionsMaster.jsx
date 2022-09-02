@@ -32,18 +32,18 @@ const QuestionsMaster = ({productId}) => {
     // console.log('initial questions : ', initial);
     let questions = initial;
     // console.log(questions);
-    let filtered = [];
+    let filteredQuestions = [];
     questions.forEach((q) => {
       // console.log('input : ', input)
       if (word.length >= 3 && q.question_body.toLowerCase().includes(word.toLowerCase())) {
-        filtered.push(q)
+        filteredQuestions.push(q)
       }
     })
-    filtered.sort((a, b) => {
+    filteredQuestions.sort((a, b) => {
       return b.question_helpfulness - a.question_helpfulness
     })
-    // console.log('ARRAY : ', filtered)
-    word.length < 3 ? setQuestion(initial) : setQuestion(filtered)
+    // console.log('ARRAY : ', filteredQuestions)
+    word.length < 3 ? setQuestion(initial) : setQuestion(filteredQuestions)
   }
 
   const onSubmit = (e) => {
