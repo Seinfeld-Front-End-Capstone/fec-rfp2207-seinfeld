@@ -9,12 +9,20 @@ import _ from 'underscore';
 //review meta data (for prod-chars) from reviews/meta
 
 const reviewsByStars = (metaData) => {
+  //lift this up as state?
+  let total = sumReviews(metaData);
   return [5, 4, 3, 2, 1].map(rating => {
+    let count = metaData.ratings[rating];
+    let percentage = (count / total) * 100;
     return (
     <div className="RR-reviews-by-star-ctn">
       <div>{rating} stars</div>
-      <div>bar graph</div>
-      <div>{metaData.ratings[rating]}</div>
+      <div className="RR-bar-graph">
+        <div className="RR-top-bar" style={{width: `${count}%`}}></div>
+      </div>
+      <div className="RR-star-counts">
+        <div>({count})</div>
+      </div>
     </div>
     )
   })
@@ -54,13 +62,13 @@ const RatingBreakdown = ({ metaData }) => {
           <Stars rating={average} />
           <p>{sumReviews(metaData)} reviews</p>
         </div>
-        <div id="RR-factors-breakdown-ctn">
-          {metaData ? reviewsByStars(metaData): null}
-          <p>some % recommend</p>
-          {/* iterate through prod-chars and generate */}
-        </div>
-        {charBreakdowns}
       </div>
+      <div id="RR-factors-breakdown-ctn">
+        {metaData ? reviewsByStars(metaData): null}
+        <p>some % recommend</p>
+        {/* iterate through prod-chars and generate */}
+      </div>
+      {charBreakdowns}
     </div>
     :
     null
