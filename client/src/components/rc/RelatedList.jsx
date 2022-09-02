@@ -22,6 +22,7 @@ const RelatedList = ({ id }) => {
 
   return (
     <div>
+      <h5>Related Items</h5>
       <ul
       className="RC_related_list">
         {createCard}

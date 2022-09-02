@@ -180,7 +180,7 @@ div {
   display: flex;
 
   flex: row wrap;
-  margin-left: 30px;
+  justify-content: center;
 }
 
 
@@ -245,25 +245,76 @@ div {
 
 /* ** Outfit ** */
 
+.RC_outfit_list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex: row wrap;
+  justify-content: center;
+}
 
 
 .RC_outfit_card_container {
-  list-style-type: none;
-  position: relative;
+  display: flex;
   box-sizing: border-box;
-  flex-direction: row;
-  width: 25%;
-  background-color: white;
-  display: flexbox;
+  overflow: hidden;
+  padding: 5px;
+  width: 150px;
+  height: 250px;
+  margin-top: 20px;
+  margin-left: 5px;
+  position: relative;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  background-color: #84a98c;
+}
+
+.RC_add_to_outfit {
+  background-color: #84a98c;
+  padding-top: 60px;
+  padding-left: 20px;
+  color: white;
 }
 
 .plus {
-  size-adjust: 400%;
+  color: white;
   position: absolute;
-  top: 50px;
-  right: 30px;
+  top: 110px;
+  right: 70px;
 }
+
+.RC_outfit_photo {
+  position: absolute;
+  top:0px;
+  right:0px;
+  height: 240px;
+}
+
+.RC_x {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #cad2c5;
+}
+
+.RC_outfit_text_container {
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 175px;
+  left:0px;
+  width: 160px;
+  height: 60px;
+  padding-left: 4px;
+  padding-top: 3px;
+}
+
 
 /* Related List Modal */
 

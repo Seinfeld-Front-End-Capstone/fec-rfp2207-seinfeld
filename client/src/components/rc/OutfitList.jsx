@@ -24,9 +24,8 @@ const OutfitList = ({ id }) => {
     <div>
       <h5>Your Outfit</h5>
       <ul className="RC_outfit_list">
-        <div className="RC_outfit_card_container">
-          <li>
-            <aside
+          <li className="RC_outfit_card_container">
+            <div
             className="RC_add_to_outfit">
               <i
               className="fa-solid fa-plus plus"
@@ -35,9 +34,8 @@ const OutfitList = ({ id }) => {
               className="RC_outfit_add_text">
                 Add To Outfit
               </p>
-            </aside>
+            </div>
           </li>
-        </div>
         {addOutfit}
       </ul>
     </div>

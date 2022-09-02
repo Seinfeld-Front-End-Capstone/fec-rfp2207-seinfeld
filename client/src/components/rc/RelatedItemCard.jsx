@@ -104,7 +104,8 @@ const RelatedItemCard = ({ pID, ogID }) => {
               {price}
           </h6>
         </div>
-        <div className="RC_star_rating">
+        <div
+        className="RC_star_rating">
           <Stars
             rating={starRating} />
         </div>
