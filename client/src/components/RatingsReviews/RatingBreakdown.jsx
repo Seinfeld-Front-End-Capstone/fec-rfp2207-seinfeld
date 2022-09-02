@@ -18,7 +18,7 @@ const reviewsByStars = (metaData) => {
     <div className="RR-reviews-by-star-ctn">
       <div>{rating} stars</div>
       <div className="RR-bar-graph">
-        <div className="RR-top-bar" style={{width: `${count}%`}}></div>
+        <div className="RR-top-bar" style={{width: `${percentage}%`}}></div>
       </div>
       <div className="RR-star-counts">
         <div>({count})</div>
