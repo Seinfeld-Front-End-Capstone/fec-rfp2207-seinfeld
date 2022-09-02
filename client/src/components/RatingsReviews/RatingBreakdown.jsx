@@ -45,6 +45,11 @@ const sumReviews = (metaData) => {
   return total;
 }
 
+const percentRecommend = (metaData) => {
+  let percent = parseInt(metaData.recommended.true) / ( parseInt(metaData.recommended.true) + parseInt(metaData.recommended.false))
+  return Math.round(percent * 100);
+}
+
 const RatingBreakdown = ({ metaData }) => {
   let average;
   return (
@@ -64,8 +69,8 @@ const RatingBreakdown = ({ metaData }) => {
         </div>
       </div>
       <div id="RR-factors-breakdown-ctn">
-        {metaData ? reviewsByStars(metaData): null}
-        <p>some % recommend</p>
+        {reviewsByStars(metaData)}
+        <p>{percentRecommend(metaData)}% recommend</p>
         {/* iterate through prod-chars and generate */}
       </div>
       {charBreakdowns}
