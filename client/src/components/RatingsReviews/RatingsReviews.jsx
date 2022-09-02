@@ -3,7 +3,6 @@ import ReviewList from './ReviewList.jsx';
 // import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
 import Form from './Form.jsx';
-import RatingBreakdown from './RatingBreakdown.jsx'
 
 //lift axios request for reviews/meta out of Form and into this component
 
@@ -17,9 +16,7 @@ const RatingsReviews = ({ productId, productName }) => {
     please.getReviews(productId, 1, maxResults, sortParam)
     .then((data) => {
       let reviews = data.data.results;
-      reviews = sortReviews(reviews, 'relevant');
       setReviews(reviews);
-      setReviewsOnDisplay(reviews.slice(0, maxResults));
     })
     .catch((err) => console.log(err))
   }, [productId, maxResults, sortParam],
@@ -44,7 +41,6 @@ const RatingsReviews = ({ productId, productName }) => {
       </div>
       :
       <div id="RR-ratings-reviews-ctn">
-        <RatingBreakdown />
         <div id="RR-reviews-ctn">
           <div id="RR-reviews-ctn">
             <h3 id="RR-header-sort"> {reviews.length} views, sorted by
@@ -56,7 +52,7 @@ const RatingsReviews = ({ productId, productName }) => {
             </h3>
             <ReviewList reviews={reviews}/>
             <div id="more-menu">
-              {maxResults < reviews.length && <button onClick={showMoreReview}>MORE REVIEWS</button>}
+              {reviews.length === maxResults && <button onClick={showMoreReview}>MORE REVIEWS</button>}
               {addReviewButton}
             </div>
           </div>
