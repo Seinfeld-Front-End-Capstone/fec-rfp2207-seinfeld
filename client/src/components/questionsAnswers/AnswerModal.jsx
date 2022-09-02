@@ -5,24 +5,24 @@ const AnswerModal = ({q, modal, onClose}) => {
   const [newAnswer, setNewAnswer] = useState('');
   const [name, setName] = useState('')
   const [email, setEmail] = useState('');
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState([]);
   const asterisk = <span id='qa-asterisk'>*</span>
 
-  const uploadPhotos = (e) => {
-    e.preventDefault()
-    axios.post('qa/questions', {
-      body: newAnswer,
-      name: name,
-      email: email,
-      question_id: q.question_id
-    })
-    .then((res) => {
-      console.log('success')
-    })
-    .catch((err) => {
-      console.log('error : ', err)
-    })
-  }
+  // const uploadPhotos = (e) => {
+  //   e.preventDefault()
+  //   axios.post(`qa/questions/${q.question_id}/answers`, {
+  //     body: newAnswer,
+  //     name: name,
+  //     email: email,
+  //     photos: []
+  //   })
+  //   .then((res) => {
+  //     console.log('success')
+  //   })
+  //   .catch((err) => {
+  //     console.log('error : ', err)
+  //   })
+  // }
 
   if (modal) {
     return (
@@ -32,7 +32,6 @@ const AnswerModal = ({q, modal, onClose}) => {
         <div>[Product Name]: [Question Body]</div>
 
         <form>
-
           <div>
             <div>Your Answer{asterisk}</div>
             <input type='text' maxLength='1000' onChange={(e) => setNewAnswer(e.target.value)}></input>
@@ -57,8 +56,9 @@ const AnswerModal = ({q, modal, onClose}) => {
               <img alt='not found' width={'200px'} src={URL.createObjectURL(image)}/>
             }
           </div>
-            <button onClick={(e) => uploadPhotos(e)}>Submit</button>
+            <button>Submit</button>
         </form>
+
       </div>
     )
   }
