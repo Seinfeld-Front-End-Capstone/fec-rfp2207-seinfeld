@@ -5,29 +5,10 @@ import UploadedPhotos from './UploadedPhotos.jsx';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
+// import {AdvancedImage} from '@cloudinary/react';
+// import {Cloudinary} from "@cloudinary/url-gen";
 
-{/* TESTING OUT CLOUNDINARY */}
-import {AdvancedImage} from '@cloudinary/react';
-import {Cloudinary} from "@cloudinary/url-gen";
 
-const cld = new Cloudinary({
-  cloud: {
-    cloudName: 'seinfeldtd'
-  }
-})
-
-const myWidget = cloudinary.createUploadWidget({
-  cloudName: 'seinfeldtd',
-  uploadPreset: 'seinfeldpreset'
-  },
-  (error, result) => {
-    if (!error && result && result.event === "success") {
-      console.log('Done! Here is the image info: ', result.info);
-    }
-})
-
-const myImage = cld.image('sample');
-{/* TESTING OUT CLOUNDINARY */}
 
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [rating, setRating] = useState(0);
@@ -35,6 +16,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
   const [chars, setChars] = useState([]);
+  const [thumbnails, setThumbnails] = useState([]);
 
   useEffect(() => {
     please.getReviewMeta(productId)
@@ -43,6 +25,27 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
     })
     .catch(err => console.log(err));
   }, [productId]);
+
+  // const cld = new Cloudinary({
+  //   cloud: {
+  //     cloudName: 'seinfeldtd'
+  //   }
+  // })
+
+  const myWidget = cloudinary.createUploadWidget({
+    cloudName: 'seinfeldtd',
+    uploadPreset: 'seinfeldpreset'
+    },
+    (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log('Done! Here is the image info: ', result.info);
+        debugger;
+        let newThumbnails = thumbnails.slice();
+        newThumbnails.push(result.info.thumbnail_url);
+        console.log('new thumbnails', newThumbnails);
+        setThumbnails(newThumbnails);
+      }
+  })
 
   const handleSubmit = (e) => {
     let formData = {
@@ -158,9 +161,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         {/* TESTING OUT CLOUNDINARY */}
         <button onClick={() => myWidget.open()}>Add photos / Widget</button>
         <p>Cloudinary image should show up here</p>
-        <div>
-          <AdvancedImage cldImg={myImage} />
-        </div>
+        {thumbnails.length > 0 && thumbnails.map(url => <img className="RR-uploaded-photos" src={url} alt="Your uploaded photo of the product"/>)}
         {/* TESTING OUT CLOUNDINARY */}
 
         <p>What is your nickname:  {requiredTag}</p>
