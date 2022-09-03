@@ -4,6 +4,7 @@ import fullStar from '../../../assets/stars/fullStar.png';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
+import { GiCancel } from 'react-icons/gi';
 import _ from 'underscore';
 
 // TODO:
@@ -109,6 +110,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
     <div id="RR-form-ctn">
       <div id="RR-form-bg"></div>
       <form id="RR-form">
+        <div id="RR-form-cancel"><GiCancel onClick={toggleForm}/></div>
         <h3>Write your review</h3>
         <p>About the {productName}</p>
 
