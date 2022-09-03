@@ -55,8 +55,8 @@ const ProdChars = ({ chars }) => {
             {[1, 2, 3, 4, 5].map(rating => {
               return <div key={rating} className="RR-rating-scores">
                   <p>{charRatings[char][rating]}</p>
-                  <input type="radio" value={rating} id={`prod${rating}`} name={char}/>
-                  <label htmlFor={`prod${rating}`}>{rating}</label>
+                  <input type="radio" value={rating} id={`${char}${rating}`} name={char}/>
+                  <label htmlFor={`${char}${rating}`}>{rating}</label>
                 </div>
             })}
           </div>
