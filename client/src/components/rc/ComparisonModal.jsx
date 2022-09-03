@@ -9,9 +9,6 @@ const ComparisonModal = ({ toggle, overviewItem, relatedItem, relatedPrice, ovPr
     toggle(false);
   }
 
-  console.log('related item:', relatedItem);
-  console.log('overview item:', overviewItem);
-
   const show = toggle ? "RC_show" : "";
 
   return (

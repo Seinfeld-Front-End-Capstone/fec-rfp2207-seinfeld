@@ -179,7 +179,8 @@ div {
   display: -webkit-flex;
   display: flex;
 
-  flex: row wrap;
+  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
 }
 
@@ -220,7 +221,12 @@ div {
   position: absolute;
   top: 4px;
   right: 4px;
-  color: #84a98c;
+  color: #cad2c5;
+}
+
+.compare_star:hover {
+  color:#84a98c;
+  cursor: pointer;
 }
 
 .RC_text {
@@ -256,7 +262,8 @@ div {
   display: -webkit-flex;
   display: flex;
 
-  flex: row wrap;
+  flex-wrap: wrap;
+  flex-direction: row;
   justify-content: center;
 }
 
@@ -278,7 +285,9 @@ div {
 .RC_add_to_outfit {
   background-color: #84a98c;
   padding-top: 60px;
-  padding-left: 20px;
+  padding-left: 22px;
+  width: 150px;
+  height: 250px;
   color: white;
 }
 
@@ -287,6 +296,10 @@ div {
   position: absolute;
   top: 110px;
   right: 70px;
+}
+
+.RC_add_to_outfit:hover {
+  cursor: pointer;
 }
 
 .RC_outfit_photo {
@@ -301,6 +314,11 @@ div {
   top: 4px;
   right: 4px;
   color: #cad2c5;
+}
+
+.RC_x:hover {
+  color:#84a98c;
+  cursor: pointer;
 }
 
 .RC_outfit_text_container {
@@ -350,7 +368,7 @@ div {
 }
 
 .RC_close:hover {
-  color: rgb(255, 132, 132);
+  color:#84a98c;
   cursor: pointer;
 }
 
