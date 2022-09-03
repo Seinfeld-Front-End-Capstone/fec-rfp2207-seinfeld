@@ -40,13 +40,6 @@ div {
   background-color: white;
 }
 
-input {
-  /* styling button colors */
-  accent-color: #333;
-  background-color: var(--light);
-}
-
-
 /* OVERVIEW */
 
 #OVcontainer {
@@ -188,58 +181,175 @@ input {
 
 /* RELATED PRODUCTS */
 
-/* .RC_card_container {
-  webkit-box-sizing: border-box;
-  box-sizing: border-box;
+/* Related List Cards */
+
+.RC_related_list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  border: black;
 }
 
-.RC_card {
-  background-color: white;
-  border: black;
-  border-width: 1px;
+
+.RC_related_card_container {
+  display: flex;
+  box-sizing: border-box;
   overflow: hidden;
-  max-width: 150px;
-  margin: 2px;
-  float: left;
+  padding: 5px;
+  width: 150px;
+  height: 250px;
+  margin-top: 20px;
+  margin-left: 5px;
+  position: relative;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.RC_related_text_container {
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 175px;
+  left:0px;
+  width: 160px;
+  height: 60px;
+  padding-left: 4px;
+  padding-top: 3px;
 }
 
 .RC_card_photo {
-  top: 2;
-  right: 2;
+  position: absolute;
+  top:0px;
+  right:0px;
+  height: 240px;
 }
 
-.fa-solid {
-  top: 2;
-  right: 2;
+.compare_star {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #cad2c5;
 }
 
-.RC_card_category {
+.compare_star:hover {
+  color:#84a98c;
+  cursor: pointer;
+}
+
+.RC_text {
   text-align: left;
-  padding: 3px;
-  padding-bottom: 2px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-} */
-
-.RC_outfit_card_container {
-  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-.RC_list_item {
-  list-style-type: none;
+.Rc_product_price {
+  padding: 0;
+  margin: 0;
 }
 
-.RC_outfit_card_container {
-  box-sizing: border-box;
-  flex-direction: row;
-  width: 25%;
+.RC_star_rating {
   background-color: white;
-  display: flexbox;
-  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  padding-left: 2px;
+  bottom: 0;
+  width: 160px;
+  left:0;
 }
+
+/* ** Outfit ** */
+
+.RC_outfit_list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.RC_outfit_card_container {
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 5px;
+  width: 150px;
+  height: 250px;
+  margin-top: 20px;
+  margin-left: 5px;
+  position: relative;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  background-color: #84a98c;
+}
+
+.RC_add_to_outfit {
+  background-color: #84a98c;
+  padding-top: 60px;
+  padding-left: 22px;
+  width: 150px;
+  height: 250px;
+  color: white;
+}
+
+.plus {
+  color: white;
+  position: absolute;
+  top: 110px;
+  right: 70px;
+}
+
+.RC_add_to_outfit:hover {
+  cursor: pointer;
+}
+
+.RC_outfit_photo {
+  position: absolute;
+  top:0px;
+  right:0px;
+  height: 240px;
+}
+
+.RC_x {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #cad2c5;
+}
+
+.RC_x:hover {
+  color:#84a98c;
+  cursor: pointer;
+}
+
+.RC_outfit_text_container {
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 175px;
+  left:0px;
+  width: 160px;
+  height: 60px;
+  padding-left: 4px;
+  padding-top: 3px;
+}
+
+
+/* Related List Modal */
 
 .RC_modal_content {
   background-color: white;
@@ -251,6 +361,7 @@ input {
   border-radius: 5px;
   display: flexbox;
   box-shadow: 0 4px 8px 0 rgba(99, 29, 29, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 9999;
 }
 
 .RC_modal_table {
@@ -272,103 +383,14 @@ input {
 }
 
 .RC_close:hover {
-  color: rgb(255, 132, 132);
+  color:#84a98c;
   cursor: pointer;
 }
 
 /* QUESTIONS AND ANSWERS */
 
-.qa-question-modal {
-  position: fixed;
-  left: 25vw;
-  top: 25vh;
-  background: white;
-  width: 50vw;
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
-}
+/* RATINGS AND REVIEWS */
 
-.qa-question-modal form {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.qa-question-modal div {
-  background-color: white;
-}
-
-/* -----------------RATINGS AND REVIEWS -----------------*/
-/* Ratings breakdown */
-#RR-rating-breakdown-ctn {
-  width: 300px;
-}
-
-#RR-rating-summary-ctn {
-  display: flex;
-}
-#RR-avg-rating {
-  font-size: 40px;
-}
-
-#RR-star-views-ctn {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.RR-reviews-by-star-ctn {
-  display: flex;
-  margin: 4px;
-}
-
-.RR-bar-graph {
-  background-color: var(--light);
-  margin: 0 4px;
-  width: 100px;
-  height: 14px;
-  display: flex;
-}
-
-.RR-top-bar {
-  background-color: var(--mid-green);
-  /* width: 50px; */
-}
-
-.RR-star-counts {
-  display: flex;
-  justify-content: center;
-  width: 40px;
-}
-
-/* Prod characteristics breakdown */
-.RR-prod-char-breakdown-ctn {
-  /* display: flex; */
-}
-
-.RR-prod-char-bar {
-  display: flex;
-  background-color: var(--light);
-  height: 12px;
-  width: 80%;
-  margin: 0 10%;
-}
-
-.RR-prod-char-marker {
-  /* make this a percentage,offset by -5% */
-  background-color: transparent;
-  transform: rotate(180deg);
-  color: var(--dark-green);
-}
-
-.RR-prod-char-titles {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* Reviews list */
 #RR-ratings-reviews-ctn {
   display: flex;
   /* temp */
@@ -406,40 +428,13 @@ input {
   height: auto;
 }
 
+/* crop these into same size thumbnails */
+.RR-uploaded-photos {
+  max-width: 100px;
+  max-height: 100px;
+}
 
 /* RR - Add a review form */
-#RR-form-ctn {
-  display: flex;
-  justify-content: center;
-}
-
-#RR-form-bg {
-  top: 0;
-  position: fixed;
-  z-index: 2;
-  background-color: black;
-  opacity: 0.9;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-#RR-form {
-  position: fixed;
-  z-index: 3;
-  top: 200px;
-  background: white;
-  opacity: 1;
-  height: 60%;
-  width: auto;
-  border-radius: 5px 5px;
-  overflow: scroll;
-}
-
-/* crop photo uploads into same size thumbnails */
-#RR-overall-rating {
-  width: 700px;
-}
 #RR-overall-rating input {
   width: 0;
 }
