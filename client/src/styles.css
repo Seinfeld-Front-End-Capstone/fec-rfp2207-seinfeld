@@ -389,8 +389,75 @@ div {
 
 /* QUESTIONS AND ANSWERS */
 
-/* RATINGS AND REVIEWS */
+/* -----------------RATINGS AND REVIEWS -----------------*/
+/* Ratings breakdown */
+#RR-rating-breakdown-ctn {
+  width: 300px;
+}
 
+#RR-rating-summary-ctn {
+  display: flex;
+}
+#RR-avg-rating {
+  font-size: 40px;
+}
+
+#RR-star-views-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.RR-reviews-by-star-ctn {
+  display: flex;
+  margin: 4px;
+}
+
+.RR-bar-graph {
+  background-color: var(--light);
+  margin: 0 4px;
+  width: 100px;
+  height: 14px;
+  display: flex;
+}
+
+.RR-top-bar {
+  background-color: var(--mid-green);
+  /* width: 50px; */
+}
+
+.RR-star-counts {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+}
+
+/* Prod characteristics breakdown */
+.RR-prod-char-breakdown-ctn {
+  /* display: flex; */
+}
+
+.RR-prod-char-bar {
+  display: flex;
+  background-color: var(--light);
+  height: 12px;
+  width: 80%;
+  margin: 0 10%;
+}
+
+.RR-prod-char-marker {
+  /* make this a percentage,offset by -5% */
+  background-color: transparent;
+  transform: rotate(180deg);
+  color: var(--dark-green);
+}
+
+.RR-prod-char-titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Reviews list */
 #RR-ratings-reviews-ctn {
   display: flex;
   /* temp */
