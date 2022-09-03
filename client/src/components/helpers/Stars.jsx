@@ -5,6 +5,7 @@ import halfStar from '../../../src/assets/stars/halfStar.png';
 import quarterStar from '../../../src/assets/stars/quarterStar.png';
 import noStar from '../../../src/assets/stars/noStar.png';
 
+//rating should be passed in as a float or int (not rounded)
 const Stars = ({ rating }) => {
   const maxStars = 5;
   let starsArray = [];
