@@ -5,11 +5,6 @@ import _ from 'underscore';
 import { BsTriangleFill } from 'react-icons/bs';
 import prodCharsRating from '../helpers/prodCharsRating.js';
 
-//info needed
-//average rating from reviews/meta use Quinn's logic
-//all the reviews for this product
-//review meta data (for prod-chars) from reviews/meta
-
 const reviewsByStars = (metaData) => {
   //lift this up as state?
   let total = sumReviews(metaData);
@@ -51,13 +46,13 @@ const prodCharBreakdown = (metaData) => {
     let percentage = ((value - 1) / 4) * 100 - 5;
     results.push(
       <div className="RR-prod-char-breakdown-ctn">
-        <p>{char}</p>
+        <div className="RR-prod-char-titles">{char}</div>
         <div className="RR-prod-char-bar">
           <div className="RR-prod-char-marker" style={{marginLeft: `${percentage}%`}}><BsTriangleFill /></div>
         </div>
-        <div className="RR-prod-char-titles">
-          <p>{prodCharsRating[char][1]}</p>
-          <p>{prodCharsRating[char][5]}</p>
+        <div className="RR-prod-char-descriptions">
+          <div>{prodCharsRating[char][1]}</div>
+          <div>{prodCharsRating[char][5]}</div>
         </div>
       </div>
     )
@@ -73,20 +68,21 @@ const RatingBreakdown = ({ metaData }) => {
         <div id="RR-avg-rating">
           {AvgStarRating(metaData.ratings, (avg) => {
             average = avg;
-            return <h3>{avg.toFixed(1)}</h3>
+            return <span>{avg.toFixed(1)}</span>
           })}
         </div>
         <div id="RR-star-views-ctn">
           <Stars rating={average} />
-          <p>{sumReviews(metaData)} reviews</p>
+          <div>{sumReviews(metaData)} reviews</div>
         </div>
       </div>
-      <div id="RR-factors-breakdown-ctn">
+      <div id="RR-stars-breakdown-ctn">
         {reviewsByStars(metaData)}
-        <p>{percentRecommend(metaData)}% recommend</p>
-        {/* iterate through prod-chars and generate */}
       </div>
-      {prodCharBreakdown(metaData)}
+      <div id="RR-factors-breakdown-ctn">
+        <div>{percentRecommend(metaData)}% recommend</div>
+        {prodCharBreakdown(metaData)}
+      </div>
     </div>
   )
 }
