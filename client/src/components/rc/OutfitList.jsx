@@ -23,7 +23,16 @@ const OutfitList = ({ id }) => {
 
   //when a card is added to the outfit list, also add it to display. after 3 cards are added, don't add any more to display unless > button is clicked. Then, push the next card in line to the display. if < is clicked, unshift the card that comes before whatever the card at [0] is. That way, only 3 cards will be shown at once. The add card should stay in place at all times. // if card exists within the outfit array AND the display array, display it.
 
+  console.log('display:', outfitDisplay);
+  const handlePrevClick = (e) => {
+    // there should only ever be 3 outfit cards displayed at a time.
+    e.preventDefault();
+    //find the value of the last element in the display array,
+      //check to find the same in the outfit array,
+        //then, shift the first element in display out of the array while
+        // pushing the next element of outfit array onto the end of display array
 
+  }
 
 
 

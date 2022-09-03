@@ -3,8 +3,6 @@ import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 
-//Okay this is going to be basically the same as the related item card but slightly different.
-
 const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
   const [productData, setProductData] = useState([]);
   const [photoData, setPhotoData] = useState([]);
@@ -47,6 +45,7 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
 
   /* handles delete button onClick event */
   const handleDelete = useCallback(() => {
+    // delete card from display state array AND from the outfit array \\
     deleteCard(curOutfit.filter((item) => item !== itemNo));
   }, [deleteCard, curOutfit]);
 
