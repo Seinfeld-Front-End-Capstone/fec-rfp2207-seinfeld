@@ -25,6 +25,8 @@ const QuestionsMaster = ({productId}) => {
     })
   }, [])
 
+
+  // console.log('question : ', question)
   // console.log('initial : ', initial);
 
   const doSearch = (word) => {
@@ -69,7 +71,7 @@ const QuestionsMaster = ({productId}) => {
              <button onClick={() => setLength(2)}>Collapse Questions</button>
           }
           <button onClick={() => setModal(true)}>Add A Question</button>
-          <QuestionModal modal={modal} onClose={() => setModal(false)}/>
+          <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion}/>
         </div>
        ) : (
         <button>Add A Question</button>

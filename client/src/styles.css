@@ -251,6 +251,28 @@ input {
 
 /* QUESTIONS AND ANSWERS */
 
+
+.qa-question-modal {
+  position: fixed;
+  left: 25vw;
+  top: 25vh;
+  background: white;
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.qa-question-modal form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.qa-question-modal div {
+  background-color: white;
+}
 /* RATINGS AND REVIEWS */
 
 #RR-ratings-reviews-ctn {
