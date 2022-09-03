@@ -4,15 +4,25 @@
 /* Don't define your own colors, use the variables */
 /* styling should be okay with your own preferences as long as it's within your own container */
 
+/* Global variables */
+
+:root {
+  /* use mostly white and grey and some of the colors below */
+  --light: #cad2c5;
+  --light-green: #84a98c;
+  --mid-green: #52796f;
+  --dark-green: #354f52;
+  --black-green: #2f3e46;
+}
 
 
 body {
-  background-color: pink
+  background-color: var(--light);
 }
 
 div {
-  color: grey;
-  background-color: pink;
+  color: var(--black-green);
+  background-color: white;
 }
 
 /* OVERVIEW */
@@ -246,7 +256,6 @@ div {
 
 /* QUESTIONS AND ANSWERS */
 
-
 .qa-question-modal {
   position: fixed;
   left: 25vw;
@@ -268,8 +277,76 @@ div {
 .qa-question-modal div {
   background-color: white;
 }
-/* RATINGS AND REVIEWS */
 
+/* -----------------RATINGS AND REVIEWS -----------------*/
+/* Ratings breakdown */
+#RR-rating-breakdown-ctn {
+  width: 300px;
+}
+
+#RR-rating-summary-ctn {
+  display: flex;
+}
+#RR-avg-rating {
+  font-size: 40px;
+}
+
+#RR-star-views-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.RR-reviews-by-star-ctn {
+  display: flex;
+  margin: 4px;
+}
+
+.RR-bar-graph {
+  background-color: var(--light);
+  margin: 0 4px;
+  width: 100px;
+  height: 14px;
+  display: flex;
+}
+
+.RR-top-bar {
+  background-color: var(--mid-green);
+  /* width: 50px; */
+}
+
+.RR-star-counts {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+}
+
+/* Prod characteristics breakdown */
+.RR-prod-char-breakdown-ctn {
+  /* display: flex; */
+}
+
+.RR-prod-char-bar {
+  display: flex;
+  background-color: var(--light);
+  height: 12px;
+  width: 80%;
+  margin: 0 10%;
+}
+
+.RR-prod-char-marker {
+  /* make this a percentage,offset by -5% */
+  background-color: transparent;
+  transform: rotate(180deg);
+  color: var(--dark-green);
+}
+
+.RR-prod-char-titles {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Reviews list */
 #RR-ratings-reviews-ctn {
   display: flex;
   /* temp */
