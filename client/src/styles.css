@@ -15,15 +15,22 @@
   --black-green: #2f3e46;
 }
 
-
+/* GLOBAL STYLES */
 body {
-  background-color: var(--light);
+  background-color: white
 }
 
 div {
-  color: var(--black-green);
+  color: grey;
   background-color: white;
 }
+
+input {
+  /* styling button colors */
+  accent-color: #333;
+  background-color: var(--light);
+}
+
 
 /* OVERVIEW */
 
@@ -384,13 +391,40 @@ div {
   height: auto;
 }
 
-/* crop these into same size thumbnails */
-.RR-uploaded-photos {
-  max-width: 100px;
-  max-height: 100px;
-}
 
 /* RR - Add a review form */
+#RR-form-ctn {
+  display: flex;
+  justify-content: center;
+}
+
+#RR-form-bg {
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  background-color: black;
+  opacity: 0.9;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#RR-form {
+  position: fixed;
+  z-index: 3;
+  top: 200px;
+  background: white;
+  opacity: 1;
+  height: 60%;
+  width: auto;
+  border-radius: 5px 5px;
+  overflow: scroll;
+}
+
+/* crop photo uploads into same size thumbnails */
+#RR-overall-rating {
+  width: 700px;
+}
 #RR-overall-rating input {
   width: 0;
 }
@@ -398,4 +432,63 @@ div {
 #RR-overall-rating img {
   height: 20px;
   width: 20px;
+}
+
+#RR-rate-star {
+  display: flex;
+}
+
+/* RR - Product Characteristics Breakdown */
+
+#RR-summary {
+  width: 365px;
+  text-align: left;
+}
+.RR-prod-char-rating {
+  display: flex;
+  width: 700px;
+  border: 1px solid grey;
+}
+
+.RR-prod-char-title {
+  width: 100px;
+  align-self: flex-end;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+
+.RR-rating-ctn {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.RR-rating-scores {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 120px;
+}
+
+.RR-rating-scores p {
+  height: 36px;
+}
+.RR-rating-scores input {
+  height: 18px;
+  background-color: #333;
+}
+
+.RR-rating-scores label {
+  margin: 2px 0;
+}
+
+/* Uploaded photos */
+
+.RR-uploaded-photos {
+  max-width: 100px;
+  max-height: 100px;
 }

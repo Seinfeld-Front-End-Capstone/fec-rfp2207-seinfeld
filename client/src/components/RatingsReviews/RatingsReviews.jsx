@@ -2,18 +2,19 @@ import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
 // import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
-import Form from './Form.jsx';
+
+import Form from './Form/Form.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx'
-
+//lift axios request for reviews/meta out of Form and into this component
 //lift axios request for reviews/meta out of Form and into this component
 
-//lift axios request for reviews/meta out of Form and into this component
 
 const RatingsReviews = ({ productId, productName }) => {
 
   const [reviews, setReviews] = useState([]);
   const [sortParam, setSortParam] = useState('relevant')
   const [maxResults, setMaxResults] = useState(2);
+  const [formMode, setFormMode] = useState(false);
   const [metaData, setMetaData] = useState(null)
 
   useEffect(() => {
@@ -30,11 +31,28 @@ const RatingsReviews = ({ productId, productName }) => {
   }, [productId, maxResults, sortParam],
   );
 
+  const refreshReviews = () => {
+    please.getReviews(productId)
+    .then((data) => {
+      let reviews = data.data.results;
+      //add logic or state to remember what filter/sort the user is in
+      setReviews(reviews);
+      setReviewsOnDisplay(reviews.slice(0, maxResults));
+    })
+    .catch((err) => console.log(err))
+  }
+
   const showMoreReview = () => {
     setMaxResults(maxResults + 2);
   }
 
-  const addReviewButton = <button>ADD A REVIEW +</button>;
+  const toggleForm = () => {
+    console.log('open form')
+    setFormMode(!formMode);
+  }
+
+  const addReviewButton = <button onClick={toggleForm}>ADD A REVIEW +</button>;
+
 
   const handleSort = (e) => {
     setSortParam(e.target.value)
@@ -67,7 +85,7 @@ const RatingsReviews = ({ productId, productName }) => {
           </div>
         </div>
       </div>}
-      <Form productName={productName} />
+      {formMode && <Form productName={productName} toggleForm={toggleForm} productId={productId} refreshReviews={() => refreshReviews()}/>}
     </div>
   )
 

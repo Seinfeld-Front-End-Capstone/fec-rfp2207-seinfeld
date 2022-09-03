@@ -27,6 +27,8 @@
   "homepage": "https://github.com/Seinfeld-Front-End-Capstone/fec-rfp2207-seinfeld#readme",
   "dependencies": {
     "axios": "^0.27.2",
+    "cloudinary-core": "^2.13.0",
+    "email-validator": "^2.0.4",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
