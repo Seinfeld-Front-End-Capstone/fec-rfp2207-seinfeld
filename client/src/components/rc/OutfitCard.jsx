@@ -45,7 +45,6 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
 
   /* handles delete button onClick event */
   const handleDelete = useCallback(() => {
-    // delete card from display state array AND from the outfit array \\
     deleteCard(curOutfit.filter((item) => item !== itemNo));
     deleteCardDisplay(curDisplay.filter((item) => item !== itemNo));
   }, [deleteCard, curOutfit, curDisplay]);
