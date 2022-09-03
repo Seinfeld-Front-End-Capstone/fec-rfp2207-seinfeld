@@ -10,9 +10,10 @@ const Stars = ({ rating }) => {
   } else if (roundedRating % 1 === 0.25) {
     roundedRating = roundedRating - 0.25 + 0.4;
   }
+  let percent = (roundedRating / 5) * 100 + '%';
 
   return (
-    <div className="Stars" style={{'--rating': roundedRating}}>★★★★★</div>
+    <div className="Stars" style={{'--percent': percent}}>★★★★★</div>
   )
 }
 

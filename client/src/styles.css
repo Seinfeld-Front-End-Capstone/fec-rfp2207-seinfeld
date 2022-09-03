@@ -19,7 +19,7 @@
 }
 
 .Stars {
-  --percent: calc(var(--rating) / 5 * 100%);
+  /* --percent is passed down from JS variables */
   display: inline-block;
   font-size: 20px;
   font-family: Times;
