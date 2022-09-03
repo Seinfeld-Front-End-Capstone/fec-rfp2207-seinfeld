@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import noStar from '../../../assets/stars/noStar.png';
-import fullStar from '../../../assets/stars/fullStar.png';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
