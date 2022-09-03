@@ -17,29 +17,47 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
   const [chars, setChars] = useState([]);
+  const [myWidget, setMyWidget] = useState(null);
 
   useEffect(() => {
     please.getReviewMeta(productId)
     .then(data => setChars(data.data.characteristics))
     .catch(err => console.log(err));
+
+    setMyWidget(cloudinary.createUploadWidget({
+      cloudName: 'seinfeldtd',
+      uploadPreset: 'seinfeldpreset'
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log('Done! Here is the image info: ', result.info);
+          let newPhotos = photos.slice();
+          newPhotos.push({
+            thumbnail: result.info.thumbnail_url,
+            url: result.info.secure_url
+          });
+          setPhotos(newPhotos);
+          console.log(photos);
+        }
+    }))
   }, [productId]);
 
-  const myWidget = cloudinary.createUploadWidget({
-    cloudName: 'seinfeldtd',
-    uploadPreset: 'seinfeldpreset'
-    },
-    (error, result) => {
-      if (!error && result && result.event === "success") {
-        console.log('Done! Here is the image info: ', result.info);
-        let newPhotos = photos.slice();
-        newPhotos.push({
-          thumbnail: result.info.thumbnail_url,
-          url: result.info.secure_url
-        });
-        setPhotos(newPhotos);
-        console.log(photos);
-      }
-  })
+  // const myWidget = cloudinary.createUploadWidget({
+  //   cloudName: 'seinfeldtd',
+  //   uploadPreset: 'seinfeldpreset'
+  //   },
+  //   (error, result) => {
+  //     if (!error && result && result.event === "success") {
+  //       console.log('Done! Here is the image info: ', result.info);
+  //       let newPhotos = photos.slice();
+  //       newPhotos.push({
+  //         thumbnail: result.info.thumbnail_url,
+  //         url: result.info.secure_url
+  //       });
+  //       setPhotos(newPhotos);
+  //       console.log(photos);
+  //     }
+  // })
 
   const handleSubmit = (e) => {
     let formData = {
@@ -135,7 +153,10 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         rows="10" cols="44" required></textarea><br/>
         <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
-        {photos.length < 5 && <button onClick={() => myWidget.open()}>Upload photos</button>}
+        {photos.length < 5 && <button onClick={() => {
+          console.log('opening widget');
+          myWidget.open();
+        }}>Upload photos</button>}
         {photos.length > 0 && _.map(photos, photo => <img className="RR-uploaded-photos" src={photo.thumbnail} alt="Your uploaded photo of the product"/>)}
 
         <p>What is your nickname:  {requiredTag}</p>
