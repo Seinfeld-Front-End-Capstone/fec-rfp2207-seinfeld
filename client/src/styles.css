@@ -40,6 +40,10 @@ div {
   background-color: white;
 }
 
+input{
+  accent-color: var(--dark-green);
+}
+
 /* OVERVIEW */
 
 #OVcontainer {
@@ -390,9 +394,15 @@ div {
 /* QUESTIONS AND ANSWERS */
 
 /* -----------------RATINGS AND REVIEWS -----------------*/
+#RR-ratings-reviews-ctn {
+  display: flex;
+  /* temp */
+  border-style: solid;
+}
+
 /* Ratings breakdown */
 #RR-rating-breakdown-ctn {
-  width: 300px;
+  width: 400px;
 }
 
 #RR-rating-summary-ctn {
@@ -458,11 +468,6 @@ div {
 }
 
 /* Reviews list */
-#RR-ratings-reviews-ctn {
-  display: flex;
-  /* temp */
-  border-style: solid;
-}
 
 #RR-breakdown-ctn {
   padding-left: 20px;
@@ -502,6 +507,38 @@ div {
 }
 
 /* RR - Add a review form */
+#RR-form-ctn {
+  display: flex;
+  justify-content: center;
+}
+
+#RR-form-bg {
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  background-color: black;
+  opacity: 0.9;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#RR-form {
+  position: fixed;
+  z-index: 3;
+  top: 200px;
+  background: white;
+  opacity: 1;
+  height: 60%;
+  width: auto;
+  border-radius: 5px 5px;
+  overflow: scroll;
+}
+
+/* crop photo uploads into same size thumbnails */
+#RR-overall-rating {
+  width: 700px;
+}
 #RR-overall-rating input {
   width: 0;
 }
