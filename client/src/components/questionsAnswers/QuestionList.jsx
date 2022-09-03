@@ -3,9 +3,9 @@ import Question from './Question.jsx';
 
 var QuestionList = (props) => {
 
-  let sliceQuestions = props.questions.slice(0, props.length);
+  let questions = props.questions.slice(0, props.length);
   // console.log('SLICED : ', sliced);
-  let mappedQuestions = sliceQuestions.map((question, i) => {
+  let mappedQuestions = questions.map((question, i) => {
     return <Question q={question} key={i}/>
   })
 
