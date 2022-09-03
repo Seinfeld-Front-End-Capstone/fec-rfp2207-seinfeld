@@ -5,7 +5,30 @@ import UploadedPhotos from './UploadedPhotos.jsx';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
+// import openWidget from './uploadPhotos.js';
 
+{/* TESTING OUT CLOUNDINARY */}
+import {AdvancedImage} from '@cloudinary/react';
+import {Cloudinary} from "@cloudinary/url-gen";
+
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'seinfeldtd'
+  }
+})
+
+const myWidget = cloudinary.createUploadWidget({
+  cloudName: 'seinfeldtd',
+  uploadPreset: 'seinfeldpreset'
+  },
+  (error, result) => {
+    if (!error && result && result.event === "success") {
+      console.log('Done! Here is the image info: ', result.info);
+    }
+  })
+
+const myImage = cld.image('sample');
+{/* TESTING OUT CLOUNDINARY */}
 
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [rating, setRating] = useState(0);
@@ -133,6 +156,13 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         {photos.length < 5 && <input type="file" id="upload-photos" name="photos" accept="image/*" onChange={handleImageUpload}/>}
         <br/>
         {photos.map(photo => <UploadedPhotos photo={photo}/>)}
+        {/* TESTING OUT CLOUNDINARY */}
+        <button onClick={() => myWidget.open()}>Add photos / Widget</button>
+        <p>Cloudinary image should show up here</p>
+        <div>
+          <AdvancedImage cldImg={myImage} />
+        </div>
+        {/* TESTING OUT CLOUNDINARY */}
 
         <p>What is your nickname:  {requiredTag}</p>
         <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
