@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import noStar from '../../../assets/stars/noStar.png';
 import fullStar from '../../../assets/stars/fullStar.png';
-import UploadedPhotos from './UploadedPhotos.jsx';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
 import { GiCancel } from 'react-icons/gi';
+import _ from 'underscore';
+
+// TODO:
+// remove previous photo upload logic
+// create a new state to store cloudinary urls to be send to the server
 
 
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
@@ -14,13 +18,29 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
   const [chars, setChars] = useState([]);
+  const [myWidget, setMyWidget] = useState(null);
 
   useEffect(() => {
     please.getReviewMeta(productId)
-    .then(data => {
-      setChars(data.data.characteristics);
-    })
+    .then(data => setChars(data.data.characteristics))
     .catch(err => console.log(err));
+
+    setMyWidget(cloudinary.createUploadWidget({
+      cloudName: 'seinfeldtd',
+      uploadPreset: 'seinfeldpreset'
+      },
+      (error, result) => {
+        if (!error && result && result.event === "success") {
+          console.log('Done! Here is the image info: ', result.info);
+          let newPhotos = photos.slice();
+          newPhotos.push({
+            thumbnail: result.info.thumbnail_url,
+            url: result.info.secure_url
+          });
+          setPhotos(newPhotos);
+          console.log(photos);
+        }
+    }))
   }, [productId]);
 
   const handleSubmit = (e) => {
@@ -39,8 +59,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         formData[[key]] = value;
       }
     }
-    // formData.photos = photos;
-    formData.photos = []; //until I learn how to send image files
+    formData.photos = _.map(photos, photo => photo.url);
     let results = validateForm(formData);
     if (!results.isValid) {
       alert(results.errorMessages)
@@ -76,7 +95,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
       return(
         <React.Fragment key={index}>
           <input type="radio" id={index} name="rating" value={index} required onClick={changeRating} />
-          <label for={index}><img src={rating >= index ? fullStar : noStar} onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)}/></label>
+          <label htmlFor={index}><img src={rating >= index ? fullStar : noStar} onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)}/></label>
         </React.Fragment>
       )
     }
@@ -85,17 +104,6 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const countChar = (e) => {
     let charCount = e.target.value ? e.target.value.length : 0;
     setBodyCharCount(charCount);
-  }
-
-  const handleImageUpload = () => {
-    let image = document.getElementById('upload-photos').files[0];
-    let reader = new FileReader();
-    reader.onload = (e) => {
-      let photoUploads = photos.slice();
-      photoUploads.push({url: e.target.result});
-      setPhotos(photoUploads);
-    }
-    reader.readAsDataURL(image);
   }
 
   return (
@@ -114,14 +122,13 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         </div>
 
         <div id="RR-form-recommend">Do you recommend this product? {requiredTag}<br/>
-          <input type="radio" id="yes" name="recommend" value="yes" checked required />
-          <label for="yes">yes</label>
+          <input type="radio" id="yes" name="recommend" value="yes" defaultChecked required />
+          <label htmlFor="yes">yes</label>
           <input type="radio" id="no" name="recommend" value="no" />
-          <label for="no">no</label>
+          <label htmlFor="no">no</label>
         </div>
 
-        {chars ? <ProdChars chars={Object.keys(chars)}/> : null}
-        {/* {chars && <ProdChars chars={chars}/>} */}
+        {<ProdChars chars={Object.keys(chars)} />}
 
         <p>Summary:</p>
         <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
@@ -131,10 +138,11 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         rows="10" cols="44" required></textarea><br/>
         <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
-        <label for="upload-photos">Upload photos: </label>
-        {photos.length < 5 && <input type="file" id="upload-photos" name="photos" accept="image/*" onChange={handleImageUpload}/>}
-        <br/>
-        {photos.map(photo => <UploadedPhotos photo={photo}/>)}
+        {photos.length < 5 && <button onClick={() => {
+          console.log('opening widget');
+          myWidget.open();
+        }}>Upload photos</button>}
+        {photos.length > 0 && _.map(photos, photo => <img className="RR-uploaded-photos" src={photo.thumbnail} alt="Your uploaded photo of the product"/>)}
 
         <p>What is your nickname:  {requiredTag}</p>
         <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
