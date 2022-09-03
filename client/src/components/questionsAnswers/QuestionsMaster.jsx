@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import QuestionList from './QuestionList.jsx';
+import QuestionModal from './QuestionModal.jsx';
 import please from '../.././request.js';
 
 const QuestionsMaster = ({productId}) => {
@@ -8,6 +9,7 @@ const QuestionsMaster = ({productId}) => {
   const [answers, setAnswers] = useState([]);
   const [input, setInput] = useState('');
   const [length, setLength] = useState(2);
+  const [modal, setModal] = useState(false);
 
   useEffect(() => {
     please.getQuestions(productId)
@@ -29,18 +31,18 @@ const QuestionsMaster = ({productId}) => {
     // console.log('initial questions : ', initial);
     let questions = initial;
     // console.log(questions);
-    let filtered = [];
+    let filteredQuestions = [];
     questions.forEach((q) => {
       // console.log('input : ', input)
       if (word.length >= 3 && q.question_body.toLowerCase().includes(word.toLowerCase())) {
-        filtered.push(q)
+        filteredQuestions.push(q)
       }
     })
-    filtered.sort((a, b) => {
+    filteredQuestions.sort((a, b) => {
       return b.question_helpfulness - a.question_helpfulness
     })
-    // console.log('ARRAY : ', filtered)
-    word.length < 3 ? setQuestion(initial) : setQuestion(filtered)
+    // console.log('ARRAY : ', filteredQuestions)
+    word.length < 3 ? setQuestion(initial) : setQuestion(filteredQuestions)
   }
 
   const onSubmit = (e) => {
@@ -66,7 +68,8 @@ const QuestionsMaster = ({productId}) => {
             :
              <button onClick={() => setLength(2)}>Collapse Questions</button>
           }
-          <button>Add A Question</button>
+          <button onClick={() => setModal(true)}>Add A Question</button>
+          <QuestionModal modal={modal} onClose={() => setModal(false)}/>
         </div>
        ) : (
         <button>Add A Question</button>

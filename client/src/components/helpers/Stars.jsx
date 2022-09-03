@@ -12,9 +12,11 @@ const Stars = ({ rating }) => {
   let remainder = rating % 1;
   let partialCount = (Math.round(remainder * 4) / 4).toFixed(2);
   let partialStars = {
+    '0.00' : noStar,
     '0.25' : quarterStar,
     '0.50' : halfStar,
-    '0.75' : threeQuartersStar
+    '0.75' : threeQuartersStar,
+    '1.00' : fullStar
   }
 
   for (let i = 0; i < fullStarCount; i++) {
