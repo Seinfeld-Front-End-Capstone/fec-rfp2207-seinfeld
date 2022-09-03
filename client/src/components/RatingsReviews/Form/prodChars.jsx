@@ -51,11 +51,11 @@ const ProdChars = ({ chars }) => {
     <div>
       console.log('got here to prod chars');
       {chars.map(char => {
-        return <div className="RR-prod-char-rating">
+        return <div key={char} className="RR-prod-char-rating">
           <p className="RR-prod-char-title">{char}: </p>
           <div className="RR-rating-ctn">
             {[1, 2, 3, 4, 5].map(rating => {
-              return <div className="RR-rating-scores">
+              return <div key={rating} className="RR-rating-scores">
                   <p>{charRatings[char][rating]}</p>
                   <input type="radio" value={rating} id={rating} name={char}/>
                   <label htmlFor={rating}>{rating}</label>
