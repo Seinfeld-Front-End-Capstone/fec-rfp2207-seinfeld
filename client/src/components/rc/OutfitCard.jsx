@@ -3,7 +3,7 @@ import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 
-const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
+const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfit, curDisplay }) => {
   const [productData, setProductData] = useState([]);
   const [photoData, setPhotoData] = useState([]);
   const [price, setPrice] = useState([]);
@@ -47,7 +47,8 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
   const handleDelete = useCallback(() => {
     // delete card from display state array AND from the outfit array \\
     deleteCard(curOutfit.filter((item) => item !== itemNo));
-  }, [deleteCard, curOutfit]);
+    deleteCardDisplay(curDisplay.filter((item) => item !== itemNo));
+  }, [deleteCard, curOutfit, curDisplay]);
 
 
 

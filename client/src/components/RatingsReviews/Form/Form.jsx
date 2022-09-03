@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+// import noStar from '../../../assets/stars/noStar.png';
+// import fullStar from '../../../assets/stars/fullStar.png';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
@@ -93,9 +95,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
       return(
         <React.Fragment key={index}>
           <input type="radio" id={index} name="rating" value={index} required onClick={changeRating} />
-          {/* <label htmlFor={index}><img src={rating >= index ? fullStar : noStar} onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)}/></label> */}
-          <label htmlFor={index} className="Stars" onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)} style={{'--percent': rating >= index ? '100%' : '0%'}}>★</label>
-
+          <label htmlFor={index}><img src={rating >= index ? fullStar : noStar} onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)}/></label>
         </React.Fragment>
       )
     }

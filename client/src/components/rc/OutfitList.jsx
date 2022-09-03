@@ -11,13 +11,16 @@ const OutfitList = ({ id }) => {
 
   /* adds a new card to the list */
   const addOutfit = outfit.map((item) => {
-    return <OutfitCard key={item} itemNo={item} productID={id} deleteCard={setOutfit} curOutfit={outfit} />
+    return <OutfitCard key={item} itemNo={item} productID={id} deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay} curOutfit={outfit} curDisplay={outfitDisplay}/>
   });
 
   /* handles the + button being clicked */
   const handleAddToOutfit = (e) => {
     e.preventDefault();
     setOutfit(prevOutfit => [...prevOutfit, cardCount]);
+    if (outfitDisplay.length < 4) {
+      setOutfitDisplay(prevDisplay => [...prevDisplay, cardCount]);
+    }
     setCardCount(prevCount => prevCount + 1);
   }
 
