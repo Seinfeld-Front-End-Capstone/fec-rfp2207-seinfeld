@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import noStar from '../../../assets/stars/noStar.png';
 import fullStar from '../../../assets/stars/fullStar.png';
-import UploadedPhotos from './UploadedPhotos.jsx';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
-// import {AdvancedImage} from '@cloudinary/react';
-// import {Cloudinary} from "@cloudinary/url-gen";
+import _ from 'underscore';
 
+// TODO:
+// remove previous photo upload logic
+// create a new state to store cloudinary urls to be send to the server
 
 
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
@@ -16,7 +17,6 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
   const [chars, setChars] = useState([]);
-  const [thumbnails, setThumbnails] = useState([]);
 
   useEffect(() => {
     please.getReviewMeta(productId)
@@ -26,12 +26,6 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
     .catch(err => console.log(err));
   }, [productId]);
 
-  // const cld = new Cloudinary({
-  //   cloud: {
-  //     cloudName: 'seinfeldtd'
-  //   }
-  // })
-
   const myWidget = cloudinary.createUploadWidget({
     cloudName: 'seinfeldtd',
     uploadPreset: 'seinfeldpreset'
@@ -39,11 +33,13 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
     (error, result) => {
       if (!error && result && result.event === "success") {
         console.log('Done! Here is the image info: ', result.info);
-        debugger;
-        let newThumbnails = thumbnails.slice();
-        newThumbnails.push(result.info.thumbnail_url);
-        console.log('new thumbnails', newThumbnails);
-        setThumbnails(newThumbnails);
+        let newPhotos = photos.slice();
+        newPhotos.push({
+          thumbnail: result.info.thumbnail_url,
+          url: result.info.secure_url
+        });
+        setPhotos(newPhotos);
+        console.log(photos);
       }
   })
 
@@ -63,8 +59,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         formData[[key]] = value;
       }
     }
-    // formData.photos = photos;
-    formData.photos = []; //until I learn how to send image files
+    formData.photos = _.map(photos, photo => photo.url);
     let results = validateForm(formData);
     if (!results.isValid) {
       alert(results.errorMessages)
@@ -100,7 +95,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
       return(
         <React.Fragment key={index}>
           <input type="radio" id={index} name="rating" value={index} required onClick={changeRating} />
-          <label for={index}><img src={rating >= index ? fullStar : noStar} onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)}/></label>
+          <label htmlFor={index}><img src={rating >= index ? fullStar : noStar} onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)}/></label>
         </React.Fragment>
       )
     }
@@ -109,17 +104,6 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const countChar = (e) => {
     let charCount = e.target.value ? e.target.value.length : 0;
     setBodyCharCount(charCount);
-  }
-
-  const handleImageUpload = () => {
-    let image = document.getElementById('upload-photos').files[0];
-    let reader = new FileReader();
-    reader.onload = (e) => {
-      let photoUploads = photos.slice();
-      photoUploads.push({url: e.target.result});
-      setPhotos(photoUploads);
-    }
-    reader.readAsDataURL(image);
   }
 
   return (
@@ -137,14 +121,13 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         </div>
 
         <div id="RR-form-recommend">Do you recommend this product? {requiredTag}<br/>
-          <input type="radio" id="yes" name="recommend" value="yes" checked required />
-          <label for="yes">yes</label>
+          <input type="radio" id="yes" name="recommend" value="yes" defaultChecked required />
+          <label htmlFor="yes">yes</label>
           <input type="radio" id="no" name="recommend" value="no" />
-          <label for="no">no</label>
+          <label htmlFor="no">no</label>
         </div>
 
-        {chars ? <ProdChars chars={Object.keys(chars)}/> : null}
-        {/* {chars && <ProdChars chars={chars}/>} */}
+        {chars.length > 0 ? <ProdChars chars={Object.keys(chars)}/> : null}
 
         <p>Summary:</p>
         <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
@@ -154,15 +137,8 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         rows="10" cols="44" required></textarea><br/>
         <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
-        <label for="upload-photos">Upload photos: </label>
-        {photos.length < 5 && <input type="file" id="upload-photos" name="photos" accept="image/*" onChange={handleImageUpload}/>}
-        <br/>
-        {photos.map(photo => <UploadedPhotos photo={photo}/>)}
-        {/* TESTING OUT CLOUNDINARY */}
-        <button onClick={() => myWidget.open()}>Add photos / Widget</button>
-        <p>Cloudinary image should show up here</p>
-        {thumbnails.length > 0 && thumbnails.map(url => <img className="RR-uploaded-photos" src={url} alt="Your uploaded photo of the product"/>)}
-        {/* TESTING OUT CLOUNDINARY */}
+        {photos.length < 5 && <button onClick={() => myWidget.open()}>Upload photos</button>}
+        {photos.length > 0 && _.map(photos, photo => <img className="RR-uploaded-photos" src={photo.thumbnail} alt="Your uploaded photo of the product"/>)}
 
         <p>What is your nickname:  {requiredTag}</p>
         <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />

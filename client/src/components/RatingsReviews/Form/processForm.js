@@ -1,4 +1,3 @@
-//this needs to take in meta data for characteristics and reformat the keys from string title -> id
 import { validate } from 'email-validator';
 
 const validateForm = ({ product_id, rating, body, recommend, name, email, characteristics }) => {
@@ -27,7 +26,7 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
   if(email === undefined || email.length === 0) {
     isValid = false;
     errorMessages.push('Missing email address')
-    //need additional logic to validate email format
+
   } else if (!validate(email)) {
     isValid = false;
     errorMessages.push('Incorrect email format')
@@ -36,7 +35,6 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
   for (let char in characteristics) {
     if (!characteristics[char]) {
       isValid = false;
-      //this might not actually catch this error
       errorMessages.push(`Missing a rating for ${char}`)
     }
   }
@@ -51,7 +49,6 @@ const formatForm = (form, chars) => {
     form.characteristics[charId] = parseInt(form.characteristics[char]);
     delete form.characteristics[char];
   }
-  //format photos
 
   return form;
 
