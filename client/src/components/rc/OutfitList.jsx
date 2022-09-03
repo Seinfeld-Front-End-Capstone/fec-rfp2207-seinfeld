@@ -25,6 +25,8 @@ const OutfitList = ({ id }) => {
 
 
 
+
+
   return (
     <div>
       <h5>Your Outfit</h5>
