@@ -5,7 +5,6 @@ import UploadedPhotos from './UploadedPhotos.jsx';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
-// import openWidget from './uploadPhotos.js';
 
 {/* TESTING OUT CLOUNDINARY */}
 import {AdvancedImage} from '@cloudinary/react';
@@ -25,7 +24,7 @@ const myWidget = cloudinary.createUploadWidget({
     if (!error && result && result.event === "success") {
       console.log('Done! Here is the image info: ', result.info);
     }
-  })
+})
 
 const myImage = cld.image('sample');
 {/* TESTING OUT CLOUNDINARY */}
