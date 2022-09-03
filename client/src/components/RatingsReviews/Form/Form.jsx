@@ -42,23 +42,6 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
     }))
   }, [productId]);
 
-  // const myWidget = cloudinary.createUploadWidget({
-  //   cloudName: 'seinfeldtd',
-  //   uploadPreset: 'seinfeldpreset'
-  //   },
-  //   (error, result) => {
-  //     if (!error && result && result.event === "success") {
-  //       console.log('Done! Here is the image info: ', result.info);
-  //       let newPhotos = photos.slice();
-  //       newPhotos.push({
-  //         thumbnail: result.info.thumbnail_url,
-  //         url: result.info.secure_url
-  //       });
-  //       setPhotos(newPhotos);
-  //       console.log(photos);
-  //     }
-  // })
-
   const handleSubmit = (e) => {
     let formData = {
       product_id: productId,

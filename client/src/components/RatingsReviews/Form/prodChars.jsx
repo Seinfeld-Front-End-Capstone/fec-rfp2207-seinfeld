@@ -58,7 +58,7 @@ const ProdChars = ({ chars }) => {
               return <div key={rating} className="RR-rating-scores">
                   <p>{charRatings[char][rating]}</p>
                   <input type="radio" value={rating} id={rating} name={char}/>
-                  <label htmlFor={rating}>{rating}</label>
+                  <label>{rating}</label>
                 </div>
             })}
           </div>
