@@ -21,7 +21,9 @@ const OutfitList = ({ id }) => {
     setCardCount(prevCount => prevCount + 1);
   }
 
-  //when a card is added to the outfit list, also add it to display. after 3 cards are added, don't add any more to display unless > button is clicked. Then, push the next card in line to the display. if < is clicked, unshift the card that comes before whatever the card at [0] is. That way, only 3 cards will be shown at once. The add card should stay in place at all times.
+  //when a card is added to the outfit list, also add it to display. after 3 cards are added, don't add any more to display unless > button is clicked. Then, push the next card in line to the display. if < is clicked, unshift the card that comes before whatever the card at [0] is. That way, only 3 cards will be shown at once. The add card should stay in place at all times. // if card exists within the outfit array AND the display array, display it.
+
+
 
   return (
     <div>
