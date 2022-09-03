@@ -13,21 +13,6 @@
   --mid-green: #52796f;
   --dark-green: #354f52;
   --black-green: #2f3e46;
-
-  --star-color: var(--dark-green);
-  --star-background: var(--light);
-}
-
-.Stars {
-  --percent: calc(var(--rating) / 5 * 100%);
-  display: inline-block;
-  font-size: 20px;
-  font-family: Times;
-  line-height: 1;
-  background: linear-gradient(90deg, var(--star-color) var(--percent), var(--star-background) var(--percent));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* GLOBAL STYLES */
