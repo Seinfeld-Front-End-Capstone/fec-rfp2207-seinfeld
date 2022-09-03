@@ -20,9 +20,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
 
   useEffect(() => {
     please.getReviewMeta(productId)
-    .then(data => {
-      setChars(data.data.characteristics);
-    })
+    .then(data => setChars(data.data.characteristics))
     .catch(err => console.log(err));
   }, [productId]);
 
@@ -127,7 +125,7 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
           <label htmlFor="no">no</label>
         </div>
 
-        {chars.length > 0 ? <ProdChars chars={Object.keys(chars)}/> : null}
+        {<ProdChars chars={Object.keys(chars)} />}
 
         <p>Summary:</p>
         <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>

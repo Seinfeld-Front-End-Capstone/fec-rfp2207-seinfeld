@@ -50,6 +50,7 @@ const ProdChars = ({ chars }) => {
   return (
     <div>
       {chars.map(char => {
+        console.log('got here to prod chars');
         return <div className="RR-prod-char-rating">
           <p className="RR-prod-char-title">{char}: </p>
           <div className="RR-rating-ctn">
