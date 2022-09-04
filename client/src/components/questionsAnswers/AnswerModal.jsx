@@ -27,7 +27,7 @@ const AnswerModal = ({q, modal, onClose}) => {
   if (modal) {
     return (
       <div className='qa-answer-modal'>
-        <p onClick={onClose}>X</p>
+        <p className='qa-X' onClick={onClose}>X</p>
         <p>Submit Your Answer</p>
         <div>[Product Name]: [Question Body]</div>
 
@@ -40,23 +40,23 @@ const AnswerModal = ({q, modal, onClose}) => {
           <div>
             <div>What is your nickname?</div>
             <input type='text' placeholder='Example: jack543!' maxLength='60' onChange={(e) => setName(e.target.value)}></input>
-            For privacy reasons, do not use your full name or email address.
+            <div className='qa-input-text'>For privacy reasons, do not use your full name or email address.</div>
           </div>
 
           <div>
             <div>Your email</div>
             <input type='text' placeholder='jack@email.com' maxLength='60' onChange={(e) => setEmail(e.target.value)}></input>
-            For authentication reasons, you will not be emailed.
+            <div className='qa-input-text'>For authentication reasons, you will not be emailed.</div>
           </div>
 
           <div>
             Upload Photos:
-            <input type='file' onChange={(e) => setImage(e.target.files[0])}></input>
+            {/* <input type='file' onChange={(e) => setImage(e.target.files[0])}></input>
             { image &&
               <img alt='not found' width={'200px'} src={URL.createObjectURL(image)}/>
-            }
+            } */}
           </div>
-            <button>Submit</button>
+            <button className='qa-modal-submit'>Submit</button>
         </form>
 
       </div>

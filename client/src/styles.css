@@ -245,9 +245,43 @@ div {
 }
 
 /* QUESTIONS AND ANSWERS */
+.qa-qa-master {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  border: 2px solid black;
+  padding: 100px;
+  margin: 200px;
+}
+
+#qa-search-input {
+  border: 1px solid grey;
+  border-radius: 2px;
+  height: 50px;
+  width: 100%;
+  padding: 2px 20px 2px 30px;
+  outline: 0;
+  margin-bottom: 15px;
+  font-size: 15px;
+  box-sizing: border-box;
+  /* background: transparent; */
+}
+
+#qa-search-input::placeholder {
+  font-weight: bold;
+  font-size: large;
+}
+
+.qa-question-body {
+  font-size: 20px;
+  margin: 15px auto;
+}
 
 
 .qa-question-modal {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
   position: fixed;
   left: 25vw;
   top: 25vh;
@@ -256,6 +290,7 @@ div {
   height: 50vh;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .qa-question-modal form {
@@ -268,6 +303,119 @@ div {
 .qa-question-modal div {
   background-color: white;
 }
+
+#qa-question-helpful {
+  float: right;
+  font-size: 15px;
+}
+
+.qa-question-modal input {
+  margin: 5px 0;
+  width: 60%;
+}
+
+.qa-line {
+  margin: 0 10px;
+}
+
+.qa-answer-container {
+  margin: 15px auto;
+}
+
+.qa-answer-img {
+  margin: 10px 0;
+  display: flex;
+  flex-direction: row;
+  width:100px;
+  height: 100px;
+}
+
+.qa-load-answers {
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.qa-load-answers:hover {
+  color: black;
+
+}
+
+.qa-input-text {
+  margin: 1px 0;
+}
+
+.qa-answer-modal {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  left: 25vw;
+  top: 25vh;
+  background: white;
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.qa-answer-modal form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.qa-answer-modal div {
+  background-color: white;
+}
+
+.qa-answer-modal input {
+  margin: 5px 0;
+  width: 60%;
+}
+
+
+.qa-X {
+  margin: 0;
+  cursor: pointer;
+}
+.qa-X:hover {
+  color: black;
+}
+
+.qa-modal-submit {
+  margin: 0 auto;
+  width: 20%;
+}
+
+#qa-Q {
+  display: inline-flex;
+  padding-right: 5px;
+}
+
+#qa-A {
+  display: inline-flex;
+  padding-right: 5px;
+}
+
+.qa-answer-body {
+  justify-content: space-between;
+  font-size: 15px;
+  margin-right: 5px;
+  padding-left: 0px;
+}
+
+.qa-answer-body span {
+  margin: 0 5px;
+  /* padding: 0px; */
+}
+
+#qa-answer-name {
+  margin: 10px 0;
+  padding-left: 25px;
+}
+
 /* RATINGS AND REVIEWS */
 
 #RR-ratings-reviews-ctn {

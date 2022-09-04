@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import QuestionList from './QuestionList.jsx';
 import QuestionModal from './QuestionModal.jsx';
+// import {BiSearchAlt2} from 'react-icons/bi'
 import please from '../.././request.js';
 
 const QuestionsMaster = ({productId}) => {
@@ -47,23 +48,21 @@ const QuestionsMaster = ({productId}) => {
     word.length < 3 ? setQuestion(initial) : setQuestion(filteredQuestions)
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault()
-    doSearch(input)
-  }
+  // const onSubmit = (e) => {
+  //   e.preventDefault()
+  //   doSearch(input)
+  // }
 
   return (
     <div className='qa-qa-master'>
       <h2>Questions & Answers</h2>
       {initial.length ? (
         <div className='qa-search-bar'>
-          <form onSubmit={onSubmit}>
-            <input type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
-              setInput(e.target.value)
-              doSearch(e.target.value)
-              }}/>
-            <button type='submit'>Search Icon</button>
-          </form>
+          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
+            setInput(e.target.value)
+            doSearch(e.target.value)
+            }}></input>
+        <div/>
           <QuestionList questions={question} length={length}/>
           { length < question.length ?
              <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
