@@ -541,7 +541,7 @@ input{
   position: fixed;
   z-index: 2;
   background-color: var(--black-green);
-  opacity: 0.9;
+  opacity: 0.95;
   height: 100%;
   width: 100%;
   display: flex;
@@ -562,22 +562,43 @@ input{
 }
 
 #RR-form-menu{
+  width: 240px;
+  padding-right: 20px;
+  padding-top: 280px;
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
-  padding: 40px;
-  background-image: url('./assets/pencilandletter.jpg');
+  background-image: url('./assets/pencileandletter.jpg');
   background-size: 700px 600px;
-  background-position: 40% 100%;
+  background-position: 48% 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 80px;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+#RR-form-menu button,
+#RR-form-menu input {
+  border: 0;
+  margin: 10px 0;
+  height: 30px;
+  width: 60px;
+  color: var(--black-green);
+  background-color: var(--light);
+  border-radius: 4px;
+}
+
+#RR-form-menu span {
+  font-size: 20px;
+  margin: 10px 0;
 }
 
 #RR-form form {
+  /* maybe use part of image as background for texture */
   overflow-y: scroll;
-  background: #f2f6fa;
+  background: #edf1f7;
   padding-left: 20px;
+  background-image: url('./assets/canvasbg.png');
+  background-size: 400px 600px;
 }
 
 /* crop photo uploads into same size thumbnails */

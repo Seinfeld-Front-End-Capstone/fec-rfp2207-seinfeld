@@ -110,9 +110,9 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
       <div id="RR-form-bg"></div>
       <div id="RR-form">
         <div id="RR-form-menu">
-          <h3>Write your review</h3>
-          <p>About the {productName}</p>
-          <button id="RR-form-cancel" onClick={toggleForm}>Cancel</button>
+          <span>Write your review</span>
+          <span>About the {productName}</span>
+          <button id="RR-form-cancel" onClick={toggleForm}>cancel</button>
           <input type="button" value="submit" onClick={handleSubmit}/>
         </div>
         <form>
