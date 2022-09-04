@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
-import { GiCancel } from 'react-icons/gi';
 import _ from 'underscore';
 
 // TODO:
@@ -109,51 +108,55 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   return (
     <div id="RR-form-ctn">
       <div id="RR-form-bg"></div>
-      <form id="RR-form">
-        <div id="RR-form-cancel"><GiCancel onClick={toggleForm}/></div>
-        <h3>Write your review</h3>
-        <p>About the {productName}</p>
-
-        <div id="RR-overall-rating">
-          <p>Overall Rating: {requiredTag}</p>
-          <div className="RR-rate-star">
-            {starRatings}{rated && <span>{ratings[rating]}</span>}
+      <div id="RR-form">
+        <div id="RR-form-menu">
+          <h3>Write your review</h3>
+          <p>About the {productName}</p>
+          <button id="RR-form-cancel" onClick={toggleForm}>Cancel</button>
+          <input type="button" value="submit" onClick={handleSubmit}/>
+        </div>
+        <form>
+          <div id="RR-overall-rating">
+            <p>Overall Rating: {requiredTag}</p>
+            <div className="RR-rate-star">
+              {starRatings}{rated && <span>{ratings[rating]}</span>}
+            </div>
           </div>
-        </div>
 
-        <div id="RR-form-recommend">Do you recommend this product? {requiredTag}<br/>
-          <input type="radio" id="yes" name="recommend" value="yes" defaultChecked required />
-          <label htmlFor="yes">yes</label>
-          <input type="radio" id="no" name="recommend" value="no" />
-          <label htmlFor="no">no</label>
-        </div>
+          <div id="RR-form-recommend">Do you recommend this product? {requiredTag}<br/>
+            <input type="radio" id="yes" name="recommend" value="yes" defaultChecked required />
+            <label htmlFor="yes">yes</label>
+            <input type="radio" id="no" name="recommend" value="no" />
+            <label htmlFor="no">no</label>
+          </div>
 
-        {<ProdChars chars={Object.keys(chars)} />}
+          {<ProdChars chars={Object.keys(chars)} />}
 
-        <p>Summary:</p>
-        <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
+          <p>Summary:</p>
+          <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
 
-        <p>Review:</p>
-        <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body" onChange={countChar}
-        rows="10" cols="44" required></textarea><br/>
-        <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
+          <p>Review:</p>
+          <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body" onChange={countChar}
+          rows="10" cols="44" required></textarea><br/>
+          <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
 
-        {photos.length < 5 && <button onClick={() => {
-          console.log('opening widget');
-          myWidget.open();
-        }}>Upload photos</button>}
-        {photos.length > 0 && _.map(photos, photo => <img className="RR-uploaded-photos" src={photo.thumbnail} alt="Your uploaded photo of the product"/>)}
+          {photos.length < 5 && <button onClick={() => {
+            console.log('opening widget');
+            myWidget.open();
+          }}>Upload photos</button>}
+          {photos.length > 0 && _.map(photos, photo => <img className="RR-uploaded-photos" src={photo.thumbnail} alt="Your uploaded photo of the product"/>)}
 
-        <p>What is your nickname:  {requiredTag}</p>
-        <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
-        <p>For privacy reasons, do not use your full name or email address</p>
+          <p>What is your nickname:  {requiredTag}</p>
+          <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
+          <p>For privacy reasons, do not use your full name or email address</p>
 
-        <p>Your Email: {requiredTag}</p>
-        <span><input placeholder="Example: jackson11@email.com" maxLength="60" name="email"/></span>
-        <p>For authentication reasons, you will not be emailed</p>
+          <p>Your Email: {requiredTag}</p>
+          <span><input placeholder="Example: jackson11@email.com" maxLength="60" name="email"/></span>
+          <p>For authentication reasons, you will not be emailed</p>
 
-        <input type="button" value="submit" onClick={handleSubmit}/>
-      </form>
+        </form>
+
+      </div>
     </div>
   )
 }

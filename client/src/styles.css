@@ -454,7 +454,6 @@ input{
   justify-content: center;
   width: 40px;
 }
-/* ----------HERE------------ */
 
 #RR-factors-breakdown-ctn {
   display: flex;
@@ -534,29 +533,51 @@ input{
 #RR-form-ctn {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 #RR-form-bg {
   top: 0;
   position: fixed;
   z-index: 2;
-  background-color: black;
+  background-color: var(--black-green);
   opacity: 0.9;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
 }
+
+
+
 #RR-form {
   position: fixed;
   z-index: 3;
-  top: 200px;
-  background: white;
-  opacity: 1;
-  height: 60%;
+  top: 20%;
+  display: flex;
   width: auto;
-  border-radius: 5px 5px;
-  overflow: scroll;
+  height: 60%;
+  background: transparent;
+
+}
+
+#RR-form-menu{
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  padding: 40px;
+  background-image: url('./assets/pencilandletter.jpg');
+  background-size: 700px 600px;
+  background-position: 40% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-bottom: 80px;
+}
+
+#RR-form form {
+  overflow-y: scroll;
+  background: #f2f6fa;
+  padding-left: 20px;
 }
 
 /* crop photo uploads into same size thumbnails */
