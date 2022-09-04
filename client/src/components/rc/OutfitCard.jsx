@@ -8,6 +8,13 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
   const [photoData, setPhotoData] = useState([]);
   const [price, setPrice] = useState([]);
   const [starRating, setStarRating] = useState(0);
+  const [vis, setVis] = useState(true);
+
+  useEffect(() => {
+    if (curDisplay.indexOf(itemNo) === -1) {
+      setVis(false);
+    }
+  })
 
   useEffect(() => {
     request
@@ -50,11 +57,11 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
   }, [deleteCard, curOutfit, curDisplay]);
 
 
-
-  return (
-    <div
-    key={itemNo}
-    className="RC_outfit_card_container">
+  if (vis) {
+    return (
+      <div
+      key={itemNo}
+      className="RC_outfit_card_container">
       <aside>
         <img
         className="RC_outfit_photo" src={photoData} height="225"
@@ -85,6 +92,7 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
       </aside>
     </div>
   )
+  }
 }
 
 export default OutfitCard;
