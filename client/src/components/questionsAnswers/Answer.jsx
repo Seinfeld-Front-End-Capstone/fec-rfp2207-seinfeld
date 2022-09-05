@@ -28,12 +28,20 @@ const Answer = ({answer}) => {
 
   return (
     <div className='qa-answer-container'>
-      A: {answer.body}
-      <span>by {answer['answerer_name']}, {date}  | Helpful?
-        <span onClick={handleCount}>Yes </span>
-          ({answerCount}) | <span onClick={handleClick}>{isReported}</span>
-          {answer.photos.map((img, i) => (<img src={img.url} key={i} alt="picture"/>))}
-      </span>
+      <span id='qa-A'>A:</span> {answer.body}
+      <div className='qa-answer-body'>
+        <div id='qa-answer-name'>
+          by {answer['answerer_name']}, {date}
+          <span id='qa-answer-helpful'>
+          <span className='qa-line'>|</span> Helpful?
+          <span onClick={handleCount}>  Yes ({answerCount})</span>
+          <span className='qa-line'>|</span>
+          <span onClick={handleClick}>{isReported}</span>
+          </span>
+          {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
+        </div>
+      </div>
+
     </div>
   )
 }

@@ -24,9 +24,9 @@ const QuestionModal = ({modal, onClose, productId, setInitial, setQuestion}) => 
   if (modal)
   return (
     <div className='qa-question-modal'>
-      <p onClick={onClose} className='close-button'>X</p>
-        <h3>Ask Your Question!</h3>
-        <h5>About the [product name] Name</h5>
+      <p onClick={onClose} className='qa-X'>X</p>
+        <p>Ask Your Question!</p>
+        <p>About the [product name] Name</p>
 
         <form onSubmit={handleSubmit}>
           <div>
@@ -37,16 +37,16 @@ const QuestionModal = ({modal, onClose, productId, setInitial, setQuestion}) => 
           <div>
             <div>What is your nickname{asterisk}</div>
             <input type='text' placeholder='Example: jackson11!' maxLength='60' onChange={(e) => setName(e.target.value)} required></input>
-            <div>For privacy reasons, do not use your full name or email address</div>
+            <div className='qa-input-text'>For privacy reasons, do not use your full name or email address</div>
           </div>
 
           <div>
             <div>Your email{asterisk}</div>
             <input type='text' placeholder='Why did you like the product or not?' onChange={(e) => setEmail(e.target.value)} required></input>
-            <div>For authentication reasons, you will not be emailed</div>
+            <div className='qa-input-text'>For authentication reasons, you will not be emailed</div>
           </div>
 
-          <button>Submit Question</button>
+          <button className='qa-modal-submit'>Submit Question</button>
         </form>
 
     </div>
