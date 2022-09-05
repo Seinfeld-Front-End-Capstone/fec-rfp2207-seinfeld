@@ -16,6 +16,8 @@ const RatingsReviews = ({ productId, productName }) => {
   const [maxResults, setMaxResults] = useState(2);
   const [formMode, setFormMode] = useState(false);
   const [metaData, setMetaData] = useState(null)
+  const[moreBtnActive, setMoreBtnActive] = useState(false);
+  const[addBtnActive, setAddBtnActive] = useState(false);
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -37,7 +39,6 @@ const RatingsReviews = ({ productId, productName }) => {
       let reviews = data.data.results;
       //add logic or state to remember what filter/sort the user is in
       setReviews(reviews);
-      setReviewsOnDisplay(reviews.slice(0, maxResults));
     })
     .catch((err) => console.log(err))
   }
@@ -51,15 +52,14 @@ const RatingsReviews = ({ productId, productName }) => {
     setFormMode(!formMode);
   }
 
-  const addReviewButton = <button onClick={toggleForm}>ADD A REVIEW +</button>;
-
+  const addReviewButton = <button onClick={toggleForm} onMouseEnter={() => setAddBtnActive(true)} onMouseLeave={() => setAddBtnActive(false)} className={addBtnActive ? 'active' : ''}>ADD A REVIEW +</button>;
 
   const handleSort = (e) => {
     setSortParam(e.target.value)
   }
 
   return (
-    <div>
+    <div id="RR-big-ctn">
       {reviews.length === 0 ?
       <div>
         <p>Be the first to review this product!</p>
@@ -68,20 +68,18 @@ const RatingsReviews = ({ productId, productName }) => {
       :
       <div id="RR-ratings-reviews-ctn">
         {metaData ? <RatingBreakdown metaData={metaData} /> : null}
-        <div id="RR-reviews-ctn">
-          <div id="RR-reviews-ctn">
-            <h3 id="RR-header-sort"> {reviews.length} views, sorted by
-              <select id="RR-sort-param" onChange={handleSort}>
-                <option value="relevant">Relevant</option>ß
-                <option value="helpful">Helpful</option>
-                <option value="newest">Newest</option>
-              </select>
-            </h3>
-            <ReviewList reviews={reviews}/>
-            <div id="more-menu">
-              {reviews.length === maxResults && <button onClick={showMoreReview}>MORE REVIEWS</button>}
-              {addReviewButton}
-            </div>
+        <div id="RR-reviews-right-ctn">
+          <h3 id="RR-header-sort"> {reviews.length} views, sorted by
+            <select id="RR-sort-param" onChange={handleSort}>
+              <option value="relevant">Relevant</option>ß
+              <option value="helpful">Helpful</option>
+              <option value="newest">Newest</option>
+            </select>
+          </h3>
+          <ReviewList reviews={reviews}/>
+          <div id="RR-more-menu">
+            {reviews.length === maxResults && <button onClick={showMoreReview} onMouseEnter={() => setMoreBtnActive(true)} onMouseLeave={() => setMoreBtnActive(false)} className={moreBtnActive ? 'active' : ''}>MORE REVIEWS</button>}
+            {addReviewButton}
           </div>
         </div>
       </div>}
