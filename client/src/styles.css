@@ -680,10 +680,6 @@ p {
   padding-left: 20px;
 }
 
-#RR-header-sort {
-  padding-left: 20px;
-}
-
 #RR-sort-param {
   margin-left: 6px;
   background-color: var(--light);
@@ -698,7 +694,6 @@ p {
   width: 70%;
 }
 #RR-reviews-ctn {
-  padding: 0 20px;
   width: 90%;
   overflow-y: scroll;
   max-height: 600px;
@@ -726,7 +721,7 @@ p {
 
 #RR-more-menu {
   display: flex;
-  margin: 20px;
+  margin: 20px 20px 20px 0;
 }
 
 #RR-more-menu button {
