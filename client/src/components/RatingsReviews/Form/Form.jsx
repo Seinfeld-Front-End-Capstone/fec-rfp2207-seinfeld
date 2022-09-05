@@ -3,11 +3,7 @@ import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
 import _ from 'underscore';
-
-// TODO:
-// remove previous photo upload logic
-// create a new state to store cloudinary urls to be send to the server
-
+import widget from '../../helpers/widget.js';
 
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [rating, setRating] = useState(0);
@@ -26,26 +22,16 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
     .then(data => setChars(data.data.characteristics))
     .catch(err => console.log(err));
 
-    setMyWidget(cloudinary.createUploadWidget({
-      cloudName: 'seinfeldtd',
-      uploadPreset: 'seinfeldpreset'
-      },
+    setMyWidget(widget(
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log('Done! Here is the image info: ', result.info);
-          // let newPhotos = photos.slice();
-          // newPhotos.push({
-          //   thumbnail: result.info.thumbnail_url,
-          //   url: result.info.secure_url
-          // });
-          // setPhotos(newPhotos);
           setPhotos(photos => [...photos, {
             thumbnail: result.info.thumbnail_url,
             url: result.info.secure_url
           }])
-          console.log('photos state', photos);
         }
-    }))
+      }))
   }, [productId]);
 
   const handleSubmit = (e) => {
