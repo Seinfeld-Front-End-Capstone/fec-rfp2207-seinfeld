@@ -43,7 +43,7 @@ const Overview = () => {
           <div>
             <h3>{product.slogan}</h3>
             <p> {product.description}</p>
-          </div>ß
+          </div>
           <div>
             {product.features.map((f) => <p key={f.feature}><span style={{fontWeight: 'bold'}}>{f.feature}</span> : {f.value} </p>)}
           </div>
