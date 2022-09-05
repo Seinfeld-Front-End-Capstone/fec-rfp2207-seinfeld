@@ -4,13 +4,8 @@ import React, { useState, useEffect } from 'react';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
-import { GiCancel } from 'react-icons/gi';
 import _ from 'underscore';
-
-// TODO:
-// remove previous photo upload logic
-// create a new state to store cloudinary urls to be send to the server
-
+import widget from '../../helpers/widget.js';
 
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [rating, setRating] = useState(0);
@@ -19,28 +14,26 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [photos, setPhotos] = useState([]);
   const [chars, setChars] = useState([]);
   const [myWidget, setMyWidget] = useState(null);
+  //could refactor to store as one state?
+  const [cancelBtnActive, setCancelBtnActive] = useState(false);
+  const [submitBtnActive, setSubmitBtnActive] = useState(false);
+  const [uploadBtnActive, setUploadBtnActive] = useState(false);
 
   useEffect(() => {
     please.getReviewMeta(productId)
     .then(data => setChars(data.data.characteristics))
     .catch(err => console.log(err));
 
-    setMyWidget(cloudinary.createUploadWidget({
-      cloudName: 'seinfeldtd',
-      uploadPreset: 'seinfeldpreset'
-      },
+    setMyWidget(widget(
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log('Done! Here is the image info: ', result.info);
-          let newPhotos = photos.slice();
-          newPhotos.push({
+          setPhotos(photos => [...photos, {
             thumbnail: result.info.thumbnail_url,
             url: result.info.secure_url
-          });
-          setPhotos(newPhotos);
-          console.log(photos);
+          }])
         }
-    }))
+      }))
   }, [productId]);
 
   const handleSubmit = (e) => {
@@ -90,13 +83,14 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   }
 
   const ratings = [null, 'Poor', 'Fair', 'Average', 'Good', 'Great'];
+
   const starRatings = ratings.map((element, index) => {
     if (element) {
       return(
-        <React.Fragment key={index}>
+        <span key={index} className="RR-rate-star">
           <input type="radio" id={index} name="rating" value={index} required onClick={changeRating} />
-          <label htmlFor={index}><img src={rating >= index ? fullStar : noStar} onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)}/></label>
-        </React.Fragment>
+          <label htmlFor={index} className="Stars" onMouseEnter={() => tempRating(index)} onMouseLeave={() => tempRating(0)} style={{'--percent': rating >= index ? '100%' : '0%'}}>★</label>
+        </span>
       )
     }
   })
@@ -109,51 +103,61 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   return (
     <div id="RR-form-ctn">
       <div id="RR-form-bg"></div>
-      <form id="RR-form">
-        <div id="RR-form-cancel"><GiCancel onClick={toggleForm}/></div>
-        <h3>Write your review</h3>
-        <p>About the {productName}</p>
-
-        <div id="RR-overall-rating">
-          <p>Overall Rating: {requiredTag}</p>
-          <div className="RR-rate-star">
-            {starRatings}{rated && <span>{ratings[rating]}</span>}
+      <div id="RR-form">
+        <div id="RR-form-menu">
+          <span>Write your review</span>
+          <span>About the {productName}</span>
+          <input type="button" value="submit" onClick={handleSubmit} onMouseEnter={() => setSubmitBtnActive(true)} onMouseLeave={() => setSubmitBtnActive(false)} className={submitBtnActive ? 'active' : ''} />
+          <button id="RR-form-cancel" onClick={toggleForm} onMouseEnter={() => setCancelBtnActive(true)} onMouseLeave={() => setCancelBtnActive(false)} className={cancelBtnActive ? 'active' : ''}>cancel</button>
+        </div>
+        <form>
+          <div id="RR-overall-rating" className="RR-form-fields">
+            <div>Overall Rating: {requiredTag}</div>
+            <div>{starRatings}</div>
+            {rated && <div>{ratings[rating]}</div>}
           </div>
-        </div>
 
-        <div id="RR-form-recommend">Do you recommend this product? {requiredTag}<br/>
-          <input type="radio" id="yes" name="recommend" value="yes" defaultChecked required />
-          <label htmlFor="yes">yes</label>
-          <input type="radio" id="no" name="recommend" value="no" />
-          <label htmlFor="no">no</label>
-        </div>
+          <div id="RR-form-recommend" className="RR-form-fields">Do you recommend this product? {requiredTag}<br/>
+            <input type="radio" id="yes" name="recommend" value="yes" defaultChecked required />
+            <label htmlFor="yes">yes</label>
+            <input type="radio" id="no" name="recommend" value="no" />
+            <label htmlFor="no">no</label>
+          </div>
 
-        {<ProdChars chars={Object.keys(chars)} />}
+          {<ProdChars chars={Object.keys(chars)} />}
 
-        <p>Summary:</p>
-        <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
+          <div className="RR-form-fields">
+            <div>Summary:</div>
+            <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
+          </div>
 
-        <p>Review:</p>
-        <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body" onChange={countChar}
-        rows="10" cols="44" required></textarea><br/>
-        <p>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</p>
+          <div className="RR-form-fields">
+            <div>Review: {requiredTag}</div>
+            <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body" onChange={countChar}
+            rows="10" cols="44" required></textarea><br/>
+            <div>{bodyCharCount < 50 ? `Minimum required characters left: ${50 - bodyCharCount}` : 'Minimum reached'}</div>
+          </div>
 
-        {photos.length < 5 && <button onClick={() => {
-          console.log('opening widget');
-          myWidget.open();
-        }}>Upload photos</button>}
-        {photos.length > 0 && _.map(photos, photo => <img className="RR-uploaded-photos" src={photo.thumbnail} alt="Your uploaded photo of the product"/>)}
+          <div className="RR-form-fields">
+            {photos.length <5 && <button onClick={() =>myWidget.open()} onMouseEnter={() => setUploadBtnActive(true)} onMouseLeave={() => setUploadBtnActive(false)} className={uploadBtnActive ? 'active' : ''}>upload photos</button>}
+            <div id="RR-photo-uploads">
+              {photos.map(photo => <img src={photo.thumbnail} alt="Your uploaded photo of the product"/>)}
+            </div>
+          </div>
 
-        <p>What is your nickname:  {requiredTag}</p>
-        <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
-        <p>For privacy reasons, do not use your full name or email address</p>
+          <div className="RR-form-fields">
+            <div>What is your nickname:  {requiredTag}</div>
+            <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
+            <div className="RR-disclaimer">For privacy reasons, do not use your full name or email address</div>
+          </div>
 
-        <p>Your Email: {requiredTag}</p>
-        <span><input placeholder="Example: jackson11@email.com" maxLength="60" name="email"/></span>
-        <p>For authentication reasons, you will not be emailed</p>
-
-        <input type="button" value="submit" onClick={handleSubmit}/>
-      </form>
+          <div className="RR-form-fields">
+            <div>Your Email: {requiredTag}</div>
+            <span><input placeholder="Example: jackson11@email.com" maxLength="60" name="email"/></span>
+            <div className="RR-disclaimer">For authentication reasons, you will not be emailed</div>
+          </div>
+        </form>
+      </div>
     </div>
   )
 }
