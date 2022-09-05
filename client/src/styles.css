@@ -4,15 +4,44 @@
 /* Don't define your own colors, use the variables */
 /* styling should be okay with your own preferences as long as it's within your own container */
 
+/* Global variables */
 
+:root {
+  /* use mostly white and grey and some of the colors below */
+  --light: #cad2c5;
+  --light-green: #84a98c;
+  --mid-green: #52796f;
+  --dark-green: #354f52;
+  --black-green: #2f3e46;
 
+  --star-color: var(--dark-green);
+  --star-background: var(--light);
+}
+
+.Stars {
+  /* --percent is passed down from JS variables */
+  display: inline-block;
+  font-size: 20px;
+  font-family: Times;
+  line-height: 1;
+  background: linear-gradient(90deg, var(--star-color) var(--percent), var(--star-background) var(--percent));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* GLOBAL STYLES */
 body {
-  background-color: pink
+  background-color: white
 }
 
 div {
   color: grey;
-  background-color: pink;
+  background-color: white;
+}
+
+input{
+  accent-color: var(--dark-green);
 }
 
 /* OVERVIEW */
@@ -156,58 +185,175 @@ div {
 
 /* RELATED PRODUCTS */
 
-/* .RC_card_container {
-  webkit-box-sizing: border-box;
-  box-sizing: border-box;
+/* Related List Cards */
+
+.RC_related_list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  border: black;
 }
 
-.RC_card {
-  background-color: white;
-  border: black;
-  border-width: 1px;
+
+.RC_related_card_container {
+  display: flex;
+  box-sizing: border-box;
   overflow: hidden;
-  max-width: 150px;
-  margin: 2px;
-  float: left;
+  padding: 5px;
+  width: 150px;
+  height: 250px;
+  margin-top: 20px;
+  margin-left: 5px;
+  position: relative;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.RC_related_text_container {
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 175px;
+  left:0px;
+  width: 160px;
+  height: 60px;
+  padding-left: 4px;
+  padding-top: 3px;
 }
 
 .RC_card_photo {
-  top: 2;
-  right: 2;
+  position: absolute;
+  top:0px;
+  right:0px;
+  height: 240px;
 }
 
-.fa-solid {
-  top: 2;
-  right: 2;
+.compare_star {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #cad2c5;
 }
 
-.RC_card_category {
+.compare_star:hover {
+  color:#84a98c;
+  cursor: pointer;
+}
+
+.RC_text {
   text-align: left;
-  padding: 3px;
-  padding-bottom: 2px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-} */
-
-.RC_outfit_card_container {
-  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
-.RC_list_item {
-  list-style-type: none;
+.Rc_product_price {
+  padding: 0;
+  margin: 0;
 }
 
-.RC_outfit_card_container {
-  box-sizing: border-box;
-  flex-direction: row;
-  width: 25%;
+.RC_star_rating {
   background-color: white;
-  display: flexbox;
-  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  position: absolute;
+  padding-left: 2px;
+  bottom: 0;
+  width: 160px;
+  left:0;
 }
+
+/* ** Outfit ** */
+
+.RC_outfit_list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.RC_outfit_card_container {
+  display: flex;
+  box-sizing: border-box;
+  overflow: hidden;
+  padding: 5px;
+  width: 150px;
+  height: 250px;
+  margin-top: 20px;
+  margin-left: 5px;
+  position: relative;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  background-color: #84a98c;
+}
+
+.RC_add_to_outfit {
+  background-color: #84a98c;
+  padding-top: 60px;
+  padding-left: 22px;
+  width: 150px;
+  height: 250px;
+  color: white;
+}
+
+.plus {
+  color: white;
+  position: absolute;
+  top: 110px;
+  right: 70px;
+}
+
+.RC_add_to_outfit:hover {
+  cursor: pointer;
+}
+
+.RC_outfit_photo {
+  position: absolute;
+  top:0px;
+  right:0px;
+  height: 240px;
+}
+
+.RC_x {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #cad2c5;
+}
+
+.RC_x:hover {
+  color:#84a98c;
+  cursor: pointer;
+}
+
+.RC_outfit_text_container {
+  flex-direction: column;
+  background-color: white;
+  position: absolute;
+  top: 175px;
+  left:0px;
+  width: 160px;
+  height: 60px;
+  padding-left: 4px;
+  padding-top: 3px;
+}
+
+
+/* Related List Modal */
 
 .RC_modal_content {
   background-color: white;
@@ -219,6 +365,7 @@ div {
   border-radius: 5px;
   display: flexbox;
   box-shadow: 0 4px 8px 0 rgba(99, 29, 29, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  z-index: 9999;
 }
 
 .RC_modal_table {
@@ -240,7 +387,7 @@ div {
 }
 
 .RC_close:hover {
-  color: rgb(255, 132, 132);
+  color:#84a98c;
   cursor: pointer;
 }
 
@@ -276,7 +423,6 @@ div {
   font-size: 20px;
   margin: 15px auto;
 }
-
 
 .qa-question-modal {
   box-sizing: border-box;
@@ -418,11 +564,105 @@ div {
 
 /* RATINGS AND REVIEWS */
 
+/* -----------------RATINGS AND REVIEWS -----------------*/
 #RR-ratings-reviews-ctn {
   display: flex;
   /* temp */
   border-style: solid;
 }
+
+/* Ratings breakdown */
+#RR-rating-breakdown-ctn {
+  width: 300px;
+}
+
+#RR-rating-summary-ctn {
+  display: flex;
+  justify-content: center;
+  height: 80px;
+}
+
+#RR-avg-rating {
+  font-size: 50px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+#RR-avg-rating p {
+  margin-block-start: 30px;
+  margin-block-end: 0;
+}
+
+#RR-star-views-ctn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 5px;
+}
+
+.RR-reviews-by-star-ctn {
+  display: flex;
+  justify-content: center;
+  margin: 4px 0;
+}
+
+.RR-bar-graph {
+  background-color: var(--light);
+  margin: 0 4px;
+  width: 100px;
+  height: 14px;
+  display: flex;
+}
+
+.RR-top-bar {
+  background-color: var(--mid-green);
+  /* width: 50px; */
+}
+
+.RR-star-counts {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+}
+/* ----------HERE------------ */
+
+#RR-factors-breakdown-ctn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Prod characteristics breakdown */
+.RR-prod-char-breakdown-ctn {
+  width: 200px;
+  margin: 8px 0;
+}
+
+.RR-prod-char-titles {
+  font-weight: bold;
+}
+
+.RR-prod-char-bar {
+  display: flex;
+  background-color: var(--light);
+  height: 12px;
+  width: 80%;
+  margin: 5px 10%;
+}
+
+.RR-prod-char-marker {
+  background-color: transparent;
+  transform: rotate(180deg);
+  color: var(--dark-green);
+}
+
+.RR-prod-char-descriptions {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Reviews list */
 
 #RR-breakdown-ctn {
   padding-left: 20px;
@@ -462,6 +702,38 @@ div {
 }
 
 /* RR - Add a review form */
+#RR-form-ctn {
+  display: flex;
+  justify-content: center;
+}
+
+#RR-form-bg {
+  top: 0;
+  position: fixed;
+  z-index: 2;
+  background-color: black;
+  opacity: 0.9;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+#RR-form {
+  position: fixed;
+  z-index: 3;
+  top: 200px;
+  background: white;
+  opacity: 1;
+  height: 60%;
+  width: auto;
+  border-radius: 5px 5px;
+  overflow: scroll;
+}
+
+/* crop photo uploads into same size thumbnails */
+#RR-overall-rating {
+  width: 700px;
+}
 #RR-overall-rating input {
   width: 0;
 }
@@ -469,4 +741,63 @@ div {
 #RR-overall-rating img {
   height: 20px;
   width: 20px;
+}
+
+#RR-rate-star {
+  display: flex;
+}
+
+/* RR - Product Characteristics Breakdown */
+
+#RR-summary {
+  width: 365px;
+  text-align: left;
+}
+.RR-prod-char-rating {
+  display: flex;
+  width: 700px;
+  border: 1px solid grey;
+}
+
+.RR-prod-char-title {
+  width: 100px;
+  align-self: flex-end;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 12px;
+}
+
+
+.RR-rating-ctn {
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.RR-rating-scores {
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 120px;
+}
+
+.RR-rating-scores p {
+  height: 36px;
+}
+.RR-rating-scores input {
+  height: 18px;
+  background-color: #333;
+}
+
+.RR-rating-scores label {
+  margin: 2px 0;
+}
+
+/* Uploaded photos */
+
+.RR-uploaded-photos {
+  max-width: 100px;
+  max-height: 100px;
 }

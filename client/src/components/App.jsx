@@ -26,7 +26,7 @@ const App = () => {
     </div>
     :
     <div>
-      <h1>loading...</h1>
+    <h1>loading...</h1>
     </div>
   )
 }

@@ -3,7 +3,7 @@ import Stars from '../helpers/Stars.jsx';
 import moment from 'moment';
 import Photos from './Photos.jsx';
 
-const ReviewEntry = ({ review }) => {
+const ReviewEntry = ({ review, recommended }) => {
   let { review_id, body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
 
 //for dev and testing purposes only, will migrate into css file

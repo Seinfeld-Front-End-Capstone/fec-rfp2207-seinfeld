@@ -15,7 +15,6 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
     request
       .getStyles(productID)
       .then((data) => {
-        // console.log('styles data:', data.data);
         setPhotoData(data.data.results[0].photos[0].url);
         if (data.data.results[0].sale_price) {
           setPrice(data.data.results[0].sale_price);
@@ -29,7 +28,6 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
     request
       .getProductInfo(productID)
       .then((data) => {
-        // console.log('prod info:', data.data);
         setProductData(data.data);
       })
       .catch((err) => {
@@ -47,6 +45,7 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
       });
   }, []);
 
+  /* handles delete button onClick event */
   const handleDelete = useCallback(() => {
     deleteCard(curOutfit.filter((item) => item !== itemNo));
   }, [deleteCard, curOutfit]);
@@ -54,16 +53,38 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
 
 
   return (
-    <aside key={itemNo} className="RC_outfit_card_container">
-      <img className="RC_outfit_photo" src={photoData} height="225" />
-      <i className="fa-solid fa-circle-xmark" onClick={handleDelete}></i>
-      <h6 className="RC_product_category">{productData.category}</h6>
-      <h5 className="RC_product_name">{productData.name}</h5>
-      <p>
-        <small className="RC_product_price">{price}</small>
-      </p>
-      <Stars rating={starRating} />
-    </aside>
+    <div
+    key={itemNo}
+    className="RC_outfit_card_container">
+      <aside>
+        <img
+        className="RC_outfit_photo" src={photoData} height="225"
+        />
+        <i
+        className="fa-solid fa-circle-xmark RC_x"
+        onClick={handleDelete}>
+        </i>
+        <div className="RC_outfit_text_container">
+          <h6
+            className="RC_product_category RC_text">
+              <em>{productData.category}</em>
+          </h6>
+          <h5
+            className="RC_product_name RC_text">
+            {productData.name}
+          </h5>
+          <h6
+            className="RC_product_price RC_text">
+              {price}
+          </h6>
+        </div>
+        <div
+        className="RC_star_rating">
+          <Stars
+            rating={starRating} />
+        </div>
+      </aside>
+    </div>
   )
 }
 
