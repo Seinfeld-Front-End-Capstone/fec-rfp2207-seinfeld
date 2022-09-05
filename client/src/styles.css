@@ -758,7 +758,7 @@ p {
 #RR-form-ctn {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  width: 100%;
 }
 
 #RR-form-bg {
@@ -768,10 +768,13 @@ p {
   background-color: var(--black-green);
   background-image: url('./assets/senegal-leather-bg.jpg');background-size: 2000px 2000px;
   opacity: .95;
-  height: 100%;
-  width: 100%;
   display: flex;
   justify-content: center;
+}
+
+#RR-form-bg.active {
+  height: 100%;
+  width: 100%;
 }
 
 #RR-form {

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
 // import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
-
 import Form from './Form/Form.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx'
 //lift axios request for reviews/meta out of Form and into this component
@@ -59,32 +58,35 @@ const RatingsReviews = ({ productId, productName }) => {
   }
 
   return (
-    <div id="RR-big-ctn">
-      {reviews.length === 0 ?
-      <div>
-        <p>Be the first to review this product!</p>
-        {addReviewButton}
-      </div>
-      :
-      <div id="RR-ratings-reviews-ctn">
-        {metaData ? <RatingBreakdown metaData={metaData} /> : null}
-        <div id="RR-reviews-right-ctn">
-          <h3 id="RR-header-sort"> {reviews.length} views, sorted by
-            <select id="RR-sort-param" onChange={handleSort}>
-              <option value="relevant">Relevant</option>ß
-              <option value="helpful">Helpful</option>
-              <option value="newest">Newest</option>
-            </select>
-          </h3>
-          <ReviewList reviews={reviews}/>
-          <div id="RR-more-menu">
-            {reviews.length === maxResults && <button onClick={showMoreReview} onMouseEnter={() => setMoreBtnActive(true)} onMouseLeave={() => setMoreBtnActive(false)} className={moreBtnActive ? 'active' : ''}>MORE REVIEWS</button>}
-            {addReviewButton}
-          </div>
+    <>
+      <div id="RR-big-ctn">
+        {reviews.length === 0 ?
+        <div>
+          <p>Be the first to review this product!</p>
+          {addReviewButton}
         </div>
-      </div>}
+        :
+        <div id="RR-ratings-reviews-ctn">
+          {metaData ? <RatingBreakdown metaData={metaData} /> : null}
+          <div id="RR-reviews-right-ctn">
+            <h3 id="RR-header-sort"> {reviews.length} views, sorted by
+              <select id="RR-sort-param" onChange={handleSort}>
+                <option value="relevant">Relevant</option>ß
+                <option value="helpful">Helpful</option>
+                <option value="newest">Newest</option>
+              </select>
+            </h3>
+            <ReviewList reviews={reviews}/>
+            <div id="RR-more-menu">
+              {reviews.length === maxResults && <button onClick={showMoreReview} onMouseEnter={() => setMoreBtnActive(true)} onMouseLeave={() => setMoreBtnActive(false)} className={moreBtnActive ? 'active' : ''}>MORE REVIEWS</button>}
+              {addReviewButton}
+            </div>
+          </div>
+        </div>}
+      </div>
+      <div id="RR-form-bg" className={formMode ? 'active' : ''}></div>
       {formMode && <Form productName={productName} toggleForm={toggleForm} productId={productId} refreshReviews={() => refreshReviews()}/>}
-    </div>
+    </>
   )
 
 }

@@ -100,7 +100,6 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
 
   return (
     <div id="RR-form-ctn">
-      <div id="RR-form-bg"></div>
       <div id="RR-form">
         <div id="RR-form-menu">
           <span>Write your review</span>
