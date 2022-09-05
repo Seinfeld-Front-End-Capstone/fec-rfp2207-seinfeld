@@ -14,8 +14,12 @@
   --dark-green: #354f52;
   --black-green: #2f3e46;
 
+  /* colors of stars */
   --star-color: var(--dark-green);
   --star-background: var(--light);
+
+  /* global dimensions */
+  --max-width: 1000px;
 }
 
 .Stars {
@@ -44,6 +48,10 @@ input{
   height: 18px;
 }
 
+p {
+  overflow-wrap: break-word;
+}
+
 /* OVERVIEW */
 
 #OVcontainer {
@@ -54,7 +62,7 @@ input{
 
 #Overview {
   height: 100%;
-  width: 1000px;
+  width: var(--max-width);
   display: grid;
   grid-template-rows: 3fr 1fr;
   grid-row-gap: 10px;
@@ -567,15 +575,20 @@ input{
 /* RATINGS AND REVIEWS */
 
 /* -----------------RATINGS AND REVIEWS -----------------*/
+#RR-big-ctn {
+  display: flex;
+  justify-content: center;
+}
 #RR-ratings-reviews-ctn {
   display: flex;
   /* temp */
   border-style: solid;
+  max-width: var(--max-width);
 }
 
 /* Ratings breakdown */
 #RR-rating-breakdown-ctn {
-  width: 300px;
+  width: 30%;
 }
 
 #RR-rating-summary-ctn {
@@ -672,35 +685,50 @@ input{
 #RR-header-sort {
   padding-left: 20px;
 }
+#RR-reviews-right-ctn {
+  width: 70%;
+}
 #RR-reviews-ctn {
   padding: 0 20px;
+  width: 90%;
+  overflow-y: scroll;
+  max-height: 600px;
 }
-.review-header {
+
+.RR-review-ctn {
+  background-color: hsl(0, 0%, 95%);
+  color:  hsl(0, 0%, 40%);
+  margin-bottom: 6px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.RR-review-header {
   display: flex;
   justify-content: space-between;
 }
 
-#more-menu {
+#RR-more-menu {
   display: flex;
   margin: 20px;
 }
 
-#more-menu button {
+#RR-more-menu button {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
 }
 
+#RR-photos-ctn {
+  display: flex;
+}
+
 .RR-review-photos {
   width: 100px;
   height: auto;
+  display: flex;
 }
 
-/* crop these into same size thumbnails */
-.RR-uploaded-photos {
-  max-width: 100px;
-  max-height: 100px;
-}
 
 /* RR - Add a review form */
 #RR-form-ctn {

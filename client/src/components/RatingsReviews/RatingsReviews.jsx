@@ -59,7 +59,7 @@ const RatingsReviews = ({ productId, productName }) => {
   }
 
   return (
-    <div>
+    <div id="RR-big-ctn">
       {reviews.length === 0 ?
       <div>
         <p>Be the first to review this product!</p>
@@ -68,20 +68,18 @@ const RatingsReviews = ({ productId, productName }) => {
       :
       <div id="RR-ratings-reviews-ctn">
         {metaData ? <RatingBreakdown metaData={metaData} /> : null}
-        <div id="RR-reviews-ctn">
-          <div id="RR-reviews-ctn">
-            <h3 id="RR-header-sort"> {reviews.length} views, sorted by
-              <select id="RR-sort-param" onChange={handleSort}>
-                <option value="relevant">Relevant</option>ß
-                <option value="helpful">Helpful</option>
-                <option value="newest">Newest</option>
-              </select>
-            </h3>
-            <ReviewList reviews={reviews}/>
-            <div id="more-menu">
-              {reviews.length === maxResults && <button onClick={showMoreReview}>MORE REVIEWS</button>}
-              {addReviewButton}
-            </div>
+        <div id="RR-reviews-right-ctn">
+          <h3 id="RR-header-sort"> {reviews.length} views, sorted by
+            <select id="RR-sort-param" onChange={handleSort}>
+              <option value="relevant">Relevant</option>ß
+              <option value="helpful">Helpful</option>
+              <option value="newest">Newest</option>
+            </select>
+          </h3>
+          <ReviewList reviews={reviews}/>
+          <div id="RR-more-menu">
+            {reviews.length === maxResults && <button onClick={showMoreReview}>MORE REVIEWS</button>}
+            {addReviewButton}
           </div>
         </div>
       </div>}
