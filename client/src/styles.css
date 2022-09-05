@@ -581,8 +581,6 @@ p {
 }
 #RR-ratings-reviews-ctn {
   display: flex;
-  /* temp */
-  border-style: solid;
   max-width: var(--max-width);
 }
 
@@ -735,7 +733,7 @@ p {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
-  border: 2px solid hsl(0, 0%, 40%);
+  border: 2px solid hsl(0, 0%, 70%);
 }
 
 #RR-more-menu button.active {
