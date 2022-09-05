@@ -718,7 +718,8 @@ input{
   position: fixed;
   z-index: 2;
   background-color: var(--black-green);
-  opacity: 0.95;
+  background-image: url('./assets/senegal-leather-bg.jpg');background-size: 2000px 2000px;
+  opacity: .95;
   height: 100%;
   width: 100%;
   display: flex;
