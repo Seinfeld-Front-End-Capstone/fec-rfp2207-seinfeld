@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import AnswerList from './AnswerList.jsx';
 import AnswerModal from './AnswerModal.jsx';
-// import Answer from './Answer.jsx';
+import please from '../.././request.js';
+
 
 const Question = ({q}) => {
   // console.log('question : ', q);
@@ -10,14 +11,19 @@ const Question = ({q}) => {
 
   const handleClick = () => {
     if (q.question_helpfulness === helpfulness) {
-      setHelpfulness((prevCount) => prevCount + 1)
+      please.markQuestionAsHelpful(q.question_id)
+      .then(() => {
+        // console.log('success')
+        setHelpfulness((prevCount) => prevCount + 1)
+      })
     }
   }
 
   return (
     <div className='qa-question-container'>
       <div>Q: {q.question_body} Helpful? <span onClick={handleClick}>Yes</span>
-       ({helpfulness})  |  <span onClick={() => setModal(true)}>Add Answer</span></div><AnswerList q={q}/>
+       ({helpfulness})  |  <span onClick={() => setModal(true)}>Add Answer</span></div>
+       <AnswerList q={q}/>
       <AnswerModal modal={modal} q={q} onClose={() => setModal(false)} />
     </div>
   )

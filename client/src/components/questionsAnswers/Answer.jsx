@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import please from '../.././request.js';
 
 const Answer = ({answer}) => {
   // console.log('answers props : ', answer)
@@ -16,13 +17,21 @@ const Answer = ({answer}) => {
   // console.log('answer : ', answer);
   const handleCount = () => {
     if (answer.helpfulness === answerCount) {
-      setAnswerCount((count) => count + 1)
+      please.markAnswerAsHelpful(answer.answer_id)
+      .then(() => {
+        // console.log('success')
+        setAnswerCount((count) => count + 1)
+      })
     }
   }
 
   const handleClick = () => {
     if (isReported === 'Report') {
-      setReported('Reported')
+      please.reportAnswer(answer.answer_id)
+      .then(() => {
+        // console.log('success')
+        setReported('Reported')
+      })
     }
   }
 
