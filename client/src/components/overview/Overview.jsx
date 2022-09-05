@@ -27,8 +27,7 @@ const Overview = () => {
             {Object.keys(curStyle.skus)[0] === 'null' ?
             <div>
               <p>OUT OF STOCK!</p>
-            </div>
-            :
+            </div>:
             <>
             {curSku.value === -2 ? <h2>select a size please!</h2> : null}
             <div id='OVsizeNQty'>
@@ -44,9 +43,9 @@ const Overview = () => {
           <div>
             <h3>{product.slogan}</h3>
             <p> {product.description}</p>
-          </div>
+          </div>ß
           <div>
-            {product.features.map((f, index) => <p key={index}><span style={{fontWeight: 'bold'}}>{f.feature}</span> : {f.value} </p>)}
+            {product.features.map((f) => <p key={f.feature}><span style={{fontWeight: 'bold'}}>{f.feature}</span> : {f.value} </p>)}
           </div>
         </div>
       </div>
