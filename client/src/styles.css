@@ -710,8 +710,7 @@ input{
   font-size: 12px;
 }
 
-.RR-form-fields :focus,
-.RR-form-fields :focus {
+.RR-form-fields.textbox :focus {
   outline: none !important;
   border-color: var(--mid-green);
   box-shadow: 0 0 10px var(--black-green);
