@@ -1,17 +1,28 @@
 import React from 'react'
 import please from '../.././request.js'
+import {useOV} from './OVContext.jsx'
 
-const AddToBag = ({styles, styleIndex, skuIndex, quantity}) => {
+const AddToBag = () => {
+  let {quantity, curSku, setCurSku} = useOV();
 
   const addToBag = () => {
-    console.log(`you are adding ${Object.keys(styles[styleIndex].skus)[skuIndex]} ${quantity} times`)
+    console.log(`you are adding ${curSku.number}, size ${curSku.label} ${quantity.value} times`)
     // for (let i = 1; i <= quantity; i++) {
     //   please.addToBag({sku_id:Object.keys(styles[styleIndex].skus)[skuIndex] })
     // }
   }
 
+  const dropSize = () => {
+    setCurSku({value:-2, label: 'Select Size', hidden: true})
+  }
+
   return (
-    <button id='OVAddToBag' disabled={quantity === 0 || skuIndex === -1} onClick={addToBag}>AddToBag</button>
+    <>
+      {curSku.value < 0 ?
+      <button id='OVAddToBag' onClick={dropSize}>AddToBag</button>:
+      <button id='OVAddToBag' onClick={addToBag}>AddToBag</button>
+      }
+    </>
   )
 }
 

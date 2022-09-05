@@ -10,10 +10,10 @@ body {
   background-color: pink
 }
 
-div {
+/* div {
   color: grey;
   background-color: pink;
-}
+} */
 
 /* OVERVIEW */
 
@@ -73,11 +73,13 @@ div {
   height: 100%;
   width: 100%;
   font-size: larger;
+  background-color: #fff;
+  color: black;
 }
 
 #OVAddToBag {
   padding: 10px;
-  width: 300px;
+  width: 100%;
   margin: 10px 0px;
 }
 
