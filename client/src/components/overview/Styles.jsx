@@ -12,7 +12,7 @@ const Styles = () => {
     if (i > -1) {
       const count = values[i].quantity
       setCurSku({value: i, label: values[i].size, qty: values[i].quantity, number: keys[i]})
-      quantity.value > count? setQuantity({value:1, label: 1}) :null;
+      quantity.value > count? setQuantity({value:count, label: count}) :null;
     }
     setCurStyle(cur)
     setDisplayIndex(0)

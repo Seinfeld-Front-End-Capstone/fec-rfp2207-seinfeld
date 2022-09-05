@@ -12,7 +12,7 @@ export function OVProvider({productId, children}) {
 
   const [product, setProduct] = useState(null);
   const [styles, setStyles] = useState(null);
-  const [styleIndex, setStyleIndex] = useState(0);
+  // const [styleIndex, setStyleIndex] = useState(0);
   const [curSku, setCurSku] = useState({value:-1, label: 'Select Size'})
   const [skuIndex, setSkuIndex] = useState(-1);
   const [displayIndex, setDisplayIndex] = useState(0);
@@ -32,7 +32,7 @@ export function OVProvider({productId, children}) {
   },[])
 
 
-  const values = {product, setProduct, styles, setStyles, styleIndex, setStyleIndex, skuIndex, setSkuIndex, displayIndex, setDisplayIndex, quantity, setQuantity, starsObj, setStarsObj, curStyle, setCurStyle, curSku, setCurSku}
+  const values = {product, setProduct, styles, setStyles, skuIndex, setSkuIndex, displayIndex, setDisplayIndex, quantity, setQuantity, starsObj, setStarsObj, curStyle, setCurStyle, curSku, setCurSku}
 
   return (
     styles && product ?

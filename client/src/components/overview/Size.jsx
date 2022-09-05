@@ -13,6 +13,7 @@ const Size = () => {
   const onSelect = (select) => {
     setCurSku(select)
     quantity.value === 0? setQuantity({value:1, label:1}): null;
+    quantity.value > select.qty? setQuantity({value:select.qty, label:select.qty}): null;
   }
 
   curSku.value === -2 ? selectRef.current.focus() : null;
