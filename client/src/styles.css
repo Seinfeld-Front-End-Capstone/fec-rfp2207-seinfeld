@@ -777,7 +777,7 @@ p {
   width: 100%;
 }
 
-#RR-form {
+#RR-form-inner-ctn {
   position: fixed;
   z-index: 3;
   top: 20%;
@@ -831,7 +831,7 @@ p {
   background-color: var(--black-green) !important;
 }
 
-#RR-form form {
+#RR-form-inner-ctn form {
   /* maybe use part of image as background for texture */
   overflow-y: scroll;
   background: #edf1f7;
@@ -840,7 +840,7 @@ p {
   background-size: 350px 350px;
 }
 
-#RR-form div {
+#RR-form-inner-ctn div {
   background-color: transparent;
 }
 
@@ -885,7 +885,7 @@ p {
   text-align: left;
 }
 
-#RR-form .RR-prod-char-rating {
+#RR-form-inner-ctn .RR-prod-char-rating {
   display: flex;
   width: 700px;
   border: 1px solid grey;

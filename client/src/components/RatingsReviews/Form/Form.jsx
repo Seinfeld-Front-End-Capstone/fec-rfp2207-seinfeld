@@ -100,14 +100,14 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
 
   return (
     <div id="RR-form-ctn">
-      <div id="RR-form">
+      <div id="RR-form-inner-ctn">
         <div id="RR-form-menu">
           <span>Write your review</span>
           <span>About the {productName}</span>
           <input type="button" value="submit" onClick={handleSubmit} onMouseEnter={() => setSubmitBtnActive(true)} onMouseLeave={() => setSubmitBtnActive(false)} className={submitBtnActive ? 'active' : ''} />
           <button id="RR-form-cancel" onClick={toggleForm} onMouseEnter={() => setCancelBtnActive(true)} onMouseLeave={() => setCancelBtnActive(false)} className={cancelBtnActive ? 'active' : ''}>cancel</button>
         </div>
-        <form>
+        <form id="RR-form">
           <div id="RR-overall-rating" className="RR-form-fields">
             <div>Overall Rating: {requiredTag}</div>
             <div>{starRatings}</div>
