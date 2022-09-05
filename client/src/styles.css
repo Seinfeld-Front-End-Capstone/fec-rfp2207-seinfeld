@@ -431,12 +431,13 @@ input{
   position: fixed;
   left: 25vw;
   top: 25vh;
-  background: white;
+  background: var(--light);
   width: 50vw;
   height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .qa-question-modal form {
@@ -447,7 +448,7 @@ input{
 }
 
 .qa-question-modal div {
-  background-color: white;
+  background-color: var(--light);
 }
 
 #qa-question-helpful {
@@ -497,12 +498,13 @@ input{
   position: fixed;
   left: 25vw;
   top: 25vh;
-  background: white;
+  background: var(--light);
   width: 50vw;
   height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .qa-answer-modal form {
@@ -513,7 +515,7 @@ input{
 }
 
 .qa-answer-modal div {
-  background-color: white;
+  background-color: var(--light);
 }
 
 .qa-answer-modal input {
