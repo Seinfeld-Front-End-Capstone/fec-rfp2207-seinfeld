@@ -874,6 +874,10 @@ p {
   display: flex;
 }
 
+.RR-form-user-info input {
+  width: 200px;
+}
+
 /* RR - Product Characteristics Breakdown */
 
 #RR-summary {

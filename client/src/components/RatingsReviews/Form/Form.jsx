@@ -142,13 +142,13 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
             </div>
           </div>
 
-          <div className="RR-form-fields textbox">
+          <div className="RR-form-fields textbox RR-form-user-info">
             <div>What is your nickname:  {requiredTag}</div>
             <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
             <div className="RR-disclaimer">For privacy reasons, do not use your full name or email address</div>
           </div>
 
-          <div className="RR-form-fields textbox">
+          <div className="RR-form-fields textbox RR-form-user-info">
             <div>Your Email: {requiredTag}</div>
             <span><input placeholder="Example: jackson11@email.com" maxLength="60" name="email"/></span>
             <div className="RR-disclaimer">For authentication reasons, you will not be emailed</div>
