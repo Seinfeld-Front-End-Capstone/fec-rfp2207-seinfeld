@@ -708,6 +708,13 @@ p {
   justify-content: space-between;
 }
 
+.RR-seller-response {
+  background-color: var(--light);
+  width: fit-content;
+  padding: 6px;
+  border-radius: 2px;
+}
+
 #RR-more-menu {
   display: flex;
   margin: 20px;

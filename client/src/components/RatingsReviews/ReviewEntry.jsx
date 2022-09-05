@@ -7,8 +7,6 @@ import { FaCheckCircle } from 'react-icons/fa';
 const ReviewEntry = ({ review, recommended }) => {
   let { review_id, body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
 
-//for dev and testing purposes only, will migrate into css file
-
 const formattedDate = moment(date).format('ll');
 
   return (
@@ -23,7 +21,7 @@ const formattedDate = moment(date).format('ll');
       <h2>{summary}</h2>
       <p>{body}</p>
       {recommend ? <p><FaCheckCircle /> I recommend this product</p> : null}
-      {response ? <p style={emphasize}>Response from seller: {response}</p> : null}
+      {response ? <p className="RR-seller-response">Response from seller: {response}</p> : null}
       <p>Helpful? <span>Yes</span> ({helpfulness})</p>
       <div id="RR-photos-ctn">
         {photos && photos.map(photo => <Photos key={photo.id} photo={photo}/>)}

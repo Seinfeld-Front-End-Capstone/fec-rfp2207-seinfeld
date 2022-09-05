@@ -37,7 +37,6 @@ const RatingsReviews = ({ productId, productName }) => {
       let reviews = data.data.results;
       //add logic or state to remember what filter/sort the user is in
       setReviews(reviews);
-      setReviewsOnDisplay(reviews.slice(0, maxResults));
     })
     .catch((err) => console.log(err))
   }
