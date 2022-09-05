@@ -6,8 +6,6 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
 import please from '.././request.js'
 
-
-
 const App = () => {
 
   const [product, setProduct] = useState(null)
@@ -26,12 +24,12 @@ const App = () => {
         <Overview />
       </OVProvider>
       <ItemLists productId={product.id}/>
-      <QuestionsMaster/>
-      <RatingsReviews productId={product.id}/>
+      <QuestionsMaster productId={65635}/>
+      <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
     :
     <div>
-      <h1>loading...</h1>
+    <h1>loading...</h1>
     </div>
   )
 }

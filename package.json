@@ -26,12 +26,20 @@
   },
   "homepage": "https://github.com/Seinfeld-Front-End-Capstone/fec-rfp2207-seinfeld#readme",
   "dependencies": {
+    "@cloudinary/react": "^1.4.2",
+    "@cloudinary/url-gen": "^1.8.6",
     "axios": "^0.27.2",
+    "cloudinary-core": "^2.13.0",
+    "email-validator": "^2.0.4",
     "moment": "^2.29.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
+<<<<<<< HEAD
     "react-select": "^5.4.0"
+=======
+    "underscore": "^1.13.4"
+>>>>>>> main
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",

@@ -3,7 +3,8 @@ import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 import ComparisonModal from './ComparisonModal.jsx';
-//takes in the item id and populates each element of the card with relevent info.
+
+/* *** Cards for each item in the list of related products *** */
 
 const RelatedItemCard = ({ pID, ogID }) => {
   const [productData, setProductData] = useState([]);
@@ -19,7 +20,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     request
       .getStyles(pID)
       .then((data) => {
-        // console.log('styles data:', data.data);
         setPhotoData(data.data.results[0].photos[0].url);
         if (data.data.results[0].sale_price) {
           setPrice(data.data.results[0].sale_price);
@@ -33,7 +33,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     request
       .getProductInfo(pID)
       .then((data) => {
-        // console.log('prod info:', data.data);
         setProductData(data.data);
       })
       .catch((err) => {
@@ -52,7 +51,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     request
       .getProductInfo(ogID)
       .then((data) => {
-        // console.log('prod info:', data.data);
         setOVItem(data.data);
       })
       .catch((err) => {
@@ -61,7 +59,6 @@ const RelatedItemCard = ({ pID, ogID }) => {
     request
       .getStyles(ogID)
       .then((data) => {
-        // console.log('styles data:', data.data);
         if (data.data.results[0].sale_price) {
           setOVItemPrice(data.data.results[0].sale_price);
         } else {
@@ -73,31 +70,48 @@ const RelatedItemCard = ({ pID, ogID }) => {
       });
   }, []);
 
-  // need little star button -- Might have to grab from font awesome or something similar -- done
-  //on click, the star button opens a pop-up window that shows a comparison between the item on the current overview and the item on the related list.
-
   const handlePopToggle = (e) => {
-    //do stuff. make popup window.
     e.preventDefault();
     setPop(true);
   }
 
-  console.log('pop:', pop);
-
   return (
-    <div>
-      <aside className="RC_card">
-        <img className="RC_card_photo" src={photoData} height="225" />
-        <i className="fa-solid fa-star" onClick={handlePopToggle}></i>
-        <h6 className="RC_product_category">{productData.category}</h6>
-        <h5 className="RC_product_name">{productData.name}</h5>
-        <p>
-          <small className="RC_product_price">{price}</small>
-        </p>
-        <Stars rating={starRating} />
-      </aside>
+    <li
+      className="RC_related_card_container">
+      <div className="RC_related_card">
+        <div className="RC_card_photo_container">
+          <img
+            className="RC_card_photo"
+            src={photoData}
+            height="225"
+          />
+          <i
+            className="fa-solid fa-star compare_star"
+            onClick={handlePopToggle}>
+          </i>
+        </div>
+        <div className="RC_related_text_container">
+          <h6
+            className="RC_product_category RC_text">
+              <em>{productData.category}</em>
+          </h6>
+          <h5
+            className="RC_product_name RC_text">
+            {productData.name}
+          </h5>
+          <h6
+            className="RC_product_price RC_text">
+              {price}
+          </h6>
+        </div>
+        <div
+        className="RC_star_rating">
+          <Stars
+            rating={starRating} />
+        </div>
+      </div>
       {pop ? <ComparisonModal toggle={setPop} overviewItem={ovItem} relatedItem={productData} relatedPrice={price} ovPrice={ovItemPrice}/> : null}
-    </div>
+    </li>
 
   );
 };
