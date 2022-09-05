@@ -46,12 +46,12 @@ const OutfitList = ({ id }) => {
   return (
     <div>
       <h5>Your Outfit</h5>
-      <button
-      className="RC_prev"
-      onClick={handlePrevClick}>
-        {"<"}
-      </button>
       <ul className="RC_outfit_list">
+        <button
+        className="RC_prev"
+        onClick={handlePrevClick}>
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
           <li className="RC_outfit_card_container">
             <div
             className="RC_add_to_outfit"
@@ -65,12 +65,12 @@ const OutfitList = ({ id }) => {
             </div>
           </li>
         {addOutfit}
+        <button
+        className="RC_next"
+        onClick={handleNextClick}>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </ul>
-      <button
-      className="RC_next"
-      onClick={handleNextClick}>
-        {">"}
-      </button>
     </div>
   )
 }
