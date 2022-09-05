@@ -1,29 +1,25 @@
-import React from 'react';
+import React, {useState} from 'react';
+import Select from 'react-select';
+import {useOV} from './OVContext.jsx';
 
-const Quantity = ({skus, skuIndex, quantity, setQuantity}) => {
+const Quantity = () => {
+  let {curSku, quantity, setQuantity} = useOV()
 
-
-  let count = skuIndex !== -1 ? Object.values(skus)[skuIndex].quantity : 0
-  count = count > 15 ? 15 : count;
-  const arr = [];
+  let count = curSku.qty > 15 ? 15 : curSku.qty;
+  const options = [];
   for (let i = 1; i <= count; i++){
-    arr.push(i)
+    options.push({value: i, label: i})
   };
 
-
-
-  quantity > count? setQuantity(0) : null
-
-  const onSelect = (e) => {
-    setQuantity(e.target.value)
+  const onSelect = (select) => {
+    setQuantity(select)
   }
+
+  const hideOption = (option) => option.data.hidden ? false: true
 
   return (
     <div>
-      <select className='OVselect' value={quantity} onChange={onSelect}>
-        <option value='0' hidden > - </option>
-        {arr.map((num, index) => <option value={num} key={index}>{num}</option>)}
-      </select>
+      <Select className='OVselect' value={quantity} options={options} onChange={onSelect} filterOption={hideOption} />
     </div>
   )
 }

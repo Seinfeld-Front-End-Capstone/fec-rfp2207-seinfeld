@@ -1,6 +1,8 @@
 import React from 'react';
+import {useOV} from './OVContext.jsx'
 
-const Thumbnail = ({thumbnail, setDisplayIndex, index}) => {
+const Thumbnail = ({thumbnail, index}) => {
+  let {setDisplayIndex} = useOV()
 
   const onClick = (e) => {
     setDisplayIndex(e.target.dataset.key)
