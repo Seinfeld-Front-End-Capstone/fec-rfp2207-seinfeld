@@ -18,7 +18,7 @@ const formattedDate = moment(date).format('ll');
           <span>{formattedDate}</span>
         </div>
       </div>
-      <h2>{summary}</h2>
+      <h3>{summary}</h3>
       <p>{body}</p>
       {recommend ? <p><FaCheckCircle /> I recommend this product</p> : null}
       {response ? <p className="RR-seller-response">Response from seller: {response}</p> : null}

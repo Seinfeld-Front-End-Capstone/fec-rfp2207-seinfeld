@@ -16,6 +16,8 @@ const RatingsReviews = ({ productId, productName }) => {
   const [maxResults, setMaxResults] = useState(2);
   const [formMode, setFormMode] = useState(false);
   const [metaData, setMetaData] = useState(null)
+  const[moreBtnActive, setMoreBtnActive] = useState(false);
+  const[addBtnActive, setAddBtnActive] = useState(false);
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -50,8 +52,7 @@ const RatingsReviews = ({ productId, productName }) => {
     setFormMode(!formMode);
   }
 
-  const addReviewButton = <button onClick={toggleForm}>ADD A REVIEW +</button>;
-
+  const addReviewButton = <button onClick={toggleForm} onMouseEnter={() => setAddBtnActive(true)} onMouseLeave={() => setAddBtnActive(false)} className={addBtnActive ? 'active' : ''}>ADD A REVIEW +</button>;
 
   const handleSort = (e) => {
     setSortParam(e.target.value)
@@ -77,7 +78,7 @@ const RatingsReviews = ({ productId, productName }) => {
           </h3>
           <ReviewList reviews={reviews}/>
           <div id="RR-more-menu">
-            {reviews.length === maxResults && <button onClick={showMoreReview}>MORE REVIEWS</button>}
+            {reviews.length === maxResults && <button onClick={showMoreReview} onMouseEnter={() => setMoreBtnActive(true)} onMouseLeave={() => setMoreBtnActive(false)} className={moreBtnActive ? 'active' : ''}>MORE REVIEWS</button>}
             {addReviewButton}
           </div>
         </div>

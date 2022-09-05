@@ -685,6 +685,17 @@ p {
 #RR-header-sort {
   padding-left: 20px;
 }
+
+#RR-sort-param {
+  margin-left: 6px;
+  background-color: var(--light);
+  height: 24px;
+  border-radius: 4px;
+  border: 0;
+  text-align: center;
+  font-size: 16px;
+}
+
 #RR-reviews-right-ctn {
   width: 70%;
 }
@@ -724,6 +735,11 @@ p {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
+  border: 2px solid hsl(0, 0%, 40%);
+}
+
+#RR-more-menu button.active {
+  box-shadow: 0 0 4px var(--black-green);
 }
 
 #RR-photos-ctn {
@@ -731,11 +747,10 @@ p {
 }
 
 .RR-review-photos {
-  width: 100px;
-  height: auto;
+  width: auto;
+  height: 100px;
   display: flex;
 }
-
 
 /* RR - Add a review form */
 #RR-form-ctn {
