@@ -42,6 +42,7 @@ div {
 
 input{
   accent-color: var(--dark-green);
+  height: 18px;
 }
 
 /* OVERVIEW */
@@ -454,7 +455,6 @@ input{
   justify-content: center;
   width: 40px;
 }
-/* ----------HERE------------ */
 
 #RR-factors-breakdown-ctn {
   display: flex;
@@ -534,45 +534,117 @@ input{
 #RR-form-ctn {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 #RR-form-bg {
   top: 0;
   position: fixed;
   z-index: 2;
-  background-color: black;
-  opacity: 0.9;
+  background-color: var(--black-green);
+  opacity: 0.95;
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: center;
 }
+
+
+
 #RR-form {
   position: fixed;
   z-index: 3;
-  top: 200px;
-  background: white;
-  opacity: 1;
-  height: 60%;
+  top: 20%;
+  display: flex;
   width: auto;
-  border-radius: 5px 5px;
-  overflow: scroll;
+  height: 60%;
+  background: transparent;
+
 }
 
-/* crop photo uploads into same size thumbnails */
-#RR-overall-rating {
-  width: 700px;
+#RR-form-menu{
+  width: 240px;
+  padding-right: 20px;
+  padding-top: 280px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  background-image: url('./assets/pencileandletter.jpg');
+  background-size: 700px 600px;
+  background-position: 48% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
+
+#RR-form-menu button,
+#RR-form-menu input,
+.RR-form-fields button {
+  border: 0;
+  margin: 10px 0;
+  height: 30px;
+  width: 60px;
+  color: var(--black-green);
+  background-color: var(--light);
+  border-radius: 4px;
+  opacity: .6;
+  font-weight: bold;
+}
+
+.RR-form-fields button {
+  width: 120px;
+}
+
+#RR-form-menu span {
+  font-size: 20px;
+  margin: 10px 0;
+}
+#RR-form-menu .active,
+.RR-form-fields .active {
+  color: var(--light) !important;
+  background-color: var(--black-green) !important;
+}
+
+#RR-form form {
+  /* maybe use part of image as background for texture */
+  overflow-y: scroll;
+  background: #edf1f7;
+  padding-left: 20px;
+  background-image: url('./assets/canvasbg.png');
+  background-size: 350px 350px;
+}
+
+#RR-form div {
+  background-color: transparent;
+}
+
+.RR-form-fields {
+ margin: 20px 0;
+}
+
+#RR-overall-rating {
+  display: flex;
+  height: 40px;
+  align-items: flex-end;
+}
+
+#RR-overall-rating div {
+  margin-right: 6px;
+}
+
+.RR-rate-star span{
+  padding-bottom: 5px;
+}
+
 #RR-overall-rating input {
   width: 0;
 }
 
-#RR-overall-rating img {
-  height: 20px;
-  width: 20px;
+#RR-rate-star {
+  display: flex;
 }
 
-#RR-rate-star {
+#RR-form-recommend {
   display: flex;
 }
 
@@ -582,18 +654,22 @@ input{
   width: 365px;
   text-align: left;
 }
-.RR-prod-char-rating {
+
+#RR-form .RR-prod-char-rating {
   display: flex;
   width: 700px;
   border: 1px solid grey;
+  background-color: var(--light);
+  border-radius:  20px;
+  margin: 2px;
+  border: 0;
 }
 
 .RR-prod-char-title {
   width: 100px;
-  align-self: flex-end;
+  align-self: center;
   font-weight: bold;
   text-align: center;
-  padding-bottom: 12px;
 }
 
 
@@ -609,24 +685,34 @@ input{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 120px;
+  height: 100px;
 }
 
-.RR-rating-scores p {
-  height: 36px;
-}
-.RR-rating-scores input {
-  height: 18px;
-  background-color: #333;
+.RR-rating-scores div {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 .RR-rating-scores label {
   margin: 2px 0;
 }
 
-/* Uploaded photos */
+#RR-photo-uploads {
+  display: flex;
+}
+#RR-photo-uploads img {
+  margin: 0 2px;
+}
 
-.RR-uploaded-photos {
-  max-width: 100px;
-  max-height: 100px;
+.RR-disclaimer {
+  font-size: 12px;
+}
+
+.RR-form-fields :focus,
+.RR-form-fields :focus {
+  outline: none !important;
+  border-color: var(--mid-green);
+  box-shadow: 0 0 10px var(--black-green);
 }
