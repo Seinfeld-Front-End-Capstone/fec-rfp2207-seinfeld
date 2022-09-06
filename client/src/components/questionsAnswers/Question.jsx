@@ -25,7 +25,7 @@ const Question = ({q}) => {
        <strong><span id='qa-Q'>Q:</span> {q.question_body}</strong>
        <span id='qa-question-helpful'>
          Helpful? <span className='qa-pointer' className='qa-yes' onClick={handleClick}>Yes </span>
-         ({helpfulness}) <span className='qa-line'>|</span> <span className='qa-pointer' onClick={() => setModal(true)}>Add Answer</span>
+         ({helpfulness}) <span className='qa-line'>|</span> <span className='qa-pointer' id='qa-answer-line' onClick={() => setModal(true)}>Add Answer</span>
        </span>
       </div>
         <AnswerList q={q}/>

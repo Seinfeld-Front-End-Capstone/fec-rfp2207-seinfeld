@@ -539,8 +539,19 @@ p {
   margin-left: 5px;
 }
 
+#qa-answer-line {
+  text-decoration: underline;
+}
+
+.qa-report {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .qa-yes {
   margin-left: 5px;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .qa-question-modal input {
