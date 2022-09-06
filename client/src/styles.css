@@ -56,6 +56,10 @@ p {
   display: none !important;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 /* OVERVIEW */
 
 #OVcontainer {
