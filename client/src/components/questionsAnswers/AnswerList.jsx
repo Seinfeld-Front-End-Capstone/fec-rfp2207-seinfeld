@@ -46,7 +46,7 @@ const AnswerList = ({q}) => {
       { length < answers.length ?
         <div onClick={() => setLength((prevLength) => prevLength + 2)} className='qa-load-answers'>load more answers</div>
         :
-        <div onClick={() => setLength(2)} className='qa-load-answers'>Collapse Answers</div>
+        <div onClick={() => setLength(2)} className='qa-load-answers'>collapse answers</div>
       }
     </div>
 

@@ -32,6 +32,9 @@ const Answer = ({answer, index}) => {
     return (
       <div className='qa-answer-container'>
       <span id='qa-A'>A:</span> {answer.body}
+      <div id='qa-img-container'>
+        {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
+      </div>
       <div className='qa-answer-body'>
         <div id='qa-answer-name'>
           by {answer['answerer_name']}, {formattedDate}
@@ -42,9 +45,6 @@ const Answer = ({answer, index}) => {
             <span className='qa-line'>|</span>
             <span onClick={handleClick}>{isReported}</span>
           </span>
-          <div id='qa-img-container'>
-            {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
-          </div>
         </div>
       </div>
     </div>
@@ -53,6 +53,10 @@ const Answer = ({answer, index}) => {
 
   return (
     <div className='qa-answer-body'>
+      <span id='qa-body'>{answer.body}</span>
+        <div id='qa-img-container'>
+          {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
+        </div>
       <div id='qa-answer-name'>
         by {answer['answerer_name']}, {date}
         <span id='qa-answer-helpful'>
@@ -62,9 +66,6 @@ const Answer = ({answer, index}) => {
           <span className='qa-line'>|</span>
           <span onClick={handleClick}>{isReported}</span>
         </span>
-        <div id='qa-img-container'>
-          {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
-        </div>
       </div>
     </div>
   )

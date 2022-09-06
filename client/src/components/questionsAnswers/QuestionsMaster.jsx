@@ -9,7 +9,7 @@ const QuestionsMaster = ({ productId }) => {
   const [initial, setInitial] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [input, setInput] = useState('');
-  const [length, setLength] = useState(2);
+  const [length, setLength] = useState(4);
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
@@ -48,12 +48,7 @@ const QuestionsMaster = ({ productId }) => {
     word.length < 3 ? setQuestion(initial) : setQuestion(filteredQuestions)
   }
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
-  //   doSearch(input)
-  // }
-
-  console.log('initial : ', initial)
+  // console.log('initial : ', initial)
 
   return (
     <div className='qa-qa-master'>
