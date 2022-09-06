@@ -103,7 +103,6 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
 
   return (
     <div id="RR-form-ctn">
-      <div id="RR-form-bg"></div>
       <div id="RR-form">
         <div id="RR-form-menu">
           <span>Write your review</span>
@@ -127,12 +126,12 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
 
           {<ProdChars chars={Object.keys(chars)} />}
 
-          <div className="RR-form-fields">
+          <div className="RR-form-fields textbox">
             <div>Summary:</div>
             <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
           </div>
 
-          <div className="RR-form-fields">
+          <div className="RR-form-fields textbox">
             <div>Review: {requiredTag}</div>
             <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body" onChange={countChar}
             rows="10" cols="44" required></textarea><br/>
@@ -146,13 +145,13 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
             </div>
           </div>
 
-          <div className="RR-form-fields">
+          <div className="RR-form-fields textbox RR-form-user-info">
             <div>What is your nickname:  {requiredTag}</div>
             <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
             <div className="RR-disclaimer">For privacy reasons, do not use your full name or email address</div>
           </div>
 
-          <div className="RR-form-fields">
+          <div className="RR-form-fields textbox RR-form-user-info">
             <div>Your Email: {requiredTag}</div>
             <span><input placeholder="Example: jackson11@email.com" maxLength="60" name="email"/></span>
             <div className="RR-disclaimer">For authentication reasons, you will not be emailed</div>
