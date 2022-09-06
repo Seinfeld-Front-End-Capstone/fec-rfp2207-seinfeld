@@ -19,7 +19,7 @@ const formattedDate = moment(date).format('ll');
         </div>
       </div>
       <h3>{summary}</h3>
-      <p id="RR-review-body">
+      <p className="RR-review-body">
         {body.length > 25
         ?
         <>
