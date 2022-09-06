@@ -32,17 +32,13 @@ const ReviewEntry = ({ review, recommended }) => {
       </div>
       <h3>{summary}</h3>
       <p className="RR-review-body">
-        {body.length > 25
+        {body.length > 250
         ?
         <>
-        {newBody}...
+        {body.slice(0, 250)}...
         <span
         className="underline"
         onClick={(e) => {
-          console.log('new body', newBody);
-          console.log('body', body)
-          // e.currentTarget.classList.add('hide');
-          // e.currentTarget.previousElementSibling.innerHTML = body;
           e.currentTarget.parentElement.innerHTML = body;
           }}>show more</span>
         </>
