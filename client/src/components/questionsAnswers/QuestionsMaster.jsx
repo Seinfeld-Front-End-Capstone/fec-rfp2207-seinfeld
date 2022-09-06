@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestionList from './QuestionList.jsx';
 import QuestionModal from './QuestionModal.jsx';
-import {BiSearchAlt2} from 'react-icons/bi'
+import { BiSearchAlt2 } from 'react-icons/bi'
 import please from '../.././request.js';
 
 const QuestionsMaster = ({ productId }) => {
@@ -58,24 +58,13 @@ const QuestionsMaster = ({ productId }) => {
           <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => setInput(e.target.value)}></input>
         </div>
       )}
-      <QuestionList questions={question} length={length}/>
-      { length < question.length &&
-        <button className='qa-question-button' onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button> }
-      { length === question.length &&
-        <button className='qa-question-button' onClick={() => setLength(2)}>Collapse Questions</button> }
-        <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
-        <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion}/>
-        </div>
-       )
-      //   : (
-      //   <button className='qa-question-button'>Add A Question</button>
-      //  )
-
-      // }
-    //   <button onClick={() => setModal(true)}>Add A Question</button>
-    //   <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
-    // </div>
-  // )
+      <QuestionList questions={question} length={length} />
+      {length < question.length &&
+        <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>}
+      <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
+      <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
+    </div>
+  )
 }
 
 export default QuestionsMaster;
