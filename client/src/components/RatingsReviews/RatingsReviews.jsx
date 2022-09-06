@@ -88,9 +88,13 @@ const RatingsReviews = ({ productId, productName }) => {
       </div>
       <div id="RR-form-bg" className={formMode ? 'active' : ''}></div>
       {formMode && <Form productName={productName} toggleForm={toggleForm} productId={productId} refreshReviews={() => refreshReviews()}/>}
-      {showPhotoModal && <div id="RR-photo-modal">
-        <MdCancel onClick={() => setShowPhotoModal('')}/>
-        <img id="RR-popup-photo" src={showPhotoModal}/>
+      {showPhotoModal &&
+      <div id="RR-photo-modal">
+        <div className="background"></div>
+        <div id="RR-photo-modal-inner">
+          <MdCancel className="icons" onClick={() => setShowPhotoModal('')}/>
+          <img id="RR-popup-photo" src={showPhotoModal}/>
+        </div>
       </div>}
     </>
   )
