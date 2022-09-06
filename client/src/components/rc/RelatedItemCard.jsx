@@ -6,7 +6,7 @@ import ComparisonModal from './ComparisonModal.jsx';
 
 /* *** Cards for each item in the list of related products *** */
 
-const RelatedItemCard = ({ pID, ogID, setOVProduct }) => {
+const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
   const [productData, setProductData] = useState([]);
   const [ovItem, setOVItem] = useState([]);
   const [photoData, setPhotoData] = useState([]);
@@ -83,8 +83,10 @@ const RelatedItemCard = ({ pID, ogID, setOVProduct }) => {
   return (
     <li
       className="RC_related_card_container">
-      <div className="RC_related_card">
-        <div className="RC_card_photo_container">
+      <div
+      className="RC_related_card">
+        <div
+        className="RC_card_photo_container">
           <img
             className="RC_card_photo"
             src={photoData}
@@ -98,7 +100,9 @@ const RelatedItemCard = ({ pID, ogID, setOVProduct }) => {
         <div className="RC_related_text_container">
           <h6
             className="RC_product_category RC_text">
-              <em>{productData.category}</em>
+              <em>
+                {productData.category}
+              </em>
           </h6>
           <h5
             className="RC_product_name RC_text"
