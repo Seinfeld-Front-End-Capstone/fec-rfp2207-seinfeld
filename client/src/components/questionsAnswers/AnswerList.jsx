@@ -31,24 +31,22 @@ const AnswerList = ({q}) => {
   let slicedAnswers = answers.slice(0, length);
 
   let mappedAnswers = slicedAnswers.map((answer, i) => {
-    return <Answer answer={answer} key={i}/>
+    return <Answer answer={answer} index={i} key={i}/>
   })
-
-  // console.log('answers : ', answers);
 
   if (answers.length <= 2) {
     return(
       <div className='qa-answer-container'>{mappedAnswers}</div>
     )
   }
-  // console.log('answer Length : ', length);
+
   return (
     <div>
       <div className='qa-answer-container'>{mappedAnswers}</div>
       { length < answers.length ?
         <div onClick={() => setLength((prevLength) => prevLength + 2)} className='qa-load-answers'>load more answers</div>
         :
-        <div onClick={() => setLength(2)} className='qa-load-answers'>Collapse Answers</div>
+        <div onClick={() => setLength(2)} className='qa-load-answers'>collapse answers</div>
       }
     </div>
 

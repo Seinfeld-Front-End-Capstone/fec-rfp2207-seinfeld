@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestionList from './QuestionList.jsx';
 import QuestionModal from './QuestionModal.jsx';
-// import {BiSearchAlt2} from 'react-icons/bi'
+import {BiSearchAlt2} from 'react-icons/bi'
 import please from '../.././request.js';
 
 const QuestionsMaster = ({ productId }) => {
@@ -9,7 +9,7 @@ const QuestionsMaster = ({ productId }) => {
   const [initial, setInitial] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [input, setInput] = useState('');
-  const [length, setLength] = useState(2);
+  const [length, setLength] = useState(4);
   const [modal, setModal] = useState(false);
 
   useEffect(() => {
@@ -48,30 +48,34 @@ const QuestionsMaster = ({ productId }) => {
     word.length < 3 ? setQuestion(initial) : setQuestion(filteredQuestions)
   }
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
-  //   doSearch(input)
-  // }
+  // console.log('initial : ', initial)
 
   return (
     <div className='qa-qa-master'>
       <h2>Questions & Answers</h2>
       {initial.length > 2 && (
         <div className='qa-search-bar'>
-          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
-            setInput(e.target.value)
-            doSearch(e.target.value)
-          }}></input>
+          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => setInput(e.target.value)}></input>
         </div>
       )}
-      <QuestionList questions={question} length={length} />
-      {length < question.length &&
-        <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
-      }
-      <button onClick={() => setModal(true)}>Add A Question</button>
-      <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
-    </div>
-  )
+      <QuestionList questions={question} length={length}/>
+      { length < question.length &&
+        <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button> }
+      { length === question.length &&
+        <button className='qa-question-button' onClick={() => setLength(2)}>Collapse Questions</button> }
+        <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
+        <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion}/>
+        </div>
+       )
+      //   : (
+      //   <button className='qa-question-button'>Add A Question</button>
+      //  )
+
+      // }
+    //   <button onClick={() => setModal(true)}>Add A Question</button>
+    //   <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
+    // </div>
+  // )
 }
 
 export default QuestionsMaster;
