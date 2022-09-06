@@ -55,7 +55,10 @@ const QuestionsMaster = ({productId}) => {
       <h2>Questions & Answers</h2>
       {initial.length ? (
         <div className='qa-search-bar'>
-          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => setInput(e.target.value)}/>
+          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
+            setInput(e.target.value)
+            doSearch(e.target.value)
+            }}/>
         <div/>
           <QuestionList questions={question} length={length}/>
           { length < question.length ?

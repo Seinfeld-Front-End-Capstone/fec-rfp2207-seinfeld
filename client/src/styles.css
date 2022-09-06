@@ -556,8 +556,8 @@ p {
   margin: 15px auto;
 }
 
-.qa-img-container {
-  display: flex;
+#qa-img-container {
+  margin-left: 25px;
 }
 
 .qa-answer-img {
@@ -568,6 +568,7 @@ p {
 }
 
 .qa-load-answers {
+  margin-left: 25px;
   cursor: pointer;
 }
 
@@ -642,9 +643,9 @@ p {
   padding-left: 0px;
 }
 
-/* .qa-answer-body span { */
-  /* margin: 0 10px; */
-/* } */
+#qa-body {
+  margin-left: 25px;
+}
 
 .qa-pointer {
   cursor: pointer;
@@ -655,7 +656,7 @@ p {
 }
 
 #qa-answer-name {
-  margin: 10px 0;
+  margin: 10px 0 0 25px;
 }
 
 .qa-question-button {
