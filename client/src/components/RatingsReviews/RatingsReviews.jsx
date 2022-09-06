@@ -20,8 +20,7 @@ const RatingsReviews = ({ productId, productName }) => {
     please.getReviews(productId, 1, maxResults, sortParam)
     .then((data) => {
       let reviews = data.data.results;
-      // setReviews(reviews);
-      setReviews([]);
+      setReviews(reviews);
     })
     .catch((err) => console.log(err));
 
@@ -36,8 +35,7 @@ const RatingsReviews = ({ productId, productName }) => {
     .then((data) => {
       let reviews = data.data.results;
       //add logic or state to remember what filter/sort the user is in
-      // setReviews(reviews);
-      setReviews([]);
+      setReviews(reviews);
     })
     .catch((err) => console.log(err))
   }
