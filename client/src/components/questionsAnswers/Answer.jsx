@@ -42,7 +42,7 @@ const Answer = ({answer, index}) => {
             <span className='qa-pointer' className='qa-yes' onClick={handleCount}>Yes</span>
             <span id='qa-answer-count'>({answerCount})</span>
             <span className='qa-line'>|</span>
-            <span onClick={handleClick}>{isReported}</span>
+            <span className='qa-report' onClick={handleClick}>{isReported}</span>
           </span>
         </div>
       </div>
@@ -63,7 +63,7 @@ const Answer = ({answer, index}) => {
           <span className='qa-pointer' className='qa-yes' onClick={handleCount}>Yes</span>
           <span id='qa-answer-count'>({answerCount})</span>
           <span className='qa-line'>|</span>
-          <span onClick={handleClick}>{isReported}</span>
+          <span className='qa-report' onClick={handleClick}>{isReported}</span>
         </span>
       </div>
     </div>
