@@ -695,6 +695,14 @@ p {
   display: flex;
   justify-content: center;
 }
+
+#RR-first-review {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 30px;
+}
+
 #RR-ratings-reviews-ctn {
   display: flex;
   max-width: var(--max-width);

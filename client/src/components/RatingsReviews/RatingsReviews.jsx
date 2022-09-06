@@ -61,7 +61,7 @@ const RatingsReviews = ({ productId, productName }) => {
       <div id="RR-big-ctn">
         {reviews.length === 0
         ?
-        <div>
+        <div id="RR-first-review">
           <p>Be the first to review this product!</p>
           {addReviewButton}
         </div>
