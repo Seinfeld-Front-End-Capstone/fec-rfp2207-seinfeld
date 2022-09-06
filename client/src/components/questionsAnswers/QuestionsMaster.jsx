@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import QuestionList from './QuestionList.jsx';
 import QuestionModal from './QuestionModal.jsx';
-// import {BiSearchAlt2} from 'react-icons/bi'
+import {BiSearchAlt2} from 'react-icons/bi'
 import please from '../.././request.js';
 
 const QuestionsMaster = ({ productId }) => {
@@ -52,6 +52,8 @@ const QuestionsMaster = ({ productId }) => {
   //   e.preventDefault()
   //   doSearch(input)
   // }
+
+  console.log('initial : ', initial)
 
   return (
     <div className='qa-qa-master'>

@@ -14,8 +14,12 @@
   --dark-green: #354f52;
   --black-green: #2f3e46;
 
+  /* colors of stars */
   --star-color: var(--dark-green);
   --star-background: var(--light);
+
+  /* global dimensions */
+  --max-width: 1000px;
 }
 
 .Stars {
@@ -44,6 +48,10 @@ input{
   height: 18px;
 }
 
+p {
+  overflow-wrap: break-word;
+}
+
 /* OVERVIEW */
 
 #OVcontainer {
@@ -54,7 +62,7 @@ input{
 
 #Overview {
   height: 100%;
-  width: 1000px;
+  width: var(--max-width);
   display: grid;
   grid-template-rows: 3fr 1fr;
   grid-row-gap: 10px;
@@ -203,6 +211,7 @@ input{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  max-width: 800;
 }
 
 
@@ -272,6 +281,21 @@ input{
 
 /* ** Outfit ** */
 
+.RC_outfit_container{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1000;
+}
+
 .RC_outfit_list {
   padding: 0;
   margin: 0;
@@ -286,6 +310,7 @@ input{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  max-width: 800;
 }
 
 
@@ -310,6 +335,40 @@ input{
   width: 150px;
   height: 250px;
   color: white;
+}
+
+.RC_next {
+  background-color: gray;
+  color:#fff;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  border: none;
+  height: 100px;
+  border-radius: 10px;
+  align-self: flex-end;
+  margin-bottom: 75px;
+  margin-left: 15px;
+}
+
+.RC_next:hover {
+  background-color: var(--mid-green);
+
+}
+
+.RC_prev {
+  background-color: gray;
+  color:#fff;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  border: none;
+  height: 100px;
+  border-radius: 10px;
+  align-self: flex-start;
+  margin-top: 95px;
+  margin-right: 15px;
+}
+
+.RC_prev:hover {
+  background-color: var(--mid-green);
+
 }
 
 .plus {
@@ -403,6 +462,7 @@ input{
   margin: 200px;
 }
 
+/* SEARCH BAR */
 #qa-search-input {
   border: 1px solid grey;
   border-radius: 2px;
@@ -433,12 +493,13 @@ input{
   position: fixed;
   left: 25vw;
   top: 25vh;
-  background: white;
+  background: var(--light);
   width: 50vw;
   height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .qa-question-modal form {
@@ -449,12 +510,20 @@ input{
 }
 
 .qa-question-modal div {
-  background-color: white;
+  background-color: var(--light);
 }
 
 #qa-question-helpful {
   float: right;
   font-size: 15px;
+}
+
+#qa-answer-count {
+  margin-left: 5px;
+}
+
+.qa-yes {
+  margin-left: 5px;
 }
 
 .qa-question-modal input {
@@ -470,12 +539,15 @@ input{
   margin: 15px auto;
 }
 
-.qa-answer-img {
-  margin: 10px 0;
+.qa-img-container {
   display: flex;
-  flex-direction: row;
-  width:100px;
-  height: 100px;
+}
+
+.qa-answer-img {
+  margin: 10px 10px 5px 0;
+  width: 120px;
+  height: 120px;
+  border: .5px solid black;
 }
 
 .qa-load-answers {
@@ -499,12 +571,13 @@ input{
   position: fixed;
   left: 25vw;
   top: 25vh;
-  background: white;
+  background: var(--light);
   width: 50vw;
   height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .qa-answer-modal form {
@@ -515,14 +588,13 @@ input{
 }
 
 .qa-answer-modal div {
-  background-color: white;
+  background-color: var(--light);
 }
 
 .qa-answer-modal input {
   margin: 5px 0;
   width: 60%;
 }
-
 
 .qa-X {
   margin: 0;
@@ -554,9 +626,16 @@ input{
   padding-left: 0px;
 }
 
-.qa-answer-body span {
-  margin: 0 5px;
-  /* padding: 0px; */
+/* .qa-answer-body span { */
+  /* margin: 0 10px; */
+/* } */
+
+.qa-pointer {
+  cursor: pointer;
+}
+
+.qa-pointer:hover {
+  color: black;
 }
 
 #qa-answer-name {
@@ -564,18 +643,35 @@ input{
   padding-left: 25px;
 }
 
+.qa-question-button {
+  font-size: 15px;
+  padding: 10px;
+  margin: 30px 15px 0 0;
+  border-radius: 3px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.qa-question-button:hover {
+  background-color: var(--light);
+  color: white;
+}
+
 /* RATINGS AND REVIEWS */
 
 /* -----------------RATINGS AND REVIEWS -----------------*/
+#RR-big-ctn {
+  display: flex;
+  justify-content: center;
+}
 #RR-ratings-reviews-ctn {
   display: flex;
-  /* temp */
-  border-style: solid;
+  max-width: var(--max-width);
 }
 
 /* Ratings breakdown */
 #RR-rating-breakdown-ctn {
-  width: 300px;
+  width: 30%;
 }
 
 #RR-rating-summary-ctn {
@@ -669,37 +765,69 @@ input{
   padding-left: 20px;
 }
 
-#RR-header-sort {
-  padding-left: 20px;
+#RR-sort-param {
+  margin-left: 6px;
+  background-color: var(--light);
+  height: 24px;
+  border-radius: 4px;
+  border: 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+#RR-reviews-right-ctn {
+  width: 70%;
 }
 #RR-reviews-ctn {
-  padding: 0 20px;
+  width: 90%;
+  overflow-y: scroll;
+  max-height: 600px;
 }
-.review-header {
+
+.RR-review-ctn {
+  background-color: hsl(0, 0%, 95%);
+  color:  hsl(0, 0%, 40%);
+  margin-bottom: 6px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.RR-review-header {
   display: flex;
   justify-content: space-between;
 }
 
-#more-menu {
-  display: flex;
-  margin: 20px;
+.RR-seller-response {
+  background-color: var(--light);
+  width: fit-content;
+  padding: 6px;
+  border-radius: 2px;
 }
 
-#more-menu button {
+#RR-more-menu {
+  display: flex;
+  margin: 20px 20px 20px 0;
+}
+
+#RR-more-menu button {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
+  border: 2px solid hsl(0, 0%, 70%);
+}
+
+#RR-more-menu button.active {
+  box-shadow: 0 0 4px var(--black-green);
+}
+
+#RR-photos-ctn {
+  display: flex;
 }
 
 .RR-review-photos {
-  width: 100px;
-  height: auto;
-}
-
-/* crop these into same size thumbnails */
-.RR-uploaded-photos {
-  max-width: 100px;
-  max-height: 100px;
+  width: auto;
+  height: 100px;
+  display: flex;
 }
 
 /* RR - Add a review form */

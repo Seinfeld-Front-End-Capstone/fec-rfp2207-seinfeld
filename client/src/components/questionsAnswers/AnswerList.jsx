@@ -31,17 +31,15 @@ const AnswerList = ({q}) => {
   let slicedAnswers = answers.slice(0, length);
 
   let mappedAnswers = slicedAnswers.map((answer, i) => {
-    return <Answer answer={answer} key={i}/>
+    return <Answer answer={answer} index={i} key={i}/>
   })
-
-  // console.log('answers : ', answers);
 
   if (answers.length <= 2) {
     return(
       <div className='qa-answer-container'>{mappedAnswers}</div>
     )
   }
-  // console.log('answer Length : ', length);
+
   return (
     <div>
       <div className='qa-answer-container'>{mappedAnswers}</div>
