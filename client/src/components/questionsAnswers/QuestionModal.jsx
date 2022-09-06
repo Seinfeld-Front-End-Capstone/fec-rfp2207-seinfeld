@@ -16,39 +16,39 @@ const QuestionModal = ({modal, onClose, productId, setInitial, setQuestion}) => 
     }
 
     please.addQuestion({body: userQuestion, name: name, email: email, product_id: productId})
-    .then(() => {
-      onClose(false)
-    })
+    .then(() => onClose(false))
+    .catch((err) => console.log(err))
   }
 
   if (modal)
   return (
-    <div className='qa-question-modal'>
-      <p onClick={onClose} className='qa-X'>X</p>
-        <p>Ask Your Question!</p>
-        <p>About the [product name] Name</p>
+    <div className='qa-modal-wrapper'>
+      <div className='qa-question-modal'>
+        <p onClick={onClose} className='qa-X'>X</p>
+          <p>Ask Your Question!</p>
+          <p>About the [product name] Name</p>
 
-        <form onSubmit={handleSubmit}>
-          <div>
-            <div>Your Question{asterisk}</div>
-            <input type='text' maxLength='1000' onChange={(e) => setUserQuestion(e.target.value)} required></input>
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <div>Your Question{asterisk}</div>
+              <input type='text' maxLength='1000' onChange={(e) => setUserQuestion(e.target.value)} required></input>
+            </div>
 
-          <div>
-            <div>What is your nickname{asterisk}</div>
-            <input type='text' placeholder='Example: jackson11!' maxLength='60' onChange={(e) => setName(e.target.value)} required></input>
-            <div className='qa-input-text'>For privacy reasons, do not use your full name or email address</div>
-          </div>
+            <div>
+              <div>What is your nickname{asterisk}</div>
+              <input type='text' placeholder='Example: jackson11!' maxLength='60' onChange={(e) => setName(e.target.value)} required></input>
+              <div className='qa-input-text'>For privacy reasons, do not use your full name or email address</div>
+            </div>
 
-          <div>
-            <div>Your email{asterisk}</div>
-            <input type='text' placeholder='Why did you like the product or not?' onChange={(e) => setEmail(e.target.value)} required></input>
-            <div className='qa-input-text'>For authentication reasons, you will not be emailed</div>
-          </div>
+            <div>
+              <div>Your email{asterisk}</div>
+              <input type='text' placeholder='Why did you like the product or not?' onChange={(e) => setEmail(e.target.value)} required></input>
+              <div className='qa-input-text'>For authentication reasons, you will not be emailed</div>
+            </div>
 
-          <button className='qa-modal-submit'>Submit Question</button>
-        </form>
-
+            <button className='qa-modal-submit'>Submit Question</button>
+          </form>
+      </div>
     </div>
   )
 }
