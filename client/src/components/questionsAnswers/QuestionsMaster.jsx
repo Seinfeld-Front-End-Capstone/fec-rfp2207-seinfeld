@@ -48,22 +48,14 @@ const QuestionsMaster = ({productId}) => {
     word.length < 3 ? setQuestion(initial) : setQuestion(filteredQuestions)
   }
 
-  // const onSubmit = (e) => {
-  //   e.preventDefault()
-  //   doSearch(input)
-  // }
-
-  console.log('initial : ', initial)
+  // console.log('initial : ', initial)
 
   return (
     <div className='qa-qa-master'>
       <h2>Questions & Answers</h2>
       {initial.length ? (
         <div className='qa-search-bar'>
-          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
-            setInput(e.target.value)
-            doSearch(e.target.value)
-            }}/>
+          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => setInput(e.target.value)}/>
         <div/>
           <QuestionList questions={question} length={length}/>
           { length < question.length ?

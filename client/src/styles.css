@@ -505,6 +505,10 @@ input{
   background-color: var(--light);
 }
 
+.qa-question-list {
+  overflow-y: scroll;
+}
+
 #qa-question-helpful {
   float: right;
   font-size: 15px;
@@ -543,7 +547,6 @@ input{
 }
 
 .qa-load-answers {
-  margin-left: 25px;
   cursor: pointer;
 }
 
@@ -632,7 +635,6 @@ input{
 
 #qa-answer-name {
   margin: 10px 0;
-  padding-left: 25px;
 }
 
 .qa-question-button {

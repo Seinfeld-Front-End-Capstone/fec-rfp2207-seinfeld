@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import axios from 'axios';
+import please from '../.././request.js';
 
 const AnswerModal = ({q, modal, onClose}) => {
   const [newAnswer, setNewAnswer] = useState('');
@@ -24,6 +24,16 @@ const AnswerModal = ({q, modal, onClose}) => {
   //   })
   // }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    please.addAnswer(q.question_id, {body: newAnswer, name: name, email: email, photos: image})
+    .then((res) => {
+      console.log('success : ', res.status)
+      onClose(false)
+    })
+    .catch(() => console.log(err))
+  }
+
   if (modal) {
     return (
       <div className='qa-answer-modal'>
@@ -31,7 +41,7 @@ const AnswerModal = ({q, modal, onClose}) => {
         <p>Submit Your Answer</p>
         <div>[Product Name]: [Question Body]</div>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <div>Your Answer{asterisk}</div>
             <input type='text' maxLength='1000' onChange={(e) => setNewAnswer(e.target.value)}></input>
