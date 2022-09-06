@@ -10,30 +10,48 @@ const OutfitList = ({ id }) => {
   const [outfitDisplay, setOutfitDisplay] = useState([]);
 
   /* adds a new card to the list */
-  const addOutfit = outfit.map((item) => {
-    return <OutfitCard key={item} itemNo={item} productID={id} deleteCard={setOutfit} curOutfit={outfit} />
+  const addOutfit = outfitDisplay.map((item) => {
+    return <OutfitCard key={item} itemNo={item} productID={id} deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay} curOutfit={outfit} curDisplay={outfitDisplay}/>
   });
 
   /* handles the + button being clicked */
   const handleAddToOutfit = (e) => {
     e.preventDefault();
     setOutfit(prevOutfit => [...prevOutfit, cardCount]);
+    if (outfitDisplay.length < 3) {
+      setOutfitDisplay(prevDisplay => [...prevDisplay, cardCount]);
+    }
     setCardCount(prevCount => prevCount + 1);
   }
 
-  //when a card is added to the outfit list, also add it to display. after 3 cards are added, don't add any more to display unless > button is clicked. Then, push the next card in line to the display. if < is clicked, unshift the card that comes before whatever the card at [0] is. That way, only 3 cards will be shown at once. The add card should stay in place at all times. // if card exists within the outfit array AND the display array, display it.
+  const handleNextClick = (e) => {
+    e.preventDefault();
+    var next = outfitDisplay[2] + 1;
+    if (outfit.indexOf(next) !== -1) {
+      setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDisplay[0]));
+      setOutfitDisplay(prevDisplay => [...prevDisplay, next]);
+    }
+  }
 
+  const handlePrevClick = (e) => {
+    e.preventDefault();
+    var prev = outfitDisplay[0] - 1;
+    if (outfit.indexOf(prev) !== -1) {
+      setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDisplay[2]));
+      setOutfitDisplay(prevDisplay => [prev, ...prevDisplay]);
+    }
+  }
 
 
   return (
     <div>
       <h5>Your Outfit</h5>
-      <button
-      className="RC_prev"
-      onclick={null}>
-        {"<"}
-      </button>
       <ul className="RC_outfit_list">
+        <button
+        className="RC_prev"
+        onClick={handlePrevClick}>
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
           <li className="RC_outfit_card_container">
             <div
             className="RC_add_to_outfit"
@@ -47,12 +65,12 @@ const OutfitList = ({ id }) => {
             </div>
           </li>
         {addOutfit}
+        <button
+        className="RC_next"
+        onClick={handleNextClick}>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
       </ul>
-      <button
-      className="RC_next"
-      onclick={null}>
-        {">"}
-      </button>
     </div>
   )
 }

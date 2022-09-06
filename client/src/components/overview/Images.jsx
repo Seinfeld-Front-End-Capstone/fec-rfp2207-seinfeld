@@ -1,8 +1,11 @@
 import React from 'react';
 import Thumbnail from './Thumbnail.jsx'
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
+import {useOV} from './OVContext.jsx'
 
-const Images = ({images, displayIndex, setDisplayIndex}) => {
+const Images = () => {
+  let {curStyle, displayIndex, setDisplayIndex } = useOV()
+  let images = curStyle.photos;
 
   const toPrevious = () => {
     let previous = displayIndex === 0 ? images.length -1 : displayIndex --;
@@ -14,7 +17,8 @@ const Images = ({images, displayIndex, setDisplayIndex}) => {
     setDisplayIndex(next);
   }
 
-  const currImageStyle = {backgroundImage: `url(${images[displayIndex].url})`}
+  let imageUrl = images[displayIndex].url
+  const currImageStyle = {backgroundImage: imageUrl ? `url(${imageUrl})` : `url(http://comparecarprices.herokuapp.com/static/images/sorry.png)`}
 
   return (
     <div id='OVimage'>
@@ -25,7 +29,7 @@ const Images = ({images, displayIndex, setDisplayIndex}) => {
       </div>
       <div id='OVThumbnailSelection'>
         {images.map((image, index) => {
-          return <Thumbnail thumbnail={image.thumbnail_url} key={index} index={index} setDisplayIndex={setDisplayIndex}/>
+          return <Thumbnail thumbnail={image.thumbnail_url} key={index} index={index}/>
         })}
       </div>
     </div>
