@@ -846,14 +846,14 @@ p {
   margin: 20px 20px 20px 0;
 }
 
-#RR-more-menu button {
+#RR-big-ctn button {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
   border: 2px solid hsl(0, 0%, 70%);
 }
 
-#RR-more-menu button.active {
+#RR-big-ctn button:hover {
   box-shadow: 0 0 4px var(--black-green);
 }
 
