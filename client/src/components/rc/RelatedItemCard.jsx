@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
@@ -6,7 +6,7 @@ import ComparisonModal from './ComparisonModal.jsx';
 
 /* *** Cards for each item in the list of related products *** */
 
-const RelatedItemCard = ({ pID, ogID }) => {
+const RelatedItemCard = ({ pID, ogID, setOVProduct }) => {
   const [productData, setProductData] = useState([]);
   const [ovItem, setOVItem] = useState([]);
   const [photoData, setPhotoData] = useState([]);
@@ -75,6 +75,11 @@ const RelatedItemCard = ({ pID, ogID }) => {
     setPop(true);
   }
 
+  const handleProductClick = useCallback(() => {
+    setOVProduct(productData);
+    console.log(productData);
+  }, [setOVProduct, productData])
+
   return (
     <li
       className="RC_related_card_container">
@@ -96,7 +101,8 @@ const RelatedItemCard = ({ pID, ogID }) => {
               <em>{productData.category}</em>
           </h6>
           <h5
-            className="RC_product_name RC_text">
+            className="RC_product_name RC_text"
+            onClick={handleProductClick}>
             {productData.name}
           </h5>
           <h6

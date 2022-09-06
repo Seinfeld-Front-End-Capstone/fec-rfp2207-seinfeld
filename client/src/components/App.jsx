@@ -14,13 +14,14 @@ const App = () => {
     .then((data) => setProduct(data.data[0]))
     .catch((err) => console.log(err))
   },[])
+  console.log('product:', product);
 
   return (
     product ?
     <div>
       <h1>buymorethings</h1>
       <Overview productId={product.id}/>
-      <ItemLists productId={product.id}/>
+      <ItemLists productId={product.id} setProduct={setProduct}/>
       <QuestionsMaster productId={65635}/>
       <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
