@@ -462,6 +462,7 @@ p {
   margin: 200px;
 }
 
+/* SEARCH BAR */
 #qa-search-input {
   border: 1px solid grey;
   border-radius: 2px;
@@ -492,12 +493,13 @@ p {
   position: fixed;
   left: 25vw;
   top: 25vh;
-  background: white;
+  background: var(--light);
   width: 50vw;
   height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .qa-question-modal form {
@@ -508,12 +510,20 @@ p {
 }
 
 .qa-question-modal div {
-  background-color: white;
+  background-color: var(--light);
 }
 
 #qa-question-helpful {
   float: right;
   font-size: 15px;
+}
+
+#qa-answer-count {
+  margin-left: 5px;
+}
+
+.qa-yes {
+  margin-left: 5px;
 }
 
 .qa-question-modal input {
@@ -529,12 +539,15 @@ p {
   margin: 15px auto;
 }
 
-.qa-answer-img {
-  margin: 10px 0;
+.qa-img-container {
   display: flex;
-  flex-direction: row;
-  width:100px;
-  height: 100px;
+}
+
+.qa-answer-img {
+  margin: 10px 10px 5px 0;
+  width: 120px;
+  height: 120px;
+  border: .5px solid black;
 }
 
 .qa-load-answers {
@@ -558,12 +571,13 @@ p {
   position: fixed;
   left: 25vw;
   top: 25vh;
-  background: white;
+  background: var(--light);
   width: 50vw;
   height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .qa-answer-modal form {
@@ -574,14 +588,13 @@ p {
 }
 
 .qa-answer-modal div {
-  background-color: white;
+  background-color: var(--light);
 }
 
 .qa-answer-modal input {
   margin: 5px 0;
   width: 60%;
 }
-
 
 .qa-X {
   margin: 0;
@@ -613,14 +626,35 @@ p {
   padding-left: 0px;
 }
 
-.qa-answer-body span {
-  margin: 0 5px;
-  /* padding: 0px; */
+/* .qa-answer-body span { */
+  /* margin: 0 10px; */
+/* } */
+
+.qa-pointer {
+  cursor: pointer;
+}
+
+.qa-pointer:hover {
+  color: black;
 }
 
 #qa-answer-name {
   margin: 10px 0;
   padding-left: 25px;
+}
+
+.qa-question-button {
+  font-size: 15px;
+  padding: 10px;
+  margin: 30px 15px 0 0;
+  border-radius: 3px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.qa-question-button:hover {
+  background-color: var(--light);
+  color: white;
 }
 
 /* RATINGS AND REVIEWS */
