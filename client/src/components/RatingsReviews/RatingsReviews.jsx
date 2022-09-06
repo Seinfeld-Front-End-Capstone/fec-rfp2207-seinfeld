@@ -18,7 +18,7 @@ const RatingsReviews = ({ productId, productName }) => {
   const [metaData, setMetaData] = useState(null)
   const[moreBtnActive, setMoreBtnActive] = useState(false);
   const[addBtnActive, setAddBtnActive] = useState(false);
-  const [showPhotoModal, setShowPhotoModal] = useState(false);
+  const [showPhotoModal, setShowPhotoModal] = useState('');
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -78,7 +78,7 @@ const RatingsReviews = ({ productId, productName }) => {
                 <option value="newest">Newest</option>
               </select>
             </h3>
-            <ReviewList reviews={reviews}/>
+            <ReviewList reviews={reviews} setShowPhotoModal={setShowPhotoModal}/>
             <div id="RR-more-menu">
               {reviews.length === maxResults && <button onClick={showMoreReview} onMouseEnter={() => setMoreBtnActive(true)} onMouseLeave={() => setMoreBtnActive(false)} className={moreBtnActive ? 'active' : ''}>MORE REVIEWS</button>}
               {addReviewButton}
@@ -89,8 +89,8 @@ const RatingsReviews = ({ productId, productName }) => {
       <div id="RR-form-bg" className={formMode ? 'active' : ''}></div>
       {formMode && <Form productName={productName} toggleForm={toggleForm} productId={productId} refreshReviews={() => refreshReviews()}/>}
       {showPhotoModal && <div id="RR-photo-modal">
-        <MdCancel onClick={() => setShowPhotoModal(false)}/>
-        <img src="" alt="image of product submitted by reviewers"/>
+        <MdCancel onClick={() => setShowPhotoModal('')}/>
+        <img id="RR-popup-photo" src={showPhotoModal}/>
       </div>}
     </>
   )
