@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
 // import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
-
+import { MdCancel } from 'react-icons/md';
 import Form from './Form/Form.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx'
 //lift axios request for reviews/meta out of Form and into this component
@@ -18,6 +18,7 @@ const RatingsReviews = ({ productId, productName }) => {
   const [metaData, setMetaData] = useState(null)
   const[moreBtnActive, setMoreBtnActive] = useState(false);
   const[addBtnActive, setAddBtnActive] = useState(false);
+  const [showPhotoModal, setShowPhotoModal] = useState(false);
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -60,6 +61,10 @@ const RatingsReviews = ({ productId, productName }) => {
 
   return (
     <div id="RR-big-ctn">
+        {showPhotoModal && <div id="RR-photo-modal">
+        <MdCancel onClick={() => setShowPhotoModal(false)}/>
+        <img src="" alt="image of product submitted by reviewers"/>
+      </div>}
       {reviews.length === 0 ?
       <div>
         <p>Be the first to review this product!</p>
