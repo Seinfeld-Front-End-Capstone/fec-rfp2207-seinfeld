@@ -31,7 +31,24 @@ const ReviewEntry = ({ review, recommended }) => {
         </div>
       </div>
       <h3>{summary}</h3>
-      <p>{body}</p>
+      <p className="RR-review-body">
+        {body.length > 25
+        ?
+        <>
+        {newBody}...
+        <span
+        className="underline"
+        onClick={(e) => {
+          console.log('new body', newBody);
+          console.log('body', body)
+          // e.currentTarget.classList.add('hide');
+          // e.currentTarget.previousElementSibling.innerHTML = body;
+          e.currentTarget.parentElement.innerHTML = body;
+          }}>show more</span>
+        </>
+        :
+        body}
+      </p>
       {recommend ? <p><FaCheckCircle /> I recommend this product</p> : null}
       {response ? <p className="RR-seller-response">Response from seller: {response}</p> : null}
       <p>Helpful? <span
