@@ -26,6 +26,7 @@ const AnswerList = ({q}) => {
     })
   }, [])
 
+  // console.log('question answers : ', q)
 
   let slicedAnswers = answers.slice(0, length);
 
