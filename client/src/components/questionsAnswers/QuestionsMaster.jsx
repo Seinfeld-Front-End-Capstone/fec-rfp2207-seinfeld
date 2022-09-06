@@ -9,7 +9,7 @@ const QuestionsMaster = ({productId}) => {
   const [initial, setInitial] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [input, setInput] = useState('');
-  const [length, setLength] = useState(2);
+  const [length, setLength] = useState(4);
   const [modal, setModal] = useState(false);
 
   useEffect(() => {

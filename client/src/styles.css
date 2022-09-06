@@ -490,9 +490,9 @@ p {
   box-sizing: border-box;
   border-radius: 10px;
   padding: 10px;
-  position: fixed;
-  left: 25vw;
-  top: 25vh;
+  /* left: 25vw;
+  top: 25vh; */
+  margin: 25vh 25vw;
   background: var(--light);
   width: 50vw;
   height: 50vh;
@@ -511,6 +511,15 @@ p {
 
 .qa-question-modal div {
   background-color: var(--light);
+}
+
+.qa-modal-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.75);
 }
 
 .qa-question-list {
