@@ -485,6 +485,13 @@ p {
   font-size: large;
 }
 
+.qa-question-container {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: whitesmoke;
+}
+
 .qa-question-body {
   font-size: 20px;
   margin: 15px auto;
@@ -527,6 +534,8 @@ p {
 }
 
 .qa-question-list {
+  max-height: 1500px;
+  max-width: var(--max-width);
   overflow-y: scroll;
 }
 
@@ -564,6 +573,9 @@ p {
 }
 
 .qa-answer-container {
+  max-height: 500px;
+  max-width: var(--max-width);
+  overflow-y: scroll;
   margin: 15px auto;
 }
 
