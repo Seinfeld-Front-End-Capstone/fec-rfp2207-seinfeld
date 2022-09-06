@@ -1,20 +1,29 @@
 import React, {useState} from 'react';
+import please from '../.././request.js';
+import moment from 'moment';
+import widget from '../helpers/widget.js';
 
 const Answer = ({answer, index}) => {
   // console.log('answers props : ', answer)
   const [answerCount, setAnswerCount] = useState(answer.helpfulness)
-  const [isReported, setReported] = useState('Report')
+  const [isReported, setReported] = useState('Report');
+  const [photos, setPhotos] = useState('');
 
-  let date = answer.date.slice(0, 10);
+  const formattedDate = moment(answer.date).format('ll');
+
   const handleCount = () => {
     if (answer.helpfulness === answerCount) {
-      setAnswerCount((count) => count + 1)
+      please.markAnswerAsHelpful(answer.answer_id)
+      .then(() => setAnswerCount((count) => count + 1))
+      .catch((err) => console.log(err))
     }
   }
 
   const handleClick = () => {
     if (isReported === 'Report') {
-      setReported('Reported')
+      please.reportAnswer(answer.answer_id)
+      .then(() => setReported('Reported'))
+      .catch((err) => console.log(err))
     }
   }
 
@@ -27,7 +36,7 @@ const Answer = ({answer, index}) => {
       </div>
       <div className='qa-answer-body'>
         <div id='qa-answer-name'>
-          by {answer['answerer_name']}, {date}
+          by {answer['answerer_name']}, {formattedDate}
           <span id='qa-answer-helpful'>
             <span className='qa-line'>|</span> Helpful?
             <span className='qa-pointer' className='qa-yes' onClick={handleCount}>Yes</span>
@@ -48,7 +57,7 @@ const Answer = ({answer, index}) => {
           {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
         </div>
       <div id='qa-answer-name'>
-        by {answer['answerer_name']}, {date}
+        by {answer['answerer_name']}, {formattedDate}
         <span id='qa-answer-helpful'>
           <span className='qa-line'>|</span> Helpful?
           <span className='qa-pointer' className='qa-yes' onClick={handleCount}>Yes</span>

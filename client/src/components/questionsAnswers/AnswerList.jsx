@@ -9,17 +9,24 @@ const AnswerList = ({q}) => {
   useEffect(() => {
     please.getAnswers(q.question_id)
     .then((data) => {
-      // console.log('data : ', data.data.results);
       let sortedAnswers = data.data.results
       sortedAnswers.sort((a, b) => {
         return b.helpfulness - a.helpfulness
       })
-      // console.log('sorted answers : ', sorted)
+
+      for (const answer of sortedAnswers) {
+        if (answer['answerer_name'].toLowerCase() === 'seller') {
+          let indexOfSeller = sortedAnswers.indexOf(answer)
+          let removeSeller = sortedAnswers.splice(indexOfSeller, indexOfSeller)
+          sortedAnswers.unshift(removeSeller[0]);
+        }
+      }
+      // console.log('sorted : ', sortedAnswers);
       setAnswers(sortedAnswers);
     })
   }, [])
 
-  // console.log('answers : ', answers)
+  // console.log('question answers : ', q)
 
   let slicedAnswers = answers.slice(0, length);
 
