@@ -55,13 +55,18 @@ const QuestionsMaster = ({ productId }) => {
       <h2>Questions & Answers</h2>
       {initial.length > 2 && (
         <div className='qa-search-bar'>
-          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => setInput(e.target.value)}></input>
+          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
+            setInput(e.target.value)
+            doSearch(e.target.value)
+          }}></input>
         </div>
       )}
       <QuestionList questions={question} length={length} />
       {length < question.length &&
-        <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>}
-      <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
+        <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
+      }
+
+      <button onClick={() => setModal(true)}>Add A Question</button>
       <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
     </div>
   )
