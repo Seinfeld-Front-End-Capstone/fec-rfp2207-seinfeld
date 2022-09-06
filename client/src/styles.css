@@ -52,6 +52,10 @@ p {
   overflow-wrap: break-word;
 }
 
+.hide {
+  display: none !important;
+}
+
 /* OVERVIEW */
 
 #OVcontainer {
@@ -845,7 +849,7 @@ p {
 #RR-form-ctn {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  width: 100%;
 }
 
 #RR-form-bg {
@@ -853,14 +857,16 @@ p {
   position: fixed;
   z-index: 2;
   background-color: var(--black-green);
-  opacity: 0.95;
-  height: 100%;
-  width: 100%;
+  background-image: url('./assets/senegal-leather-bg.jpg');background-size: 2000px 2000px;
+  opacity: .95;
   display: flex;
   justify-content: center;
 }
 
-
+#RR-form-bg.active {
+  height: 100%;
+  width: 100%;
+}
 
 #RR-form {
   position: fixed;
@@ -868,15 +874,15 @@ p {
   top: 20%;
   display: flex;
   width: auto;
-  height: 60%;
+  height: 550px;
   background: transparent;
 
 }
 
 #RR-form-menu{
   width: 240px;
+  padding-top: 260px;
   padding-right: 20px;
-  padding-top: 280px;
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
   background-image: url('./assets/pencileandletter.jpg');
@@ -959,6 +965,10 @@ p {
   display: flex;
 }
 
+.RR-form-user-info input {
+  width: 200px;
+}
+
 /* RR - Product Characteristics Breakdown */
 
 #RR-summary {
@@ -1021,8 +1031,7 @@ p {
   font-size: 12px;
 }
 
-.RR-form-fields :focus,
-.RR-form-fields :focus {
+.RR-form-fields.textbox :focus {
   outline: none !important;
   border-color: var(--mid-green);
   box-shadow: 0 0 10px var(--black-green);
