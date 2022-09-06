@@ -60,7 +60,7 @@ const QuestionsMaster = ({ productId }) => {
       )}
       <QuestionList questions={question} length={length}/>
       { length < question.length &&
-        <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button> }
+        <button className='qa-question-button' onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button> }
       { length === question.length &&
         <button className='qa-question-button' onClick={() => setLength(2)}>Collapse Questions</button> }
         <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
