@@ -25,7 +25,7 @@ const App = () => {
       </OVProvider>
       <ItemLists productId={product.id}/>
       <QuestionsMaster productId={65632}/>
-      <RatingsReviews productId={product.id} productName={product.name}/>
+      <RatingsReviews productId={65634} productName={product.name}/>
     </div>
     :
     <div>
