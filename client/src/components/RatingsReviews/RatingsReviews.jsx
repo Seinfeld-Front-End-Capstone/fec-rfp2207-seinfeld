@@ -42,8 +42,16 @@ const RatingsReviews = ({ productId, productName }) => {
     .catch((err) => console.log(err))
   }
 
-  const showMoreReview = () => {
-    please.get
+  const showMoreReview = (e) => {
+    let clickData = {
+      "element": e.target.id,
+      "widget": "Ratings and Review",
+      "time": new Date()
+    }
+    console.log('submitting', clickData)
+    please.submitClickData(clickData)
+    .then(() => console.log('click recorded'))
+    .catch(err => console.log(err));
     setMaxResults(maxResults + 2);
   }
 
@@ -80,7 +88,7 @@ const RatingsReviews = ({ productId, productName }) => {
             <ReviewList reviews={reviews} setShowPhotoModal={setShowPhotoModal}/>
             <div id="RR-more-menu">
               {reviews.length === maxResults &&
-              <button
+              <button id="RR-more-reviews"
                 onClick={showMoreReview}>MORE REVIEWS
               </button>}
               {addReviewButton}

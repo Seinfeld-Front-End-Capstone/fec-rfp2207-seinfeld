@@ -186,5 +186,7 @@ module.exports = {
       baseURL: basePath,
       headers:{Authorization: token},
       data
+    })
   }
 }
+
