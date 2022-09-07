@@ -57,13 +57,13 @@ const RelatedList = ({ id, setProduct }) => {
         <button
         className="RC_prev"
         onClick={handlePrevClick}>
-          <i class="fa-solid fa-chevron-left"></i>
+          <i className="fa-solid fa-chevron-left"></i>
         </button>
         {createCard}
         <button
         className="RC_next"
         onClick={handleNextClick}>
-         <i class="fa-solid fa-chevron-right"></i>
+         <i className="fa-solid fa-chevron-right"></i>
         </button>
       </ul>
     </div>
