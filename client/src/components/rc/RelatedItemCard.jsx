@@ -75,10 +75,10 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
     setPop(true);
   }
 
-  const handleProductClick = useCallback(() => {
-    setOVProduct(productData);
-    console.log(productData);
-  }, [setOVProduct, productData])
+  const handleProductClick = (e) => {
+    e.preventDefault();
+    setOVProduct(prevProd => productData);
+  };
 
   return (
     <li
