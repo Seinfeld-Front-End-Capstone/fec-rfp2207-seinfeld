@@ -1,5 +1,7 @@
 import please from '../../request.js';
 
+//ALL OF YOUR INTERACTIVE ELEMENTS SHOULD HAVE A UNIQUE ID
+
 const originalClick = {
   widget: 'none',
   submit: function(e) {
@@ -20,9 +22,4 @@ const submitRCClick = originalClick.submit.bind({widget: 'Related Items and Comp
 const submitQAClick = originalClick.submit.bind({widget: 'Questions and Answers'})
 const submitRRClick = originalClick.submit.bind({widget: 'Ratings and Reviews'});
 
-// module.exports = {
-//   submitOVClick: originalClick.submit.bind({widget: 'Overview'}),
-//   submitRRClick: originalClick.submit.bind({widget: 'Ratings and Reviews'})
-// }
-
-export { submitOVClick, submitRRClick }
+export { submitOVClick, submitRRClick, submitQAClick, submitRCClick }
