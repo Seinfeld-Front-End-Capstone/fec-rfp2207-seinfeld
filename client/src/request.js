@@ -177,7 +177,7 @@ module.exports = {
     })
   },
 
-  //API INTERACTIONS
+  //CLICK TRACKING
 
   submitClickData: () => {
     return axios({
