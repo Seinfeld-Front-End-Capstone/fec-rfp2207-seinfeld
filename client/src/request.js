@@ -179,12 +179,12 @@ module.exports = {
 
   //CLICK TRACKING
 
-  submitClickData: () => {
+  submitClickData: (data) => {
     return axios({
       url: '/interactions',
       method: 'post',
       baseURL: basePath,
-      headers:{Authorization: token}
-    })
+      headers:{Authorization: token},
+      data
   }
 }

@@ -43,6 +43,7 @@ const RatingsReviews = ({ productId, productName }) => {
   }
 
   const showMoreReview = () => {
+    please.get
     setMaxResults(maxResults + 2);
   }
 
