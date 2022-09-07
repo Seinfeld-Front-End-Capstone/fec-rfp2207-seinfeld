@@ -33,6 +33,8 @@ const Overview = ({productId}) => {
     .catch((err) => console.log(err))
   },[])
 
+  console.log('overview:', productId)
+
   return (
     styles && product && starsObj?
     <div id='OVcontainer'>
