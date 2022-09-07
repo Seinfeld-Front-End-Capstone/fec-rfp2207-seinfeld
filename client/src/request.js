@@ -32,7 +32,7 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
-  getCart: () => {
+  getBag: () => {
     return axios({
       url: `/cart`,
       method: 'get',
@@ -40,13 +40,13 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
-  AddToCart: (sku_id) => {
+  AddToBag: (body) => {
     return axios({
       url: `/cart`,
       method: 'post',
       baseURL: basePath,
       headers:{Authorization: token},
-      params:{sku_id}
+      data:body
     })
   },
 
@@ -61,7 +61,8 @@ module.exports = {
   },
 
   //Reviews
-  getReviews: (product_id, page=1, count=5, sort='newest') => {
+  //why did this use to only get 5?
+  getReviews: (product_id, page=1, count=100, sort='newest') => {
     return axios({
       url:`/reviews`,
       method: 'get',
@@ -108,13 +109,14 @@ module.exports = {
   //Q&A
   getQuestions: (product_id, page=1, count=5) => {
     return axios({
-      url:`/qa/questions`,
+      url:`/qa/questions/`,
       method: 'get',
       baseURL: basePath,
       headers:{Authorization: token},
       params:{product_id, page, count}
     })
   },
+
   getAnswers: (question_id, page=1, count=5) => {
     return axios({
       url:`/qa/questions/${question_id}/answers`,

@@ -1,36 +1,19 @@
 import React from 'react';
-import fullStar from '../../../src/assets/stars/fullStar.png';
-import threeQuartersStar from '../../../src/assets/stars/threeQuartersStar.png';
-import halfStar from '../../../src/assets/stars/halfStar.png';
-import quarterStar from '../../../src/assets/stars/quarterStar.png';
-import noStar from '../../../src/assets/stars/noStar.png';
 
+//rating should be passed in as a float or int (not rounded)
+
+//0.25 and 0.75 is correctly rendered mathematically but it's hard to see, we could manipulate this mathematically to that it's visually easier to see 0.25 and 0.75 by mapping 0.25 to 0.4 and 0.75 yo 0.6. The formulas below does this mathematical manipulation.
 const Stars = ({ rating }) => {
-  const maxStars = 5;
-  let starsArray = [];
-  let fullStarCount = Math.floor(rating);
-  let remainder = rating % 1;
-  let partialCount = (Math.round(remainder * 4) / 4).toFixed(2);
-  let partialStars = {
-    '0.25' : quarterStar,
-    '0.50' : halfStar,
-    '0.75' : threeQuartersStar
+  let roundedRating = Math.round(rating * 4) / 4;
+  if (roundedRating % 1 === 0.75) {
+    roundedRating = roundedRating - 0.75 + 0.6;
+  } else if (roundedRating % 1 === 0.25) {
+    roundedRating = roundedRating - 0.25 + 0.4;
   }
-
-  for (let i = 0; i < fullStarCount; i++) {
-    starsArray.push(<img src={fullStar} width="20" height="20"/>)
-  }
-  if(partialCount !== '0.00') {
-    starsArray.push(<img src={partialStars[partialCount]} width="20" height="20"/>)
-  }
-  while (starsArray.length < maxStars) {
-    starsArray.push(<img src={noStar} width="20" height="20"/>)
-  }
+  let percent = (roundedRating / 5) * 100 + '%';
 
   return (
-    <span>
-      {starsArray}
-    </span>
+    <div className="Stars" style={{'--percent': percent}}>★★★★★</div>
   )
 }
 

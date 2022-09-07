@@ -1,26 +1,26 @@
-const ExampleReviews = [
+const someReviews = [
   {
       "review_id": 1274546,
-      "rating": 2.8,
+      "rating": 2.9,
       "summary": "PLEASE DON'T REPORT ME",
       "recommend": false,
       "response": "Your account is going to be deleted",
       "body": "DON'T IT!!! REPORTED REVIEWS CANT BE SEEN!! OH NOOOOO!",
-      "date": "2022-05-25T00:00:00.000Z",
+      "date": "2022-07-25T00:00:00.000Z",
       "reviewer_name": "Dinthebeen",
       "helpfulness": 35,
       "photos": []
   },
   {
       "review_id": 1176362,
-      "rating": 0.05,
+      "rating": 1.01,
       "summary": "Looks radical dude!",
       "recommend": true,
       "response": null,
       "body": "Wow this camo onesie looks great on both me & my son! Would definitely recommend if you're the same size as your child!\n",
       "date": "2022-04-14T00:00:00.000Z",
       "reviewer_name": "Cooldude123",
-      "helpfulness": 11,
+      "helpfulness": 36,
       "photos": [
           {
               "id": 2259510,
@@ -76,4 +76,6 @@ const ExampleReviews = [
   }
 ]
 
-export default ExampleReviews;
+const noReviews = [];
+
+module.exports = { someReviews, noReviews }

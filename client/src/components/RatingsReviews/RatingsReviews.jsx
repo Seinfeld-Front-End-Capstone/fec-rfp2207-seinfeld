@@ -1,52 +1,93 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
-import ExampleReviews from './ExampleReviews.js';
+// import { someReviews, noReviews } from './ExampleReviews.js';
+import please from '../../request.js';
 
-class RatingsReviews extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      reviewsOnDisplay: [],
-      listOfReviews: [],
-      maxResults: 2
-    };
-  }
-  componentDidMount() {
-    this.setState({
-      reviewsOnDisplay: ExampleReviews.slice(0, this.state.maxResults),
-      listOfReviews: ExampleReviews
+import Form from './Form/Form.jsx';
+import RatingBreakdown from './RatingBreakdown.jsx'
+//lift axios request for reviews/meta out of Form and into this component
+//lift axios request for reviews/meta out of Form and into this component
+
+
+const RatingsReviews = ({ productId, productName }) => {
+
+  const [reviews, setReviews] = useState([]);
+  const [sortParam, setSortParam] = useState('relevant')
+  const [maxResults, setMaxResults] = useState(2);
+  const [formMode, setFormMode] = useState(false);
+  const [metaData, setMetaData] = useState(null)
+
+  useEffect(() => {
+    please.getReviews(productId, 1, maxResults, sortParam)
+    .then((data) => {
+      let reviews = data.data.results;
+      setReviews(reviews);
     })
-  }
+    .catch((err) => console.log(err));
 
-  showMoreReview() {
-    let newMax = this.state.maxResults + 2;
-    this.setState({
-      maxResults: newMax,
-      reviewsOnDisplay: ExampleReviews.slice(0, newMax)
+    please.getReviewMeta(productId)
+    .then(data => setMetaData(data.data))
+    .catch(err => console.log(err));
+  }, [productId, maxResults, sortParam],
+  );
+
+  const refreshReviews = () => {
+    please.getReviews(productId)
+    .then((data) => {
+      let reviews = data.data.results;
+      //add logic or state to remember what filter/sort the user is in
+      setReviews(reviews);
+      setReviewsOnDisplay(reviews.slice(0, maxResults));
     })
+    .catch((err) => console.log(err))
   }
 
-  render() {
-    return (
-      <div id="RR-ratings-reviews-ctn">
-        <h1>Section for Ratings and Reviews</h1>
-        <div id="RR-breakdown-ctn">
-          Ratings breakdown
-        </div>
-        <div id="RR-reviews-ctn">
-          <div id="RR-header-sort">
-            Header and sort
-          </div>
-          <ReviewList reviews={this.state.reviewsOnDisplay}/>
-          <div id="more-menu">
-            {this.state.maxResults < this.state.listOfReviews.length && <button onClick={this.showMoreReview.bind(this)}>MORE REVIEWS</button>}
-            <button>ADD A REVIEW +</button>
+  const showMoreReview = () => {
+    setMaxResults(maxResults + 2);
+  }
 
-          </div>
-        </div>
+  const toggleForm = () => {
+    console.log('open form')
+    setFormMode(!formMode);
+  }
+
+  const addReviewButton = <button onClick={toggleForm}>ADD A REVIEW +</button>;
+
+
+  const handleSort = (e) => {
+    setSortParam(e.target.value)
+  }
+
+  return (
+    <div>
+      {reviews.length === 0 ?
+      <div>
+        <p>Be the first to review this product!</p>
+        {addReviewButton}
       </div>
-    )
-  }
+      :
+      <div id="RR-ratings-reviews-ctn">
+        {metaData ? <RatingBreakdown metaData={metaData} /> : null}
+        <div id="RR-reviews-ctn">
+          <div id="RR-reviews-ctn">
+            <h3 id="RR-header-sort"> {reviews.length} views, sorted by
+              <select id="RR-sort-param" onChange={handleSort}>
+                <option value="relevant">Relevant</option>ß
+                <option value="helpful">Helpful</option>
+                <option value="newest">Newest</option>
+              </select>
+            </h3>
+            <ReviewList reviews={reviews}/>
+            <div id="more-menu">
+              {reviews.length === maxResults && <button onClick={showMoreReview}>MORE REVIEWS</button>}
+              {addReviewButton}
+            </div>
+          </div>
+        </div>
+      </div>}
+      {formMode && <Form productName={productName} toggleForm={toggleForm} productId={productId} refreshReviews={() => refreshReviews()}/>}
+    </div>
+  )
 
 }
 
