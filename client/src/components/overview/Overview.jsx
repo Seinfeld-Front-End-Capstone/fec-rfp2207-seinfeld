@@ -12,8 +12,6 @@ import {useOV} from './OVContext.jsx'
 const Overview = () => {
   let {product, curStyle, curSku} = useOV()
 
-  console.log('overview:', productId)
-
   return (
     <div id='OVcontainer'>
       <div id='Overview'>
