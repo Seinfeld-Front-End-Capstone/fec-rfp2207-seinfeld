@@ -178,7 +178,6 @@ module.exports = {
   },
 
   //CLICK TRACKING
-
   submitClickData: (data) => {
     return axios({
       url: '/interactions',

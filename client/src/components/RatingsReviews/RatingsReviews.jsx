@@ -4,12 +4,13 @@ import ReviewList from './ReviewList.jsx';
 import please from '../../request.js';
 import { MdCancel } from 'react-icons/md';
 import Form from './Form/Form.jsx';
-import RatingBreakdown from './RatingBreakdown.jsx'
+import RatingBreakdown from './RatingBreakdown.jsx';
+import { submitRRClick } from '../helpers/trackClick.js';
 //lift axios request for reviews/meta out of Form and into this component
 //lift axios request for reviews/meta out of Form and into this component
 
 
-const RatingsReviews = ({ productId, productName, submitClickData }) => {
+const RatingsReviews = ({ productId, productName }) => {
 
   const [reviews, setReviews] = useState([]);
   const [sortParam, setSortParam] = useState('relevant')
@@ -43,17 +44,7 @@ const RatingsReviews = ({ productId, productName, submitClickData }) => {
   }
 
   const showMoreReview = (e) => {
-    // let clickData = {
-    //   "element": JSON.stringify(e.target),
-    //   "widget": "Ratings and Review",
-    //   "time": new Date()
-    // }
-    // console.log('submitting', clickData)
-    // please.submitClickData(clickData)
-    // .then(() => console.log('click recorded'))
-    // .catch(err => console.log(err));
-    // debugger;
-    submitClickData(e);
+    submitRRClick(e);
     setMaxResults(maxResults + 2);
   }
 
