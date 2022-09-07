@@ -350,7 +350,7 @@ p {
 }
 
 .RC_next {
-  background-color: gray;
+  background-color: lightgray;
   color:#fff;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
@@ -367,7 +367,7 @@ p {
 }
 
 .RC_prev {
-  background-color: gray;
+  background-color: lightgray;
   color:#fff;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;

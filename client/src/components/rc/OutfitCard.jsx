@@ -64,7 +64,8 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
       className="RC_outfit_card_container">
       <aside>
         <img
-        className="RC_outfit_photo" src={photoData} height="225"
+        className="RC_outfit_photo"
+        src={photoData}
         />
         <i
         className="fa-solid fa-circle-xmark RC_x"

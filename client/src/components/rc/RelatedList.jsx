@@ -4,7 +4,7 @@ import request from '../../request.js';
 
  /* *** Renders a list of products in the related items list *** */
 
-const RelatedList = ({ id }) => {
+const RelatedList = ({ id, setProduct }) => {
   const [list, setList] = useState([]);
   const [key, setKey] =useState(0);
   const [itemDisplay, setItemDisplay] = useState([]);
@@ -15,7 +15,7 @@ const RelatedList = ({ id }) => {
       .then((data) => {
         setList(data.data);
         list.map((item) => {
-          setKey(prevKey => prevKey + 1);
+          setKey(prevKey => prevKey + 100);
         });
       })
   }, []);
@@ -24,7 +24,11 @@ const RelatedList = ({ id }) => {
 
   /* Creates a related item card for each element in the list of related items */
   var createCard = list.map((productID) => {
-    return <RelatedItemCard key={key} pID={productID} ogID={id} />
+    return <RelatedItemCard
+    key={key}
+    pID={productID}
+    ogID={id}
+    setOVProduct={setProduct}/>
   });
 
   const handlePrevClick = (e) => {
