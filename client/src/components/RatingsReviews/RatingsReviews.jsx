@@ -50,7 +50,7 @@ const RatingsReviews = ({ productId, productName }) => {
     setFormMode(!formMode);
   }
 
-  const addReviewButton = <button>ADD A REVIEW +</button>;
+  const addReviewButton = <button onClick={toggleForm}>ADD A REVIEW +</button>;
 
   const handleSort = (e) => {
     setSortParam(e.target.value)
@@ -88,10 +88,10 @@ const RatingsReviews = ({ productId, productName }) => {
         </div>}
       </div>
       <div id="RR-form-bg" className={formMode ? 'active' : ''}></div>
-      {formMode && <Form 
-        productName={productName} 
-        toggleForm={toggleForm} 
-        productId={productId} 
+      {formMode && <Form
+        productName={productName}
+        toggleForm={toggleForm}
+        productId={productId}
         refreshReviews={() => refreshReviews()}/>}
       {showPhotoModal &&
       <div id="RR-photo-modal">
