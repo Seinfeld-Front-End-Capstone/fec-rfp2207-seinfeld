@@ -4,7 +4,7 @@ import request from '../../request.js';
 
  /* *** Renders a list of products in the related items list *** */
 
-const RelatedList = ({ id }) => {
+const RelatedList = ({ id, setProduct }) => {
   const [list, setList] = useState([]);
   const [key, setKey] =useState(0);
   const [itemDisplay, setItemDisplay] = useState([]);
@@ -15,7 +15,7 @@ const RelatedList = ({ id }) => {
       .then((data) => {
         setList(data.data);
         list.map((item) => {
-          setKey(prevKey => prevKey + 1);
+          setKey(prevKey => prevKey + 100);
         });
       })
   }, []);
@@ -24,7 +24,11 @@ const RelatedList = ({ id }) => {
 
   /* Creates a related item card for each element in the list of related items */
   var createCard = list.map((productID) => {
-    return <RelatedItemCard key={key} pID={productID} ogID={id} />
+    return <RelatedItemCard
+    key={key}
+    pID={productID}
+    ogID={id}
+    setOVProduct={setProduct}/>
   });
 
   const handlePrevClick = (e) => {
@@ -53,13 +57,13 @@ const RelatedList = ({ id }) => {
         <button
         className="RC_prev"
         onClick={handlePrevClick}>
-          <i class="fa-solid fa-chevron-left"></i>
+          <i className="fa-solid fa-chevron-left"></i>
         </button>
         {createCard}
         <button
         className="RC_next"
         onClick={handleNextClick}>
-         <i class="fa-solid fa-chevron-right"></i>
+         <i className="fa-solid fa-chevron-right"></i>
         </button>
       </ul>
     </div>

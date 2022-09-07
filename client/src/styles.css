@@ -19,7 +19,7 @@
   --star-background: var(--light);
 
   /* global dimensions */
-  --max-width: 1000px;
+  --max-width: 1200px;
 }
 
 .Stars {
@@ -54,6 +54,14 @@ p {
 
 .hide {
   display: none !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 /* OVERVIEW */
@@ -342,7 +350,7 @@ p {
 }
 
 .RC_next {
-  background-color: gray;
+  background-color: lightgray;
   color:#fff;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
@@ -359,7 +367,7 @@ p {
 }
 
 .RC_prev {
-  background-color: gray;
+  background-color: lightgray;
   color:#fff;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
@@ -459,20 +467,16 @@ p {
 /* QUESTIONS AND ANSWERS */
 .qa-qa-master {
   display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  border: 2px solid black;
-  padding: 100px;
-  margin: 200px;
+  justify-content: center;
 }
 
 /* SEARCH BAR */
 #qa-search-input {
   border: 1px solid grey;
-  border-radius: 2px;
+  border-radius: 5px;
   height: 50px;
   width: 100%;
-  padding: 2px 20px 2px 30px;
+  padding: 5px 20px 5px 20px;
   outline: 0;
   margin-bottom: 15px;
   font-size: 15px;
@@ -485,17 +489,30 @@ p {
   font-size: large;
 }
 
+.qa-question-container {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: whitesmoke;
+}
+
 .qa-question-body {
-  font-size: 20px;
-  margin: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin: 18px auto;
+}
+
+#qa-space-body {
+  word-break: break-all;
 }
 
 .qa-question-modal {
   box-sizing: border-box;
   border-radius: 10px;
   padding: 10px;
-  /* left: 25vw;
-  top: 25vh; */
+  left: 25vw;
+  top: 25vh;
   margin: 25vh 25vw;
   background: var(--light);
   width: 50vw;
@@ -527,20 +544,34 @@ p {
 }
 
 .qa-question-list {
+  max-height: 1500px;
+  max-width: var(--max-width);
   overflow-y: scroll;
 }
 
 #qa-question-helpful {
-  float: right;
-  font-size: 15px;
+  /* float: right; */
+  text-align: center;
+  font-size: 12px;
 }
 
 #qa-answer-count {
   margin-left: 5px;
 }
 
+#qa-answer-line {
+  text-decoration: underline;
+}
+
+.qa-report {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .qa-yes {
   margin-left: 5px;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .qa-question-modal input {
@@ -553,14 +584,42 @@ p {
 }
 
 .qa-answer-container {
-  margin: 15px auto;
+  max-height: 500px;
+  max-width: var(--max-width);
+  overflow-y: scroll;
+  margin-bottom: 20px;
 }
 
-.qa-img-container {
+#qa-img-container {
   display: flex;
+  margin-left: 25px;
 }
+
+/* .qa-img-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 300px;
+  padding-left: 700px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.10);
+} */
+
+/* .qa-img-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+} */
 
 .qa-answer-img {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
   margin: 10px 10px 5px 0;
   width: 120px;
   height: 120px;
@@ -568,6 +627,7 @@ p {
 }
 
 .qa-load-answers {
+  margin-left: 25px;
   cursor: pointer;
 }
 
@@ -627,7 +687,7 @@ p {
 
 #qa-Q {
   display: inline-flex;
-  padding-right: 5px;
+  padding-right: 3px;
 }
 
 #qa-A {
@@ -642,9 +702,9 @@ p {
   padding-left: 0px;
 }
 
-/* .qa-answer-body span { */
-  /* margin: 0 10px; */
-/* } */
+#qa-body {
+  margin-left: 25px;
+}
 
 .qa-pointer {
   cursor: pointer;
@@ -655,13 +715,18 @@ p {
 }
 
 #qa-answer-name {
-  margin: 10px 0;
+  margin: 10px 0 0 25px;
+}
+
+.qa-button-container {
+  display: flex;
+  flex-direction: row;
 }
 
 .qa-question-button {
   font-size: 15px;
   padding: 10px;
-  margin: 30px 15px 0 0;
+  margin: 10px 15px 0 0;
   border-radius: 3px;
   transition-duration: 0.4s;
   cursor: pointer;
@@ -689,9 +754,18 @@ p {
   display: flex;
   justify-content: center;
 }
+
+#RR-first-review {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 30px;
+}
+
 #RR-ratings-reviews-ctn {
   display: flex;
   max-width: var(--max-width);
+  width: 100%;
 }
 
 /* Ratings breakdown */
@@ -804,17 +878,22 @@ p {
   width: 70%;
 }
 #RR-reviews-ctn {
-  width: 90%;
+  width: auto;
   overflow-y: scroll;
   max-height: 600px;
 }
 
 .RR-review-ctn {
+  width: auto;
   background-color: hsl(0, 0%, 95%);
   color:  hsl(0, 0%, 40%);
   margin-bottom: 6px;
   border-radius: 4px;
   padding: 10px;
+}
+
+.RR-review-body {
+  width: 100%;
 }
 
 .RR-review-header {
@@ -834,14 +913,14 @@ p {
   margin: 20px 20px 20px 0;
 }
 
-#RR-more-menu button {
+#RR-big-ctn button {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
   border: 2px solid hsl(0, 0%, 70%);
 }
 
-#RR-more-menu button.active {
+#RR-big-ctn button:hover {
   box-shadow: 0 0 4px var(--black-green);
 }
 
@@ -853,6 +932,86 @@ p {
   width: auto;
   height: 100px;
   display: flex;
+}
+
+/* #RR-photo-modal .background,
+#RR-photo-modal {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#RR-photo-modal .background {
+  background-color: black;
+  opacity: 0.9;
+
+}
+
+#RR-photo-modal-inner {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+}
+
+#RR-photo-modal-inner .icons {
+  font-size: 40px;
+  z-index: 4;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#RR-photo-modal img {
+  width: auto;
+  height: auto;
+} */
+
+#RR-photo-modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+#RR-photo-modal .background {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  position: fixed;
+}
+
+#RR-photo-modal-inner {
+  width: 60%;
+  height: 60%;
+  margin: 10% 20%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+#RR-photo-modal-inner img {
+  z-index: 3;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#RR-photo-modal-inner .icons {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  font-size: 40px;
+  z-index: 3;
 }
 
 /* RR - Add a review form */

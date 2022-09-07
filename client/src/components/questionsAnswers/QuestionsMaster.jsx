@@ -52,25 +52,26 @@ const QuestionsMaster = ({ productId }) => {
 
   return (
     <div className='qa-qa-master'>
-      <h2>Questions & Answers</h2>
-      {initial.length > 2 && (
-        <div className='qa-search-bar'>
-          <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
-            setInput(e.target.value)
-            doSearch(e.target.value)
-          }}></input>
+      <div className='qa-qa-container'>
+        <h2>Questions & Answers</h2>
+        {initial.length > 2 && (
+          <div className='qa-search-bar'>
+            <input id='qa-search-input' type='text' placeholder='Have a question? Search for answers...' onChange={(e) => {
+              setInput(e.target.value)
+              doSearch(e.target.value)
+            }}></input>
+          </div>
+        )}
+        <QuestionList questions={question} length={length} />
+        <div className='qa-button-container'>
+          {length < question.length &&
+            <button className='qa-question-button' onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
+          }
+          <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
         </div>
-      )}
-      <QuestionList questions={question} length={length} />
-      {length < question.length ?
-        <button onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
-        :
-        <button onClick={() => setLength(4)}>Collapse Questions</button>
-      }
-      <button onClick={() => setModal(true)}>Add A Question</button>
-      <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
+        <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
+      </div>
     </div>
   )
 }
-
 export default QuestionsMaster;

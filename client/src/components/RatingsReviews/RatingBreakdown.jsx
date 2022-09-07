@@ -9,7 +9,7 @@ const reviewsByStars = (metaData) => {
   //lift this up as state?
   let total = sumReviews(metaData);
   return [5, 4, 3, 2, 1].map(rating => {
-    let count = metaData.ratings[rating];
+    let count = metaData.ratings[rating] || 0;
     let percentage = (count / total) * 100;
     return (
     <div className="RR-reviews-by-star-ctn">
