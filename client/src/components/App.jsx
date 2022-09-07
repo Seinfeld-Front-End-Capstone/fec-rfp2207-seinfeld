@@ -20,7 +20,10 @@ const App = () => {
     product ?
     <div>
       <h1>buymorethings</h1>
-      <OVProvider productId={65633}>
+      <button onClick={() =>{
+        console.log({product})
+        setProduct(product + 1)}}>next product</button>
+      <OVProvider productId={product.id}>
         <Overview />
       </OVProvider>
       <ItemLists productId={product.id}/>

@@ -2,8 +2,9 @@ import React from 'react'
 import {useOV} from './OVContext.jsx'
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
 
-const ImageDisplay = () => {
-  let {curStyle, displayIndex, setDisplayIndex } = useOV()
+
+const ImageDisplay = ({children}) => {
+  let {curStyle, displayIndex, setDisplayIndex} = useOV()
   let images = curStyle.photos;
 
   const toPrevious = () => {
@@ -22,6 +23,7 @@ const ImageDisplay = () => {
     {displayIndex !== 0 && <IoIosArrowBack className='OVleftArrow' onClick={toPrevious} />}
     {displayIndex !== images.length - 1 && <IoIosArrowForward className='OVrightArrow' onClick={toNext} />}
     <div id='OVimagedisplay' style={currImageStyle}></div>
+    {children}
   </div>
   )
 }

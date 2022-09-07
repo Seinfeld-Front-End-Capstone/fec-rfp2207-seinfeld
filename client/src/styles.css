@@ -46,6 +46,40 @@ input{
 
 /* OVERVIEW */
 
+#OVModalOverLay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1000;
+}
+
+#OVModal{
+  height: 80%;
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+#OVExpandThumbNails{
+  position: absolute;
+  bottom : 3%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 5px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  font-size: 45px;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
+}
+
 #OVcontainer {
   display: flex;
   justify-content: center;
@@ -99,7 +133,6 @@ input{
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-
 }
 
 #OVCheckMark {
@@ -141,7 +174,7 @@ input{
   height: 99%;
   position: relative;
   overflow: hidden;
-  border-radius: 4%;
+  border-radius: 10px;
   background-color: var(--mid-green);
 }
 
@@ -151,6 +184,17 @@ input{
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.OVImageExpand {
+  position: absolute;
+  top: 10%;
+  transform: translate(0, -50%);
+  right: 5%;
+  font-size: 45px;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
 }
 
 #OVImageSelector {
@@ -167,7 +211,7 @@ input{
   align-items: center;
   justify-content: center;
   display: flex;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: var(--mid-green);
 }
 
@@ -190,6 +234,13 @@ input{
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+}
+
+.OVThumbnailCircle {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 3px solid #84a98c;
 }
 
 .OVthumbnail {

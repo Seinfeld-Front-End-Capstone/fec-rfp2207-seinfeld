@@ -18,6 +18,7 @@ export function OVProvider({productId, children}) {
   const [quantity, setQuantity] = useState({value:0, label: ' - ', hidden:true});
   const [starsObj, setStarsObj] = useState(0);
   const [curStyle, setCurStyle] = useState({})
+  const [expand, setExpand] = useState(false)
 
   useEffect(() => {
     axios.all([please.getProductInfo(productId), please.getStyles(productId), please.getReviewMeta(productId)])
@@ -31,7 +32,7 @@ export function OVProvider({productId, children}) {
   },[])
 
 
-  const values = {product, setProduct, styles, setStyles, skuIndex, setSkuIndex, displayIndex, setDisplayIndex, quantity, setQuantity, starsObj, setStarsObj, curStyle, setCurStyle, curSku, setCurSku}
+  const values = {product, setProduct, styles, setStyles, skuIndex, setSkuIndex, displayIndex, setDisplayIndex, quantity, setQuantity, starsObj, setStarsObj, curStyle, setCurStyle, curSku, setCurSku, expand, setExpand}
 
   return (
     styles && product ?

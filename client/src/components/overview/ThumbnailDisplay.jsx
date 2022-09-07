@@ -1,26 +1,32 @@
 import React from 'react';
 import {useOV} from './OVContext.jsx'
 
-const Thumbnail = ({images}) => {
+const Thumbnail = ({expand}) => {
   let {curStyle, displayIndex, setDisplayIndex} = useOV()
+  let images = curStyle.photos;
 
   const onClick = (e) => {
-    setDisplayIndex(Number(e.target.dataset.key))
+    let imageIndex = e.target.dataset.key
+    console.log({imageIndex})
+    setDisplayIndex(Number(imageIndex))
   }
 
   return (
-    <div id='OVThumbnailDisplayBox'>
-      <div id='OVThumbnailSwiper'>
-        {images.map((image, index) => {
-          let styles = {backgroundImage: `url(${image.thumbnail_url})`}
-          if (index === displayIndex) {
-            styles.border = `5px solid var(--light)`
-            styles.transform = `scale(1.1)`
-          }
-          return <div className='OVthumbnailImage'key={index} onClick={onClick} style={styles} data-key={index}/>
-        })}
-      </div>
-    </div>
+    <>
+      {images.map((image, index) => {
+        let styles = {backgroundImage: `url(${image.thumbnail_url})`}
+        let circleStyle = {}
+        if (index === displayIndex) {
+          styles.border = `5px solid var(--light)`
+          styles.transform = `scale(1.1)`
+          circleStyle.backgroundColor = `var(--light)`
+        }
+
+        return  expand ?
+        <div className='OVThumbnailCircle' key={index} onClick={onClick} style={circleStyle} data-key={index}/>:
+        <div className='OVthumbnailImage'key={index} onClick={onClick} style={styles} data-key={index}/>
+      })}
+    </>
   )
 }
 

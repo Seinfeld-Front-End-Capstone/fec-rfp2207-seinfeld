@@ -8,12 +8,14 @@ import AddToBag from './AddToBag.jsx'
 import Rating from './Rating.jsx'
 import please from '../.././request.js'
 import {useOV} from './OVContext.jsx'
+import Modal from './modal.jsx';
 
 const Overview = () => {
-  let {product, curStyle, curSku} = useOV()
+  let {product, curStyle, curSku, expand} = useOV()
 
   return (
     <div id='OVcontainer'>
+      <Modal expand={expand} />
       <div id='Overview'>
         <div id='OVImageNInfo'>
           <Images />
