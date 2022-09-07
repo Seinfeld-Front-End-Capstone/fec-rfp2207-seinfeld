@@ -29,6 +29,7 @@
     "@cloudinary/react": "^1.4.2",
     "@cloudinary/url-gen": "^1.8.6",
     "axios": "^0.27.2",
+    "chroma-js": "^2.4.2",
     "cloudinary-core": "^2.13.0",
     "email-validator": "^2.0.4",
     "moment": "^2.29.4",

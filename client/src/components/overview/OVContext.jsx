@@ -12,7 +12,6 @@ export function OVProvider({productId, children}) {
 
   const [product, setProduct] = useState(null);
   const [styles, setStyles] = useState(null);
-  // const [styleIndex, setStyleIndex] = useState(0);
   const [curSku, setCurSku] = useState({value:-1, label: 'Select Size'})
   const [skuIndex, setSkuIndex] = useState(-1);
   const [displayIndex, setDisplayIndex] = useState(0);

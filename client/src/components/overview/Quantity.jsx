@@ -19,7 +19,8 @@ const Quantity = () => {
 
   return (
     <div>
-      <Select className='OVselect' value={quantity} options={options} onChange={onSelect} filterOption={hideOption} />
+      {count === 0 ? <p>Sold Out!</p>:
+      <Select className='OVselect' value={quantity} options={options} onChange={onSelect} filterOption={hideOption} />}
     </div>
   )
 }

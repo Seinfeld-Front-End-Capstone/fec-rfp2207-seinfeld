@@ -26,7 +26,7 @@ const Overview = () => {
             <Styles />
             {Object.keys(curStyle.skus)[0] === 'null' ?
             <div>
-              <p>OUT OF STOCK!</p>
+              <p>Too late sucka! We no longer carry this</p>
             </div>:
             <>
             {curSku.value === -2 ? <h2>select a size please!</h2> : null}
