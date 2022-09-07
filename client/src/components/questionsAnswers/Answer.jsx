@@ -1,39 +1,72 @@
 import React, {useState} from 'react';
+import please from '../.././request.js';
+import moment from 'moment';
+import widget from '../helpers/widget.js';
 
-const Answer = ({answer}) => {
+const Answer = ({answer, index}) => {
   // console.log('answers props : ', answer)
   const [answerCount, setAnswerCount] = useState(answer.helpfulness)
-  const [isReported, setReported] = useState('Report')
+  const [isReported, setReported] = useState('Report');
+  const [photos, setPhotos] = useState('');
+  const [imageModal, setImageModal] = useState(false);
 
-  // let q = props.q;
-  // let keys = Object.keys(q.answers)[0];
-  // let answer = q.answers[keys];
-  // if (!answer) {
-  //   return <div>No more answers!</div>
-  // }
-  let date = answer.date.slice(0, 10);
+  const formattedDate = moment(answer.date).format('ll');
 
-  // console.log('answer : ', answer);
   const handleCount = () => {
     if (answer.helpfulness === answerCount) {
-      setAnswerCount((count) => count + 1)
+      please.markAnswerAsHelpful(answer.answer_id)
+      .then(() => setAnswerCount((count) => count + 1))
+      .catch((err) => console.log(err))
     }
   }
 
   const handleClick = () => {
     if (isReported === 'Report') {
-      setReported('Reported')
+      please.reportAnswer(answer.answer_id)
+      .then(() => setReported('Reported'))
+      .catch((err) => console.log(err))
     }
   }
 
+  if (!index) {
+    return (
+      <div className='qa-answer-container'>
+      <span id='qa-A'>A:</span> {answer.body}
+      <div id='qa-img-container'>
+        {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
+      </div>
+      <div className='qa-answer-body'>
+        <div id='qa-answer-name'>
+          by {answer['answerer_name']}, {formattedDate}
+          <span id='qa-answer-helpful'>
+            <span className='qa-line'>|</span> Helpful?
+            <span className='qa-pointer' className='qa-yes' onClick={handleCount}>Yes</span>
+            <span id='qa-answer-count'>({answerCount})</span>
+            <span className='qa-line'>|</span>
+            <span className='qa-report' onClick={handleClick}>{isReported}</span>
+          </span>
+        </div>
+      </div>
+    </div>
+    )
+  }
+
   return (
-    <div className='qa-answer-container'>
-      A: {answer.body}
-      <span>by {answer['answerer_name']}, {date}  | Helpful?
-        <span onClick={handleCount}>Yes </span>
-          ({answerCount}) | <span onClick={handleClick}>{isReported}</span>
-          {answer.photos.map((img, i) => (<img src={img.url} key={i} alt="picture"/>))}
-      </span>
+    <div className='qa-answer-body'>
+      <span id='qa-body'>{answer.body}</span>
+        <div id='qa-img-container'>
+        {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
+        </div>
+      <div id='qa-answer-name'>
+        by {answer['answerer_name']}, {formattedDate}
+        <span id='qa-answer-helpful'>
+          <span className='qa-line'>|</span> Helpful?
+          <span className='qa-pointer' className='qa-yes' onClick={handleCount}>Yes</span>
+          <span id='qa-answer-count'>({answerCount})</span>
+          <span className='qa-line'>|</span>
+          <span className='qa-report' onClick={handleClick}>{isReported}</span>
+        </span>
+      </div>
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import {OVProvider} from './overview/OVContext.jsx'
 import Overview from './overview/Overview.jsx';
 import ItemLists from './rc/ItemLists.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
@@ -19,9 +20,11 @@ const App = () => {
     product ?
     <div>
       <h1>buymorethings</h1>
-      <Overview productId={product.id}/>
-      <ItemLists productId={product.id} setProduct={setProduct}/>
-      <QuestionsMaster productId={65635}/>
+      <OVProvider productId={product.id}>
+        <Overview />
+      </OVProvider>
+      <ItemLists productId={product.id}/>
+      <QuestionsMaster productId={65632}/>
       <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
     :

@@ -14,8 +14,12 @@
   --dark-green: #354f52;
   --black-green: #2f3e46;
 
+  /* colors of stars */
   --star-color: var(--dark-green);
   --star-background: var(--light);
+
+  /* global dimensions */
+  --max-width: 1200px;
 }
 
 .Stars {
@@ -37,11 +41,27 @@ body {
 
 div {
   color: grey;
-  background-color: white;
 }
 
 input{
   accent-color: var(--dark-green);
+  height: 18px;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+.hide {
+  display: none !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 /* OVERVIEW */
@@ -54,7 +74,7 @@ input{
 
 #Overview {
   height: 100%;
-  width: 1000px;
+  width: var(--max-width);
   display: grid;
   grid-template-rows: 3fr 1fr;
   grid-row-gap: 10px;
@@ -102,11 +122,13 @@ input{
   height: 100%;
   width: 100%;
   font-size: larger;
+  background-color: #fff;
+  color: black;
 }
 
 #OVAddToBag {
   padding: 10px;
-  width: 300px;
+  width: 100%;
   margin: 10px 0px;
 }
 
@@ -443,17 +465,302 @@ input{
 }
 
 /* QUESTIONS AND ANSWERS */
+.qa-qa-master {
+  display: flex;
+  justify-content: center;
+}
+
+/* SEARCH BAR */
+#qa-search-input {
+  border: 1px solid grey;
+  border-radius: 5px;
+  height: 50px;
+  width: 100%;
+  padding: 5px 20px 5px 20px;
+  outline: 0;
+  margin-bottom: 15px;
+  font-size: 15px;
+  box-sizing: border-box;
+  /* background: transparent; */
+}
+
+#qa-search-input::placeholder {
+  font-weight: bold;
+  font-size: large;
+}
+
+.qa-question-container {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: whitesmoke;
+}
+
+.qa-question-body {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin: 18px auto;
+}
+
+#qa-space-body {
+  word-break: break-all;
+}
+
+.qa-question-modal {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
+  left: 25vw;
+  top: 25vh;
+  margin: 25vh 25vw;
+  background: var(--light);
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+}
+
+.qa-question-modal form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.qa-question-modal div {
+  background-color: var(--light);
+}
+
+.qa-modal-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.qa-question-list {
+  max-height: 1500px;
+  max-width: var(--max-width);
+  overflow-y: scroll;
+}
+
+#qa-question-helpful {
+  /* float: right; */
+  text-align: center;
+  font-size: 12px;
+}
+
+#qa-answer-count {
+  margin-left: 5px;
+}
+
+#qa-answer-line {
+  text-decoration: underline;
+}
+
+.qa-report {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.qa-yes {
+  margin-left: 5px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.qa-question-modal input {
+  margin: 5px 0;
+  width: 60%;
+}
+
+.qa-line {
+  margin: 0 10px;
+}
+
+.qa-answer-container {
+  max-height: 500px;
+  max-width: var(--max-width);
+  overflow-y: scroll;
+  margin-bottom: 20px;
+}
+
+#qa-img-container {
+  display: flex;
+  margin-left: 25px;
+}
+
+/* .qa-img-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 300px;
+  padding-left: 700px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.10);
+} */
+
+/* .qa-img-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+} */
+
+.qa-answer-img {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 10px 10px 5px 0;
+  width: 120px;
+  height: 120px;
+  border: .5px solid black;
+}
+
+.qa-load-answers {
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.qa-load-answers:hover {
+  color: black;
+
+}
+
+.qa-input-text {
+  margin: 1px 0;
+}
+
+.qa-answer-modal {
+  box-sizing: border-box;
+  border-radius: 10px;
+  padding: 10px;
+  position: fixed;
+  left: 25vw;
+  top: 25vh;
+  background: var(--light);
+  width: 50vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow-y: scroll;
+}
+
+.qa-answer-modal form {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.qa-answer-modal div {
+  background-color: var(--light);
+}
+
+.qa-answer-modal input {
+  margin: 5px 0;
+  width: 60%;
+}
+
+.qa-X {
+  margin: 0;
+  cursor: pointer;
+}
+.qa-X:hover {
+  color: black;
+}
+
+.qa-modal-submit {
+  margin: 0 auto;
+  width: 20%;
+}
+
+#qa-Q {
+  display: inline-flex;
+  padding-right: 3px;
+}
+
+#qa-A {
+  display: inline-flex;
+  padding-right: 5px;
+}
+
+.qa-answer-body {
+  justify-content: space-between;
+  font-size: 15px;
+  margin-right: 5px;
+  padding-left: 0px;
+}
+
+#qa-body {
+  margin-left: 25px;
+}
+
+.qa-pointer {
+  cursor: pointer;
+}
+
+.qa-pointer:hover {
+  color: black;
+}
+
+#qa-answer-name {
+  margin: 10px 0 0 25px;
+}
+
+.qa-button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.qa-question-button {
+  font-size: 15px;
+  padding: 10px;
+  margin: 10px 15px 0 0;
+  border-radius: 3px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.qa-question-button:hover {
+  background-color: var(--light);
+  color: white;
+}
+
+/* RATINGS AND REVIEWS */
 
 /* -----------------RATINGS AND REVIEWS -----------------*/
+#RR-big-ctn {
+  display: flex;
+  justify-content: center;
+}
+
+#RR-first-review {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 30px;
+}
+
 #RR-ratings-reviews-ctn {
   display: flex;
-  /* temp */
-  border-style: solid;
+  max-width: var(--max-width);
+  width: 100%;
 }
 
 /* Ratings breakdown */
 #RR-rating-breakdown-ctn {
-  width: 300px;
+  width: 30%;
 }
 
 #RR-rating-summary-ctn {
@@ -505,7 +812,6 @@ input{
   justify-content: center;
   width: 40px;
 }
-/* ----------HERE------------ */
 
 #RR-factors-breakdown-ctn {
   display: flex;
@@ -548,83 +854,278 @@ input{
   padding-left: 20px;
 }
 
-#RR-header-sort {
-  padding-left: 20px;
+#RR-sort-param {
+  margin-left: 6px;
+  background-color: var(--light);
+  height: 24px;
+  border-radius: 4px;
+  border: 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+#RR-reviews-right-ctn {
+  width: 70%;
 }
 #RR-reviews-ctn {
-  padding: 0 20px;
+  width: auto;
+  overflow-y: scroll;
+  max-height: 600px;
 }
-.review-header {
+
+.RR-review-ctn {
+  width: auto;
+  background-color: hsl(0, 0%, 95%);
+  color:  hsl(0, 0%, 40%);
+  margin-bottom: 6px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.RR-review-body {
+  width: 100%;
+}
+
+.RR-review-header {
   display: flex;
   justify-content: space-between;
 }
 
-#more-menu {
-  display: flex;
-  margin: 20px;
+.RR-seller-response {
+  background-color: var(--light);
+  width: fit-content;
+  padding: 6px;
+  border-radius: 2px;
 }
 
-#more-menu button {
+#RR-more-menu {
+  display: flex;
+  margin: 20px 20px 20px 0;
+}
+
+#RR-big-ctn button {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
+  border: 2px solid hsl(0, 0%, 70%);
+}
+
+#RR-big-ctn button:hover {
+  box-shadow: 0 0 4px var(--black-green);
+}
+
+#RR-photos-ctn {
+  display: flex;
 }
 
 .RR-review-photos {
-  width: 100px;
-  height: auto;
+  width: auto;
+  height: 100px;
+  display: flex;
 }
 
-/* crop these into same size thumbnails */
-.RR-uploaded-photos {
-  max-width: 100px;
-  max-height: 100px;
+/* #RR-photo-modal .background,
+#RR-photo-modal {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#RR-photo-modal .background {
+  background-color: black;
+  opacity: 0.9;
+
+}
+
+#RR-photo-modal-inner {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+}
+
+#RR-photo-modal-inner .icons {
+  font-size: 40px;
+  z-index: 4;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#RR-photo-modal img {
+  width: auto;
+  height: auto;
+} */
+
+#RR-photo-modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+#RR-photo-modal .background {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  position: fixed;
+}
+
+#RR-photo-modal-inner {
+  width: 60%;
+  height: 60%;
+  margin: 10% 20%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+#RR-photo-modal-inner img {
+  z-index: 3;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#RR-photo-modal-inner .icons {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  font-size: 40px;
+  z-index: 3;
 }
 
 /* RR - Add a review form */
 #RR-form-ctn {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 #RR-form-bg {
   top: 0;
   position: fixed;
   z-index: 2;
-  background-color: black;
-  opacity: 0.9;
-  height: 100%;
-  width: 100%;
+  background-color: var(--black-green);
+  background-image: url('./assets/senegal-leather-bg.jpg');background-size: 2000px 2000px;
+  opacity: .95;
   display: flex;
   justify-content: center;
 }
-#RR-form {
-  position: fixed;
-  z-index: 3;
-  top: 200px;
-  background: white;
-  opacity: 1;
-  height: 60%;
-  width: auto;
-  border-radius: 5px 5px;
-  overflow: scroll;
+
+#RR-form-bg.active {
+  height: 100%;
+  width: 100%;
 }
 
-/* crop photo uploads into same size thumbnails */
-#RR-overall-rating {
-  width: 700px;
+#RR-form-inner-ctn {
+  position: fixed;
+  z-index: 3;
+  top: 20%;
+  display: flex;
+  width: auto;
+  height: 550px;
+  background: transparent;
+
 }
+
+#RR-form-menu{
+  width: 240px;
+  padding-top: 260px;
+  padding-right: 20px;
+  border-top-left-radius: 40px;
+  border-bottom-left-radius: 40px;
+  background-image: url('./assets/pencileandletter.jpg');
+  background-size: 700px 600px;
+  background-position: 48% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+#RR-form-menu button,
+#RR-form-menu input,
+.RR-form-fields button {
+  border: 0;
+  margin: 10px 0;
+  height: 30px;
+  width: 60px;
+  color: var(--black-green);
+  background-color: var(--light);
+  border-radius: 4px;
+  opacity: .6;
+  font-weight: bold;
+}
+
+.RR-form-fields button {
+  width: 120px;
+}
+
+#RR-form-menu span {
+  font-size: 20px;
+  margin: 10px 0;
+}
+#RR-form-menu .active,
+.RR-form-fields .active {
+  color: var(--light) !important;
+  background-color: var(--black-green) !important;
+}
+
+#RR-form-inner-ctn form {
+  /* maybe use part of image as background for texture */
+  overflow-y: scroll;
+  background: #edf1f7;
+  padding-left: 20px;
+  background-image: url('./assets/canvasbg.png');
+  background-size: 350px 350px;
+}
+
+#RR-form-inner-ctn div {
+  background-color: transparent;
+}
+
+.RR-form-fields {
+ margin: 20px 0;
+}
+
+#RR-overall-rating {
+  display: flex;
+  height: 40px;
+  align-items: flex-end;
+}
+
+#RR-overall-rating div {
+  margin-right: 6px;
+}
+
+.RR-rate-star span{
+  padding-bottom: 5px;
+}
+
 #RR-overall-rating input {
   width: 0;
 }
 
-#RR-overall-rating img {
-  height: 20px;
-  width: 20px;
-}
-
 #RR-rate-star {
   display: flex;
+}
+
+#RR-form-recommend {
+  display: flex;
+}
+
+.RR-form-user-info input {
+  width: 200px;
 }
 
 /* RR - Product Characteristics Breakdown */
@@ -633,18 +1134,22 @@ input{
   width: 365px;
   text-align: left;
 }
-.RR-prod-char-rating {
+
+#RR-form-inner-ctn .RR-prod-char-rating {
   display: flex;
   width: 700px;
   border: 1px solid grey;
+  background-color: var(--light);
+  border-radius:  20px;
+  margin: 2px;
+  border: 0;
 }
 
 .RR-prod-char-title {
   width: 100px;
-  align-self: flex-end;
+  align-self: center;
   font-weight: bold;
   text-align: center;
-  padding-bottom: 12px;
 }
 
 
@@ -660,24 +1165,33 @@ input{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  height: 120px;
+  height: 100px;
 }
 
-.RR-rating-scores p {
-  height: 36px;
-}
-.RR-rating-scores input {
-  height: 18px;
-  background-color: #333;
+.RR-rating-scores div {
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
 }
 
 .RR-rating-scores label {
   margin: 2px 0;
 }
 
-/* Uploaded photos */
+#RR-photo-uploads {
+  display: flex;
+}
+#RR-photo-uploads img {
+  margin: 0 2px;
+}
 
-.RR-uploaded-photos {
-  max-width: 100px;
-  max-height: 100px;
+.RR-disclaimer {
+  font-size: 12px;
+}
+
+.RR-form-fields.textbox :focus {
+  outline: none !important;
+  border-color: var(--mid-green);
+  box-shadow: 0 0 10px var(--black-green);
 }

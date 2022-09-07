@@ -1,38 +1,58 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Stars from '../helpers/Stars.jsx';
 import moment from 'moment';
 import Photos from './Photos.jsx';
+import { FaCheckCircle } from 'react-icons/fa';
+import please from '../../request.js';
 
-const ReviewEntry = ({ review, recommended }) => {
+const ReviewEntry = ({ review, recommended, setShowPhotoModal }) => {
   let { review_id, body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
 
-//for dev and testing purposes only, will migrate into css file
-const divStyle = {
-borderStyle: 'solid'
-}
-const emphasize = {
-  backgroundColor: 'seashell',
-  fontWeight: 'bold'
-}
+  const [voted, setVoted] = useState(false);
 
-const formattedDate = moment(date).format('ll');
+  const formattedDate = moment(date).format('ll');
+
+  const voteYes = (e) => {
+    please.markReviewAsHelpful(review_id)
+    .then(() => {
+      setVoted(true);
+      e.target.classList.add('bold');
+    })
+    .catch(err => console.log(err));
+  }
 
   return (
-    <div className="review-ctn" style={divStyle}>
-      <div className="review-header">
+    <div className="RR-review-ctn">
+      <div className="RR-review-header">
         <div><Stars key={review_id} rating={rating}/></div>
         <div>
           <span>{reviewer_name}  </span>
           <span>{formattedDate}</span>
         </div>
       </div>
-      <h2>{summary}</h2>
-      <p>{body}</p>
-      {recommend ? <p>checkIcon I recommend this product</p> : null}
-      {response ? <p style={emphasize}>Response from seller: {response}</p> : null}
-      <p>Helpful? <span>Yes</span> ({helpfulness}) <span>No</span> (# missing)</p>
-      <div className="RR-photos">
-        {photos && photos.map(photo => <Photos key={photo.id} photo={photo}/>)}
+      <h3>{summary}</h3>
+      <p className="RR-review-body">
+        {body.length > 250
+        ?
+        <>
+        {body.slice(0, 250)}...
+        <span
+        className="underline"
+        onClick={(e) => {
+          e.currentTarget.parentElement.innerHTML = body;
+          }}>show more</span>
+        </>
+        :
+        body}
+      </p>
+      {recommend ? <p><FaCheckCircle /> I recommend this product</p> : null}
+      {response ? <p className="RR-seller-response">Response from seller: {response}</p> : null}
+      <p>Helpful? <span
+      className='underline'
+      onClick={voted ? null : voteYes}
+      >Yes ({helpfulness})</span></p>
+      <div id="RR-photos-ctn">
+        {photos && photos.map(photo => <Photos key={photo.id} photo={photo} setShowPhotoModal={setShowPhotoModal}/>)}
       </div>
     </div>
   )
