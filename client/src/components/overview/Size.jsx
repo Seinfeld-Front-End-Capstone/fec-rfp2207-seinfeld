@@ -18,9 +18,9 @@ const Size = () => {
 
   curSku.value === -2 ? selectRef.current.focus() : null;
 
-  const options = values.map((value, index) => value.quantity === 0 ?
-  {value: index, label: value.size, qty: value.quantity, number: keys[index], isDisabled:true}:
-  {value: index, label: value.size, qty: value.quantity, number: keys[index]})
+  const options = values.map((value, index) => {
+    return {value: index, label: value.size, qty: value.quantity, number: keys[index], isDisabled: value.quatity === 0}
+  })
 
   const hideOption = (option) => option.data.hidden ? false: true
 

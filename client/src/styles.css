@@ -66,14 +66,48 @@ p {
 
 /* OVERVIEW */
 
+#OVModalOverLay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1000;
+}
+
+#OVModal{
+  height: 80%;
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+#OVExpandThumbNails{
+  position: fixed;
+  bottom : 4%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 5px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  font-size: 45px;
+  z-index: 1000;
+  cursor: pointer;
+}
+
 #OVcontainer {
   display: flex;
   justify-content: center;
   height: 1000px;
+  width: 100%;
 }
 
 #Overview {
-  height: 100%;
+  height: 1000;
   width: var(--max-width);
   display: grid;
   grid-template-rows: 3fr 1fr;
@@ -81,10 +115,16 @@ p {
 }
 
 #OVImageNInfo {
+  height: 800px;
   height: 100%;
   display:grid;
   grid-template-columns: 3fr 1fr;
   grid-column-gap: 10px;
+}
+
+#OVImages {
+  display: grid;
+  grid-template-rows: 4fr 1fr;
 }
 
 #OVInfo {
@@ -100,15 +140,31 @@ p {
   padding: 10px;
 }
 
+#OVStyleContainer {
+  position: relative;
+}
+
 .OVstyles {
   border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  border: 3px solid #84a98c;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#OVCheckMark {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  height: 20px;
+  width: 20px;
+  color:#354f52;
+  z-index: 1;
+  border-radius: 50%;
   background-color: white;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid black;
+  /* border: 2px solid #354f52; */
 }
 
 #OVsizeNQty {
@@ -132,40 +188,79 @@ p {
   margin: 10px 0px;
 }
 
-#OVimage {
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-rows: 3fr 1fr;
-}
-
 #OVimageDisplayBox {
-  /* display:flex;
-  justify-content: center;
-  align-content: center; */
   width: 100%;
-  height: 100%;
+  height: 99%;
   position: relative;
-  background-color: black;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--mid-green);
 }
 
 #OVimagedisplay {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-#OVThumbnailSelection {
-  display: flex;
+.OVImageExpand {
+  position: absolute;
+  top: 10%;
+  transform: translate(0, -50%);
+  right: 5%;
+  font-size: 45px;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
 }
 
-#OVthumdnailBox {
-  width:16.50%;
-  max-height: 100%;
+#OVImageSelector {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+#OVThumbnailDisplayBox{
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 10px;
+  background-color: var(--mid-green);
+}
+
+#OVThumbnailSwiper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 15px;
+  overflow: auto;
+  height: 100%;
+  align-items: center;
+  padding: 10px 10px 0px 10px;
+}
+
+.OVthumbnailImage {
+  border-radius: 10%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.OVThumbnailCircle {
+  border-radius: 50%;
+  background-color: var(--light);
+  height: 30px;
+  width: 30px;
+  border: 3px solid var(--black-green);
 }
 
 .OVthumbnail {
@@ -181,10 +276,11 @@ p {
 
 .OVleftArrow {
   height: 100%;
+  width: 100px;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  left: 32px;
+  left: 0;
   font-size: 45px;
   color: #fff;
   z-index: 1;
@@ -193,16 +289,16 @@ p {
 
 .OVrightArrow {
   height: 100%;
+  width: 100px;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  right: 32px;
+  right: 0;
   font-size: 45px;
   color: #fff;
   z-index: 1;
   cursor: pointer;
 }
-
 
 
 /* RELATED PRODUCTS */
