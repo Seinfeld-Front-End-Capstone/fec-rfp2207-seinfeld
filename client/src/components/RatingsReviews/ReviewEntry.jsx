@@ -4,7 +4,7 @@ import moment from 'moment';
 import Photos from './Photos.jsx';
 import { FaCheckCircle } from 'react-icons/fa';
 
-const ReviewEntry = ({ review, recommended }) => {
+const ReviewEntry = ({ review, recommended, setShowPhotoModal }) => {
   let { review_id, body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
 
 const formattedDate = moment(date).format('ll');
@@ -24,7 +24,7 @@ const formattedDate = moment(date).format('ll');
       {response ? <p className="RR-seller-response">Response from seller: {response}</p> : null}
       <p>Helpful? <span>Yes</span> ({helpfulness})</p>
       <div id="RR-photos-ctn">
-        {photos && photos.map(photo => <Photos key={photo.id} photo={photo}/>)}
+        {photos && photos.map(photo => <Photos key={photo.id} photo={photo} setShowPhotoModal={setShowPhotoModal}/>)}
       </div>
     </div>
   )

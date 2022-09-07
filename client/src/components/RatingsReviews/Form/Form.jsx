@@ -7,6 +7,7 @@ import { validateForm, formatForm } from './processForm.js';
 import _ from 'underscore';
 import widget from '../../helpers/widget.js';
 
+
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);

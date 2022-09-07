@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
 // import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
+import { MdCancel } from 'react-icons/md';
 import Form from './Form/Form.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx'
 //lift axios request for reviews/meta out of Form and into this component
@@ -17,6 +18,7 @@ const RatingsReviews = ({ productId, productName }) => {
   const [metaData, setMetaData] = useState(null)
   const[moreBtnActive, setMoreBtnActive] = useState(false);
   const[addBtnActive, setAddBtnActive] = useState(false);
+  const [showPhotoModal, setShowPhotoModal] = useState('');
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -76,7 +78,7 @@ const RatingsReviews = ({ productId, productName }) => {
                 <option value="newest">Newest</option>
               </select>
             </h3>
-            <ReviewList reviews={reviews}/>
+            <ReviewList reviews={reviews} setShowPhotoModal={setShowPhotoModal}/>
             <div id="RR-more-menu">
               {reviews.length === maxResults && <button onClick={showMoreReview} onMouseEnter={() => setMoreBtnActive(true)} onMouseLeave={() => setMoreBtnActive(false)} className={moreBtnActive ? 'active' : ''}>MORE REVIEWS</button>}
               {addReviewButton}
@@ -86,6 +88,14 @@ const RatingsReviews = ({ productId, productName }) => {
       </div>
       <div id="RR-form-bg" className={formMode ? 'active' : ''}></div>
       {formMode && <Form productName={productName} toggleForm={toggleForm} productId={productId} refreshReviews={() => refreshReviews()}/>}
+      {showPhotoModal &&
+      <div id="RR-photo-modal">
+        <div className="background"></div>
+        <div id="RR-photo-modal-inner">
+          <MdCancel className="icons" onClick={() => setShowPhotoModal('')}/>
+          <img id="RR-popup-photo" src={showPhotoModal}/>
+        </div>
+      </div>}
     </>
   )
 
