@@ -50,7 +50,7 @@ const OutfitList = ({ id }) => {
         <button
         className="RC_prev"
         onClick={handlePrevClick}>
-          <i className="fa-solid fa-chevron-left"></i>
+          <i class="fa-solid fa-chevron-left"></i>
         </button>
           <li className="RC_outfit_card_container">
             <div
@@ -68,7 +68,7 @@ const OutfitList = ({ id }) => {
         <button
         className="RC_next"
         onClick={handleNextClick}>
-          <i className="fa-solid fa-chevron-right"></i>
+          <i class="fa-solid fa-chevron-right"></i>
         </button>
       </ul>
     </div>
