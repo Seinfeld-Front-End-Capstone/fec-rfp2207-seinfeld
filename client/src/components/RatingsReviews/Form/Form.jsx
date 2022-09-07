@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
+// import noStar from '../../../assets/stars/noStar.png';
+// import fullStar from '../../../assets/stars/fullStar.png';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
 import _ from 'underscore';
-
-// TODO:
-// remove previous photo upload logic
-// create a new state to store cloudinary urls to be send to the server
+import widget from '../../helpers/widget.js';
 
 
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
@@ -26,26 +25,16 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
     .then(data => setChars(data.data.characteristics))
     .catch(err => console.log(err));
 
-    setMyWidget(cloudinary.createUploadWidget({
-      cloudName: 'seinfeldtd',
-      uploadPreset: 'seinfeldpreset'
-      },
+    setMyWidget(widget(
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log('Done! Here is the image info: ', result.info);
-          // let newPhotos = photos.slice();
-          // newPhotos.push({
-          //   thumbnail: result.info.thumbnail_url,
-          //   url: result.info.secure_url
-          // });
-          // setPhotos(newPhotos);
           setPhotos(photos => [...photos, {
             thumbnail: result.info.thumbnail_url,
             url: result.info.secure_url
           }])
-          console.log('photos state', photos);
         }
-    }))
+      }))
   }, [productId]);
 
   const handleSubmit = (e) => {
@@ -114,15 +103,14 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
 
   return (
     <div id="RR-form-ctn">
-      <div id="RR-form-bg"></div>
-      <div id="RR-form">
+      <div id="RR-form-inner-ctn">
         <div id="RR-form-menu">
           <span>Write your review</span>
           <span>About the {productName}</span>
           <input type="button" value="submit" onClick={handleSubmit} onMouseEnter={() => setSubmitBtnActive(true)} onMouseLeave={() => setSubmitBtnActive(false)} className={submitBtnActive ? 'active' : ''} />
           <button id="RR-form-cancel" onClick={toggleForm} onMouseEnter={() => setCancelBtnActive(true)} onMouseLeave={() => setCancelBtnActive(false)} className={cancelBtnActive ? 'active' : ''}>cancel</button>
         </div>
-        <form>
+        <form id="RR-form">
           <div id="RR-overall-rating" className="RR-form-fields">
             <div>Overall Rating: {requiredTag}</div>
             <div>{starRatings}</div>
@@ -138,12 +126,12 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
 
           {<ProdChars chars={Object.keys(chars)} />}
 
-          <div className="RR-form-fields">
+          <div className="RR-form-fields textbox">
             <div>Summary:</div>
             <input id="RR-summary" placeholder="Example: Best purchase ever!" maxLength="60" size="50" name="summary" ></input><br/>
           </div>
 
-          <div className="RR-form-fields">
+          <div className="RR-form-fields textbox">
             <div>Review: {requiredTag}</div>
             <textarea id="RR-body" placeholder="Why did you like the product or not?" minLength="50" maxLength="1000" name="body" onChange={countChar}
             rows="10" cols="44" required></textarea><br/>
@@ -157,13 +145,13 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
             </div>
           </div>
 
-          <div className="RR-form-fields">
+          <div className="RR-form-fields textbox RR-form-user-info">
             <div>What is your nickname:  {requiredTag}</div>
             <input id="RR-nickname" placeholder="Example: jackson11!" maxLength="60" name="name" required />
             <div className="RR-disclaimer">For privacy reasons, do not use your full name or email address</div>
           </div>
 
-          <div className="RR-form-fields">
+          <div className="RR-form-fields textbox RR-form-user-info">
             <div>Your Email: {requiredTag}</div>
             <span><input placeholder="Example: jackson11@email.com" maxLength="60" name="email"/></span>
             <div className="RR-disclaimer">For authentication reasons, you will not be emailed</div>

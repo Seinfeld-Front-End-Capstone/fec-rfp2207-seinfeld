@@ -107,7 +107,7 @@ module.exports = {
   },
 
   //Q&A
-  getQuestions: (product_id, page=1, count=5) => {
+  getQuestions: (product_id, page=1, count=100) => {
     return axios({
       url:`/qa/questions/`,
       method: 'get',

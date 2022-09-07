@@ -3,13 +3,18 @@ import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 
-//Okay this is going to be basically the same as the related item card but slightly different.
-
-const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
+const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfit, curDisplay }) => {
   const [productData, setProductData] = useState([]);
   const [photoData, setPhotoData] = useState([]);
   const [price, setPrice] = useState([]);
   const [starRating, setStarRating] = useState(0);
+  const [vis, setVis] = useState(true);
+
+  useEffect(() => {
+    if (curDisplay.indexOf(itemNo) === -1) {
+      setVis(false);
+    }
+  })
 
   useEffect(() => {
     request
@@ -48,17 +53,19 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
   /* handles delete button onClick event */
   const handleDelete = useCallback(() => {
     deleteCard(curOutfit.filter((item) => item !== itemNo));
-  }, [deleteCard, curOutfit]);
+    deleteCardDisplay(curDisplay.filter((item) => item !== itemNo));
+  }, [deleteCard, curOutfit, curDisplay]);
 
 
-
-  return (
-    <div
-    key={itemNo}
-    className="RC_outfit_card_container">
+  if (vis) {
+    return (
+      <div
+      key={itemNo}
+      className="RC_outfit_card_container">
       <aside>
         <img
-        className="RC_outfit_photo" src={photoData} height="225"
+        className="RC_outfit_photo"
+        src={photoData}
         />
         <i
         className="fa-solid fa-circle-xmark RC_x"
@@ -86,6 +93,7 @@ const OutfitCard = ({ itemNo, productID, deleteCard, curOutfit }) => {
       </aside>
     </div>
   )
+  }
 }
 
 export default OutfitCard;

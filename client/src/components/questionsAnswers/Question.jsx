@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import AnswerList from './AnswerList.jsx';
 import AnswerModal from './AnswerModal.jsx';
-// import Answer from './Answer.jsx';
+import please from '../.././request.js';
+
 
 const Question = ({q}) => {
   // console.log('question : ', q);
@@ -10,17 +11,21 @@ const Question = ({q}) => {
 
   const handleClick = () => {
     if (q.question_helpfulness === helpfulness) {
-      setHelpfulness((prevCount) => prevCount + 1)
+      please.markQuestionAsHelpful(q.question_id)
+      .then(() => {
+        // console.log('success')
+        setHelpfulness((prevCount) => prevCount + 1)
+      })
     }
   }
 
   return (
     <div className='qa-question-container'>
       <div className='qa-question-body'>
-       <strong><span id='qa-Q'>Q:</span> {q.question_body}</strong>
+       <strong><span id='qa-Q'>Q:</span> <span id='qa-space-body'>{q.question_body}</span></strong>
        <span id='qa-question-helpful'>
-         Helpful? <span onClick={handleClick}>Yes </span>
-         ({helpfulness}) <span className='qa-line'>|</span> <span onClick={() => setModal(true)}>Add Answer</span>
+         Helpful? <span className='qa-pointer' className='qa-yes' onClick={handleClick}>Yes </span>
+         ({helpfulness}) <span className='qa-line'>|</span> <span className='qa-pointer' id='qa-answer-line' onClick={() => setModal(true)}>Add Answer</span>
        </span>
       </div>
         <AnswerList q={q}/>

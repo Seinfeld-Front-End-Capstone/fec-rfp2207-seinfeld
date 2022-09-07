@@ -14,8 +14,12 @@
   --dark-green: #354f52;
   --black-green: #2f3e46;
 
+  /* colors of stars */
   --star-color: var(--dark-green);
   --star-background: var(--light);
+
+  /* global dimensions */
+  --max-width: 1200px;
 }
 
 .Stars {
@@ -42,6 +46,22 @@ div {
 input{
   accent-color: var(--dark-green);
   height: 18px;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+.hide {
+  display: none !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 /* OVERVIEW */
@@ -88,8 +108,8 @@ input{
 }
 
 #Overview {
-  height: 1000px;
-  width: 1200px;
+  height: 1000;
+  width: var(--max-width);
   display: grid;
   grid-template-rows: 3fr 1fr;
   grid-row-gap: 10px;
@@ -299,6 +319,7 @@ input{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  max-width: 800;
 }
 
 
@@ -368,6 +389,21 @@ input{
 
 /* ** Outfit ** */
 
+.RC_outfit_container{
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 1000;
+}
+
 .RC_outfit_list {
   padding: 0;
   margin: 0;
@@ -382,6 +418,7 @@ input{
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  max-width: 800;
 }
 
 
@@ -406,6 +443,40 @@ input{
   width: 150px;
   height: 250px;
   color: white;
+}
+
+.RC_next {
+  background-color: lightgray;
+  color:#fff;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  border: none;
+  height: 100px;
+  border-radius: 10px;
+  align-self: flex-end;
+  margin-bottom: 75px;
+  margin-left: 15px;
+}
+
+.RC_next:hover {
+  background-color: var(--mid-green);
+
+}
+
+.RC_prev {
+  background-color: lightgray;
+  color:#fff;
+  box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
+  border: none;
+  height: 100px;
+  border-radius: 10px;
+  align-self: flex-start;
+  margin-top: 95px;
+  margin-right: 15px;
+}
+
+.RC_prev:hover {
+  background-color: var(--mid-green);
+
 }
 
 .plus {
@@ -492,19 +563,16 @@ input{
 /* QUESTIONS AND ANSWERS */
 .qa-qa-master {
   display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  border: 2px solid black;
-  padding: 100px;
-  margin: 200px;
+  justify-content: center;
 }
 
+/* SEARCH BAR */
 #qa-search-input {
   border: 1px solid grey;
-  border-radius: 2px;
+  border-radius: 5px;
   height: 50px;
   width: 100%;
-  padding: 2px 20px 2px 30px;
+  padding: 5px 20px 5px 20px;
   outline: 0;
   margin-bottom: 15px;
   font-size: 15px;
@@ -517,24 +585,38 @@ input{
   font-size: large;
 }
 
+.qa-question-container {
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  background-color: whitesmoke;
+}
+
 .qa-question-body {
-  font-size: 20px;
-  margin: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin: 18px auto;
+}
+
+#qa-space-body {
+  word-break: break-all;
 }
 
 .qa-question-modal {
   box-sizing: border-box;
   border-radius: 10px;
   padding: 10px;
-  position: fixed;
   left: 25vw;
   top: 25vh;
-  background: white;
+  margin: 25vh 25vw;
+  background: var(--light);
   width: 50vw;
   height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .qa-question-modal form {
@@ -545,12 +627,47 @@ input{
 }
 
 .qa-question-modal div {
-  background-color: white;
+  background-color: var(--light);
+}
+
+.qa-modal-wrapper {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.qa-question-list {
+  max-height: 1500px;
+  max-width: var(--max-width);
+  overflow-y: scroll;
 }
 
 #qa-question-helpful {
-  float: right;
-  font-size: 15px;
+  /* float: right; */
+  text-align: center;
+  font-size: 12px;
+}
+
+#qa-answer-count {
+  margin-left: 5px;
+}
+
+#qa-answer-line {
+  text-decoration: underline;
+}
+
+.qa-report {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.qa-yes {
+  margin-left: 5px;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 .qa-question-modal input {
@@ -563,15 +680,46 @@ input{
 }
 
 .qa-answer-container {
-  margin: 15px auto;
+  max-height: 500px;
+  max-width: var(--max-width);
+  overflow-y: scroll;
+  margin-bottom: 20px;
 }
 
-.qa-answer-img {
-  margin: 10px 0;
+#qa-img-container {
   display: flex;
-  flex-direction: row;
-  width:100px;
-  height: 100px;
+  margin-left: 25px;
+}
+
+/* .qa-img-modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding-top: 300px;
+  padding-left: 700px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.10);
+} */
+
+/* .qa-img-close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+} */
+
+.qa-answer-img {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 10px 10px 5px 0;
+  width: 120px;
+  height: 120px;
+  border: .5px solid black;
 }
 
 .qa-load-answers {
@@ -595,12 +743,13 @@ input{
   position: fixed;
   left: 25vw;
   top: 25vh;
-  background: white;
+  background: var(--light);
   width: 50vw;
   height: 50vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  overflow-y: scroll;
 }
 
 .qa-answer-modal form {
@@ -611,14 +760,13 @@ input{
 }
 
 .qa-answer-modal div {
-  background-color: white;
+  background-color: var(--light);
 }
 
 .qa-answer-modal input {
   margin: 5px 0;
   width: 60%;
 }
-
 
 .qa-X {
   margin: 0;
@@ -635,7 +783,7 @@ input{
 
 #qa-Q {
   display: inline-flex;
-  padding-right: 5px;
+  padding-right: 3px;
 }
 
 #qa-A {
@@ -650,28 +798,65 @@ input{
   padding-left: 0px;
 }
 
-.qa-answer-body span {
-  margin: 0 5px;
-  /* padding: 0px; */
+#qa-body {
+  margin-left: 25px;
+}
+
+.qa-pointer {
+  cursor: pointer;
+}
+
+.qa-pointer:hover {
+  color: black;
 }
 
 #qa-answer-name {
-  margin: 10px 0;
-  padding-left: 25px;
+  margin: 10px 0 0 25px;
+}
+
+.qa-button-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.qa-question-button {
+  font-size: 15px;
+  padding: 10px;
+  margin: 10px 15px 0 0;
+  border-radius: 3px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.qa-question-button:hover {
+  background-color: var(--light);
+  color: white;
 }
 
 /* RATINGS AND REVIEWS */
 
 /* -----------------RATINGS AND REVIEWS -----------------*/
+#RR-big-ctn {
+  display: flex;
+  justify-content: center;
+}
+
+#RR-first-review {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 30px;
+}
+
 #RR-ratings-reviews-ctn {
   display: flex;
-  /* temp */
-  border-style: solid;
+  max-width: var(--max-width);
+  width: 100%;
 }
 
 /* Ratings breakdown */
 #RR-rating-breakdown-ctn {
-  width: 300px;
+  width: 30%;
 }
 
 #RR-rating-summary-ctn {
@@ -765,44 +950,161 @@ input{
   padding-left: 20px;
 }
 
-#RR-header-sort {
-  padding-left: 20px;
+#RR-sort-param {
+  margin-left: 6px;
+  background-color: var(--light);
+  height: 24px;
+  border-radius: 4px;
+  border: 0;
+  text-align: center;
+  font-size: 16px;
+}
+
+#RR-reviews-right-ctn {
+  width: 70%;
 }
 #RR-reviews-ctn {
-  padding: 0 20px;
+  width: auto;
+  overflow-y: scroll;
+  max-height: 600px;
 }
-.review-header {
+
+.RR-review-ctn {
+  width: auto;
+  background-color: hsl(0, 0%, 95%);
+  color:  hsl(0, 0%, 40%);
+  margin-bottom: 6px;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.RR-review-body {
+  width: 100%;
+}
+
+.RR-review-header {
   display: flex;
   justify-content: space-between;
 }
 
-#more-menu {
-  display: flex;
-  margin: 20px;
+.RR-seller-response {
+  background-color: var(--light);
+  width: fit-content;
+  padding: 6px;
+  border-radius: 2px;
 }
 
-#more-menu button {
+#RR-more-menu {
+  display: flex;
+  margin: 20px 20px 20px 0;
+}
+
+#RR-big-ctn button {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
+  border: 2px solid hsl(0, 0%, 70%);
+}
+
+#RR-big-ctn button:hover {
+  box-shadow: 0 0 4px var(--black-green);
+}
+
+#RR-photos-ctn {
+  display: flex;
 }
 
 .RR-review-photos {
-  width: 100px;
-  height: auto;
+  width: auto;
+  height: 100px;
+  display: flex;
 }
 
-/* crop these into same size thumbnails */
-.RR-uploaded-photos {
-  max-width: 100px;
-  max-height: 100px;
+/* #RR-photo-modal .background,
+#RR-photo-modal {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#RR-photo-modal .background {
+  background-color: black;
+  opacity: 0.9;
+
+}
+
+#RR-photo-modal-inner {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+}
+
+#RR-photo-modal-inner .icons {
+  font-size: 40px;
+  z-index: 4;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#RR-photo-modal img {
+  width: auto;
+  height: auto;
+} */
+
+#RR-photo-modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+#RR-photo-modal .background {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  position: fixed;
+}
+
+#RR-photo-modal-inner {
+  width: 60%;
+  height: 60%;
+  margin: 10% 20%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+#RR-photo-modal-inner img {
+  z-index: 3;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#RR-photo-modal-inner .icons {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  font-size: 40px;
+  z-index: 3;
 }
 
 /* RR - Add a review form */
 #RR-form-ctn {
   display: flex;
   justify-content: center;
-  padding: 20px;
+  width: 100%;
 }
 
 #RR-form-bg {
@@ -810,30 +1112,32 @@ input{
   position: fixed;
   z-index: 2;
   background-color: var(--black-green);
-  opacity: 0.95;
-  height: 100%;
-  width: 100%;
+  background-image: url('./assets/senegal-leather-bg.jpg');background-size: 2000px 2000px;
+  opacity: .95;
   display: flex;
   justify-content: center;
 }
 
+#RR-form-bg.active {
+  height: 100%;
+  width: 100%;
+}
 
-
-#RR-form {
+#RR-form-inner-ctn {
   position: fixed;
   z-index: 3;
   top: 20%;
   display: flex;
   width: auto;
-  height: 60%;
+  height: 550px;
   background: transparent;
 
 }
 
 #RR-form-menu{
   width: 240px;
+  padding-top: 260px;
   padding-right: 20px;
-  padding-top: 280px;
   border-top-left-radius: 40px;
   border-bottom-left-radius: 40px;
   background-image: url('./assets/pencileandletter.jpg');
@@ -873,7 +1177,7 @@ input{
   background-color: var(--black-green) !important;
 }
 
-#RR-form form {
+#RR-form-inner-ctn form {
   /* maybe use part of image as background for texture */
   overflow-y: scroll;
   background: #edf1f7;
@@ -882,7 +1186,7 @@ input{
   background-size: 350px 350px;
 }
 
-#RR-form div {
+#RR-form-inner-ctn div {
   background-color: transparent;
 }
 
@@ -916,6 +1220,10 @@ input{
   display: flex;
 }
 
+.RR-form-user-info input {
+  width: 200px;
+}
+
 /* RR - Product Characteristics Breakdown */
 
 #RR-summary {
@@ -923,7 +1231,7 @@ input{
   text-align: left;
 }
 
-#RR-form .RR-prod-char-rating {
+#RR-form-inner-ctn .RR-prod-char-rating {
   display: flex;
   width: 700px;
   border: 1px solid grey;
@@ -978,8 +1286,7 @@ input{
   font-size: 12px;
 }
 
-.RR-form-fields :focus,
-.RR-form-fields :focus {
+.RR-form-fields.textbox :focus {
   outline: none !important;
   border-color: var(--mid-green);
   box-shadow: 0 0 10px var(--black-green);

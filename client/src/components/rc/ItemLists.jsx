@@ -4,14 +4,20 @@ import OutfitList from './OutfitList.jsx';
 
 /* contains related items and outfit lists */
 
-const ItemLists = ({ productId }) => {
+const ItemLists = ({ productId, setProduct }) => {
   return(
-    <div className="RC_item_lists_container">
-      <div className="RC_card_container">
-        <RelatedList id={productId}/>
+    <div
+    className="RC_item_lists_container">
+      <div
+      className="RC_card_container">
+        <RelatedList
+        id={productId}
+        setProduct={setProduct}/>
       </div>
-      <div className="RC_outfit_container">
-        <OutfitList id={productId}/>
+      <div
+      className="RC_outfit_container">
+        <OutfitList
+        id={productId}/>
       </div>
     </div>
   )

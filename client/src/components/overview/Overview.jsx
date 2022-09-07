@@ -13,6 +13,8 @@ import Modal from './modal.jsx';
 const Overview = () => {
   let {product, curStyle, curSku, expand} = useOV()
 
+  console.log('overview:', productId)
+
   return (
     <div id='OVcontainer'>
       <Modal expand={expand} />
