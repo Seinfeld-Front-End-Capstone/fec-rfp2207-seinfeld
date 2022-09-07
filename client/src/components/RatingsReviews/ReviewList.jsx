@@ -1,10 +1,10 @@
 import React from 'react';
 import ReviewEntry from './ReviewEntry.jsx';
 
-const ReviewList = (props) => {
+const ReviewList = ({ reviews, setShowPhotoModal}) => {
   return (
     <div id="RR-reviews-ctn">
-      {props.reviews.map(review => <ReviewEntry key={review.review_id} review={review}/>)}
+      {reviews.map(review => <ReviewEntry key={review.review_id} review={review} setShowPhotoModal={setShowPhotoModal}/>)}
     </div>
   )
 }

@@ -22,7 +22,7 @@ const Question = ({q}) => {
   return (
     <div className='qa-question-container'>
       <div className='qa-question-body'>
-       <strong><span id='qa-Q'>Q:</span> {q.question_body}</strong>
+       <strong><span id='qa-Q'>Q:</span> <span id='qa-space-body'>{q.question_body}</span></strong>
        <span id='qa-question-helpful'>
          Helpful? <span className='qa-pointer' className='qa-yes' onClick={handleClick}>Yes </span>
          ({helpfulness}) <span className='qa-line'>|</span> <span className='qa-pointer' id='qa-answer-line' onClick={() => setModal(true)}>Add Answer</span>

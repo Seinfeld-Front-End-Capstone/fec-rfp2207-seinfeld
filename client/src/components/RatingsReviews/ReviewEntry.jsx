@@ -1,14 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Stars from '../helpers/Stars.jsx';
 import moment from 'moment';
 import Photos from './Photos.jsx';
 import { FaCheckCircle } from 'react-icons/fa';
+import please from '../../request.js';
 
-const ReviewEntry = ({ review, recommended }) => {
+const ReviewEntry = ({ review, recommended, setShowPhotoModal }) => {
   let { review_id, body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
 
-const formattedDate = moment(date).format('ll');
-  let newBody = body.slice(0, 25);
+  const [voted, setVoted] = useState(false);
+
+  const formattedDate = moment(date).format('ll');
+
+  const voteYes = (e) => {
+    please.markReviewAsHelpful(review_id)
+    .then(() => {
+      setVoted(true);
+      e.target.classList.add('bold');
+    })
+    .catch(err => console.log(err));
+  }
+
   return (
     <div className="RR-review-ctn">
       <div className="RR-review-header">
@@ -20,17 +32,13 @@ const formattedDate = moment(date).format('ll');
       </div>
       <h3>{summary}</h3>
       <p className="RR-review-body">
-        {body.length > 25
+        {body.length > 250
         ?
         <>
-        {newBody}...
+        {body.slice(0, 250)}...
         <span
         className="underline"
         onClick={(e) => {
-          console.log('new body', newBody);
-          console.log('body', body)
-          // e.currentTarget.classList.add('hide');
-          // e.currentTarget.previousElementSibling.innerHTML = body;
           e.currentTarget.parentElement.innerHTML = body;
           }}>show more</span>
         </>
@@ -39,9 +47,12 @@ const formattedDate = moment(date).format('ll');
       </p>
       {recommend ? <p><FaCheckCircle /> I recommend this product</p> : null}
       {response ? <p className="RR-seller-response">Response from seller: {response}</p> : null}
-      <p>Helpful? <span>Yes</span> ({helpfulness})</p>
+      <p>Helpful? <span
+      className='underline'
+      onClick={voted ? null : voteYes}
+      >Yes ({helpfulness})</span></p>
       <div id="RR-photos-ctn">
-        {photos && photos.map(photo => <Photos key={photo.id} photo={photo}/>)}
+        {photos && photos.map(photo => <Photos key={photo.id} photo={photo} setShowPhotoModal={setShowPhotoModal}/>)}
       </div>
     </div>
   )

@@ -8,6 +8,7 @@ const Answer = ({answer, index}) => {
   const [answerCount, setAnswerCount] = useState(answer.helpfulness)
   const [isReported, setReported] = useState('Report');
   const [photos, setPhotos] = useState('');
+  const [imageModal, setImageModal] = useState(false);
 
   const formattedDate = moment(answer.date).format('ll');
 
@@ -54,7 +55,7 @@ const Answer = ({answer, index}) => {
     <div className='qa-answer-body'>
       <span id='qa-body'>{answer.body}</span>
         <div id='qa-img-container'>
-          {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
+        {answer.photos.map((img, i) => (<img className='qa-answer-img' src={img.url} key={i} alt="picture"/>))}
         </div>
       <div id='qa-answer-name'>
         by {answer['answerer_name']}, {formattedDate}
