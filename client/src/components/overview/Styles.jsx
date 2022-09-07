@@ -1,8 +1,10 @@
 import React from 'react';
 import {useOV} from './OVContext.jsx'
+import chroma from 'chroma-js'
+import {FaCheckCircle} from 'react-icons/fa'
 
 const Styles = () => {
- let {styles, setCurStyle, setDisplayIndex, curSku, setCurSku, quantity, setQuantity} = useOV()
+ let {styles, curStyle, setCurStyle, setDisplayIndex, curSku, setCurSku, quantity, setQuantity} = useOV()
 
   const onClick = (e) => {
     const cur = styles[e.target.dataset.key]
@@ -13,20 +15,29 @@ const Styles = () => {
       const count = values[i].quantity
       setCurSku({value: i, label: values[i].size, qty: values[i].quantity, number: keys[i]})
       quantity.value > count? setQuantity({value:count, label: count}) :null;
+
     }
     setCurStyle(cur)
     setDisplayIndex(0)
   }
 
-  //find a way to set half circles
-
   return (
     <div id='OVStyleBox'>
       {styles.map((style, index) => {
-        return <div className='OVstyles' title={style.name} onClick={onClick} data-key={index} key={style.style_id}>{index}</div>
+
+        let url = style.photos[0].thumbnail_url ?
+        style.photos[0].thumbnail_url:
+        `https://img.ltwebstatic.com/images3_pi/2021/09/15/163167654356847e12d337794dac92991b367b6323_thumbnail_600x.webp`
+
+        return (
+        <div id='OVStyleContainer'key={style.style_id} >
+          <div className='OVstyles' style={{backgroundImage: `url(${url})`}} title={style.name} onClick={onClick} data-key={index}></div>
+          {style.name === curStyle.name ? <FaCheckCircle id='OVCheckMark'/> : null}
+        </div>)
       })}
     </div>
   )
 }
 
 export default Styles
+
