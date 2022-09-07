@@ -16,10 +16,6 @@ const App = () => {
     .catch((err) => console.log(err))
   },[])
 
-  const change() {
-    console.log("this is a change!")
-  }
-
   return (
     product ?
     <div>
