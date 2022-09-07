@@ -7,7 +7,6 @@ const Thumbnail = ({expand}) => {
 
   const onClick = (e) => {
     let imageIndex = e.target.dataset.key
-    console.log({imageIndex})
     setDisplayIndex(Number(imageIndex))
   }
 
