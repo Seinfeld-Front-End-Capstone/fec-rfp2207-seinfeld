@@ -10,7 +10,7 @@ import please from '../.././request.js'
 import {useOV} from './OVContext.jsx'
 
 const Overview = () => {
-  let {product, curStyle, curSku} = useOV()
+  let {product, curStyle, curSku} = useOV();
 
   return (
     <div id='OVcontainer'>

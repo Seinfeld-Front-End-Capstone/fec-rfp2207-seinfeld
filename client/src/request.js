@@ -176,4 +176,15 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
+
+  //API INTERACTIONS
+
+  submitClickData: () => {
+    return axios({
+      url: '/interactions',
+      method: 'post',
+      baseURL: basePath,
+      headers:{Authorization: token}
+    })
+  }
 }
