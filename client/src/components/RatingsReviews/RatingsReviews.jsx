@@ -16,8 +16,6 @@ const RatingsReviews = ({ productId, productName }) => {
   const [maxResults, setMaxResults] = useState(2);
   const [formMode, setFormMode] = useState(false);
   const [metaData, setMetaData] = useState(null)
-  const[moreBtnActive, setMoreBtnActive] = useState(false);
-  const[addBtnActive, setAddBtnActive] = useState(false);
   const [showPhotoModal, setShowPhotoModal] = useState('');
 
   useEffect(() => {
@@ -49,11 +47,10 @@ const RatingsReviews = ({ productId, productName }) => {
   }
 
   const toggleForm = () => {
-    console.log('open form')
     setFormMode(!formMode);
   }
 
-  const addReviewButton = <button onClick={toggleForm} onMouseEnter={() => setAddBtnActive(true)} onMouseLeave={() => setAddBtnActive(false)} className={addBtnActive ? 'active' : ''}>ADD A REVIEW +</button>;
+  const addReviewButton = <button>ADD A REVIEW +</button>;
 
   const handleSort = (e) => {
     setSortParam(e.target.value)
@@ -62,8 +59,9 @@ const RatingsReviews = ({ productId, productName }) => {
   return (
     <>
       <div id="RR-big-ctn">
-        {reviews.length === 0 ?
-        <div>
+        {reviews.length === 0
+        ?
+        <div id="RR-first-review">
           <p>Be the first to review this product!</p>
           {addReviewButton}
         </div>
@@ -80,14 +78,21 @@ const RatingsReviews = ({ productId, productName }) => {
             </h3>
             <ReviewList reviews={reviews} setShowPhotoModal={setShowPhotoModal}/>
             <div id="RR-more-menu">
-              {reviews.length === maxResults && <button onClick={showMoreReview} onMouseEnter={() => setMoreBtnActive(true)} onMouseLeave={() => setMoreBtnActive(false)} className={moreBtnActive ? 'active' : ''}>MORE REVIEWS</button>}
+              {reviews.length === maxResults &&
+              <button
+                onClick={showMoreReview}>MORE REVIEWS
+              </button>}
               {addReviewButton}
             </div>
           </div>
         </div>}
       </div>
       <div id="RR-form-bg" className={formMode ? 'active' : ''}></div>
-      {formMode && <Form productName={productName} toggleForm={toggleForm} productId={productId} refreshReviews={() => refreshReviews()}/>}
+      {formMode && <Form 
+        productName={productName} 
+        toggleForm={toggleForm} 
+        productId={productId} 
+        refreshReviews={() => refreshReviews()}/>}
       {showPhotoModal &&
       <div id="RR-photo-modal">
         <div className="background"></div>
