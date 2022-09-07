@@ -1,37 +1,34 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import please from '../.././request.js';
+import widget from './../helpers/widget.js';
 
-const AnswerModal = ({q, modal, onClose}) => {
+const AnswerModal = ({ q, modal, onClose }) => {
   const [newAnswer, setNewAnswer] = useState('');
   const [name, setName] = useState('')
   const [email, setEmail] = useState('');
-  const [image, setImage] = useState([]);
+  const [images, setImages] = useState([]);
+  // const [removeImage, setRemoveImage] = useState(null);
   const asterisk = <span id='qa-asterisk'>*</span>
 
-  // const uploadPhotos = (e) => {
-  //   e.preventDefault()
-  //   axios.post(`qa/questions/${q.question_id}/answers`, {
-  //     body: newAnswer,
-  //     name: name,
-  //     email: email,
-  //     photos: []
-  //   })
-  //   .then((res) => {
-  //     console.log('success')
-  //   })
-  //   .catch((err) => {
-  //     console.log('error : ', err)
-  //   })
-  // }
+  const handleWidget = (e) => {
+    e.preventDefault()
+    const myWidget = widget((error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log('Done! Here is the image info: ', result.info);
+        setImages((prevImages) => [...prevImages, result.info.url])
+      }
+    });
+    myWidget.open()
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    please.addAnswer(q.question_id, {body: newAnswer, name: name, email: email, photos: image})
-    .then((res) => {
-      console.log('success : ', res.status)
-      onClose(false)
-    })
-    .catch(() => console.log(err))
+    please.addAnswer(q.question_id, { body: newAnswer, name: name, email: email, photos: images })
+      .then((res) => {
+        // console.log('success : ', res.status)
+        onClose(false)
+      })
+      .catch((err) => console.log(err))
   }
 
   if (modal) {
@@ -61,14 +58,15 @@ const AnswerModal = ({q, modal, onClose}) => {
             </div>
 
             <div>
-              Upload Photos:
-              {/* <input type='file' onChange={(e) => setImage(e.target.files[0])}></input>
-              { image &&
-                <img alt='not found' width={'200px'} src={URL.createObjectURL(image)}/>
-              } */}
+              <button onClick={(e) => handleWidget(e)}>Upload Photos</button>
+              <div className='qa-modal-img-container'>
+                {images.map((image) => <img className='qa-img-preview' src={image.url} /> )}
+              </div>
             </div>
-              <button className='qa-modal-submit'>Submit</button>
+
+            <button className='qa-modal-submit'>Submit</button>
           </form>
+
         </div>
       </div>
     )
