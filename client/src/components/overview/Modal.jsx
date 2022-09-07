@@ -7,7 +7,7 @@ import ThumbnailDisplay from './ThumbnailDisplay.jsx'
 
 
 const Modal = ({expand}) => {
-  const {setExpand} = useOV()
+  const { setExpand} = useOV()
   if (!expand) {
     return null
   }
@@ -18,10 +18,10 @@ const Modal = ({expand}) => {
       <div id='OVModal'>
         <ImageDisplay>
           <CgMinimize  className='OVImageExpand' onClick={() => setExpand(false)}/>
-          <div id='OVExpandThumbNails'>
-            <ThumbnailDisplay expand={true}/>
-          </div>
         </ImageDisplay>
+      </div>
+      <div id='OVExpandThumbNails'>
+        <ThumbnailDisplay expand={true}/>
       </div>
     </>
   )

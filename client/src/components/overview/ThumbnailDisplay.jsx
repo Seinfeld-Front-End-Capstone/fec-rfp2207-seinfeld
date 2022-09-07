@@ -18,7 +18,7 @@ const Thumbnail = ({expand}) => {
         if (index === displayIndex) {
           styles.border = `5px solid var(--light)`
           styles.transform = `scale(1.1)`
-          circleStyle.backgroundColor = `var(--light)`
+          circleStyle.backgroundColor = `var(--mid-green)`
         }
 
         return  expand ?

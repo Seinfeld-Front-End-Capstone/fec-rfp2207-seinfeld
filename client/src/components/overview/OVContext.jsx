@@ -29,7 +29,7 @@ export function OVProvider({productId, children}) {
       setCurStyle(data[1].data.results[0])
     })
     .catch((err) => console.log(err))
-  },[])
+  },[productId])
 
 
   const values = {product, setProduct, styles, setStyles, skuIndex, setSkuIndex, displayIndex, setDisplayIndex, quantity, setQuantity, starsObj, setStarsObj, curStyle, setCurStyle, curSku, setCurSku, expand, setExpand}
