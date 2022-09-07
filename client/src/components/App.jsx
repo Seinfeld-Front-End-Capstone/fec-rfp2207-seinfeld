@@ -16,6 +16,21 @@ const App = () => {
     .catch((err) => console.log(err))
   },[])
 
+  var clicks = {
+    widget: 'default',
+    submit: function(e) {
+      let clickData = {
+        element: e.target.id,
+        widget: this.name,
+        time: new Date()
+      }
+      console.log('submitting', clickData)
+      please.submitClickData(clickData)
+      .then(() => console.log('click recorded'))
+      .catch(err => console.log(err));
+    }
+  }
+
   return (
     product ?
     <div>
@@ -25,7 +40,10 @@ const App = () => {
       </OVProvider>
       <ItemLists productId={product.id}/>
       <QuestionsMaster productId={65632}/>
-      <RatingsReviews productId={product.id} productName={product.name}/>
+      <RatingsReviews
+        productId={product.id}
+        productName={product.name}
+        submitClickData={clicks.submit.bind({name: 'Ratings and Reviews'})}/>
     </div>
     :
     <div>

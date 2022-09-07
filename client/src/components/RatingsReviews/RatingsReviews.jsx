@@ -9,7 +9,7 @@ import RatingBreakdown from './RatingBreakdown.jsx'
 //lift axios request for reviews/meta out of Form and into this component
 
 
-const RatingsReviews = ({ productId, productName }) => {
+const RatingsReviews = ({ productId, productName, submitClickData }) => {
 
   const [reviews, setReviews] = useState([]);
   const [sortParam, setSortParam] = useState('relevant')
@@ -43,15 +43,17 @@ const RatingsReviews = ({ productId, productName }) => {
   }
 
   const showMoreReview = (e) => {
-    let clickData = {
-      "element": e.target.id,
-      "widget": "Ratings and Review",
-      "time": new Date()
-    }
-    console.log('submitting', clickData)
-    please.submitClickData(clickData)
-    .then(() => console.log('click recorded'))
-    .catch(err => console.log(err));
+    // let clickData = {
+    //   "element": JSON.stringify(e.target),
+    //   "widget": "Ratings and Review",
+    //   "time": new Date()
+    // }
+    // console.log('submitting', clickData)
+    // please.submitClickData(clickData)
+    // .then(() => console.log('click recorded'))
+    // .catch(err => console.log(err));
+    // debugger;
+    submitClickData(e);
     setMaxResults(maxResults + 2);
   }
 
