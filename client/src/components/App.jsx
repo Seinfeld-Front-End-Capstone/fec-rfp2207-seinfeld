@@ -16,6 +16,10 @@ const App = () => {
     .catch((err) => console.log(err))
   },[])
 
+  const change() {
+    console.log("this is a change!")
+  }
+
   return (
     product ?
     <div>
@@ -23,7 +27,7 @@ const App = () => {
       <OVProvider productId={product.id}>
         <Overview />
       </OVProvider>
-      <ItemLists productId={product.id}/>
+      <ItemLists productId={product.id} setProduct={setProduct}/>
       <QuestionsMaster productId={65632}/>
       <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
