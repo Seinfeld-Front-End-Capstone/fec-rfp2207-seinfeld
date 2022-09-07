@@ -56,6 +56,14 @@ p {
   display: none !important;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 /* OVERVIEW */
 
 #OVcontainer {
@@ -739,6 +747,7 @@ p {
 #RR-ratings-reviews-ctn {
   display: flex;
   max-width: var(--max-width);
+  width: 100%;
 }
 
 /* Ratings breakdown */
@@ -851,17 +860,22 @@ p {
   width: 70%;
 }
 #RR-reviews-ctn {
-  width: 90%;
+  width: auto;
   overflow-y: scroll;
   max-height: 600px;
 }
 
 .RR-review-ctn {
+  width: auto;
   background-color: hsl(0, 0%, 95%);
   color:  hsl(0, 0%, 40%);
   margin-bottom: 6px;
   border-radius: 4px;
   padding: 10px;
+}
+
+.RR-review-body {
+  width: 100%;
 }
 
 .RR-review-header {
