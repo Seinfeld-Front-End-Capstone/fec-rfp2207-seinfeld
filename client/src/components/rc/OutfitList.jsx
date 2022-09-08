@@ -13,7 +13,7 @@ const OutfitList = ({ id }) => {
   const addOutfit = outfit.map((item) => {
     return <OutfitCard key={item} itemNo={item} productID={id}
     deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay}
-    curOutfit={outfit} curDisplay={outfitDisplay}/>
+    curOutfit={outfit} curDisplay={outfitDisplay} />
   });
 
   /* handles the + button being clicked */
@@ -33,7 +33,7 @@ const OutfitList = ({ id }) => {
     var next = outfitDisplay[2] + 1;
     const checkKeyGaps = (targetKey) => {
       if (outfit.indexOf(targetKey) !== -1) {
-        setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDispl[0]));
+        setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDisplay[0]));
         setOutfitDisplay(prevDisplay => [...prevDisplay, next]);
       } else if (outfit.indexOf(targetKey) === -1) {
         console.log('Error, there is no item that way')
