@@ -1,14 +1,14 @@
 import React from 'react';
-import Images from './images.jsx'
-import Styles from './styles.jsx'
-import Size from './size.jsx'
-import Quantity from './quantity.jsx'
-import Price from './price.jsx'
+import Images from './Images.jsx'
+import Styles from './Styles.jsx'
+import Size from './Size.jsx'
+import Quantity from './Quantity.jsx'
+import Price from './Price.jsx'
 import AddToBag from './AddToBag.jsx'
 import Rating from './Rating.jsx'
 import please from '../.././request.js'
 import {useOV} from './OVContext.jsx'
-import Modal from './modal.jsx';
+import Modal from './Modal.jsx';
 
 const Overview = () => {
   let {product, curStyle, curSku, expand} = useOV()
