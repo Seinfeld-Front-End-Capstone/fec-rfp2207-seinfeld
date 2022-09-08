@@ -24,7 +24,7 @@ const QuestionsMaster = ({ productName, productId }) => {
         setInitial(sortedQuestions)
         // console.log('sorted : ', sorted)
       })
-  }, [])
+  }, [productId])
 
 
   // console.log('question : ', question)
@@ -64,11 +64,20 @@ const QuestionsMaster = ({ productName, productId }) => {
         )}
         <QuestionList questions={question} length={length} productName={productName} />
         <div className='qa-button-container'>
-          {length < question.length &&
+          {/* { question.length <= 2 ?
+
+            :
+
+          } */}
+          {length < question.length ?
             <button className='qa-question-button' onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
+            :
+            <button className='qa-question-button' onClick={() => setLength(4)}>Collapse Questions</button>
           }
           <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
         </div>
+
+
         <QuestionModal modal={modal} productName={productName} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
       </div>
     </div>
