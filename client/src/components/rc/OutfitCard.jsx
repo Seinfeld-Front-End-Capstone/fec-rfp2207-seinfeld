@@ -1,5 +1,5 @@
 import React, {useState, useEffect, useCallback} from 'react';
-import request from "../../request.js";
+import Request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 
