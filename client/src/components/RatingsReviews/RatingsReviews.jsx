@@ -52,7 +52,14 @@ const RatingsReviews = ({ productId, productName }) => {
     setFormMode(!formMode);
   }
 
-  const addReviewButton = <button onClick={toggleForm}>ADD A REVIEW +</button>;
+  const addReviewButton = <button
+    className="RR-add-review-btn"
+    // id="RR-abc"
+    onClick={(e) => {
+      submitRRClick(e);
+      toggleForm();
+    }
+  }>ADD A REVIEW +</button>;
 
   const handleSort = (e) => {
     setSortParam(e.target.value)

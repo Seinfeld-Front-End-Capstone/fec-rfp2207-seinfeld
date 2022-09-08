@@ -1,12 +1,13 @@
 import please from '../../request.js';
 
 //ALL OF YOUR INTERACTIVE ELEMENTS SHOULD HAVE A UNIQUE ID
+//what if it's a repeated element that should not have a unique id? use className? Either get its class or get the id of the nearest parent and this type? OR get the innerHTML
 
 const originalClick = {
   widget: 'none',
   submit: function(e) {
     let clickData = {
-      element: e.target.id,
+      element: e.target.outerHTML,
       widget: this.widget,
       time: new Date()
     }
