@@ -81,18 +81,16 @@ p {
   bottom: 0;
   background-color: rgba(0, 0, 0, .7);
   z-index: 1000;
-  transition: opacity 2s, visibility 2s;
 }
 
 #OVModal {
   height: 80%;
   width: 80%;
   position: fixed;
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 1000;
-  transition: opacity 2s, visibility 2s;
 }
 
 #OVExpandThumbNails{
@@ -211,15 +209,18 @@ p {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  background-color: var(--mid-green);
+  background-color: var(--grey);
 }
 
 #OVimagedisplay {
   width: 100%;
   height: 100%;
+  position: absolute;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .7s
 }
 
 .OVImageExpand {
@@ -283,6 +284,7 @@ p {
   transition: transform .2s, left 1s ease-out;
   left: 0;
   position: relative;
+  opacity: 0.4;
 }
 
 .OVthumbnailImage:Hover {
