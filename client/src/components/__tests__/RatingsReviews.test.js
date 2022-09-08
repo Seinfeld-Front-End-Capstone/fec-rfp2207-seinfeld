@@ -7,7 +7,10 @@ import RatingsReviews from '../RatingsReviews/RatingsReviews.jsx';
 
 
 const server = setupServer(
-  rest.get('/add the url here', (req, res, ctx) => {
+  rest.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews', (req, res, ctx) => {
+    return res(ctx.json({mockedData: 'insert data here'}))
+  }),
+  rest.get('https://app-hrsei-api.herokuapp.com/api/fec2/rfp/reviews/meta', (req, res, ctx) => {
     return res(ctx.json({mockedData: 'insert data here'}))
   })
 )
@@ -32,8 +35,15 @@ describe('Draft test', () => {
     expect(button).toBeTruthy;
   })
 
-  it('should open up a form', () => {
-    render(<RatingsReviews productId={65631}/>);
-  })
+  // it('should open up a form', () => {
+  //   render(<RatingsReviews productId={65631}/>);
+  // })
+
+  // it('should give 3 options to sort', () => {
+  //   render(<RatingsReviews productId={65631}/>);
+  //   let sortDropdown = screen.getByText('Relevant');
+  //   console.log(sortDropdown);
+  //   userEvent.click(sortDropdown);
+  // })
 })
 
