@@ -41,5 +41,8 @@ module.exports = {
       template: path.join(__dirname, "client/src", "index.html"),
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx']
+  }
 }
 
