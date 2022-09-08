@@ -25,7 +25,7 @@
   --star-background: var(--light);
 
   /* global dimensions */
-  --max-width: 1000px;
+  --max-width: 1200px;
 }
 
 .Stars {
@@ -62,16 +62,58 @@ p {
   display: none !important;
 }
 
+.underline {
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: bold;
+}
+
 /* OVERVIEW */
+
+#OVModalOverLay{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 1000;
+}
+
+#OVModal{
+  height: 80%;
+  width: 80%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
+#OVExpandThumbNails{
+  position: fixed;
+  bottom : 4%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 5px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  font-size: 45px;
+  z-index: 1000;
+  cursor: pointer;
+}
 
 #OVcontainer {
   display: flex;
   justify-content: center;
   height: 1000px;
+  width: 100%;
 }
 
 #Overview {
-  height: 100%;
+  height: 1000;
   width: var(--max-width);
   display: grid;
   grid-template-rows: 3fr 1fr;
@@ -79,10 +121,16 @@ p {
 }
 
 #OVImageNInfo {
+  height: 800px;
   height: 100%;
   display:grid;
   grid-template-columns: 3fr 1fr;
   grid-column-gap: 10px;
+}
+
+#OVImages {
+  display: grid;
+  grid-template-rows: 4fr 1fr;
 }
 
 #OVInfo {
@@ -98,15 +146,32 @@ p {
   padding: 10px;
 }
 
+#OVStyleContainer {
+  position: relative;
+}
+
 .OVstyles {
   border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  border: 3px solid #84a98c;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#OVCheckMark {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  height: 20px;
+  width: 20px;
+  color:#354f52;
+  z-index: 1;
+  border-radius: 50%;
   background-color: white;
-  height: 40px;
-  width: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 3px solid #000000;
+  /* border: 2px solid #354f52; */
+
 }
 
 #OVsizeNQty {
@@ -130,40 +195,79 @@ p {
   margin: 10px 0px;
 }
 
-#OVimage {
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-rows: 3fr 1fr;
-}
-
 #OVimageDisplayBox {
-  /* display:flex;
-  justify-content: center;
-  align-content: center; */
   width: 100%;
-  height: 100%;
+  height: 99%;
   position: relative;
-  background-color: var(--black);
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: var(--mid-green);
 }
 
 #OVimagedisplay {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-#OVThumbnailSelection {
-  display: flex;
+.OVImageExpand {
+  position: absolute;
+  top: 10%;
+  transform: translate(0, -50%);
+  right: 5%;
+  font-size: 45px;
+  color: #fff;
+  z-index: 2;
+  cursor: pointer;
 }
 
-#OVthumdnailBox {
-  width:16.50%;
-  max-height: 100%;
+#OVImageSelector {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  width: 100%;
+}
+
+#OVThumbnailDisplayBox{
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  border-radius: 10px;
+  background-color: var(--mid-green);
+}
+
+#OVThumbnailSwiper {
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 15px;
+  overflow: auto;
+  height: 100%;
+  align-items: center;
+  padding: 10px 10px 0px 10px;
+}
+
+.OVthumbnailImage {
+  border-radius: 10%;
+  width: 100px;
+  height: 100px;
+  display: flex;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+.OVThumbnailCircle {
+  border-radius: 50%;
+  background-color: var(--light);
+  height: 30px;
+  width: 30px;
+  border: 3px solid var(--black-green);
 }
 
 .OVthumbnail {
@@ -179,10 +283,11 @@ p {
 
 .OVleftArrow {
   height: 100%;
+  width: 100px;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  left: 32px;
+  left: 0;
   font-size: 45px;
   color: var(--white);
   z-index: 1;
@@ -191,16 +296,16 @@ p {
 
 .OVrightArrow {
   height: 100%;
+  width: 100px;
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  right: 32px;
+  right: 0;
   font-size: 45px;
   color: var(--white);
   z-index: 1;
   cursor: pointer;
 }
-
 
 
 /* RELATED PRODUCTS */
@@ -696,7 +801,7 @@ p {
 
 .qa-modal-submit {
   margin: 0 auto;
-  width: 20%;
+  width: 15%;
 }
 
 #qa-Q {
@@ -751,6 +856,16 @@ p {
   color: white;
 }
 
+.qa-img-preview {
+  height: 100px;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.qa-modal-img-container {
+  margin: 10px 0;
+}
+
 /* RATINGS AND REVIEWS */
 
 /* -----------------RATINGS AND REVIEWS -----------------*/
@@ -758,9 +873,18 @@ p {
   display: flex;
   justify-content: center;
 }
+
+#RR-first-review {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 30px;
+}
+
 #RR-ratings-reviews-ctn {
   display: flex;
   max-width: var(--max-width);
+  width: 100%;
 }
 
 /* Ratings breakdown */
@@ -873,17 +997,22 @@ p {
   width: 70%;
 }
 #RR-reviews-ctn {
-  width: 90%;
+  width: auto;
   overflow-y: scroll;
   max-height: 600px;
 }
 
 .RR-review-ctn {
+  width: auto;
   background-color: hsl(0, 0%, 95%);
   color:  hsl(0, 0%, 40%);
   margin-bottom: 6px;
   border-radius: 4px;
   padding: 10px;
+}
+
+.RR-review-body {
+  width: 100%;
 }
 
 .RR-review-header {
@@ -903,14 +1032,14 @@ p {
   margin: 20px 20px 20px 0;
 }
 
-#RR-more-menu button {
+#RR-big-ctn button {
   height: 40px;
   border-radius: 2px 2px;
   margin-right: 20px;
   border: 2px solid hsl(0, 0%, 70%);
 }
 
-#RR-more-menu button.active {
+#RR-big-ctn button:hover {
   box-shadow: 0 0 4px var(--black-green);
 }
 
@@ -922,6 +1051,86 @@ p {
   width: auto;
   height: 100px;
   display: flex;
+}
+
+/* #RR-photo-modal .background,
+#RR-photo-modal {
+  z-index: 2;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#RR-photo-modal .background {
+  background-color: black;
+  opacity: 0.9;
+
+}
+
+#RR-photo-modal-inner {
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 3;
+}
+
+#RR-photo-modal-inner .icons {
+  font-size: 40px;
+  z-index: 4;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+#RR-photo-modal img {
+  width: auto;
+  height: auto;
+} */
+
+#RR-photo-modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+}
+
+#RR-photo-modal .background {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  position: fixed;
+}
+
+#RR-photo-modal-inner {
+  width: 60%;
+  height: 60%;
+  margin: 10% 20%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+}
+#RR-photo-modal-inner img {
+  z-index: 3;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#RR-photo-modal-inner .icons {
+  position: fixed;
+  top: 10%;
+  right: 10%;
+  font-size: 40px;
+  z-index: 3;
 }
 
 /* RR - Add a review form */
