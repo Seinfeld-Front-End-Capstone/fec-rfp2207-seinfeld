@@ -15,7 +15,7 @@ const RelatedList = ({ id, setProduct }) => {
       .then((data) => {
         setList(data.data);
         list.map((item) => {
-          setKey(prevKey => prevKey + 100);
+          setKey(prevKey => [...prevKey, item]);
         });
       })
   }, []);
@@ -26,7 +26,7 @@ const RelatedList = ({ id, setProduct }) => {
 related items */
   var createCard = list.map((productID) => {
     return <RelatedItemCard
-    key={key}
+    key={productID}
     pID={productID}
     ogID={id}
     setOVProduct={setProduct}/>
