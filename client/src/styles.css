@@ -347,13 +347,8 @@ p {
   position: absolute;
   top: 50%;
   right: 0;
-<<<<<<< HEAD
   transform: translate(0, -50%);
   color: rgba(0, 0, 0, .5);
-=======
-  font-size: 45px;
-  color: var(--white);
->>>>>>> main
   z-index: 1;
   align-items: center;
   justify-content: center;
