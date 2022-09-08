@@ -20,6 +20,9 @@ const RelatedList = ({ id, setProduct }) => {
       })
   }, []);
 
+  console.log('overview id:', id);
+  console.log('related list:', list);
+
 
 
   /* Creates a related item card for each element in the list of
