@@ -1,8 +1,20 @@
 import React from 'react';
 import { setupWorker, rest } from 'msw';
 import { setupServer } from 'msw/node';
-import {render, fireEvent, screen} from '@testing-library/react'
+import {render, fireEvent, screen} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import RatingsReviews from '../RatingsReviews/RatingsReviews.jsx';
+
+
+const server = setupServer(
+  rest.get('/add the url here', (req, res, ctx) => {
+    return res(ctx.json({mockedData: 'insert data here'}))
+  })
+)
+
+beforeAll(() => server.listen());
+afterEach(() => server.resetHandlers());
+afterAll(() => server.close());
 
 describe('Draft test', () => {
   it('should always have an "add a review" button', () => {
