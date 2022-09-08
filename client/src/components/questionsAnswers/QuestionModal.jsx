@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import please from '../.././request.js';
 
-const QuestionModal = ({modal, onClose, productId, setInitial, setQuestion}) => {
+const QuestionModal = ({modal, onClose, productName, productId, setInitial, setQuestion}) => {
   const [userQuestion, setUserQuestion] = useState('');
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ const QuestionModal = ({modal, onClose, productId, setInitial, setQuestion}) => 
       <div className='qa-question-modal'>
         <p onClick={onClose} className='qa-X'>X</p>
           <p>Ask Your Question!</p>
-          <p>About the [product name] Name</p>
+          <p>About the {productName}</p>
 
           <form onSubmit={handleSubmit}>
             <div>
