@@ -6,12 +6,15 @@ const AddToBag = () => {
   let {quantity, curSku, setCurSku} = useOV();
 
   const addToBag = () => {
-    curSku.value < 0 ?
-    setCurSku({value:-2, label: 'Select Size', hidden: true}):
-    console.log(`you are adding ${curSku.number}, size ${curSku.label} ${quantity.value} times`)
-    // for (let i = 1; i <= quantity; i++) {
-    //   please.addToBag({sku_id:Object.keys(styles[styleIndex].skus)[skuIndex] })
-    // }
+    if (curSku.value < 0) {
+      setCurSku({value:-2, label: 'Select Size', hidden: true})
+    } else {
+       console.log('addedTobag', quantity)
+      for (let i = 1; i <= quantity.value; i++) {
+        console.log(curSku.number)
+        // please.addToBag({sku_id:curSku.number})
+      }
+    }
   }
 
   return (

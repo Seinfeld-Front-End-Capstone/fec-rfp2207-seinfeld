@@ -66,7 +66,8 @@ p {
 
 /* OVERVIEW */
 
-#OVModalOverLay{
+
+#OVModalOverLay {
   position: fixed;
   top: 0;
   left: 0;
@@ -74,9 +75,10 @@ p {
   bottom: 0;
   background-color: rgba(0, 0, 0, .7);
   z-index: 1000;
+  transition: opacity 2s, visibility 2s;
 }
 
-#OVModal{
+#OVModal {
   height: 80%;
   width: 80%;
   position: fixed;
@@ -84,11 +86,12 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
+  transition: opacity 2s, visibility 2s;
 }
 
 #OVExpandThumbNails{
   position: fixed;
-  bottom : 4%;
+  bottom : 2%;
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 5px;
@@ -125,6 +128,8 @@ p {
 #OVImages {
   display: grid;
   grid-template-rows: 4fr 1fr;
+  align-items: center;
+  justify-items: center;
 }
 
 #OVInfo {
@@ -148,10 +153,15 @@ p {
   border-radius: 50%;
   height: 60px;
   width: 60px;
-  border: 3px solid #84a98c;
+  border: 3px solid var(--light-green);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transition: transform .2s;
+}
+
+.OVstyles:Hover {
+  transform: scale(1.1);
 }
 
 #OVCheckMark {
@@ -207,13 +217,19 @@ p {
 
 .OVImageExpand {
   position: absolute;
-  top: 10%;
-  transform: translate(0, -50%);
+  top: 5%;
+  transform: translate(50%, -50%);
   right: 5%;
-  font-size: 45px;
+  font-size: 20px;
   color: #fff;
   z-index: 2;
   cursor: pointer;
+  transition: transform .3s;
+}
+
+.OVImageExpand:Hover {
+  color: #fff;
+  transform: scale(3) translate( 10%, 0%);
 }
 
 #OVImageSelector {
@@ -223,25 +239,29 @@ p {
   width: 100%;
 }
 
+#OVThumbnailContainer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
 #OVThumbnailDisplayBox{
   height: 100%;
-  overflow: hidden;
-  width: 100%;
+  width: 625px;
   align-items: center;
   justify-content: center;
   display: flex;
   border-radius: 10px;
-  background-color: var(--mid-green);
 }
 
 #OVThumbnailSwiper {
   display: grid;
   grid-auto-flow: column;
-  grid-column-gap: 15px;
-  overflow: auto;
+  grid-column-gap: 20px;
+  overflow: hidden;
   height: 100%;
   align-items: center;
-  padding: 10px 10px 0px 10px;
+  padding: 0px 20px ;
 }
 
 .OVthumbnailImage {
@@ -253,6 +273,24 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+  transition: transform .2s, left 1s ease-out;
+  left: 0;
+  position: relative;
+}
+
+.OVthumbnailImage:Hover {
+  transform: scale(1.2);
+}
+
+.OVThumbnailArrows {
+  height: 100%;
+  width: 50px;
+  transition: transform .2s;
+  color: var(--black-green);
+}
+
+.OVThumbnailArrows:Hover {
+  transform: scale(1.2);
 }
 
 .OVThumbnailCircle {
@@ -261,12 +299,13 @@ p {
   height: 30px;
   width: 30px;
   border: 3px solid var(--black-green);
+  transition: transform .2s;
 }
 
-.OVthumbnail {
-  max-width: 100%;
-  max-height: 100%;
+.OVThumbnailCircle:Hover {
+  transform: scale(1.2);
 }
+
 
 #OVdesc {
   display: grid;
@@ -280,11 +319,19 @@ p {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  left: 0;
-  font-size: 45px;
-  color: #fff;
+  color: rgba(0, 0, 0, .5);
   z-index: 1;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: background-color .2s ease-in;
+  font-size: 70px;
+  display:flex;
+}
+
+.OVleftArrow:Hover {
+  color: #fff;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .OVrightArrow {
@@ -292,12 +339,21 @@ p {
   width: 100px;
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
   right: 0;
-  font-size: 45px;
-  color: #fff;
+  transform: translate(0, -50%);
+  color: rgba(0, 0, 0, .5);
   z-index: 1;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: background-color .2s ease-in;
+  font-size: 70px;
+  display:flex;
+}
+
+.OVrightArrow:Hover {
+  color: #fff;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 

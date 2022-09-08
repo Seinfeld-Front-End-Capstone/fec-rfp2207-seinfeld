@@ -31,7 +31,7 @@ const Overview = () => {
               <p>Too late sucka! We no longer carry this</p>
             </div>:
             <>
-            {curSku.value === -2 ? <h2>select a size please!</h2> : null}
+            {curSku.value === -2 ? <h2>select a size, silly</h2> : null}
             <div id='OVsizeNQty'>
               <Size />
               <Quantity />
