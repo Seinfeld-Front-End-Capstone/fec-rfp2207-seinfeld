@@ -20,6 +20,9 @@ const RelatedList = ({ id, setProduct }) => {
       })
   }, []);
 
+  console.log('overview id:', id);
+  console.log('related list:', list);
+
 
 
   /* Creates a related item card for each element in the list of
@@ -54,7 +57,6 @@ itemDisplay[0]));
 
   return (
     <div>
-      <h5>Related Items</h5>
       <ul
       className="RC_related_list">
         <button

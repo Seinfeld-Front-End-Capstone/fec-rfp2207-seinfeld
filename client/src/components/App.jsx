@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     please.getProducts()
-    .then((data) => setProduct(data.data[0]))
+    .then((data) => setProduct(data.data[3]))
     .catch((err) => console.log(err))
   },[])
 
