@@ -12,8 +12,8 @@ const OutfitList = ({ id }) => {
   /* adds a new card to the list */
   const addOutfit = outfit.map((item) => {
     return <OutfitCard key={item} itemNo={item} productID={id}
-deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay}
-curOutfit={outfit} curDisplay={outfitDisplay}/>
+    deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay}
+    curOutfit={outfit} curDisplay={outfitDisplay}/>
   });
 
   /* handles the + button being clicked */
@@ -27,13 +27,13 @@ curOutfit={outfit} curDisplay={outfitDisplay}/>
     console.log(outfitDisplay);
   }
 
+  /* handles click of next arrow button */
   const handleNextClick = (e) => {
     e.preventDefault();
     var next = outfitDisplay[2] + 1;
     const checkKeyGaps = (targetKey) => {
       if (outfit.indexOf(targetKey) !== -1) {
-        setOutfitDisplay(outfitDisplay.filter((item) => item !==
-outfitDisplay[0]));
+        setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDispl[0]));
         setOutfitDisplay(prevDisplay => [...prevDisplay, next]);
       } else if (outfit.indexOf(targetKey) === -1) {
         console.log('Error, there is no item that way')
@@ -46,13 +46,13 @@ outfitDisplay[0]));
     console.log('display:', outfitDisplay);
   }
 
+  /* handles click of previous arrow button */
   const handlePrevClick = (e) => {
     e.preventDefault();
     var prev = outfit.indexOf(outfitDisplay[0] - 1);
     const checkKeyGaps = (targetKey) => {
       if (outfit.indexOf(targetKey) !== -1) {
-        setOutfitDisplay(outfitDisplay.filter((item) => item !==
-outfitDisplay[2]));
+        setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDisplay[2]));
         setOutfitDisplay(prevDisplay => [prev, ...prevDisplay]);
       } else if (outfit.indexOf(targetKey) === -1) {
         console.log('Error, there is no item that way');
