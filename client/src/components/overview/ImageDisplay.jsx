@@ -4,15 +4,20 @@ import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io'
 
 
 const ImageDisplay = ({children}) => {
-  let {curStyle, displayIndex, setDisplayIndex} = useOV()
+  let {curStyle, displayIndex, setDisplayIndex, setLeft} = useOV()
   let images = curStyle.photos;
 
+
   const toPrevious = () => {
-    setDisplayIndex(displayIndex - 1);
+    let previous = displayIndex-1
+    setDisplayIndex(previous);
+    setLeft(previous > 4 ? (previous - 4) * -120 : 0)
   }
 
   const toNext = () => {
-    setDisplayIndex(displayIndex + 1);
+    let next = displayIndex + 1
+    setDisplayIndex(next);
+    setLeft(next > 4 ? (next - 4) * -120 : 0)
   }
 
   let imageUrl = images[displayIndex].url
@@ -20,8 +25,8 @@ const ImageDisplay = ({children}) => {
 
   return (
   <div id='OVimageDisplayBox'>
-    {displayIndex !== 0 && <IoIosArrowBack className='OVleftArrow' onClick={toPrevious} />}
-    {displayIndex !== images.length - 1 && <IoIosArrowForward className='OVrightArrow' onClick={toNext} />}
+    {displayIndex !== 0 && <div className='OVleftArrow' onClick={toPrevious}><IoIosArrowBack /></div>}
+    {displayIndex !== images.length - 1 && <div className='OVrightArrow' onClick={toNext}><IoIosArrowForward /></div>}
     <div id='OVimagedisplay' style={currImageStyle}></div>
     {children}
   </div>
