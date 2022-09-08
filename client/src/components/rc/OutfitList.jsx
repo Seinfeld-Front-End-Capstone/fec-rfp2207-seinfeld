@@ -70,7 +70,6 @@ const OutfitList = ({ id }) => {
 
   return (
     <div>
-      <h5>Your Outfit</h5>
       <ul className="RC_outfit_list">
         <button
         className="RC_prev"

@@ -319,7 +319,8 @@ p {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  max-width: 800;
+  width: 1000;
+  max-width: 1000;
 }
 
 
@@ -331,7 +332,7 @@ p {
   width: 150px;
   height: 250px;
   margin-top: 20px;
-  margin-left: 5px;
+  margin-left: 12px;
   position: relative;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
@@ -373,6 +374,11 @@ p {
   padding: 0;
 }
 
+.RC_h5 {
+  text-align: left;
+  margin-left: 100px;
+}
+
 .Rc_product_price {
   padding: 0;
   margin: 0;
@@ -401,6 +407,7 @@ p {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  width: 1000;
   max-width: 1000;
 }
 
@@ -430,7 +437,7 @@ p {
   width: 150px;
   height: 250px;
   margin-top: 20px;
-  margin-left: 5px;
+  margin-left: 12px;
   position: relative;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   background-color: #84a98c;
@@ -501,7 +508,7 @@ p {
   position: absolute;
   top: 4px;
   right: 4px;
-  color: #cad2c5;
+  color: gray;
 }
 
 .RC_x:hover {
@@ -527,7 +534,7 @@ p {
 .RC_modal_content {
   background-color: white;
   position: fixed;
-  width: 60%;
+  width: 45%;
   top: calc(25% - 50px);
   left: calc(25% - 50px);
   padding: 20px;
