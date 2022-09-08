@@ -107,7 +107,7 @@ module.exports = {
   },
 
   //Q&A
-  getQuestions: (product_id, page=1, count=100) => {
+  getQuestions: (product_id, page=1, count=50) => {
     return axios({
       url:`/qa/questions/`,
       method: 'get',
@@ -117,7 +117,7 @@ module.exports = {
     })
   },
 
-  getAnswers: (question_id, page=1, count=5) => {
+  getAnswers: (question_id, page=1, count=50) => {
     return axios({
       url:`/qa/questions/${question_id}/answers`,
       method: 'get',
@@ -176,4 +176,16 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
+
+  //CLICK TRACKING
+  submitClickData: (data) => {
+    return axios({
+      url: '/interactions',
+      method: 'post',
+      baseURL: basePath,
+      headers:{Authorization: token},
+      data
+    })
+  }
 }
+

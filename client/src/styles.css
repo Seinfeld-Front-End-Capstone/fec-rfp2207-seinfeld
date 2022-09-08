@@ -13,6 +13,12 @@
   --mid-green: #52796f;
   --dark-green: #354f52;
   --black-green: #2f3e46;
+  --white: #ffffff;
+  --white-grey: #edf1f7;
+  --grey: #808080;
+  --dark-grey: #333;
+  --black: #000000;
+
 
   /* colors of stars */
   --star-color: var(--dark-green);
@@ -36,11 +42,11 @@
 
 /* GLOBAL STYLES */
 body {
-  background-color: white
+  background-color: var(--white);
 }
 
 div {
-  color: grey;
+  color: #808080;
 }
 
 input{
@@ -175,6 +181,7 @@ p {
   border-radius: 50%;
   background-color: white;
   /* border: 2px solid #354f52; */
+
 }
 
 #OVsizeNQty {
@@ -188,8 +195,8 @@ p {
   height: 100%;
   width: 100%;
   font-size: larger;
-  background-color: #fff;
-  color: black;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 #OVAddToBag {
@@ -340,8 +347,13 @@ p {
   position: absolute;
   top: 50%;
   right: 0;
+<<<<<<< HEAD
   transform: translate(0, -50%);
   color: rgba(0, 0, 0, .5);
+=======
+  font-size: 45px;
+  color: var(--white);
+>>>>>>> main
   z-index: 1;
   align-items: center;
   justify-content: center;
@@ -415,12 +427,20 @@ p {
   position: absolute;
   top: 4px;
   right: 4px;
-  color: #cad2c5;
+  color: var(--light);
 }
 
 .compare_star:hover {
-  color:#84a98c;
+  color: var(--light-green);
   cursor: pointer;
+}
+
+.RC_product_name {
+  cursor: pointer;
+}
+
+.RC_product_name:hover {
+  color: var(--black);
 }
 
 .RC_text {
@@ -489,21 +509,21 @@ p {
   margin-left: 5px;
   position: relative;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
-  background-color: #84a98c;
+  background-color: var(--light-green);
 }
 
 .RC_add_to_outfit {
-  background-color: #84a98c;
+  background-color: var(--light-green);
   padding-top: 60px;
   padding-left: 22px;
   width: 150px;
   height: 250px;
-  color: white;
+  color: var(--white);
 }
 
 .RC_next {
-  background-color: lightgray;
-  color:#fff;
+  background-color: var(--grey);
+  color: var(--white);
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
   height: 100px;
@@ -519,8 +539,8 @@ p {
 }
 
 .RC_prev {
-  background-color: lightgray;
-  color:#fff;
+  background-color: gray;
+  color:var(--white);
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
   height: 100px;
@@ -557,11 +577,11 @@ p {
   position: absolute;
   top: 4px;
   right: 4px;
-  color: #cad2c5;
+  color: var(--light);
 }
 
 .RC_x:hover {
-  color:#84a98c;
+  color: var(--light-green);
   cursor: pointer;
 }
 
@@ -594,25 +614,25 @@ p {
 }
 
 .RC_modal_table {
-  border: 1px solid #333;
+  border: 1px solid var(--dark-grey);
 }
 
 .RC_modal_th {
   text-align: center;
-  border: 1px solid #333;
+  border: 1px solid var(--dark-grey);
 }
 
 .RC_modal_td {
-  border: 1px solid #333;
+  border: 1px solid var(--dark-grey);
 }
 
 .RC_close {
-  color: Black;
+  color: var(--black);
   float: right;
 }
 
 .RC_close:hover {
-  color:#84a98c;
+  color: var(--light-green);
   cursor: pointer;
 }
 
@@ -624,7 +644,7 @@ p {
 
 /* SEARCH BAR */
 #qa-search-input {
-  border: 1px solid grey;
+  border: 1px solid var(--grey);
   border-radius: 5px;
   height: 50px;
   width: 100%;
@@ -720,10 +740,18 @@ p {
   cursor: pointer;
 }
 
+.qa-report:hover {
+  color: var(--black);
+}
+
 .qa-yes {
   margin-left: 5px;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.qa-yes:hover {
+  color: var(--black);
 }
 
 .qa-question-modal input {
@@ -775,7 +803,7 @@ p {
   margin: 10px 10px 5px 0;
   width: 120px;
   height: 120px;
-  border: .5px solid black;
+  border: .5px solid var(--black);
 }
 
 .qa-load-answers {
@@ -784,7 +812,7 @@ p {
 }
 
 .qa-load-answers:hover {
-  color: black;
+  color: var(--black);
 
 }
 
@@ -829,12 +857,12 @@ p {
   cursor: pointer;
 }
 .qa-X:hover {
-  color: black;
+  color: var(--black);
 }
 
 .qa-modal-submit {
   margin: 0 auto;
-  width: 20%;
+  width: 15%;
 }
 
 #qa-Q {
@@ -863,7 +891,7 @@ p {
 }
 
 .qa-pointer:hover {
-  color: black;
+  color: var(--black);
 }
 
 #qa-answer-name {
@@ -887,6 +915,16 @@ p {
 .qa-question-button:hover {
   background-color: var(--light);
   color: white;
+}
+
+.qa-img-preview {
+  height: 100px;
+  width: 100px;
+  margin-right: 10px;
+}
+
+.qa-modal-img-container {
+  margin: 10px 0;
 }
 
 /* RATINGS AND REVIEWS */
@@ -1236,7 +1274,7 @@ p {
 #RR-form-inner-ctn form {
   /* maybe use part of image as background for texture */
   overflow-y: scroll;
-  background: #edf1f7;
+  background: var(--white-grey);
   padding-left: 20px;
   background-image: url('./assets/canvasbg.png');
   background-size: 350px 350px;
@@ -1290,7 +1328,7 @@ p {
 #RR-form-inner-ctn .RR-prod-char-rating {
   display: flex;
   width: 700px;
-  border: 1px solid grey;
+  border: 1px solid var(--grey);
   background-color: var(--light);
   border-radius:  20px;
   margin: 2px;

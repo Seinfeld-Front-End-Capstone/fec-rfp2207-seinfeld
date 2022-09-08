@@ -4,7 +4,8 @@ import ReviewList from './ReviewList.jsx';
 import please from '../../request.js';
 import { MdCancel } from 'react-icons/md';
 import Form from './Form/Form.jsx';
-import RatingBreakdown from './RatingBreakdown.jsx'
+import RatingBreakdown from './RatingBreakdown.jsx';
+import { submitRRClick } from '../helpers/trackClick.js';
 //lift axios request for reviews/meta out of Form and into this component
 //lift axios request for reviews/meta out of Form and into this component
 
@@ -50,7 +51,12 @@ const RatingsReviews = ({ productId, productName }) => {
     setFormMode(!formMode);
   }
 
-  const addReviewButton = <button onClick={toggleForm}>ADD A REVIEW +</button>;
+  const addReviewButton = <button
+    onClick={(e) => {
+      submitRRClick(e);
+      toggleForm();
+    }
+  }>ADD A REVIEW +</button>;
 
   const handleSort = (e) => {
     setSortParam(e.target.value)
@@ -70,7 +76,7 @@ const RatingsReviews = ({ productId, productName }) => {
           {metaData ? <RatingBreakdown metaData={metaData} /> : null}
           <div id="RR-reviews-right-ctn">
             <h3 id="RR-header-sort"> {reviews.length} views, sorted by
-              <select id="RR-sort-param" onChange={handleSort}>
+              <select id="RR-sort-param" onChange={handleSort} onClick={submitRRClick}>
                 <option value="relevant">Relevant</option>ß
                 <option value="helpful">Helpful</option>
                 <option value="newest">Newest</option>
@@ -79,8 +85,11 @@ const RatingsReviews = ({ productId, productName }) => {
             <ReviewList reviews={reviews} setShowPhotoModal={setShowPhotoModal}/>
             <div id="RR-more-menu">
               {reviews.length === maxResults &&
-              <button
-                onClick={showMoreReview}>MORE REVIEWS
+              <button id="RR-more-reviews"
+                onClick={(e) => {
+                  submitRRClick(e);
+                  showMoreReview();
+                }}>MORE REVIEWS
               </button>}
               {addReviewButton}
             </div>
@@ -97,7 +106,10 @@ const RatingsReviews = ({ productId, productName }) => {
       <div id="RR-photo-modal">
         <div className="background"></div>
         <div id="RR-photo-modal-inner">
-          <MdCancel className="icons" onClick={() => setShowPhotoModal('')}/>
+          <MdCancel className="icons" onClick={(e) => {
+            submitRRClick(e);
+            setShowPhotoModal('')
+          }}/>
           <img id="RR-popup-photo" src={showPhotoModal}/>
         </div>
       </div>}
