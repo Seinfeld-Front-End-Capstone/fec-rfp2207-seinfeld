@@ -4,7 +4,7 @@ import AnswerModal from './AnswerModal.jsx';
 import please from '../.././request.js';
 
 
-const Question = ({q}) => {
+const Question = ({q, productName}) => {
   // console.log('question : ', q);
   const [helpfulness, setHelpfulness] = useState(q.question_helpfulness)
   const [modal, setModal] = useState(false)
@@ -29,7 +29,7 @@ const Question = ({q}) => {
        </span>
       </div>
         <AnswerList q={q}/>
-        <AnswerModal modal={modal} q={q} onClose={() => setModal(false)} />
+        <AnswerModal modal={modal} productName={productName} q={q} onClose={() => setModal(false)} />
     </div>
   )
 }

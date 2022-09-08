@@ -4,7 +4,7 @@ import chroma from 'chroma-js'
 import {FaCheckCircle} from 'react-icons/fa'
 
 const Styles = () => {
- let {styles, curStyle, setCurStyle, setDisplayIndex, curSku, setCurSku, quantity, setQuantity} = useOV()
+ let {styles, curStyle, setCurStyle, setDisplayIndex, curSku, setCurSku, quantity, setQuantity, setLeft} = useOV()
 
   const onClick = (e) => {
     const cur = styles[e.target.dataset.key]
@@ -19,6 +19,7 @@ const Styles = () => {
     }
     setCurStyle(cur)
     setDisplayIndex(0)
+    setLeft(0)
   }
 
   return (

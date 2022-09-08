@@ -4,7 +4,7 @@ import QuestionModal from './QuestionModal.jsx';
 import { BiSearchAlt2 } from 'react-icons/bi'
 import please from '../.././request.js';
 
-const QuestionsMaster = ({ productId }) => {
+const QuestionsMaster = ({ productName, productId }) => {
   const [question, setQuestion] = useState([]);
   const [initial, setInitial] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -24,7 +24,7 @@ const QuestionsMaster = ({ productId }) => {
         setInitial(sortedQuestions)
         // console.log('sorted : ', sorted)
       })
-  }, [])
+  }, [productId])
 
 
   // console.log('question : ', question)
@@ -62,14 +62,23 @@ const QuestionsMaster = ({ productId }) => {
             }}></input>
           </div>
         )}
-        <QuestionList questions={question} length={length} />
+        <QuestionList questions={question} length={length} productName={productName} />
         <div className='qa-button-container'>
-          {length < question.length &&
+          {/* { question.length <= 2 ?
+
+            :
+
+          } */}
+          {length < question.length ?
             <button className='qa-question-button' onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
+            :
+            <button className='qa-question-button' onClick={() => setLength(4)}>Collapse Questions</button>
           }
           <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
         </div>
-        <QuestionModal modal={modal} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
+
+
+        <QuestionModal modal={modal} productName={productName} productId={productId} onClose={() => setModal(false)} setInitial={setInitial} setQuestion={setQuestion} />
       </div>
     </div>
   )

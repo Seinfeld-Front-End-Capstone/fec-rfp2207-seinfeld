@@ -19,8 +19,16 @@ export function OVProvider({productId, children}) {
   const [starsObj, setStarsObj] = useState(0);
   const [curStyle, setCurStyle] = useState({})
   const [expand, setExpand] = useState(false)
+  const [left, setLeft] = useState(0)
+
+
 
   useEffect(() => {
+    setLeft(0)
+    setDisplayIndex(0);
+    setCurSku({value:-1, label: 'Select Size'});
+    setQuantity({value:0, label: ' - ', hidden:true})
+
     axios.all([please.getProductInfo(productId), please.getStyles(productId), please.getReviewMeta(productId)])
     .then((data) => {
       setProduct(data[0].data)
@@ -32,7 +40,7 @@ export function OVProvider({productId, children}) {
   },[productId])
 
 
-  const values = {product, setProduct, styles, setStyles, skuIndex, setSkuIndex, displayIndex, setDisplayIndex, quantity, setQuantity, starsObj, setStarsObj, curStyle, setCurStyle, curSku, setCurSku, expand, setExpand}
+  const values = {product, setProduct, styles, setStyles, skuIndex, setSkuIndex, displayIndex, setDisplayIndex, quantity, setQuantity, starsObj, setStarsObj, curStyle, setCurStyle, curSku, setCurSku, expand, setExpand, left, setLeft}
 
   return (
     styles && product ?

@@ -7,7 +7,7 @@ const Answer = ({answer, index}) => {
   // console.log('answers props : ', answer)
   const [answerCount, setAnswerCount] = useState(answer.helpfulness)
   const [isReported, setReported] = useState('Report');
-  const [photos, setPhotos] = useState('');
+  // const [photos, setPhotos] = useState('');
   const [imageModal, setImageModal] = useState(false);
 
   const formattedDate = moment(answer.date).format('ll');
