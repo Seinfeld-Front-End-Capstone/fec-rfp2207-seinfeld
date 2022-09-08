@@ -1,6 +1,9 @@
 const basePath = 'https://app-hrsei-api.herokuapp.com/api/fec2/rfp';
 const axios = require('axios');
-const token = process.env.TOKEN
+const config = require('../../config.js')
+
+let token = config.TOKEN;
+console.log(token);
 
 module.exports = {
 
