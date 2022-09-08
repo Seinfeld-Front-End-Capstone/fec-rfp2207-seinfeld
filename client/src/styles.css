@@ -13,6 +13,12 @@
   --mid-green: #52796f;
   --dark-green: #354f52;
   --black-green: #2f3e46;
+  --white: #ffffff;
+  --white-grey: #edf1f7;
+  --grey: #808080;
+  --dark-grey: #333;
+  --black: #000000;
+
 
   /* colors of stars */
   --star-color: var(--dark-green);
@@ -36,11 +42,11 @@
 
 /* GLOBAL STYLES */
 body {
-  background-color: white
+  background-color: var(--white);
 }
 
 div {
-  color: grey;
+  color: #808080;
 }
 
 input{
@@ -66,7 +72,8 @@ p {
 
 /* OVERVIEW */
 
-#OVModalOverLay{
+
+#OVModalOverLay {
   position: fixed;
   top: 0;
   left: 0;
@@ -74,9 +81,10 @@ p {
   bottom: 0;
   background-color: rgba(0, 0, 0, .7);
   z-index: 1000;
+  transition: opacity 2s, visibility 2s;
 }
 
-#OVModal{
+#OVModal {
   height: 80%;
   width: 80%;
   position: fixed;
@@ -84,11 +92,12 @@ p {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1000;
+  transition: opacity 2s, visibility 2s;
 }
 
 #OVExpandThumbNails{
   position: fixed;
-  bottom : 4%;
+  bottom : 2%;
   display: grid;
   grid-auto-flow: column;
   grid-column-gap: 5px;
@@ -125,6 +134,8 @@ p {
 #OVImages {
   display: grid;
   grid-template-rows: 4fr 1fr;
+  align-items: center;
+  justify-items: center;
 }
 
 #OVInfo {
@@ -148,10 +159,15 @@ p {
   border-radius: 50%;
   height: 60px;
   width: 60px;
-  border: 3px solid #84a98c;
+  border: 3px solid var(--light-green);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transition: transform .2s;
+}
+
+.OVstyles:Hover {
+  transform: scale(1.1);
 }
 
 #OVCheckMark {
@@ -165,6 +181,7 @@ p {
   border-radius: 50%;
   background-color: white;
   /* border: 2px solid #354f52; */
+
 }
 
 #OVsizeNQty {
@@ -178,8 +195,8 @@ p {
   height: 100%;
   width: 100%;
   font-size: larger;
-  background-color: #fff;
-  color: black;
+  background-color: var(--white);
+  color: var(--black);
 }
 
 #OVAddToBag {
@@ -207,13 +224,19 @@ p {
 
 .OVImageExpand {
   position: absolute;
-  top: 10%;
-  transform: translate(0, -50%);
+  top: 5%;
+  transform: translate(50%, -50%);
   right: 5%;
-  font-size: 45px;
+  font-size: 20px;
   color: #fff;
   z-index: 2;
   cursor: pointer;
+  transition: transform .3s;
+}
+
+.OVImageExpand:Hover {
+  color: #fff;
+  transform: scale(3) translate( 10%, 0%);
 }
 
 #OVImageSelector {
@@ -223,25 +246,29 @@ p {
   width: 100%;
 }
 
+#OVThumbnailContainer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+}
+
 #OVThumbnailDisplayBox{
   height: 100%;
-  overflow: hidden;
-  width: 100%;
+  width: 625px;
   align-items: center;
   justify-content: center;
   display: flex;
   border-radius: 10px;
-  background-color: var(--mid-green);
 }
 
 #OVThumbnailSwiper {
   display: grid;
   grid-auto-flow: column;
-  grid-column-gap: 15px;
-  overflow: auto;
+  grid-column-gap: 20px;
+  overflow: hidden;
   height: 100%;
   align-items: center;
-  padding: 10px 10px 0px 10px;
+  padding: 0px 20px ;
 }
 
 .OVthumbnailImage {
@@ -253,6 +280,24 @@ p {
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
+  transition: transform .2s, left 1s ease-out;
+  left: 0;
+  position: relative;
+}
+
+.OVthumbnailImage:Hover {
+  transform: scale(1.2);
+}
+
+.OVThumbnailArrows {
+  height: 100%;
+  width: 50px;
+  transition: transform .2s;
+  color: var(--black-green);
+}
+
+.OVThumbnailArrows:Hover {
+  transform: scale(1.2);
 }
 
 .OVThumbnailCircle {
@@ -261,12 +306,13 @@ p {
   height: 30px;
   width: 30px;
   border: 3px solid var(--black-green);
+  transition: transform .2s;
 }
 
-.OVthumbnail {
-  max-width: 100%;
-  max-height: 100%;
+.OVThumbnailCircle:Hover {
+  transform: scale(1.2);
 }
+
 
 #OVdesc {
   display: grid;
@@ -280,11 +326,19 @@ p {
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  left: 0;
-  font-size: 45px;
-  color: #fff;
+  color: rgba(0, 0, 0, .5);
   z-index: 1;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: background-color .2s ease-in;
+  font-size: 70px;
+  display:flex;
+}
+
+.OVleftArrow:Hover {
+  color: #fff;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .OVrightArrow {
@@ -292,12 +346,21 @@ p {
   width: 100px;
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
   right: 0;
-  font-size: 45px;
-  color: #fff;
+  transform: translate(0, -50%);
+  color: rgba(0, 0, 0, .5);
   z-index: 1;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  transition: background-color .2s ease-in;
+  font-size: 70px;
+  display:flex;
+}
+
+.OVrightArrow:Hover {
+  color: #fff;
+  background-color: rgba(0, 0, 0, .4);
 }
 
 
@@ -360,12 +423,20 @@ p {
   position: absolute;
   top: 4px;
   right: 4px;
-  color: #cad2c5;
+  color: var(--light);
 }
 
 .compare_star:hover {
-  color:#84a98c;
+  color: var(--light-green);
   cursor: pointer;
+}
+
+.RC_product_name {
+  cursor: pointer;
+}
+
+.RC_product_name:hover {
+  color: var(--black);
 }
 
 .RC_text {
@@ -440,21 +511,21 @@ p {
   margin-left: 12px;
   position: relative;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
-  background-color: #84a98c;
+  background-color: var(--light-green);
 }
 
 .RC_add_to_outfit {
-  background-color: #84a98c;
+  background-color: var(--light-green);
   padding-top: 60px;
   padding-left: 22px;
   width: 150px;
   height: 250px;
-  color: white;
+  color: var(--white);
 }
 
 .RC_next {
-  background-color: lightgray;
-  color:#fff;
+  background-color: var(--grey);
+  color: var(--white);
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
   height: 100px;
@@ -470,8 +541,8 @@ p {
 }
 
 .RC_prev {
-  background-color: lightgray;
-  color:#fff;
+  background-color: gray;
+  color:var(--white);
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
   height: 100px;
@@ -508,11 +579,11 @@ p {
   position: absolute;
   top: 4px;
   right: 4px;
-  color: gray;
+  color: var(--gray);
 }
 
 .RC_x:hover {
-  color:#84a98c;
+  color: var(--light-green);
   cursor: pointer;
 }
 
@@ -545,25 +616,25 @@ p {
 }
 
 .RC_modal_table {
-  border: 1px solid #333;
+  border: 1px solid var(--dark-grey);
 }
 
 .RC_modal_th {
   text-align: center;
-  border: 1px solid #333;
+  border: 1px solid var(--dark-grey);
 }
 
 .RC_modal_td {
-  border: 1px solid #333;
+  border: 1px solid var(--dark-grey);
 }
 
 .RC_close {
-  color: Black;
+  color: var(--black);
   float: right;
 }
 
 .RC_close:hover {
-  color:#84a98c;
+  color: var(--light-green);
   cursor: pointer;
 }
 
@@ -573,9 +644,13 @@ p {
   justify-content: center;
 }
 
+.qa-qa-container {
+  max-width: var(--max-width);
+}
+
 /* SEARCH BAR */
 #qa-search-input {
-  border: 1px solid grey;
+  border: 1px solid var(--grey);
   border-radius: 5px;
   height: 50px;
   width: 100%;
@@ -604,10 +679,6 @@ p {
   justify-content: space-between;
   font-size: 15px;
   margin: 18px auto;
-}
-
-#qa-space-body {
-  word-break: break-all;
 }
 
 .qa-question-modal {
@@ -648,7 +719,6 @@ p {
 
 .qa-question-list {
   max-height: 1500px;
-  max-width: var(--max-width);
   overflow-y: scroll;
 }
 
@@ -671,10 +741,18 @@ p {
   cursor: pointer;
 }
 
+.qa-report:hover {
+  color: var(--black);
+}
+
 .qa-yes {
   margin-left: 5px;
   text-decoration: underline;
   cursor: pointer;
+}
+
+.qa-yes:hover {
+  color: var(--black);
 }
 
 .qa-question-modal input {
@@ -688,7 +766,6 @@ p {
 
 .qa-answer-container {
   max-height: 500px;
-  max-width: var(--max-width);
   overflow-y: scroll;
   margin-bottom: 20px;
 }
@@ -726,7 +803,6 @@ p {
   margin: 10px 10px 5px 0;
   width: 120px;
   height: 120px;
-  border: .5px solid black;
 }
 
 .qa-load-answers {
@@ -735,7 +811,7 @@ p {
 }
 
 .qa-load-answers:hover {
-  color: black;
+  color: var(--black);
 
 }
 
@@ -780,7 +856,7 @@ p {
   cursor: pointer;
 }
 .qa-X:hover {
-  color: black;
+  color: var(--black);
 }
 
 .qa-modal-submit {
@@ -814,7 +890,7 @@ p {
 }
 
 .qa-pointer:hover {
-  color: black;
+  color: var(--black);
 }
 
 #qa-answer-name {
@@ -1197,7 +1273,7 @@ p {
 #RR-form-inner-ctn form {
   /* maybe use part of image as background for texture */
   overflow-y: scroll;
-  background: #edf1f7;
+  background: var(--white-grey);
   padding-left: 20px;
   background-image: url('./assets/canvasbg.png');
   background-size: 350px 350px;
@@ -1251,7 +1327,7 @@ p {
 #RR-form-inner-ctn .RR-prod-char-rating {
   display: flex;
   width: 700px;
-  border: 1px solid grey;
+  border: 1px solid var(--grey);
   background-color: var(--light);
   border-radius:  20px;
   margin: 2px;

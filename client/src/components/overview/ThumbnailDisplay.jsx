@@ -1,8 +1,8 @@
-import React from 'react';
-import {useOV} from './OVContext.jsx'
+import React, { useEffect, useState }from 'react';
+import { useOV } from './OVContext.jsx'
 
-const Thumbnail = ({expand}) => {
-  let {curStyle, displayIndex, setDisplayIndex} = useOV()
+const Thumbnail = () => {
+  let { curStyle, expand, displayIndex, setDisplayIndex, left } = useOV()
   let images = curStyle.photos;
 
   const onClick = (e) => {
@@ -13,11 +13,14 @@ const Thumbnail = ({expand}) => {
   return (
     <>
       {images.map((image, index) => {
-        let styles = {backgroundImage: `url(${image.thumbnail_url})`}
+        let styles = {
+          backgroundImage: `url(${image.thumbnail_url})`,
+          left: `${left}px`
+        }
         let circleStyle = {}
         if (index === displayIndex) {
-          styles.border = `5px solid var(--light)`
-          styles.transform = `scale(1.1)`
+          styles.border = `4px solid var(--dark-green)`
+          styles.opacity = '0.4'
           circleStyle.backgroundColor = `var(--mid-green)`
         }
 
