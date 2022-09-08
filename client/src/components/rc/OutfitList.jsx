@@ -10,8 +10,10 @@ const OutfitList = ({ id }) => {
   const [outfitDisplay, setOutfitDisplay] = useState([]);
 
   /* adds a new card to the list */
-  const addOutfit = outfitDisplay.map((item) => {
-    return <OutfitCard key={item} itemNo={item} productID={id} deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay} curOutfit={outfit} curDisplay={outfitDisplay}/>
+  const addOutfit = outfit.map((item) => {
+    return <OutfitCard key={item} itemNo={item} productID={id}
+deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay}
+curOutfit={outfit} curDisplay={outfitDisplay}/>
   });
 
   /* handles the + button being clicked */
@@ -22,25 +24,48 @@ const OutfitList = ({ id }) => {
       setOutfitDisplay(prevDisplay => [...prevDisplay, cardCount]);
     }
     setCardCount(prevCount => prevCount + 1);
+    console.log(outfitDisplay);
   }
 
   const handleNextClick = (e) => {
     e.preventDefault();
     var next = outfitDisplay[2] + 1;
-    if (outfit.indexOf(next) !== -1) {
-      setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDisplay[0]));
-      setOutfitDisplay(prevDisplay => [...prevDisplay, next]);
+    const checkKeyGaps = (targetKey) => {
+      if (outfit.indexOf(targetKey) !== -1) {
+        setOutfitDisplay(outfitDisplay.filter((item) => item !==
+outfitDisplay[0]));
+        setOutfitDisplay(prevDisplay => [...prevDisplay, next]);
+      } else if (outfit.indexOf(targetKey) === -1) {
+        console.log('Error, there is no item that way')
+      } else {
+        checkKeyGaps(next + 1)
+      }
     }
+    checkKeyGaps(next);
+    console.log('outfit:', outfit)
+    console.log('display:', outfitDisplay);
   }
 
   const handlePrevClick = (e) => {
     e.preventDefault();
-    var prev = outfitDisplay[0] - 1;
-    if (outfit.indexOf(prev) !== -1) {
-      setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDisplay[2]));
-      setOutfitDisplay(prevDisplay => [prev, ...prevDisplay]);
+    var prev = outfit.indexOf(outfitDisplay[0] - 1);
+    const checkKeyGaps = (targetKey) => {
+      if (outfit.indexOf(targetKey) !== -1) {
+        setOutfitDisplay(outfitDisplay.filter((item) => item !==
+outfitDisplay[2]));
+        setOutfitDisplay(prevDisplay => [prev, ...prevDisplay]);
+      } else if (outfit.indexOf(targetKey) === -1) {
+        console.log('Error, there is no item that way');
+      } else {
+        checkKeyGaps(prev - 1);
+      }
     }
+    checkKeyGaps(prev);
+    console.log(outfitDisplay);
   }
+
+  console.log('outfit:', outfit)
+  console.log('display:', outfitDisplay);
 
 
   return (
@@ -50,7 +75,7 @@ const OutfitList = ({ id }) => {
         <button
         className="RC_prev"
         onClick={handlePrevClick}>
-          <i class="fa-solid fa-chevron-left"></i>
+          <i className="fa-solid fa-chevron-left"></i>
         </button>
           <li className="RC_outfit_card_container">
             <div
@@ -68,7 +93,7 @@ const OutfitList = ({ id }) => {
         <button
         className="RC_next"
         onClick={handleNextClick}>
-          <i class="fa-solid fa-chevron-right"></i>
+          <i className="fa-solid fa-chevron-right"></i>
         </button>
       </ul>
     </div>

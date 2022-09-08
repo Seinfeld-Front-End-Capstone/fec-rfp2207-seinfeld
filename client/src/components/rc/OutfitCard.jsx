@@ -3,18 +3,13 @@ import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 
-const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfit, curDisplay }) => {
+const OutfitCard = ({ itemNo, productID, deleteCard,
+deleteCardDisplay, curOutfit, curDisplay }) => {
   const [productData, setProductData] = useState([]);
   const [photoData, setPhotoData] = useState([]);
   const [price, setPrice] = useState([]);
   const [starRating, setStarRating] = useState(0);
-  const [vis, setVis] = useState(true);
 
-  useEffect(() => {
-    if (curDisplay.indexOf(itemNo) === -1) {
-      setVis(false);
-    }
-  })
 
   useEffect(() => {
     request
@@ -52,12 +47,61 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
 
   /* handles delete button onClick event */
   const handleDelete = useCallback(() => {
+    const prev = curOutfit[itemNo] - 1;
+    const next = curOutfit[itemNo] + 1;
+
+    const autoPopulateCardsNext = (index) => {
+      // if index does not exist within outfit,
+      if (!curOutfit[index]) {
+        // console log something
+        return console.log('No items to add to display')
+        //check to see if the next index in line exists within
+outfit
+      } else if (!curDisplay[index]) {
+        return deleteCardDisplay(prevDisplay => [...prevDisplay,
+index])
+      }
+        // if not, check again
+        autoPopulateCardsNext(index + 1);
+    }
+
+    autoPopulateCardsNext(next);
+
+    const autoPopulateCardsPrev = (index) => {
+      // if index does not exist within outfit,
+      if (!curOutfit[index]) {
+        // console log something
+        return console.log('No items to add to display')
+        //check to see if the next index in line exists within
+outfit
+      } else if (!curDisplay[index]) {
+        return deleteCardDisplay(prevDisplay => [index, ...
+prevDisplay])
+      }
+        // if not, check again
+        autoPopulateCardsPrev(index - 1);
+    }
+
+    autoPopulateCardsPrev(prev);
+
+    console.log(curDisplay)
+
     deleteCard(curOutfit.filter((item) => item !== itemNo));
-    deleteCardDisplay(curDisplay.filter((item) => item !== itemNo));
+
+    deleteCardDisplay(curDisplay.filter((item) => item !==
+itemNo));
+
+    console.log(curDisplay);
   }, [deleteCard, curOutfit, curDisplay]);
 
+  const checkVis = () => {
+    if (curDisplay.indexOf(itemNo) !== -1) {
+      setVis(true);
+    }
+  }
 
-  if (vis) {
+
+  if (curDisplay.indexOf(itemNo) !== -1) {
     return (
       <div
       key={itemNo}
