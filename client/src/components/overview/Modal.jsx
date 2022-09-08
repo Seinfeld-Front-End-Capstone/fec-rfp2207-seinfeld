@@ -10,20 +10,20 @@ const Modal = ({ expand }) => {
   const { setExpand } = useOV()
   const close = () => setExpand(false)
 
-  let visibility = {visibility: expand ? 'visible' : 'hidden'};
-  visibility.opacity = expand ? 1 : 0;
-
+  if (!expand) {
+    return null;
+  }
 
   return (
     <>
-      <div id='OVModalOverLay' onClick={ close } style={ visibility } />
-      <div id='OVModal' style={ visibility } >
+      <div id='OVModalOverLay' onClick={ close }/>
+      <div id='OVModal'>
         <ImageDisplay>
-          <CgMinimize  className='OVImageExpand' onClick={ close } />
+          <CgMinimize  className='OVImageExpand' onClick={ close }/>
         </ImageDisplay>
       </div>
-      <div id='OVExpandThumbNails' style={ visibility } >
-        <ThumbnailDisplay expand={ true } />
+      <div id='OVExpandThumbNails'>
+        <ThumbnailDisplay/>
       </div>
     </>
   )

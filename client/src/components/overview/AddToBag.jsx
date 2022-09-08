@@ -9,10 +9,8 @@ const AddToBag = () => {
     if (curSku.value < 0) {
       setCurSku({value:-2, label: 'Select Size', hidden: true})
     } else {
-       console.log('addedTobag', quantity)
       for (let i = 1; i <= quantity.value; i++) {
-        console.log(curSku.number)
-        // please.addToBag({sku_id:curSku.number})
+        please.addToBag({sku_id:curSku.number})
       }
     }
   }
