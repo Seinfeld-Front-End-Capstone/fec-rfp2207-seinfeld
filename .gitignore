@@ -3,3 +3,4 @@ bundle.js
 node_modules
 ProductsDetail.js
 .env
+config.js
