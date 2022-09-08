@@ -43,8 +43,7 @@ const RatingsReviews = ({ productId, productName }) => {
     .catch((err) => console.log(err))
   }
 
-  const showMoreReview = (e) => {
-    submitRRClick(e);
+  const showMoreReview = () => {
     setMaxResults(maxResults + 2);
   }
 
@@ -53,8 +52,6 @@ const RatingsReviews = ({ productId, productName }) => {
   }
 
   const addReviewButton = <button
-    className="RR-add-review-btn"
-    // id="RR-abc"
     onClick={(e) => {
       submitRRClick(e);
       toggleForm();
@@ -79,7 +76,7 @@ const RatingsReviews = ({ productId, productName }) => {
           {metaData ? <RatingBreakdown metaData={metaData} /> : null}
           <div id="RR-reviews-right-ctn">
             <h3 id="RR-header-sort"> {reviews.length} views, sorted by
-              <select id="RR-sort-param" onChange={handleSort}>
+              <select id="RR-sort-param" onChange={handleSort} onClick={submitRRClick}>
                 <option value="relevant">Relevant</option>ß
                 <option value="helpful">Helpful</option>
                 <option value="newest">Newest</option>
@@ -89,7 +86,10 @@ const RatingsReviews = ({ productId, productName }) => {
             <div id="RR-more-menu">
               {reviews.length === maxResults &&
               <button id="RR-more-reviews"
-                onClick={showMoreReview}>MORE REVIEWS
+                onClick={(e) => {
+                  submitRRClick(e);
+                  showMoreReview();
+                }}>MORE REVIEWS
               </button>}
               {addReviewButton}
             </div>
@@ -106,7 +106,10 @@ const RatingsReviews = ({ productId, productName }) => {
       <div id="RR-photo-modal">
         <div className="background"></div>
         <div id="RR-photo-modal-inner">
-          <MdCancel className="icons" onClick={() => setShowPhotoModal('')}/>
+          <MdCancel className="icons" onClick={(e) => {
+            submitRRClick(e);
+            setShowPhotoModal('')
+          }}/>
           <img id="RR-popup-photo" src={showPhotoModal}/>
         </div>
       </div>}

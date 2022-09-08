@@ -4,6 +4,7 @@ import moment from 'moment';
 import Photos from './Photos.jsx';
 import { FaCheckCircle } from 'react-icons/fa';
 import please from '../../request.js';
+import { submitRRClick } from '../helpers/trackClick.js';
 
 const ReviewEntry = ({ review, recommended, setShowPhotoModal }) => {
   let { review_id, body, date, helpfulness, photos, rating, recommend, response, reviewer_name, summary } = review;
@@ -49,7 +50,10 @@ const ReviewEntry = ({ review, recommended, setShowPhotoModal }) => {
       {response ? <p className="RR-seller-response">Response from seller: {response}</p> : null}
       <p>Helpful? <span
       className='underline'
-      onClick={voted ? null : voteYes}
+      onClick={(e) => {
+        submitRRClick(e)
+        voted ? null : voteYes(e);
+      }}
       >Yes ({helpfulness})</span></p>
       <div id="RR-photos-ctn">
         {photos && photos.map(photo => <Photos key={photo.id} photo={photo} setShowPhotoModal={setShowPhotoModal}/>)}

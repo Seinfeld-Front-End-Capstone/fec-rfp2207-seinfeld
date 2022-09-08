@@ -6,6 +6,7 @@ import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
 import _ from 'underscore';
 import widget from '../../helpers/widget.js';
+import { submitRRClick } from '../../helpers/trackClick.js';
 
 
 const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
@@ -59,14 +60,12 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
       alert(results.errorMessages)
     } else {
       formData = formatForm(formData, chars);
-      console.log('formatted form', formData)
       please.addReview(formData)
       .then(() => {
         refreshReviews();
         return;
       })
       .then(() => {
-        console.log('exiting form')
         toggleForm();
       })
       .catch(err => console.log(err));
@@ -107,8 +106,25 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         <div id="RR-form-menu">
           <span>Write your review</span>
           <span>About the {productName}</span>
-          <input type="button" value="submit" onClick={handleSubmit} onMouseEnter={() => setSubmitBtnActive(true)} onMouseLeave={() => setSubmitBtnActive(false)} className={submitBtnActive ? 'active' : ''} />
-          <button id="RR-form-cancel" onClick={toggleForm} onMouseEnter={() => setCancelBtnActive(true)} onMouseLeave={() => setCancelBtnActive(false)} className={cancelBtnActive ? 'active' : ''}>cancel</button>
+          <input
+          // could refactor to use :hover instead
+            type="button"
+            value="submit"
+            onClick={(e) => {
+              handleSubmit(e);
+              submitRRClick(e);
+            }}
+            onMouseEnter={() => setSubmitBtnActive(true)}
+            onMouseLeave={() => setSubmitBtnActive(false)}
+            className={submitBtnActive ? 'active' : ''} />
+          <button id="RR-form-cancel"
+            onClick={(e) => {
+              submitRRClick(e);
+              toggleForm();
+            }}
+            onMouseEnter={() => setCancelBtnActive(true)}
+            onMouseLeave={() => setCancelBtnActive(false)}
+            className={cancelBtnActive ? 'active' : ''}>cancel</button>
         </div>
         <form id="RR-form">
           <div id="RR-overall-rating" className="RR-form-fields">
