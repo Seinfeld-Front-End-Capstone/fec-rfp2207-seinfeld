@@ -3,18 +3,12 @@ import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 
-const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfit, curDisplay }) => {
+const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfit, curDisplay, onDelete }) => {
   const [productData, setProductData] = useState([]);
   const [photoData, setPhotoData] = useState([]);
   const [price, setPrice] = useState([]);
   const [starRating, setStarRating] = useState(0);
-  const [vis, setVis] = useState(true);
 
-  useEffect(() => {
-    if (curDisplay.indexOf(itemNo) === -1) {
-      setVis(false);
-    }
-  })
 
   useEffect(() => {
     request
@@ -52,12 +46,34 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
 
   /* handles delete button onClick event */
   const handleDelete = useCallback(() => {
+
+    console.log(curDisplay)
     deleteCard(curOutfit.filter((item) => item !== itemNo));
     deleteCardDisplay(curDisplay.filter((item) => item !== itemNo));
+    console.log(curDisplay);
+
+    const populateList = () => {
+      if (curOutfit.length > 2) {
+        curOutfit.forEach((card) => {
+          if (curDisplay.indexOf(card) === -1) {
+            deleteCardDisplay(prevDisplay => [...prevDisplay, card]);
+          }
+        })
+      }
+    }
+
+    populateList();
+
   }, [deleteCard, curOutfit, curDisplay]);
 
+  const checkVis = () => {
+    if (curDisplay.indexOf(itemNo) !== -1) {
+      setVis(true);
+    }
+  }
 
-  if (vis) {
+
+  if (curDisplay.indexOf(itemNo) !== -1) {
     return (
       <div
       key={itemNo}
