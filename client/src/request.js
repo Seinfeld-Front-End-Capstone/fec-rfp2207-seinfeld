@@ -176,4 +176,16 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
+
+  //CLICK TRACKING
+  submitClickData: (data) => {
+    return axios({
+      url: '/interactions',
+      method: 'post',
+      baseURL: basePath,
+      headers:{Authorization: token},
+      data
+    })
+  }
 }
+

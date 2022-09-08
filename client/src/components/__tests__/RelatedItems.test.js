@@ -1,5 +1,5 @@
 import {render, fireEvent, screen} from '@testing-library/react'
-import RelatedList from '../RelatedList.jsx';
+import RelatedList from '../rc/RelatedList.jsx';
 
 
 describe('List test 1', () => {
