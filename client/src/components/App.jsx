@@ -5,6 +5,7 @@ import ItemLists from './rc/ItemLists.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
 import please from '.././request.js'
+import mannequin from '../assets/mannequin.jpeg';
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
 
   useEffect(() => {
     please.getProducts()
-    .then((data) => setProduct(data.data[3]))
+    .then((data) => setProduct(data.data[0]))
     .catch((err) => console.log(err))
   },[])
 
@@ -28,8 +29,9 @@ const App = () => {
       <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
     :
-    <div>
-      <h1>loading...</h1>
+    <div id="loading-div">
+      <img className='loading-screen' src={mannequin}/>
+      <h1 className='loading-screen'>getting dressed...</h1>
     </div>
   )
 }
