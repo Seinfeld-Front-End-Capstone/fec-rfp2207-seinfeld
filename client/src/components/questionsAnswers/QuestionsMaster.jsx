@@ -15,28 +15,21 @@ const QuestionsMaster = ({ productName, productId }) => {
   useEffect(() => {
     please.getQuestions(productId)
       .then((data) => {
-        // console.log('data use effect : ', data.data)
         let sortedQuestions = data.data.results
         sortedQuestions.sort((a, b) => {
           return b.question_helpfulness - a.question_helpfulness
         })
         setQuestion(sortedQuestions)
         setInitial(sortedQuestions)
-        // console.log('sorted : ', sorted)
       })
   }, [productId])
 
-
-  // console.log('question : ', question)
-  // console.log('initial : ', initial);
-
   const doSearch = (word) => {
-    // console.log('initial questions : ', initial);
+
     let questions = initial;
-    // console.log(questions);
+
     let filteredQuestions = [];
     questions.forEach((q) => {
-      // console.log('input : ', input)
       if (word.length >= 3 && q.question_body.toLowerCase().includes(word.toLowerCase())) {
         filteredQuestions.push(q)
       }
@@ -44,11 +37,8 @@ const QuestionsMaster = ({ productName, productId }) => {
     filteredQuestions.sort((a, b) => {
       return b.question_helpfulness - a.question_helpfulness
     })
-    // console.log('ARRAY : ', filteredQuestions)
     word.length < 3 ? setQuestion(initial) : setQuestion(filteredQuestions)
   }
-
-  // console.log('initial : ', initial)
 
   return (
     <div className='qa-qa-master'>
