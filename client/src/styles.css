@@ -84,13 +84,27 @@ p {
 }
 
 #OVModal {
-  height: 80%;
   width: 80%;
   position: fixed;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   z-index: 1000;
+  transition: all 1.3s ;
+}
+
+.OVimageModal {
+  width: 80vw;
+  height: 80vh;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transition: opacity .7s;
 }
 
 #OVExpandThumbNails{
