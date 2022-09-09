@@ -669,7 +669,7 @@ p {
 }
 
 .qa-qa-container {
-  max-width: 680px;
+  max-width: var(--max-width);
   width: 60%;
   min-width: 560px;
 }
@@ -749,7 +749,8 @@ p {
 }
 
 #qa-question-helpful {
-  /* float: right; */
+  white-space: nowrap;
+  margin-left: 10px;
   text-align: center;
   font-size: 12px;
 }
