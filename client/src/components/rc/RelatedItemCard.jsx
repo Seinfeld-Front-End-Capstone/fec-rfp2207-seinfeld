@@ -83,24 +83,19 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
     setOVProduct(prevData => productData);
   };
 
+  // let pictureStyle = {
+  //   backgroundImage: `url(${photoData})`
+  // }
+
+  console.log(photoData)
+
   return (
     <li
       className="RC_related_card_container">
       <div
       className="RC_related_card">
-        <div
-        className="RC_card_photo_container">
-          <img
-            className="RC_card_photo"
-            src={photoData}
-            onClick={handleProductClick}
-            height="225"
-          />
-          <i
-            className="fa-solid fa-star compare_star"
-            onClick={handlePopToggle}>
-          </i>
-        </div>
+        <div className="RC_card_photo_container" style={{backgroundImage:`url(${photoData})`}} onClick={handleProductClick} />
+        <i className="fa-solid fa-star compare_star" onClick={handlePopToggle}/>
         <div className="RC_related_text_container">
           <h6
             className="RC_product_category RC_text">

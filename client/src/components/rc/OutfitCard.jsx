@@ -82,13 +82,10 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
     return (
       <div
       key={itemNo}
+      style={{backgroundImage: `url(${photoData})`}}
+      onClick={handleProductClick}
       className="RC_outfit_card_container">
       <aside>
-        <img
-        className="RC_outfit_photo"
-        onClick={handleProductClick}
-        src={photoData}
-        />
         <i
         className="fa-solid fa-circle-xmark RC_x"
         onClick={handleDelete}>

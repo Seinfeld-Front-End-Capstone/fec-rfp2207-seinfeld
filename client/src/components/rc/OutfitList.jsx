@@ -82,10 +82,10 @@ const OutfitList = ({ id, setProduct }) => {
             onClick={handleAddToOutfit}>
               <i
               className="fa-solid fa-plus plus"></i>
-              <p
+              <div
               className="RC_outfit_add_text">
                 Add To Outfit
-              </p>
+              </div>
             </div>
           </li>
         {addOutfit}

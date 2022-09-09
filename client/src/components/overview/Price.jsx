@@ -6,9 +6,10 @@ const Price = () => {
 
   return (
     <div>
+    <span style={{fontWeight: 'bold'}}>Price</span>
     {curStyle.sale_price ?
-      <p>{curStyle.sale_price} <span style={{textDecorationLine : 'line-through'}}>{curStyle.original_price}</span></p>:
-      <p>{curStyle.original_price}</p>}
+      <span> : {curStyle.sale_price} <span style={{textDecorationLine : 'line-through'}}>{curStyle.original_price}</span></span>:
+      <span> : {curStyle.original_price}</span>}
     </div>
   )
 }

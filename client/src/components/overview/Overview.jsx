@@ -24,7 +24,10 @@ const Overview = () => {
             <p>{product.category}</p>
             <h2>{product.name}</h2>
             <Price />
-            <p>selected style : {curStyle.name}</p>
+            <div>
+            {product.features.map((f) => <p key={f.feature}><span style={{fontWeight: 'bold'}}>{f.feature}</span> : {f.value} </p>)}
+            </div>
+            <p><span style={{fontWeight: 'bold'}}>Selected Style</span> : {curStyle.name}</p>
             <Styles />
             {Object.keys(curStyle.skus)[0] === 'null' ?
             <div>
@@ -38,17 +41,11 @@ const Overview = () => {
             </div>
             <AddToBag />
             </>}
-        {/* <Favorite/> */}
             </div>
         </div>
         <div id='OVdesc'>
-          <div>
             <h3>{product.slogan}</h3>
             <p> {product.description}</p>
-          </div>
-          <div>
-            {product.features.map((f) => <p key={f.feature}><span style={{fontWeight: 'bold'}}>{f.feature}</span> : {f.value} </p>)}
-          </div>
         </div>
       </div>
     </div>
