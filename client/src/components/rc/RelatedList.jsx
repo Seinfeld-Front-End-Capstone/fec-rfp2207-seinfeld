@@ -25,9 +25,6 @@ const RelatedList = ({ id, setProduct }) => {
 
   }, [list, index])
 
-  console.log('related list:', list);
-  console.log('display:', itemDisplay);
-
 
 
   /* Creates a related item card for each element in the list of
@@ -46,9 +43,7 @@ if (itemDisplay[0]) {
     var fourCards = [];
     for (var i = index; i < index + 4; i++) {
       fourCards.push(list[i]);
-      console.log ('i:', list[i]);
     }
-    console.log(index);
     setItemDisplay(fourCards);
   }
 
@@ -63,12 +58,8 @@ if (itemDisplay[0]) {
     setIndex(prevIndex => prevIndex + 1);
   }
 
-
-  console.log("index:", index);
-
   const leftButtonVis = index > 0 ? {visibility: 'visible'} : {visibility: "hidden"};
-  const rightButtonVis = index === list.length - 4  ? {visibility: 'hidden'} : {visibility: 
-'visible'};
+  const rightButtonVis = index === list.length - 4  ? {visibility: 'hidden'} : {visibility: 'visible'};
 
   return (
     <div>
