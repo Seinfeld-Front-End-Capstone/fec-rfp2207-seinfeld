@@ -1,5 +1,5 @@
 const config = {
-  TOKEN: "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"
+  TOKEN: "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"
 }
 
 module.exports = config
