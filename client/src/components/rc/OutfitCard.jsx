@@ -77,12 +77,9 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
     return (
       <div
       key={itemNo}
+      style={{backgroundImage: `url(${photoData})`}}
       className="RC_outfit_card_container">
       <aside>
-        <img
-        className="RC_outfit_photo"
-        src={photoData}
-        />
         <i
         className="fa-solid fa-circle-xmark RC_x"
         onClick={handleDelete}>

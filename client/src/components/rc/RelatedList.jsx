@@ -48,19 +48,23 @@ if (itemDisplay[0]) {
 
   const handlePrevClick = (e) => {
     e.preventDefault();
-    setIndex(prevIndex => prevIndex - 1);
+    index !== 0 ?
+    setIndex(prevIndex => prevIndex - 1):
+    null;
   }
 
   const handleNextClick = (e) => {
     e.preventDefault();
-    setIndex(prevIndex => prevIndex + 1);
+    index !== list.length - 4 ?
+    setIndex(prevIndex => prevIndex + 1):
+    null;
   }
 
   const leftButtonVis = index > 0 ? {visibility: 'visible'} : {visibility: "hidden"};
   const rightButtonVis = index === list.length - 4  ? {visibility: 'hidden'} : {visibility: 'visible'};
 
   return (
-    <div>
+    <div id='RC_related_list_container'>
       <ul
       className="RC_related_list">
         <button style={leftButtonVis}
