@@ -61,6 +61,7 @@ button:hover {
 }
 /* LOADING SCREEN */
 #loading-div {
+  position: fixed;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -68,6 +69,30 @@ button:hover {
   height: 100%;
   width: 100%;
   position: fixed;
+  z-index: -2;
+  animation: fadeout;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  background-color: white;
+}
+#loading-div img,
+#loading-div h1
+{
+  opacity: 0;
+  animation: fadeout;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes fadeout {
+  from {
+    z-index: 10;
+    opacity: 1;
+  }
+  to {
+    z-index: 5;
+    opacity: 0;
+  }
 }
 
 #loading-div img {
