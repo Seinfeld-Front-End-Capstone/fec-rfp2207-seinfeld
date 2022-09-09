@@ -18,10 +18,10 @@ const RelatedList = ({ id, setProduct }) => {
           setKey(prevKey => [...prevKey, item]);
         });
       })
-  }, []);
+  }, [id]);
 
-  console.log('overview id:', id);
-  console.log('related list:', list);
+  // console.log('overview id:', id);
+  // console.log('related list:', list);
 
 
 
