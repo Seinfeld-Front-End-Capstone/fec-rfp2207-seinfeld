@@ -81,18 +81,16 @@ p {
   bottom: 0;
   background-color: rgba(0, 0, 0, .7);
   z-index: 1000;
-  transition: opacity 2s, visibility 2s;
 }
 
 #OVModal {
   height: 80%;
   width: 80%;
   position: fixed;
+  transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 1000;
-  transition: opacity 2s, visibility 2s;
 }
 
 #OVExpandThumbNails{
@@ -211,15 +209,18 @@ p {
   position: relative;
   overflow: hidden;
   border-radius: 10px;
-  background-color: var(--mid-green);
+  background-color: var(--grey);
 }
 
 #OVimagedisplay {
   width: 100%;
   height: 100%;
+  position: absolute;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity .7s
 }
 
 .OVImageExpand {
@@ -283,6 +284,7 @@ p {
   transition: transform .2s, left 1s ease-out;
   left: 0;
   position: relative;
+  opacity: 0.4;
 }
 
 .OVthumbnailImage:Hover {
@@ -382,7 +384,8 @@ p {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
-  max-width: 800;
+  width: 1000;
+  max-width: 1000;
 }
 
 
@@ -394,7 +397,7 @@ p {
   width: 150px;
   height: 250px;
   margin-top: 20px;
-  margin-left: 5px;
+  margin-left: 12px;
   position: relative;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
 }
@@ -444,6 +447,11 @@ p {
   padding: 0;
 }
 
+.RC_h5 {
+  text-align: left;
+  margin-left: 100px;
+}
+
 .Rc_product_price {
   padding: 0;
   margin: 0;
@@ -472,6 +480,7 @@ p {
   flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
+  width: 1000;
   max-width: 1000;
 }
 
@@ -501,7 +510,7 @@ p {
   width: 150px;
   height: 250px;
   margin-top: 20px;
-  margin-left: 5px;
+  margin-left: 12px;
   position: relative;
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   background-color: var(--light-green);
@@ -572,7 +581,7 @@ p {
   position: absolute;
   top: 4px;
   right: 4px;
-  color: var(--light);
+  color: var(--gray);
 }
 
 .RC_x:hover {
@@ -598,7 +607,7 @@ p {
 .RC_modal_content {
   background-color: white;
   position: fixed;
-  width: 60%;
+  width: 45%;
   top: calc(25% - 50px);
   left: calc(25% - 50px);
   padding: 20px;

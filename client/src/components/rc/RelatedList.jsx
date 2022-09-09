@@ -15,17 +15,21 @@ const RelatedList = ({ id, setProduct }) => {
       .then((data) => {
         setList(data.data);
         list.map((item) => {
-          setKey(prevKey => prevKey + 100);
+          setKey(prevKey => [...prevKey, item]);
         });
       })
   }, []);
 
+  console.log('overview id:', id);
+  console.log('related list:', list);
 
 
-  /* Creates a related item card for each element in the list of related items */
+
+  /* Creates a related item card for each element in the list of
+related items */
   var createCard = list.map((productID) => {
     return <RelatedItemCard
-    key={key}
+    key={productID}
     pID={productID}
     ogID={id}
     setOVProduct={setProduct}/>
@@ -35,7 +39,8 @@ const RelatedList = ({ id, setProduct }) => {
     e.preventDefault();
     var prev = itemDisplay[0] - 1;
     if (list.indexOf(prev) !== -1) {
-      setItemDisplay(itemDisplay.filter((item) => item !== itemDisplay[3]));
+      setItemDisplay(itemDisplay.filter((item) => item !==
+itemDisplay[3]));
       setItemDisplay(prevDisplay => [prev, ...prevDisplay]);
     }
   }
@@ -44,14 +49,14 @@ const RelatedList = ({ id, setProduct }) => {
     e.preventDefault();
     var next = itemDisplay[3] + 1;
     if (list.indexOf(next) !== -1) {
-      setItemDisplay(itemDisplay.filter((item) => item !== itemDisplay[0]));
+      setItemDisplay(itemDisplay.filter((item) => item !==
+itemDisplay[0]));
       setItemDisplay(prevDisplay => [...prevDisplay, next]);
     }
   }
 
   return (
     <div>
-      <h5>Related Items</h5>
       <ul
       className="RC_related_list">
         <button

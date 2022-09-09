@@ -15,10 +15,9 @@ const Images = () => {
   const toTheRight = () => {
     setLeft(left - 120)
   }
-  console.log(images.length)
+
   const leftHidden = left >= 0 ? {visibility: 'hidden'} : null;
   const rightHidden = left <= (images.length - 5) * -120 ? {visibility: 'hidden'}: null;
-  console.log({leftHidden, rightHidden})
 
   return (
     <div id='OVImages'>

@@ -77,7 +77,7 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
 
   const handleProductClick = (e) => {
     e.preventDefault();
-    setOVProduct(prevProd => productData);
+    setOVProduct(prevData => productData);
   };
 
   return (
@@ -90,6 +90,7 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
           <img
             className="RC_card_photo"
             src={photoData}
+            onClick={handleProductClick}
             height="225"
           />
           <i
@@ -120,7 +121,9 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
             rating={starRating} />
         </div>
       </div>
-      {pop ? <ComparisonModal toggle={setPop} overviewItem={ovItem} relatedItem={productData} relatedPrice={price} ovPrice={ovItemPrice}/> : null}
+      {pop ? <ComparisonModal toggle={setPop} overviewItem=
+{ovItem} relatedItem={productData} relatedPrice={price}
+ovPrice={ovItemPrice}/> : null}
     </li>
 
   );
