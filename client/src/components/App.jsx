@@ -13,7 +13,7 @@ const App = () => {
 
   useEffect(() => {
     please.getProducts()
-    .then((data) => setProduct(data.data[3]))
+    .then((data) => setProduct(data.data[0]))
     .catch((err) => console.log(err))
   },[])
 
