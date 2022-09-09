@@ -3,6 +3,10 @@ bundle.js
 node_modules
 ProductsDetail.js
 .env
+<<<<<<< HEAD
+.gitignore
+=======
 config.js
 
 
+>>>>>>> main

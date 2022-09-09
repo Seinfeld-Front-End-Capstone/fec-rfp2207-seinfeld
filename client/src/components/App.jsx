@@ -12,22 +12,20 @@ const App = () => {
 
   useEffect(() => {
     please.getProducts()
-    .then((data) => setProduct(data.data[0]))
+    .then((data) => setProduct(data.data[3]))
     .catch((err) => console.log(err))
   },[])
 
   return (
     product ?
     <div>
-      <h1>buymorethings</h1>
+      <h1>tekstyle</h1>
       <OVProvider productId={product.id}>
         <Overview />
       </OVProvider>
       <ItemLists productId={product.id} setProduct={setProduct}/>
       <QuestionsMaster productName={product.name} productId={product.id}/>
-      <RatingsReviews
-        productId={product.id}
-        productName={product.name}/>
+      <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
     :
     <div>

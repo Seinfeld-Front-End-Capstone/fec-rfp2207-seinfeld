@@ -3,8 +3,7 @@ const axios = require('axios');
 const config = require('../../config.js')
 
 let token = config.TOKEN;
-console.log(token);
-
+console.log('token : ', token)
 module.exports = {
 
   //APP

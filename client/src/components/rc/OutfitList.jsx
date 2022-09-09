@@ -24,7 +24,7 @@ const OutfitList = ({ id }) => {
       setOutfitDisplay(prevDisplay => [...prevDisplay, cardCount]);
     }
     setCardCount(prevCount => prevCount + 1);
-    console.log(outfitDisplay);
+    // console.log(outfitDisplay);
   }
 
   /* handles click of next arrow button */
@@ -42,8 +42,8 @@ const OutfitList = ({ id }) => {
       }
     }
     checkKeyGaps(next);
-    console.log('outfit:', outfit)
-    console.log('display:', outfitDisplay);
+    // console.log('outfit:', outfit)
+    // console.log('display:', outfitDisplay);
   }
 
   /* handles click of previous arrow button */
@@ -61,16 +61,15 @@ const OutfitList = ({ id }) => {
       }
     }
     checkKeyGaps(prev);
-    console.log(outfitDisplay);
+    // console.log(outfitDisplay);
   }
 
-  console.log('outfit:', outfit)
-  console.log('display:', outfitDisplay);
+  // console.log('outfit:', outfit)
+  // console.log('display:', outfitDisplay);
 
 
   return (
     <div>
-      <h5>Your Outfit</h5>
       <ul className="RC_outfit_list">
         <button
         className="RC_prev"
