@@ -5,37 +5,37 @@ const validateForm = ({ product_id, rating, body, recommend, name, email, charac
   let errorMessages = []
   if (!product_id) {
     isValid = false;
-    errorMessages.push('Missing product ID')
+    errorMessages.push('\nMissing product ID')
   }
   if (!rating || rating < 1 || rating > 5) {
     isValid = false;
-    errorMessages.push('Missing overall rating')
+    errorMessages.push('\nMissing overall rating')
   }
   if (!body || body.length < 50) {
     isValid = false;
-    errorMessages.push('Review should be at least 50 characters')
+    errorMessages.push('\nReview should be at least 50 characters')
   }
   if(recommend === null || recommend === undefined) {
     isValid = false;
-    errorMessages.push('Indicate whether you recommend this product')
+    errorMessages.push('\nIndicate whether you recommend this product')
   }
   if(name === undefined || name.length === 0) {
     isValid = false;
-    errorMessages.push('Missing name')
+    errorMessages.push('\nMissing name')
   }
   if(email === undefined || email.length === 0) {
     isValid = false;
-    errorMessages.push('Missing email address')
+    errorMessages.push('\nMissing email address')
 
   } else if (!validate(email)) {
     isValid = false;
-    errorMessages.push('Incorrect email format')
+    errorMessages.push('\nIncorrect email format')
   }
   //need additional logic to validate photos format
   for (let char in characteristics) {
     if (!characteristics[char]) {
       isValid = false;
-      errorMessages.push(`Missing a rating for ${char}`)
+      errorMessages.push(`\nMissing a rating for ${char}`)
     }
   }
   return { isValid, errorMessages };

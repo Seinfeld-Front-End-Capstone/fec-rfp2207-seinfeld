@@ -20,12 +20,11 @@ const RelatedList = ({ id, setProduct }) => {
       setIndex(0);
   }, [id]);
 
+
   useEffect(() => {
     renderCards();
 
   }, [list, index])
-
-
 
   /* Creates a related item card for each element in the list of
 related items */

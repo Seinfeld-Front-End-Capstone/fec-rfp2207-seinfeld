@@ -12,7 +12,7 @@ const App = () => {
 
   useEffect(() => {
     please.getProducts()
-    .then((data) => setProduct(data.data[3]))
+    .then((data) => setProduct(data.data[0]))
     .catch((err) => console.log(err))
   },[])
 
@@ -23,7 +23,7 @@ const App = () => {
       <OVProvider productId={product.id}>
         <Overview />
       </OVProvider>
-      <ItemLists productId={product.id} setProduct={setProduct}/>
+      {/* <ItemLists productId={product.id} setProduct={setProduct}/> */}
       <QuestionsMaster productName={product.name} productId={product.id}/>
       <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
