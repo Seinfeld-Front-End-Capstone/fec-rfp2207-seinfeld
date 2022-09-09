@@ -19,7 +19,7 @@
   --dark-grey: #333;
   --black: #000000;
   --light-grey: hsl(0, 0%, 80%);
-  --faint-grey: hsl(0, 0%, 95%)
+  --faint-grey: hsl(0, 0%, 95%);
 
   font-family:Georgia, 'Times New Roman', Times, serif;
 
@@ -74,6 +74,10 @@ h1 {
   font-family:'Courier New', Courier, monospace;
   font-weight: 100;
   font-size: 3em;
+}
+
+h2 {
+  text-align: center;
 }
 
 input{
@@ -1068,12 +1072,13 @@ p {
 
 #RR-sort-param {
   margin-left: 6px;
-  background-color: var(--light);
+  background-color: var(--faint-grey);
   height: 24px;
-  border-radius: 4px;
+  border-radius: 2px;
   border: 0;
   text-align: center;
   font-size: 1em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #RR-reviews-right-ctn {
@@ -1081,7 +1086,7 @@ p {
 }
 #RR-reviews-ctn {
   width: auto;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 600px;
 }
 
@@ -1134,10 +1139,10 @@ p {
 }
 
 #RR-photo-modal .background {
-  background-color: black;
+  background-color: var(--white);
   width: 100%;
   height: 100%;
-  opacity: 0.9;
+  opacity: 0.8;
   position: fixed;
 }
 
@@ -1204,8 +1209,6 @@ p {
   width: 240px;
   padding-top: 260px;
   padding-right: 20px;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
   background-image: url('./assets/pencileandletter.jpg');
   background-size: 700px 600px;
   background-position: 48% 100%;
@@ -1215,33 +1218,17 @@ p {
   align-items: flex-end;
 }
 
-#RR-form-menu button,
-#RR-form-menu input,
-.RR-form-fields button {
-  border: 0;
-  margin: 10px 0;
-  height: 30px;
-  width: 80px;
-  color: var(--black-green);
-  background-color: var(--light);
-  border-radius: 4px;
-  opacity: .6;
-  font-weight: bold;
-  font-size: 1em;
+#RR-form-inner-ctn button {
+  width: 100px;
 }
 
-.RR-form-fields button {
+#RR-form-inner-ctn .RR-form-fields button {
   width: 200px;
 }
 
 #RR-form-menu span {
   font-size: 20px;
   margin: 10px 0;
-}
-#RR-form-menu .active,
-.RR-form-fields .active {
-  color: var(--light) !important;
-  background-color: var(--black-green) !important;
 }
 
 #RR-form-inner-ctn form {
@@ -1301,9 +1288,8 @@ p {
 #RR-form-inner-ctn .RR-prod-char-rating {
   display: flex;
   width: 700px;
-  border: 1px solid var(--grey);
-  background-color: var(--light);
-  border-radius:  20px;
+  background-color: hsl(0,0%, 90%);
+  border-radius:  4px;
   margin: 2px;
   border: 0;
 }
