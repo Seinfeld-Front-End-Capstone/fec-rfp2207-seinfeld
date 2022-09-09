@@ -68,6 +68,13 @@ div {
   color: var(--dark-grey);
 }
 
+h1 {
+  text-align: center;
+  font-family:'Courier New', Courier, monospace;
+  font-weight: 100;
+  font-size: 3em;
+}
+
 input{
   accent-color: var(--dark-green);
   height: 18px;
@@ -359,7 +366,7 @@ p {
 }
 
 .OVleftArrow:Hover {
-  color: #fff;
+  color: var(--white);
   background-color: rgba(0, 0, 0, .4);
 }
 
@@ -392,7 +399,7 @@ p {
 
 .RC_related_list {
   padding: 0;
-  margin: 0;
+  margin: 0 0 2em;
   list-style: none;
 
   display: -webkit-box;
@@ -468,8 +475,9 @@ p {
 }
 
 .RC_h5 {
-  text-align: left;
-  margin-left: 100px;
+  text-align: center;
+  font-size: 2em;
+  margin: 0.5em;
 }
 
 .Rc_product_price {
@@ -660,7 +668,9 @@ p {
 }
 
 .qa-qa-container {
-  max-width: var(--max-width);
+  max-width: 680px;
+  width: 60%;
+  min-width: 560px;
 }
 
 /* SEARCH BAR */
@@ -945,7 +955,8 @@ p {
 #RR-ratings-reviews-ctn {
   display: flex;
   max-width: var(--max-width);
-  width: 100%;
+  width: 80%;
+  min-width: 940px;
 }
 
 /* Ratings breakdown */
