@@ -61,6 +61,7 @@ button:hover {
 }
 /* LOADING SCREEN */
 #loading-div {
+  position: fixed;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -68,6 +69,30 @@ button:hover {
   height: 100%;
   width: 100%;
   position: fixed;
+  z-index: -2;
+  animation: fadeout;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  background-color: white;
+}
+#loading-div img,
+#loading-div h1
+{
+  opacity: 0;
+  animation: fadeout;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes fadeout {
+  from {
+    z-index: 10;
+    opacity: 1;
+  }
+  to {
+    z-index: 5;
+    opacity: 0;
+  }
 }
 
 #loading-div img {
@@ -95,7 +120,7 @@ h1 {
   font-size: 3em;
 }
 
-h2 {
+.qa-qa-container h2 {
   text-align: center;
 }
 
@@ -519,7 +544,7 @@ p {
 
 .RC_h5 {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0.5em;
 }
 
@@ -597,7 +622,7 @@ p {
 }
 .RC_next,
 .RC_prev {
-  background-color: var(--light-grey);
+  background-color: var(--grey);
   color: var(--white);
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
@@ -711,6 +736,7 @@ p {
 }
 
 .qa-qa-container {
+  margin-top: 90px;
   max-width: var(--max-width);
   width: 60%;
   min-width: 560px;
@@ -1104,6 +1130,28 @@ p {
 }
 
 /* Reviews list */
+
+#stylists-ctn {
+  position: absolute;
+  z-index: -1;
+  height: 370px;
+  display: flex;
+  align-items: flex-end;
+}
+img#stylists-background {
+
+  width: 600px;
+  opacity: 0.2;
+  animation-name: rise;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+
+}
+
+@keyframes rise {
+  from {height: 0;}
+  to {height: 370px;}
+}
 
 #RR-breakdown-ctn {
   padding-left: 20px;
