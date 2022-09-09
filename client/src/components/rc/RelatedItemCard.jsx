@@ -6,7 +6,7 @@ import ComparisonModal from './ComparisonModal.jsx';
 
 /* *** Cards for each item in the list of related products *** */
 
-const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct, curDisplay }) => {
+const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
   const [productData, setProductData] = useState([]);
   const [ovItem, setOVItem] = useState([]);
   const [photoData, setPhotoData] = useState([]);
@@ -83,10 +83,8 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct, curDisplay }) => 
     setOVProduct(prevData => productData);
   };
 
-  if (curDisplay.indexOf(pID) !== -1) {
-
-    return (
-      <li
+  return (
+    <li
       className="RC_related_card_container">
       <div
       className="RC_related_card">
@@ -97,7 +95,7 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct, curDisplay }) => 
             src={photoData}
             onClick={handleProductClick}
             height="225"
-            />
+          />
           <i
             className="fa-solid fa-star compare_star"
             onClick={handlePopToggle}>
@@ -125,17 +123,13 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct, curDisplay }) => 
           <Stars
             rating={starRating} />
         </div>
-        </div>
-        {pop ? <ComparisonModal
-        toggle={setPop}
-        overviewItem={ovItem}
-        relatedItem={productData}
-        relatedPrice={price}
-        ovPrice={ovItemPrice}/>
-        : null}
-      </li>
-    );
-  }
+      </div>
+      {pop ? <ComparisonModal toggle={setPop} overviewItem=
+{ovItem} relatedItem={productData} relatedPrice={price}
+ovPrice={ovItemPrice}/> : null}
+    </li>
+
+  );
 };
 
 export default RelatedItemCard;
