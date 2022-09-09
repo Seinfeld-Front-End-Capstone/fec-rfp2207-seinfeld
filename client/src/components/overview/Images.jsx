@@ -23,6 +23,19 @@ const Images = () => {
     <div id='OVImages'>
       <ImageDisplay >
         <AiOutlineExpand className='OVImageExpand' onClick={() => setExpand(true)} />
+
+        {images.map((image, index) => {
+        let styles = {
+          backgroundImage: image.url ? `url(${image.url})` : `url(https://cdn.dribbble.com/users/1507491/screenshots/4945826/media/116a8ebc414c519ad1cfc0fe63f79d3e.jpg?compress=1&resize=800x600&vertical=top)`
+        }
+
+        if (index === displayIndex) {
+          styles.opacity = 1
+        }
+
+        return  <div id='OVimagedisplay' key={index} style={styles} />
+        })}
+
       </ ImageDisplay>
       {images.length > 1 &&
       <div id='OVThumbnailContainer'>
