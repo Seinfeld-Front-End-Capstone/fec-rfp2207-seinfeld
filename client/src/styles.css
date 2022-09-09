@@ -685,12 +685,16 @@ p {
   margin-bottom: 15px;
   font-size: 15px;
   box-sizing: border-box;
-  /* background: transparent; */
 }
 
 #qa-search-input::placeholder {
   font-weight: bold;
   font-size: large;
+}
+
+#qa-search-icon {
+  top: 10px;
+  left: 10px;
 }
 
 .qa-question-container {
@@ -720,7 +724,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  overflow-y: scroll;
+  overflow: auto;
 }
 
 .qa-question-modal form {
@@ -745,14 +749,14 @@ p {
 
 .qa-question-list {
   max-height: 1500px;
-  overflow-y: scroll;
+  overflow: auto;
 }
 
 #qa-question-helpful {
   white-space: nowrap;
   margin-left: 10px;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 #qa-answer-count {
@@ -782,6 +786,10 @@ p {
   color: var(--black);
 }
 
+#qa-space-body {
+  font-size: 18px;
+}
+
 .qa-question-modal input {
   margin: 5px 0;
   width: 60%;
@@ -793,7 +801,7 @@ p {
 
 .qa-answer-container {
   max-height: 500px;
-  overflow-y: scroll;
+  overflow: auto;
   margin-bottom: 20px;
 }
 
@@ -802,20 +810,29 @@ p {
   margin-left: 25px;
 }
 
-.qa-img-modal {
+#qa-popout-img {
+  z-index: 5;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+#qa-modal-container {
   position: fixed;
   left: 0;
   top: 0;
-  padding-top: 300px;
-  padding-left: 700px;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(255, 255, 255, 0.75);
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background-color: red;
+  background-color: rgba(255, 255, 255, 0.80);
 }
 
 .qa-img-close {
   position: absolute;
-  background-color: transparent;
+  top: 20px;
+  right: -20px;
   border: none;
   font-size: 1.7em;
   padding: 10px;
@@ -826,17 +843,28 @@ p {
 }
 
 .qa-img-close:hover {
-  background-color: transparent;
-  color: var(--black);
+  /* background-color: transparent; */
+  color: var(--white);
 }
 
 .qa-answer-img {
   border-radius: 5px;
   cursor: pointer;
+  z-index: 3;
   transition: 0.3s;
   margin: 10px 10px 5px 0;
-  width: 120px;
-  height: 120px;
+  width: 110px;
+  height: 110px;
+  transition: all .2 ease-out;
+}
+
+.qa-answer-img:hover {
+  transform: scale(1.1);
+}
+
+.qa-popup-img {
+  width: auto;
+
 }
 
 .qa-load-answers {
@@ -866,7 +894,7 @@ p {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  overflow-y: scroll;
+  overflow: auto;
 }
 
 .qa-answer-modal form {
@@ -900,6 +928,7 @@ p {
 
 #qa-Q {
   display: inline-flex;
+  font-size: 20px;
   padding-right: 3px;
 }
 
@@ -946,6 +975,8 @@ p {
 .qa-modal-img-container {
   margin: 10px 0;
 }
+
+
 
 /* RATINGS AND REVIEWS */
 
