@@ -64,16 +64,13 @@ const QuestionsMaster = ({ productName, productId }) => {
         )}
         <QuestionList questions={question} length={length} productName={productName} />
         <div className='qa-button-container'>
-          {/* { question.length <= 2 ?
-
-            :
-
-          } */}
-          {length < question.length ?
+          { question.slice(0, 3).length > 4 &&
+          (length < question.length ?
             <button className='qa-question-button' onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
             :
             <button className='qa-question-button' onClick={() => setLength(4)}>Collapse Questions</button>
-          }
+          )
+         }
           <button className='qa-question-button' onClick={() => setModal(true)}>Add A Question</button>
         </div>
 

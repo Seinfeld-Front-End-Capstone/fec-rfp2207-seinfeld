@@ -66,9 +66,9 @@ if (itemDisplay[0]) {
 
   console.log("index:", index);
 
-  // if card id exists within outfit display, display it
   const leftButtonVis = index > 0 ? {visibility: 'visible'} : {visibility: "hidden"};
-  const rightButtonVis = index === list.length - 4  ? {visibility: 'hidden'} : {visibility: 'visible'};
+  const rightButtonVis = index === list.length - 4  ? {visibility: 'hidden'} : {visibility: 
+'visible'};
 
   return (
     <div>
