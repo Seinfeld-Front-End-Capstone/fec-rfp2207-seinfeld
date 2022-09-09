@@ -64,7 +64,7 @@ const QuestionsMaster = ({ productName, productId }) => {
         )}
         <QuestionList questions={question} length={length} productName={productName} />
         <div className='qa-button-container'>
-          { question.slice(0, 3).length > 4 &&
+          { question.length > 4 &&
           (length < question.length ?
             <button className='qa-question-button' onClick={() => setLength((prevLength) => prevLength + 2)}>More Answered Questions</button>
             :
