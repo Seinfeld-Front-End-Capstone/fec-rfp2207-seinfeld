@@ -3,7 +3,7 @@ import request from "../../request.js";
 import AvgStarRating from "../helpers/AvgStarRating.jsx";
 import Stars from "../helpers/Stars.jsx";
 
-const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfit, curDisplay, onDelete }) => {
+const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfit, curDisplay, onDelete, setOVProduct }) => {
   const [productData, setProductData] = useState([]);
   const [photoData, setPhotoData] = useState([]);
   const [price, setPrice] = useState([]);
@@ -72,17 +72,20 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
     }
   }
 
+  const handleProductClick = (e) => {
+    e.preventDefault();
+    setOVProduct(prevData => productData);
+  };
+
 
   if (curDisplay.indexOf(itemNo) !== -1) {
     return (
       <div
       key={itemNo}
+      style={{backgroundImage: `url(${photoData})`}}
+      onClick={handleProductClick}
       className="RC_outfit_card_container">
       <aside>
-        <img
-        className="RC_outfit_photo"
-        src={photoData}
-        />
         <i
         className="fa-solid fa-circle-xmark RC_x"
         onClick={handleDelete}>
@@ -93,7 +96,8 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
               <em>{productData.category}</em>
           </h6>
           <h5
-            className="RC_product_name RC_text">
+            className="RC_product_name RC_text"
+            onClick={handleProductClick}>
             {productData.name}
           </h5>
           <h6
