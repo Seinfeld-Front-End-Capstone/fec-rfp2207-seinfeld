@@ -4,7 +4,7 @@ import OutfitCard from './OutfitCard.jsx';
 
  /* *** Renders a list of items in the Your Outfit component *** */
 
-const OutfitList = ({ id }) => {
+const OutfitList = ({ id, setProduct }) => {
   const [outfit, setOutfit] = useState([]);
   const [cardCount, setCardCount] = useState(0);
   const [outfitDisplay, setOutfitDisplay] = useState([]);
@@ -13,7 +13,7 @@ const OutfitList = ({ id }) => {
   const addOutfit = outfit.map((item) => {
     return <OutfitCard key={item} itemNo={item} productID={id}
     deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay}
-    curOutfit={outfit} curDisplay={outfitDisplay} />
+    curOutfit={outfit} curDisplay={outfitDisplay} setOVProduct={setProduct}/>
   });
 
   /* handles the + button being clicked */
