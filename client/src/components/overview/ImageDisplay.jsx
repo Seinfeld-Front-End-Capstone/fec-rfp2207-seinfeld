@@ -19,26 +19,10 @@ const ImageDisplay = ({children}) => {
     setLeft(next > 4 ? (next - 4) * -120 : 0)
   }
 
-  // let imageUrl = images[displayIndex].url
-  // const currImageStyle = {backgroundImage: imageUrl ? `url(${imageUrl})` : `url(https://cdn.dribbble.com/users/1507491/screenshots/4945826/media/116a8ebc414c519ad1cfc0fe63f79d3e.jpg?compress=1&resize=800x600&vertical=top)`}
-
   return (
   <div id='OVimageDisplayBox'>
     {displayIndex !== 0 && <div className='OVleftArrow' onClick={toPrevious}><IoIosArrowBack /></div>}
     {displayIndex !== images.length - 1 && <div className='OVrightArrow' onClick={toNext}><IoIosArrowForward /></div>}
-
-    {images.map((image, index) => {
-        let styles = {
-          backgroundImage: image.url ? `url(${image.url})` : `url(https://cdn.dribbble.com/users/1507491/screenshots/4945826/media/116a8ebc414c519ad1cfc0fe63f79d3e.jpg?compress=1&resize=800x600&vertical=top)`
-        }
-
-        if (index === displayIndex) {
-          styles.opacity = 1
-        }
-
-        return  <div id='OVimagedisplay' key={index} style={styles} />
-      })}
-
     {children}
   </div>
   )

@@ -19,7 +19,7 @@
   --dark-grey: #333;
   --black: #000000;
   --light-grey: hsl(0, 0%, 80%);
-  --faint-grey: hsl(0, 0%, 95%)
+  --faint-grey: hsl(0, 0%, 95%);
 
   font-family:Georgia, 'Times New Roman', Times, serif;
 
@@ -59,6 +59,50 @@ button:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+/* LOADING SCREEN */
+#loading-div {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: -2;
+  animation: fadeout;
+  animation-duration: 5s;
+  animation-iteration-count: 1;
+  background-color: white;
+}
+#loading-div img,
+#loading-div h1
+{
+  opacity: 0;
+  animation: fadeout;
+  animation-duration: 4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes fadeout {
+  from {
+    z-index: 10;
+    opacity: 1;
+  }
+  to {
+    z-index: 5;
+    opacity: 0;
+  }
+}
+
+#loading-div img {
+  width: 200px;
+  height: auto;
+}
+
+#loading-div h1 {
+  font-size: 1.5em;
+}
 
 /* GLOBAL STYLES */
 body {
@@ -74,6 +118,10 @@ h1 {
   font-family:'Courier New', Courier, monospace;
   font-weight: 100;
   font-size: 3em;
+}
+
+.qa-qa-container h2 {
+  text-align: center;
 }
 
 input{
@@ -112,13 +160,27 @@ p {
 }
 
 #OVModal {
-  height: 80%;
   width: 80%;
   position: fixed;
   transform: translate(-50%, -50%);
   top: 50%;
   left: 50%;
   z-index: 1000;
+  transition: all 1.3s ;
+}
+
+.OVimageModal {
+  width: 80vw;
+  height: 80vh;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 50%;
+  left: 50%;
+  opacity: 0;
+  transition: opacity .7s;
 }
 
 #OVExpandThumbNails{
@@ -166,6 +228,11 @@ p {
 
 #OVInfo {
   height: 100%;
+}
+
+#OVReviews:Hover {
+  cursor:pointer;
+  color:black;
 }
 
 #OVStyleBox {
@@ -477,7 +544,7 @@ p {
 
 .RC_h5 {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
   margin: 0.5em;
 }
 
@@ -555,7 +622,7 @@ p {
 }
 .RC_next,
 .RC_prev {
-  background-color: var(--light-grey);
+  background-color: var(--grey);
   color: var(--white);
   box-shadow: 0 2px 3px 0 rgba(99, 29, 29, 0.2), 0 2px 5px 0 rgba(0, 0, 0, 0.19);
   border: none;
@@ -669,6 +736,7 @@ p {
 }
 
 .qa-qa-container {
+  margin-top: 90px;
   max-width: var(--max-width);
   width: 60%;
   min-width: 560px;
@@ -1014,6 +1082,7 @@ p {
 
 #RR-avg-rating {
   font-size: 50px;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   display: flex;
   align-items: center;
@@ -1093,18 +1162,41 @@ p {
 
 /* Reviews list */
 
+#stylists-ctn {
+  position: absolute;
+  z-index: -1;
+  height: 370px;
+  display: flex;
+  align-items: flex-end;
+}
+img#stylists-background {
+
+  width: 600px;
+  opacity: 0.2;
+  animation-name: rise;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+
+}
+
+@keyframes rise {
+  from {height: 0;}
+  to {height: 370px;}
+}
+
 #RR-breakdown-ctn {
   padding-left: 20px;
 }
 
 #RR-sort-param {
   margin-left: 6px;
-  background-color: var(--light);
+  background-color: var(--faint-grey);
   height: 24px;
-  border-radius: 4px;
+  border-radius: 2px;
   border: 0;
   text-align: center;
   font-size: 1em;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #RR-reviews-right-ctn {
@@ -1112,7 +1204,7 @@ p {
 }
 #RR-reviews-ctn {
   width: auto;
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 600px;
 }
 
@@ -1165,10 +1257,10 @@ p {
 }
 
 #RR-photo-modal .background {
-  background-color: black;
+  background-color: var(--white);
   width: 100%;
   height: 100%;
-  opacity: 0.9;
+  opacity: 0.8;
   position: fixed;
 }
 
@@ -1235,8 +1327,6 @@ p {
   width: 240px;
   padding-top: 260px;
   padding-right: 20px;
-  border-top-left-radius: 40px;
-  border-bottom-left-radius: 40px;
   background-image: url('./assets/pencileandletter.jpg');
   background-size: 700px 600px;
   background-position: 48% 100%;
@@ -1246,33 +1336,17 @@ p {
   align-items: flex-end;
 }
 
-#RR-form-menu button,
-#RR-form-menu input,
-.RR-form-fields button {
-  border: 0;
-  margin: 10px 0;
-  height: 30px;
-  width: 80px;
-  color: var(--black-green);
-  background-color: var(--light);
-  border-radius: 4px;
-  opacity: .6;
-  font-weight: bold;
-  font-size: 1em;
+#RR-form-inner-ctn button {
+  width: 100px;
 }
 
-.RR-form-fields button {
+#RR-form-inner-ctn .RR-form-fields button {
   width: 200px;
 }
 
 #RR-form-menu span {
   font-size: 20px;
   margin: 10px 0;
-}
-#RR-form-menu .active,
-.RR-form-fields .active {
-  color: var(--light) !important;
-  background-color: var(--black-green) !important;
 }
 
 #RR-form-inner-ctn form {
@@ -1332,9 +1406,8 @@ p {
 #RR-form-inner-ctn .RR-prod-char-rating {
   display: flex;
   width: 700px;
-  border: 1px solid var(--grey);
-  background-color: var(--light);
-  border-radius:  20px;
+  background-color: hsl(0,0%, 90%);
+  border-radius:  4px;
   margin: 2px;
   border: 0;
 }

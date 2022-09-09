@@ -47,18 +47,18 @@ const OutfitCard = ({ itemNo, productID, deleteCard, deleteCardDisplay, curOutfi
   /* handles delete button onClick event */
   const handleDelete = useCallback(() => {
 
-    console.log(curDisplay)
     deleteCard(curOutfit.filter((item) => item !== itemNo));
     deleteCardDisplay(curDisplay.filter((item) => item !== itemNo));
-    console.log(curDisplay);
 
     const populateList = () => {
       if (curOutfit.length > 2) {
+        if (curDisplay.length < 4) {
         curOutfit.forEach((card) => {
-          if (curDisplay.indexOf(card) === -1) {
-            deleteCardDisplay(prevDisplay => [...prevDisplay, card]);
-          }
-        })
+            if (curDisplay.indexOf(card) === -1) {
+              deleteCardDisplay(prevDisplay => [...prevDisplay, card]);
+            }
+          })
+        }
       }
     }
 

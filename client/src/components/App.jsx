@@ -5,6 +5,7 @@ import ItemLists from './rc/ItemLists.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
 import please from '.././request.js'
+import mannequin from '../assets/mannequin.jpeg';
 
 const App = () => {
 
@@ -12,25 +13,33 @@ const App = () => {
 
   useEffect(() => {
     please.getProducts()
-    .then((data) => setProduct(data.data[3]))
+    .then((data) => setProduct(data.data[0]))
     .catch((err) => console.log(err))
   },[])
 
   return (
     product ?
-    <div>
-      <h1>tekstyle</h1>
-      <OVProvider productId={product.id}>
-        <Overview />
-      </OVProvider>
-      <ItemLists productId={product.id} setProduct={setProduct}/>
-      <QuestionsMaster productName={product.name} productId={product.id}/>
-      <RatingsReviews productId={product.id} productName={product.name}/>
-    </div>
+    <>
+      <div id="loading-div">
+        <img className='loading-screen' src={mannequin}/>
+        <h1 className='loading-screen'>getting dressed...</h1>
+      </div>
+      <div>
+        <h1>tekstyle</h1>
+        <OVProvider productId={product.id}>
+          <Overview />
+        </OVProvider>
+        <ItemLists productId={product.id} setProduct={setProduct}/>
+        <QuestionsMaster productName={product.name} productId={product.id}/>
+        <RatingsReviews productId={product.id} productName={product.name}/>
+      </div>
+    </>
     :
-    <div>
-      <h1>loading...</h1>
-    </div>
+    <div></div>
+    // <div id="loading-div">
+    //   <img className='loading-screen' src={mannequin}/>
+    //   <h1 className='loading-screen'>getting dressed...</h1>
+    // </div>
   )
 }
 

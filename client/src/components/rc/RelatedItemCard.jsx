@@ -16,6 +16,7 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
   const [pop, setPop] = useState(false);
 
 
+
   useEffect(() => {
     request
       .getStyles(pID)
@@ -69,6 +70,8 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
         console.log("This is a RelatedItemCard error:", err);
       });
   }, []);
+
+
 
   const handlePopToggle = (e) => {
     e.preventDefault();
