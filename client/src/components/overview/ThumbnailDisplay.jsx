@@ -19,7 +19,7 @@ const Thumbnail = () => {
         }
         let circleStyle = {}
         if (index === displayIndex) {
-          styles.border = `4px solid var(--dark-green)`
+          styles.border = `3px solid var(--dark-green)`
           styles.opacity = '1'
           circleStyle.backgroundColor = `var(--mid-green)`
         }

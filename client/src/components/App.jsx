@@ -19,7 +19,7 @@ const App = () => {
   return (
     product ?
     <div>
-      <h1>buymorethings</h1>
+      <h1>tekstyle</h1>
       <OVProvider productId={product.id}>
         <Overview />
       </OVProvider>
