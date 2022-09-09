@@ -2,6 +2,11 @@ client/dist
 bundle.js
 node_modules
 ProductsDetail.js
-config.js
 .env
+<<<<<<< HEAD
 .gitignore
+=======
+config.js
+
+
+>>>>>>> main

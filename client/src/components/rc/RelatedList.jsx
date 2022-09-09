@@ -25,9 +25,15 @@ const RelatedList = ({ id, setProduct }) => {
       })
   }, [id]);
 
+<<<<<<< HEAD
   console.log('overview id:', id);
   console.log('related list:', list);
   console.log('related display:', itemDisplay);
+=======
+  // console.log('overview id:', id);
+  // console.log('related list:', list);
+  // console.log('related display:', itemDisplay);
+>>>>>>> main
 
 
 

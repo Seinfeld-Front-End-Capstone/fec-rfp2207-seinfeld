@@ -24,7 +24,7 @@ const OutfitList = ({ id }) => {
       setOutfitDisplay(prevDisplay => [...prevDisplay, cardCount]);
     }
     setCardCount(prevCount => prevCount + 1);
-    console.log(outfitDisplay);
+    // console.log(outfitDisplay);
   }
 
   /* handles click of next arrow button */
@@ -61,11 +61,11 @@ const OutfitList = ({ id }) => {
       }
     }
     checkKeyGaps(prev);
-    console.log(outfitDisplay);
+    // console.log(outfitDisplay);
   }
 
-  console.log('outfit:', outfit)
-  console.log('display:', outfitDisplay);
+  // console.log('outfit:', outfit)
+  // console.log('display:', outfitDisplay);
 
 
   return (
