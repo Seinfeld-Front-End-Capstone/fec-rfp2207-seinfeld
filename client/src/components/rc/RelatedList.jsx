@@ -20,7 +20,6 @@ const RelatedList = ({ id, setProduct }) => {
       setIndex(0);
   }, [id]);
 
-
   useEffect(() => {
     renderCards();
 
