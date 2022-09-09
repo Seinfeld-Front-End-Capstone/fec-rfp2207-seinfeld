@@ -1209,13 +1209,13 @@ p {
 #stylists-ctn {
   position: absolute;
   z-index: -1;
-  height: 370px;
+  height: 500px;
   display: flex;
   align-items: flex-end;
 }
 img#stylists-background {
 
-  width: 600px;
+  width: 800px;
   opacity: 0.2;
   animation-name: rise;
   animation-duration: 1.5s;
@@ -1225,7 +1225,7 @@ img#stylists-background {
 
 @keyframes rise {
   from {height: 0;}
-  to {height: 370px;}
+  to {height: 500px;}
 }
 
 #RR-breakdown-ctn {
