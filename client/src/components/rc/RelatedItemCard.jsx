@@ -6,7 +6,7 @@ import ComparisonModal from './ComparisonModal.jsx';
 
 /* *** Cards for each item in the list of related products *** */
 
-const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
+const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct, curDisplay }) => {
   const [productData, setProductData] = useState([]);
   const [ovItem, setOVItem] = useState([]);
   const [photoData, setPhotoData] = useState([]);
@@ -80,8 +80,10 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
     setOVProduct(prevData => productData);
   };
 
-  return (
-    <li
+  if (curDisplay.indexOf(pID) !== -1) {
+
+    return (
+      <li
       className="RC_related_card_container">
       <div
       className="RC_related_card">
@@ -92,7 +94,7 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
             src={photoData}
             onClick={handleProductClick}
             height="225"
-          />
+            />
           <i
             className="fa-solid fa-star compare_star"
             onClick={handlePopToggle}>
@@ -120,13 +122,17 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
           <Stars
             rating={starRating} />
         </div>
-      </div>
-      {pop ? <ComparisonModal toggle={setPop} overviewItem=
-{ovItem} relatedItem={productData} relatedPrice={price}
-ovPrice={ovItemPrice}/> : null}
-    </li>
-
-  );
+        </div>
+        {pop ? <ComparisonModal
+        toggle={setPop}
+        overviewItem={ovItem}
+        relatedItem={productData}
+        relatedPrice={price}
+        ovPrice={ovItemPrice}/>
+        : null}
+      </li>
+    );
+  }
 };
 
 export default RelatedItemCard;
