@@ -4,7 +4,7 @@ import Overview from './overview/Overview.jsx';
 import ItemLists from './rc/ItemLists.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
-import please from '.././request.js'
+import Please from '.././request.js'
 
 const App = () => {
 
@@ -24,10 +24,8 @@ const App = () => {
         <Overview />
       </OVProvider>
       <ItemLists productId={product.id} setProduct={setProduct}/>
-      <QuestionsMaster productName={product.name} productId={product.id}/>
-      <RatingsReviews
-        productId={product.id}
-        productName={product.name}/>
+      <QuestionsMaster productId={65632}/>
+      <RatingsReviews productId={product.id} productName={product.name}/>
     </div>
     :
     <div>

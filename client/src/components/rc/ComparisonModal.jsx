@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import request from '../../request.js';
 
 const ComparisonModal = ({ toggle, overviewItem, relatedItem, relatedPrice, ovPrice }) => {
 
