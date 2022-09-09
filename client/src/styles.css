@@ -59,6 +59,25 @@ button:hover {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+/* LOADING SCREEN */
+#loading-div {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+#loading-div img {
+  width: 200px;
+  height: auto;
+}
+
+#loading-div h1 {
+  font-size: 1.5em;
+}
 
 /* GLOBAL STYLES */
 body {
@@ -1006,6 +1025,7 @@ p {
 
 #RR-avg-rating {
   font-size: 50px;
+  font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
   display: flex;
   align-items: center;
