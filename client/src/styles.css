@@ -159,7 +159,7 @@ p {
   height: 1000;
   width: var(--max-width);
   display: grid;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 3fr .5fr;
   grid-row-gap: 10px;
 }
 
@@ -364,9 +364,11 @@ p {
 
 
 #OVdesc {
-  display: grid;
+  height: 100%;
+  width: 100%;
+  /* display: grid;
   grid-template-columns: 4fr 1fr;
-  grid-column-gap: 5px;
+  grid-column-gap: 5px; */
 }
 
 .OVleftArrow {
