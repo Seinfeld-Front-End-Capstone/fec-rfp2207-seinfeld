@@ -5,7 +5,7 @@ import please from '../.././request.js';
 
 
 const Question = ({q, productName}) => {
-  // console.log('question : ', q);
+
   const [helpfulness, setHelpfulness] = useState(q.question_helpfulness)
   const [modal, setModal] = useState(false)
 
@@ -13,7 +13,7 @@ const Question = ({q, productName}) => {
     if (q.question_helpfulness === helpfulness) {
       please.markQuestionAsHelpful(q.question_id)
       .then(() => {
-        // console.log('success')
+
         setHelpfulness((prevCount) => prevCount + 1)
       })
     }

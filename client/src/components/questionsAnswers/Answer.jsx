@@ -5,6 +5,7 @@ import { MdCancel } from 'react-icons/md';
 import widget from '../helpers/widget.js';
 
 const Answer = ({ answer, index }) => {
+
   const [answerCount, setAnswerCount] = useState(answer.helpfulness)
   const [isReported, setReported] = useState('Report');
   const [imageModal, setImageModal] = useState(null);
@@ -60,35 +61,6 @@ const Answer = ({ answer, index }) => {
       </div>
     </>
   )
-
-  // return (
-  //   <>
-  //   <div id={imageModal && 'qa-modal-container'}>hi</div>
-  //   <div className='qa-answer-container'>
-  //     <div className='qa-answer-body'>
-  //       <span id='qa-body'>{!index && <span id='qa-A'>A:</span>} {answer.body}</span>
-  //       <div id='qa-img-container'>
-  //         {answer.photos.map((img, i) =>
-  //         <div className={imageModal === i ? 'qa-img-modal' : ''} onClick={() => setImageModal(i)}>
-  //           <img className='qa-answer-img' src={img.url} key={i} alt="picture" />
-  //           {imageModal === i && <button className='qa-img-close' onClick={(e) => { e.stopPropagation() || setImageModal(null) }}>&times;</button>}
-  //           </div>
-  //         )}
-  //       </div>
-  //       <div id='qa-answer-name'>
-  //         by {answer['answerer_name']}, {formattedDate}
-  //         <span id='qa-answer-helpful'>
-  //           <span className='qa-line'>|</span> Helpful?
-  //           <span className='qa-pointer' className='qa-yes' onClick={handleCount}>Yes</span>
-  //           <span id='qa-answer-count'>({answerCount})</span>
-  //           <span className='qa-line'>|</span>
-  //           <span className='qa-report' onClick={handleClick}>{isReported}</span>
-  //         </span>
-  //       </div>
-  //     </div>
-  //   </div>
-  //   </>
-  // )
 }
 
 export default Answer;
