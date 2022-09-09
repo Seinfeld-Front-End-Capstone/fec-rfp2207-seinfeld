@@ -20,8 +20,9 @@ const RelatedList = ({ id, setProduct }) => {
       })
   }, [id]);
 
-  // console.log('overview id:', id);
-  // console.log('related list:', list);
+  console.log('overview id:', id);
+  console.log('related list:', list);
+  console.log('display:', itemDisplay);
 
 
 
@@ -39,8 +40,7 @@ related items */
     e.preventDefault();
     var prev = itemDisplay[0] - 1;
     if (list.indexOf(prev) !== -1) {
-      setItemDisplay(itemDisplay.filter((item) => item !==
-itemDisplay[3]));
+      setItemDisplay(itemDisplay.filter((item) => item !== itemDisplay[3]));
       setItemDisplay(prevDisplay => [prev, ...prevDisplay]);
     }
   }
