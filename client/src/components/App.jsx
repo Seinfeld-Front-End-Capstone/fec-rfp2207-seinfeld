@@ -4,7 +4,7 @@ import Overview from './overview/Overview.jsx';
 import ItemLists from './rc/ItemLists.jsx';
 import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
-import Please from '.././request.js'
+import please from '.././request.js'
 
 const App = () => {
 

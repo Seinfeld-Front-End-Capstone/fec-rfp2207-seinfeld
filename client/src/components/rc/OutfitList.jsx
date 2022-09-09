@@ -42,8 +42,8 @@ const OutfitList = ({ id }) => {
       }
     }
     checkKeyGaps(next);
-    console.log('outfit:', outfit)
-    console.log('display:', outfitDisplay);
+    // console.log('outfit:', outfit)
+    // console.log('display:', outfitDisplay);
   }
 
   /* handles click of previous arrow button */

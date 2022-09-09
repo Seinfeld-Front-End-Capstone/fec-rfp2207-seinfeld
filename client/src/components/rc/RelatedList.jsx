@@ -15,10 +15,10 @@ const RelatedList = ({ id, setProduct }) => {
       .then((data) => {
         setList(data.data);
         list.map((item) => {
-          setKey(prevKey => [...prevKey, item]);
+          setKey(prevKey => [prevKey, item]);
         });
       })
-  }, []);
+  }, [id]);
 
   console.log('overview id:', id);
   console.log('related list:', list);
