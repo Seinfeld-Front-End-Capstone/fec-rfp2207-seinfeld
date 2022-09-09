@@ -28,7 +28,7 @@ const AnswerList = ({ q }) => {
   let slicedAnswers = answers.slice(0, length);
 
   let mappedAnswers = slicedAnswers.map((answer, i) => {
-    return <Answer answer={answer} index={i} key={answer['answer_id']} />
+    return <Answer answer={answer} index={i} key={i} />
   })
 
   if (answers.length <= 2) {
