@@ -6,85 +6,81 @@ import request from '../../request.js';
 
 const RelatedList = ({ id, setProduct }) => {
   const [list, setList] = useState([]);
-  const [key, setKey] =useState(0);
   const [itemDisplay, setItemDisplay] = useState([]);
+  const [index, setIndex] = useState(0);
 
+  //for each index in item Display,
+    // display a card from list
 
   useEffect(() => {
     request.getRelated(id)
       .then((data) => {
         setList(data.data);
-        list.map((item) => {
-          setKey(prevKey => [...prevKey, item]);
-        });
-        while (itemDisplay.length < 5) {
-          list.map((item) => {
-            setItemDisplay(prevDisplay => [...prevDisplay, item]);
-          });
-        }
-      })
+      });
+      setIndex(0);
   }, [id]);
 
-  // console.log('overview id:', id);
-  // console.log('related list:', list);
+  useEffect(() => {
+    renderCards();
+
+  }, [list, index])
+
+  console.log('related list:', list);
+  console.log('display:', itemDisplay);
+
 
 
   /* Creates a related item card for each element in the list of
 related items */
-  var createCard = list.map((productID) => {
+if (itemDisplay[0]) {
+  var createCard = itemDisplay.map((productID) => {
     return <RelatedItemCard
     key={productID}
     pID={productID}
     ogID={id}
-    setOVProduct={setProduct}
-    curDisplay={itemDisplay}/>
+    setOVProduct={setProduct}/>
   });
+}
+
+  const renderCards = () => {
+    var fourCards = [];
+    for (var i = index; i < index + 4; i++) {
+      fourCards.push(list[i]);
+      console.log ('i:', list[i]);
+    }
+    console.log(index);
+    setItemDisplay(fourCards);
+  }
+
 
   const handlePrevClick = (e) => {
     e.preventDefault();
-    var prev = itemDisplay[0] - 1;
-
-    const checkPrev = (targetKey) => {
-      if (list.indexOf(targetKey) !== -1) {
-        setItemDisplay(itemDisplay.filter((item) => item !== itemDisplay[3]));
-        setOutfitDisplay(prevDisplay => [prev, ...prevDisplay]);
-      } else if (list.indexOf(targetKey) === -1) {
-      console.log('Error, there is no item that way')
-      } else {
-        checkPrev(prev - 1)
-      }
-    }
-    checkPrev(prev);
+    setIndex(prevIndex => prevIndex - 1);
   }
 
   const handleNextClick = (e) => {
     e.preventDefault();
-    var next = itemDisplay[3] + 1;
-
-    const checkNext = (targetKey) => {
-      if (list.indexOf(targetKey) !== -1) {
-        setItemDisplay(itemDisplay.filter((item) => item !== itemDisplay[0]));
-        setOutfitDisplay(prevDisplay => [...prevDisplay, next]);
-      } else if (list.indexOf(targetKey) === -1) {
-      console.log('Error, there is no item that way')
-      } else {
-        checkNext(next + 1)
-      }
-    }
-    checkNext(next);
+    setIndex(prevIndex => prevIndex + 1);
   }
+
+
+  console.log("index:", index);
+
+  const leftButtonVis = index > 0 ? {visibility: 'visible'} : {visibility: "hidden"};
+  const rightButtonVis = index === list.length - 4  ? {visibility: 'hidden'} : {visibility: 
+'visible'};
 
   return (
     <div>
       <ul
       className="RC_related_list">
-        <button
+        <button style={leftButtonVis}
         className="RC_prev"
         onClick={handlePrevClick}>
           <i className="fa-solid fa-chevron-left"></i>
         </button>
         {createCard}
-        <button
+        <button style={rightButtonVis}
         className="RC_next"
         onClick={handleNextClick}>
          <i className="fa-solid fa-chevron-right"></i>
