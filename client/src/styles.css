@@ -18,7 +18,10 @@
   --grey: #808080;
   --dark-grey: #333;
   --black: #000000;
+  --light-grey: hsl(0, 0%, 80%);
+  --faint-grey: hsl(0, 0%, 95%)
 
+  font-family:Georgia, 'Times New Roman', Times, serif;
 
   /* colors of stars */
   --star-color: var(--dark-green);
@@ -28,10 +31,26 @@
   --max-width: 1200px;
 }
 
+button {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: var(--faint-grey);
+  border: 2px solid var(--black);
+  border-radius: 2px;
+  font-size: 1em;
+  padding: 10px;
+  margin: 10px 15px 0 0;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+button:hover {
+  background-color: var(--light-green);
+  color: white;
+}
+
 .Stars {
   /* --percent is passed down from JS variables */
   display: inline-block;
-  font-size: 20px;
+  font-size: 1.25em;
   font-family: Times;
   line-height: 1;
   background: linear-gradient(90deg, var(--star-color) var(--percent), var(--star-background) var(--percent));
@@ -46,7 +65,7 @@ body {
 }
 
 div {
-  color: #808080;
+  color: var(--grey);
 }
 
 input{
@@ -79,6 +98,7 @@ p {
   left: 0;
   right: 0;
   bottom: 0;
+  /* what's this? */
   background-color: rgba(0, 0, 0, .7);
   z-index: 1000;
 }
@@ -157,7 +177,7 @@ p {
   border-radius: 50%;
   height: 60px;
   width: 60px;
-  border: 3px solid var(--light-green);
+  border: 2px solid var(--black-green);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -174,7 +194,7 @@ p {
   right: 0%;
   height: 20px;
   width: 20px;
-  color:#354f52;
+  color: var(--light-green);
   z-index: 1;
   border-radius: 50%;
   background-color: white;
@@ -208,8 +228,8 @@ p {
   height: 99%;
   position: relative;
   overflow: hidden;
-  border-radius: 10px;
-  background-color: var(--grey);
+  border-radius: 3px;
+  background-color: var(--light-grey);
 }
 
 #OVimagedisplay {
@@ -284,7 +304,7 @@ p {
   transition: transform .2s, left 1s ease-out;
   left: 0;
   position: relative;
-  opacity: 0.4;
+  opacity: 0.6;
 }
 
 .OVthumbnailImage:Hover {
@@ -904,20 +924,6 @@ p {
   flex-direction: row;
 }
 
-.qa-question-button {
-  font-size: 15px;
-  padding: 10px;
-  margin: 10px 15px 0 0;
-  border-radius: 3px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-}
-
-.qa-question-button:hover {
-  background-color: var(--light);
-  color: white;
-}
-
 .qa-img-preview {
   height: 100px;
   width: 100px;
@@ -1094,13 +1100,6 @@ p {
   margin: 20px 20px 20px 0;
 }
 
-#RR-big-ctn button {
-  height: 40px;
-  border-radius: 2px 2px;
-  margin-right: 20px;
-  border: 2px solid hsl(0, 0%, 70%);
-}
-
 #RR-big-ctn button:hover {
   box-shadow: 0 0 4px var(--black-green);
 }
@@ -1250,16 +1249,17 @@ p {
   border: 0;
   margin: 10px 0;
   height: 30px;
-  width: 60px;
+  width: 80px;
   color: var(--black-green);
   background-color: var(--light);
   border-radius: 4px;
   opacity: .6;
   font-weight: bold;
+  font-size: 1em;
 }
 
 .RR-form-fields button {
-  width: 120px;
+  width: 200px;
 }
 
 #RR-form-menu span {

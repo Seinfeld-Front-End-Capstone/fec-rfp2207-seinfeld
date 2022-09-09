@@ -56,7 +56,7 @@ const RatingsReviews = ({ productId, productName }) => {
       submitRRClick(e);
       toggleForm();
     }
-  }>ADD A REVIEW +</button>;
+  }>Add A Review +</button>;
 
   const handleSort = (e) => {
     setSortParam(e.target.value)
@@ -89,7 +89,7 @@ const RatingsReviews = ({ productId, productName }) => {
                 onClick={(e) => {
                   submitRRClick(e);
                   showMoreReview();
-                }}>MORE REVIEWS
+                }}>More Reviews
               </button>}
               {addReviewButton}
             </div>
