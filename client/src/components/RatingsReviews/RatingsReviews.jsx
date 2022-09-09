@@ -6,8 +6,6 @@ import { MdCancel } from 'react-icons/md';
 import Form from './Form/Form.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import { submitRRClick } from '../helpers/trackClick.js';
-import stylists from '../../assets/stylists.png';
-import { useRef } from 'react';
 //lift axios request for reviews/meta out of Form and into this component
 //lift axios request for reviews/meta out of Form and into this component
 
@@ -20,17 +18,8 @@ const RatingsReviews = ({ productId, productName }) => {
   const [formMode, setFormMode] = useState(false);
   const [metaData, setMetaData] = useState(null)
   const [showPhotoModal, setShowPhotoModal] = useState('');
-  const [stylistsVisible, setStylistsVisible] = useState(false);
 
-  const myRef = useRef();
-  console.log('element is visible', stylistsVisible);
   useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      const entry = entries[0];
-      console.log('entry', entry);
-      setStylistsVisible(entry.isIntersecting);
-    })
-    observer.observe(myRef.current);
     please.getReviews(productId, 1, maxResults, sortParam)
     .then((data) => {
       let reviews = data.data.results;
@@ -75,10 +64,7 @@ const RatingsReviews = ({ productId, productName }) => {
 
   return (
     <>
-      <div ref={myRef} id="RR-big-ctn">
-        {stylistsVisible && <div id="stylists-ctn">
-          {<img id="stylists-background" src={stylists} />}
-        </div>}
+      <div id="RR-big-ctn">
         {reviews.length === 0
         ?
         <div id="RR-first-review">
