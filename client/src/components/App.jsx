@@ -19,20 +19,27 @@ const App = () => {
 
   return (
     product ?
-    <div>
-      <h1>tekstyle</h1>
-      <OVProvider productId={product.id}>
-        <Overview />
-      </OVProvider>
-      <ItemLists productId={product.id} setProduct={setProduct}/>
-      <QuestionsMaster productName={product.name} productId={product.id}/>
-      <RatingsReviews productId={product.id} productName={product.name}/>
-    </div>
+    <>
+      <div id="loading-div">
+        <img className='loading-screen' src={mannequin}/>
+        <h1 className='loading-screen'>getting dressed...</h1>
+      </div>
+      <div>
+        <h1>tekstyle</h1>
+        <OVProvider productId={product.id}>
+          <Overview />
+        </OVProvider>
+        <ItemLists productId={product.id} setProduct={setProduct}/>
+        <QuestionsMaster productName={product.name} productId={product.id}/>
+        <RatingsReviews productId={product.id} productName={product.name}/>
+      </div>
+    </>
     :
-    <div id="loading-div">
-      <img className='loading-screen' src={mannequin}/>
-      <h1 className='loading-screen'>getting dressed...</h1>
-    </div>
+    <div></div>
+    // <div id="loading-div">
+    //   <img className='loading-screen' src={mannequin}/>
+    //   <h1 className='loading-screen'>getting dressed...</h1>
+    // </div>
   )
 }
 
