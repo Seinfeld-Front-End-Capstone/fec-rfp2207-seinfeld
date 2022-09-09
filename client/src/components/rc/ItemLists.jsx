@@ -8,12 +8,10 @@ import stylists from '../../assets/stylists.png';
 const ItemLists = ({ productId, setProduct }) => {
   const [stylistsVisible, setStylistsVisible] = useState(false);
   const myRef = useRef();
-  console.log('element is visible', stylistsVisible);
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const entry = entries[0];
-      console.log('entry', entry);
       setStylistsVisible(entry.isIntersecting);
     })
     observer.observe(myRef.current);
@@ -32,9 +30,10 @@ const ItemLists = ({ productId, setProduct }) => {
         setProduct={setProduct}/>
       </div>
       <div>
-        <h5 ref={myRef} className="RC_h5">Your Outfit</h5>
+        <h5 className="RC_h5">Your Outfit</h5>
       </div>
       <div
+      ref={myRef}
       className="RC_outfit_container">
         <OutfitList
         id={productId}/>
