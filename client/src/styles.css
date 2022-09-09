@@ -140,6 +140,11 @@ p {
   height: 100%;
 }
 
+#OVReviews:Hover {
+  cursor:pointer;
+  color:black;
+}
+
 #OVStyleBox {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
