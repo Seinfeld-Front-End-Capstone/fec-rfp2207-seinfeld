@@ -75,8 +75,10 @@ const RatingsReviews = ({ productId, productName }) => {
 
   return (
     <>
-      <img ref={myRef} id="stylists-background" src={stylists} />
-      <div id="RR-big-ctn">
+      <div ref={myRef} id="RR-big-ctn">
+        {stylistsVisible && <div id="stylists-ctn">
+          {<img id="stylists-background" src={stylists} />}
+        </div>}
         {reviews.length === 0
         ?
         <div id="RR-first-review">

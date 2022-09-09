@@ -1104,9 +1104,27 @@ p {
 }
 
 /* Reviews list */
-#stylists-background {
-  width: 60%;
+
+#stylists-ctn {
+  position: absolute;
+  z-index: -1;
+  height: 370px;
+  display: flex;
+  align-items: flex-end;
+}
+img#stylists-background {
+
+  width: 600px;
   opacity: 0.6;
+  animation-name: rise;
+  animation-duration: 1.5s;
+  animation-iteration-count: 1;
+
+}
+
+@keyframes rise {
+  from {height: 0;}
+  to {height: 370px;}
 }
 
 #RR-breakdown-ctn {
