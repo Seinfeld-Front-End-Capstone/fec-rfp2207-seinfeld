@@ -36,7 +36,8 @@ const ItemLists = ({ productId, setProduct }) => {
       ref={myRef}
       className="RC_outfit_container">
         <OutfitList
-        id={productId}/>
+        id={productId}
+        setProduct={setProduct}/>
         {stylistsVisible && <div id="stylists-ctn">
           {<img id="stylists-background" src={stylists} />}
         </div>}
