@@ -5,9 +5,6 @@ import { MdCancel } from 'react-icons/md';
 import Form from './Form/Form.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import { submitRRClick } from '../helpers/trackClick.js';
-//lift axios request for reviews/meta out of Form and into this component
-//lift axios request for reviews/meta out of Form and into this component
-
 
 const RatingsReviews = ({ productId, productName }) => {
   const [reviews, setReviews] = useState([]);
@@ -77,7 +74,10 @@ const RatingsReviews = ({ productId, productName }) => {
           {metaData ? <RatingBreakdown metaData={metaData} /> : null}
           <div id="RR-reviews-right-ctn">
             <h3 id="RR-header-sort"> {reviews.length} views, sorted by
-              <select id="RR-sort-param" onChange={handleSort} onClick={submitRRClick}>
+              <select
+                id="RR-sort-param"
+                  onChange={handleSort}
+                  onClick={submitRRClick}>
                 <option value="relevant">Relevant</option>ß
                 <option value="helpful">Helpful</option>
                 <option value="newest">Newest</option>
