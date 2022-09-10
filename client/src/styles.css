@@ -1218,8 +1218,8 @@ p {
   align-items: flex-end;
 }
 img#stylists-background {
-
   width: 800px;
+  height: 100%;
   opacity: 0.2;
   animation-name: rise;
   animation-duration: 2s;
