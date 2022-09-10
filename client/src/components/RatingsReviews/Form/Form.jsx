@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-// import noStar from '../../../assets/stars/noStar.png';
-// import fullStar from '../../../assets/stars/fullStar.png';
 import ProdChars from './ProdChars.jsx';
 import please from '../../../request.js';
 import { validateForm, formatForm } from './processForm.js';
@@ -9,23 +7,14 @@ import widget from '../../helpers/widget.js';
 import { submitRRClick } from '../../helpers/trackClick.js';
 
 
-const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
+const Form = ({ productName, productId, toggleForm, refreshReviews, chars }) => {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
-  const [chars, setChars] = useState([]);
   const [myWidget, setMyWidget] = useState(null);
-  //could refactor to store as one state?
-  const [cancelBtnActive, setCancelBtnActive] = useState(false);
-  const [submitBtnActive, setSubmitBtnActive] = useState(false);
-  const [uploadBtnActive, setUploadBtnActive] = useState(false);
 
   useEffect(() => {
-    please.getReviewMeta(productId)
-    .then(data => setChars(data.data.characteristics))
-    .catch(err => console.log(err));
-
     setMyWidget(widget(
       (error, result) => {
         if (!error && result && result.event === "success") {
@@ -106,26 +95,16 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
         <div id="RR-form-menu">
           <span>Write your review</span>
           <span>About the {productName}</span>
-          <button
-          // could refactor to use :hover instead
-            // type="button"
-            // value="submit"
-            onClick={(e) => {
+          <button onClick={(e) => {
               handleSubmit(e);
               submitRRClick(e);
-            }}
-            onMouseEnter={() => setSubmitBtnActive(true)}
-            onMouseLeave={() => setSubmitBtnActive(false)}
-            className={submitBtnActive ? 'active' : ''}>
+          }}>
           submit</button>
           <button id="RR-form-cancel"
             onClick={(e) => {
               submitRRClick(e);
               toggleForm();
-            }}
-            onMouseEnter={() => setCancelBtnActive(true)}
-            onMouseLeave={() => setCancelBtnActive(false)}
-            className={cancelBtnActive ? 'active' : ''}>cancel
+            }}>cancel
           </button>
         </div>
         <form id="RR-form">
@@ -157,7 +136,9 @@ const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
           </div>
 
           <div className="RR-form-fields">
-            {photos.length <5 && <button onClick={() =>myWidget.open()} onMouseEnter={() => setUploadBtnActive(true)} onMouseLeave={() => setUploadBtnActive(false)} className={uploadBtnActive ? 'active' : ''}>upload photos</button>}
+            {photos.length <5 &&
+            <button
+              onClick={() => myWidget.open()}>upload photos</button>}
             <div id="RR-photo-uploads">
               {photos.map(photo => <img src={photo.thumbnail} alt="Your uploaded photo of the product"/>)}
             </div>
