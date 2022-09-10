@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
-// import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
 import { MdCancel } from 'react-icons/md';
 import Form from './Form/Form.jsx';
