@@ -10,13 +10,13 @@ import { submitRRClick } from '../helpers/trackClick.js';
 
 
 const RatingsReviews = ({ productId, productName }) => {
-
   const [reviews, setReviews] = useState([]);
   const [sortParam, setSortParam] = useState('relevant')
   const [maxResults, setMaxResults] = useState(2);
   const [formMode, setFormMode] = useState(false);
   const [metaData, setMetaData] = useState(null)
   const [showPhotoModal, setShowPhotoModal] = useState('');
+  const [chars, setChars] = useState([]);
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -27,7 +27,10 @@ const RatingsReviews = ({ productId, productName }) => {
     .catch((err) => console.log(err));
 
     please.getReviewMeta(productId)
-    .then(data => setMetaData(data.data))
+    .then(data => {
+      setMetaData(data.data)
+      setChars(data.data.characteristics);
+    })
     .catch(err => console.log(err));
   }, [productId, maxResults, sortParam],
   );
@@ -36,7 +39,6 @@ const RatingsReviews = ({ productId, productName }) => {
     please.getReviews(productId)
     .then((data) => {
       let reviews = data.data.results;
-      //add logic or state to remember what filter/sort the user is in
       setReviews(reviews);
     })
     .catch((err) => console.log(err))
@@ -100,6 +102,7 @@ const RatingsReviews = ({ productId, productName }) => {
         productName={productName}
         toggleForm={toggleForm}
         productId={productId}
+        chars={chars}
         refreshReviews={() => refreshReviews()}/>}
       {showPhotoModal &&
       <div id="RR-photo-modal">

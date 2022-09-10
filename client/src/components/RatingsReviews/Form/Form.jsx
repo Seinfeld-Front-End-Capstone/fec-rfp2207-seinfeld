@@ -7,19 +7,14 @@ import widget from '../../helpers/widget.js';
 import { submitRRClick } from '../../helpers/trackClick.js';
 
 
-const Form = ({ productName, productId, toggleForm, refreshReviews }) => {
+const Form = ({ productName, productId, toggleForm, refreshReviews, chars }) => {
   const [rating, setRating] = useState(0);
   const [rated, setRated] = useState(false);
   const [bodyCharCount, setBodyCharCount] = useState(0);
   const [photos, setPhotos] = useState([]);
-  const [chars, setChars] = useState([]);
   const [myWidget, setMyWidget] = useState(null);
 
   useEffect(() => {
-    please.getReviewMeta(productId)
-    .then(data => setChars(data.data.characteristics))
-    .catch(err => console.log(err));
-
     setMyWidget(widget(
       (error, result) => {
         if (!error && result && result.event === "success") {
