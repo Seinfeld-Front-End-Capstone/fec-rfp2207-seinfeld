@@ -508,7 +508,7 @@ p {
 }
 
 .RC_related_card_container:Hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .RC_related_card {
@@ -643,6 +643,11 @@ p {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transition: all .2s
+}
+
+.RC_outfit_card_container:Hover {
+  transform: scale(1.05)
 }
 
 .RC_add_to_outfit {
@@ -1218,7 +1223,7 @@ img#stylists-background {
   width: 800px;
   opacity: 0.2;
   animation-name: rise;
-  animation-duration: 1.5s;
+  animation-duration: 2s;
   animation-iteration-count: 1;
 
 }
