@@ -12,7 +12,7 @@ const Rating = () => {
   }
 
   return (
-    <div id='OVReviews' onClick={scrollToReviews}>
+    <div id='OVReviews' className='OVcenterInfo' onClick={scrollToReviews}>
       {AvgStarRating(starsObj, (avg) => <Stars rating={avg}/>)}
       <span> read all {count} reviews </span>
     </div>
