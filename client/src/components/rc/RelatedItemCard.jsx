@@ -87,7 +87,7 @@ const RelatedItemCard = ({ pID, ogID, ovProduct, setOVProduct }) => {
   //   backgroundImage: `url(${photoData})`
   // }
 
-  console.log(photoData)
+  // console.log(photoData)
 
   return (
     <li
