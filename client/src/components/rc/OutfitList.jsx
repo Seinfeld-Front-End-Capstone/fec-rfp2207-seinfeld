@@ -6,66 +6,46 @@ import OutfitCard from './OutfitCard.jsx';
 
 const OutfitList = ({ id, setProduct }) => {
   const [outfit, setOutfit] = useState([]);
-  const [cardCount, setCardCount] = useState(0);
+  const [index, setIndex] = useState(0);
   const [outfitDisplay, setOutfitDisplay] = useState([]);
 
   /* adds a new card to the list */
-  const addOutfit = outfit.map((item) => {
+  const addOutfit = outfitDisplay.map((item) => {
     return <OutfitCard key={item} itemNo={item} productID={id}
     deleteCard={setOutfit} deleteCardDisplay={setOutfitDisplay}
     curOutfit={outfit} curDisplay={outfitDisplay} setOVProduct={setProduct}/>
   });
 
-  /* handles the + button being clicked */
-  const handleAddToOutfit = (e) => {
-    e.preventDefault();
-    setOutfit(prevOutfit => [...prevOutfit, cardCount]);
-    if (outfitDisplay.length < 3) {
-      setOutfitDisplay(prevDisplay => [...prevDisplay, cardCount]);
+  /* handles card rendering */
+
+  //when add to outfit is clicked,
+    // this should add the new card to both display (until there are 3 cards) and outfit.
+  const renderCards = () => {
+    setOutfit(prevOutfit => [...prevOutfit, id]);
+    if (outfitDisplay.length < 4) {
+      setOutfitDisplay(prevDisplay => [...prevDisplay, id]);
     }
-    setCardCount(prevCount => prevCount + 1);
-    // console.log(outfitDisplay);
   }
 
   /* handles click of next arrow button */
   const handleNextClick = (e) => {
     e.preventDefault();
-    var next = outfitDisplay[2] + 1;
-    const checkKeyGaps = (targetKey) => {
-      if (outfit.indexOf(targetKey) !== -1) {
-        setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDisplay[0]));
-        setOutfitDisplay(prevDisplay => [...prevDisplay, next]);
-      } else if (outfit.indexOf(targetKey) === -1) {
-        console.log('Error, there is no item that way')
-      } else {
-        checkKeyGaps(next + 1)
-      }
-    }
-    checkKeyGaps(next);
-    // console.log('outfit:', outfit)
-    // console.log('display:', outfitDisplay);
+
+    console.log('outfit:', outfit)
+    console.log('display:', outfitDisplay);
   }
 
   /* handles click of previous arrow button */
   const handlePrevClick = (e) => {
     e.preventDefault();
-    var prev = outfit.indexOf(outfitDisplay[0] - 1);
-    const checkKeyGaps = (targetKey) => {
-      if (outfit.indexOf(targetKey) !== -1) {
-        setOutfitDisplay(outfitDisplay.filter((item) => item !== outfitDisplay[2]));
-        setOutfitDisplay(prevDisplay => [prev, ...prevDisplay]);
-      } else if (outfit.indexOf(targetKey) === -1) {
-        console.log('Error, there is no item that way');
-      } else {
-        checkKeyGaps(prev - 1);
-      }
-    }
-    checkKeyGaps(prev);
-    // console.log(outfitDisplay);
+
+
+    console.log(outfit);
+    console.log(outfitDisplay);
   }
 
-  // console.log('outfit:', outfit)
-  // console.log('display:', outfitDisplay);
+  console.log('outfit:', outfit)
+  console.log('display:', outfitDisplay);
 
 
   return (
@@ -79,7 +59,7 @@ const OutfitList = ({ id, setProduct }) => {
           <li className="RC_outfit_card_container">
             <div
             className="RC_add_to_outfit"
-            onClick={handleAddToOutfit}>
+            onClick={renderCards}>
               <i
               className="fa-solid fa-plus plus"></i>
               <div
