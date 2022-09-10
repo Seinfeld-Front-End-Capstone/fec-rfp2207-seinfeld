@@ -1204,7 +1204,6 @@ p {
   justify-content: space-between;
 }
 
-/* Reviews list */
 
 #stylists-ctn {
   position: absolute;
@@ -1228,6 +1227,7 @@ img#stylists-background {
   to {height: 500px;}
 }
 
+/* Reviews list */
 #RR-breakdown-ctn {
   padding-left: 20px;
 }
@@ -1246,11 +1246,17 @@ img#stylists-background {
 #RR-reviews-right-ctn {
   width: 70%;
 }
+
 #RR-reviews-ctn {
   width: auto;
   overflow-y: auto;
   max-height: 600px;
 }
+
+#RR-more-review {
+
+}
+
 
 .RR-review-ctn {
   width: auto;

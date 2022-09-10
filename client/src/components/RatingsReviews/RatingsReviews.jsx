@@ -78,7 +78,7 @@ const RatingsReviews = ({ productId, productName }) => {
                 id="RR-sort-param"
                   onChange={handleSort}
                   onClick={submitRRClick}>
-                <option value="relevant">Relevant</option>ß
+                <option value="relevant">Relevant</option>
                 <option value="helpful">Helpful</option>
                 <option value="newest">Newest</option>
               </select>
