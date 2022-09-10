@@ -9,18 +9,17 @@ const AnswerList = ({ q }) => {
   useEffect(() => {
     please.getAnswers(q.question_id)
       .then((data) => {
-        let sortedAnswers = data.data.results
-        sortedAnswers.sort((a, b) => {
-          return b.helpfulness - a.helpfulness
-        })
-
-        for (const answer of sortedAnswers) {
-          if (answer['answerer_name'].toLowerCase() === 'seller') {
-            let indexOfSeller = sortedAnswers.indexOf(answer)
-            let removeSeller = sortedAnswers.splice(indexOfSeller, indexOfSeller)
-            sortedAnswers.unshift(removeSeller[0]);
-          }
-        }
+        console.log('data : ', data.data.results)
+        const sortedAnswers = data.data.results
+          .sort((a, b) => {
+            if (a.answerer_name.toLowerCase() === "seller") {
+              return -1;
+            } else if (b.answerer_name.toLowerCase() === "seller") {
+              return 1;
+            } else {
+              return b.helpfulness - a.helpfulness;
+            }
+          })
         setAnswers(sortedAnswers);
       })
   }, [q])
@@ -28,7 +27,7 @@ const AnswerList = ({ q }) => {
   let slicedAnswers = answers.slice(0, length);
 
   let mappedAnswers = slicedAnswers.map((answer, i) => {
-    return <Answer answer={answer} index={i} key={answer['answer_id']} />
+    return <Answer answer={answer} index={i} key={i} />
   })
 
   if (answers.length <= 2) {

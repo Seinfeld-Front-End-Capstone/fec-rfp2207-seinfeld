@@ -5,7 +5,6 @@ import { MdCancel } from 'react-icons/md';
 import widget from '../helpers/widget.js';
 
 const Answer = ({ answer, index }) => {
-
   const [answerCount, setAnswerCount] = useState(answer.helpfulness)
   const [isReported, setReported] = useState('Report');
   const [imageModal, setImageModal] = useState(null);

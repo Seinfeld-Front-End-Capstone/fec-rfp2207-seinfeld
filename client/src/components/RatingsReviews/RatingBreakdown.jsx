@@ -12,7 +12,7 @@ const reviewsByStars = (metaData) => {
     let count = metaData.ratings[rating] || 0;
     let percentage = (count / total) * 100;
     return (
-    <div className="RR-reviews-by-star-ctn">
+    <div key={`${rating}stars`}className="RR-reviews-by-star-ctn">
       <div>{rating} stars</div>
       <div className="RR-bar-graph">
         <div className="RR-top-bar" style={{width: `${percentage}%`}}></div>
@@ -45,7 +45,7 @@ const prodCharBreakdown = (metaData) => {
     //formula to position marker using css
     let percentage = ((value - 1) / 4) * 100 - 5;
     results.push(
-      <div className="RR-prod-char-breakdown-ctn">
+      <div key={`${char}breakdown`} className="RR-prod-char-breakdown-ctn">
         <div className="RR-prod-char-titles">{char}</div>
         <div className="RR-prod-char-bar">
           <div className="RR-prod-char-marker" style={{marginLeft: `${percentage}%`}}><BsTriangleFill /></div>
@@ -72,7 +72,7 @@ const RatingBreakdown = ({ metaData }) => {
           })}
         </div>
         <div id="RR-star-views-ctn">
-          <Stars rating={average} />
+          <Stars rating={average} key={'avgStarRating'}/>
           <div>{sumReviews(metaData)} reviews</div>
         </div>
       </div>

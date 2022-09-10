@@ -1,23 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import ReviewList from './ReviewList.jsx';
-// import { someReviews, noReviews } from './ExampleReviews.js';
 import please from '../../request.js';
 import { MdCancel } from 'react-icons/md';
 import Form from './Form/Form.jsx';
 import RatingBreakdown from './RatingBreakdown.jsx';
 import { submitRRClick } from '../helpers/trackClick.js';
-//lift axios request for reviews/meta out of Form and into this component
-//lift axios request for reviews/meta out of Form and into this component
-
 
 const RatingsReviews = ({ productId, productName }) => {
-
   const [reviews, setReviews] = useState([]);
   const [sortParam, setSortParam] = useState('relevant')
   const [maxResults, setMaxResults] = useState(2);
   const [formMode, setFormMode] = useState(false);
   const [metaData, setMetaData] = useState(null)
   const [showPhotoModal, setShowPhotoModal] = useState('');
+  const [chars, setChars] = useState([]);
 
   useEffect(() => {
     please.getReviews(productId, 1, maxResults, sortParam)
@@ -28,7 +24,10 @@ const RatingsReviews = ({ productId, productName }) => {
     .catch((err) => console.log(err));
 
     please.getReviewMeta(productId)
-    .then(data => setMetaData(data.data))
+    .then(data => {
+      setMetaData(data.data)
+      setChars(data.data.characteristics);
+    })
     .catch(err => console.log(err));
   }, [productId, maxResults, sortParam],
   );
@@ -37,7 +36,6 @@ const RatingsReviews = ({ productId, productName }) => {
     please.getReviews(productId)
     .then((data) => {
       let reviews = data.data.results;
-      //add logic or state to remember what filter/sort the user is in
       setReviews(reviews);
     })
     .catch((err) => console.log(err))
@@ -76,8 +74,11 @@ const RatingsReviews = ({ productId, productName }) => {
           {metaData ? <RatingBreakdown metaData={metaData} /> : null}
           <div id="RR-reviews-right-ctn">
             <h3 id="RR-header-sort"> {reviews.length} views, sorted by
-              <select id="RR-sort-param" onChange={handleSort} onClick={submitRRClick}>
-                <option value="relevant">Relevant</option>ß
+              <select
+                id="RR-sort-param"
+                  onChange={handleSort}
+                  onClick={submitRRClick}>
+                <option value="relevant">Relevant</option>
                 <option value="helpful">Helpful</option>
                 <option value="newest">Newest</option>
               </select>
@@ -101,6 +102,7 @@ const RatingsReviews = ({ productId, productName }) => {
         productName={productName}
         toggleForm={toggleForm}
         productId={productId}
+        chars={chars}
         refreshReviews={() => refreshReviews()}/>}
       {showPhotoModal &&
       <div id="RR-photo-modal">
