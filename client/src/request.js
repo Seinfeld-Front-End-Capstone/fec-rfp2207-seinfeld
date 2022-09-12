@@ -41,7 +41,7 @@ module.exports = {
       headers:{Authorization: token}
     })
   },
-  AddToBag: (body) => {
+  addToBag: (body) => {
     return axios({
       url: `/cart`,
       method: 'post',

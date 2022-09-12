@@ -6,6 +6,7 @@ import RatingsReviews from './RatingsReviews/RatingsReviews.jsx';
 import QuestionsMaster from './questionsAnswers/QuestionsMaster.jsx'
 import please from '.././request.js'
 import mannequin from '../assets/mannequin.jpeg';
+import Bag from './overview/Bag.jsx';
 
 const App = () => {
 
@@ -25,7 +26,10 @@ const App = () => {
         <h1 className='loading-screen'>getting dressed...</h1>
       </div>
       <div>
-        <h1>tekstyle</h1>
+        <div id='TopBar'>
+          <h1>tekstyle</h1>
+          <Bag />
+        </div>
         <OVProvider productId={product.id}>
           <Overview />
         </OVProvider>

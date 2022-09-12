@@ -41,6 +41,7 @@ button {
   margin: 10px 15px 0 0;
   transition-duration: 0.4s;
   cursor: pointer;
+  border-radius: 5px;
 }
 
 button:hover {
@@ -143,6 +144,22 @@ p {
 
 .bold {
   font-weight: bold;
+}
+
+/* TOP BAR */
+
+#TopBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+#Bag {
+  position:absolute;
+  height: 30px;
+  width: 30px;
+  right: 10%;
 }
 
 /* OVERVIEW */
@@ -296,6 +313,23 @@ p {
   padding: 10px;
   width: 100%;
   margin: 10px 0px;
+}
+
+.OVcenterInfo {
+  display:flex;
+  justify-content: center;
+}
+
+.OVSocialMedia {
+  margin: 10px;
+  height: 50px;
+  width: 50px;
+  color: var(--mid-green);
+  transition: all .2s;
+}
+
+.OVSocialMedia:Hover {
+  transform: scale(1.2);
 }
 
 #OVimageDisplayBox {

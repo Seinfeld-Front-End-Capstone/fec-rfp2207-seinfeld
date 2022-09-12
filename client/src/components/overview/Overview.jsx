@@ -1,14 +1,15 @@
 import React from 'react';
-import Images from './Images.jsx'
-import Styles from './Styles.jsx'
-import Size from './Size.jsx'
-import Quantity from './Quantity.jsx'
-import Price from './Price.jsx'
-import AddToBag from './AddToBag.jsx'
-import Rating from './Rating.jsx'
-import please from '../.././request.js'
-import {useOV} from './OVContext.jsx'
+import Images from './Images.jsx';
+import Styles from './Styles.jsx';
+import Size from './Size.jsx';
+import Quantity from './Quantity.jsx';
+import Price from './Price.jsx';
+import AddToBag from './AddToBag.jsx';
+import Rating from './Rating.jsx';
+import please from '../.././request.js';
+import {useOV} from './OVContext.jsx';
 import Modal from './Modal.jsx';
+import SocialMedia from './SocialMedia.jsx';
 
 const Overview = () => {
   let {product, curStyle, curSku, expand} = useOV()
@@ -21,8 +22,8 @@ const Overview = () => {
           <Images />
           <div id='OVInfo'>
             <Rating />
-            <p>{product.category}</p>
-            <h2>{product.name}</h2>
+            <p className='OVcenterInfo'>{product.category}</p>
+            <h2 className='OVcenterInfo'>{product.name}</h2>
             <Price />
             <div>
             {product.features.map((f) => <p key={f.feature}><span style={{fontWeight: 'bold'}}>{f.feature}</span> : {f.value} </p>)}
@@ -41,6 +42,7 @@ const Overview = () => {
             </div>
             <AddToBag />
             </>}
+            <SocialMedia />
             </div>
         </div>
         <div id='OVdesc'>
